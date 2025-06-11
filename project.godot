@@ -11,5 +11,13 @@ config_version=5
 [application]
 
 config/name="Comandos Remake"
+run/main_scene="uid://d2j2xgntus103"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=224
+window/size/viewport_height=256
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
