@@ -5,6 +5,12 @@ const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0
 
 
+@export var bullet :PackedScene
+
+var can_shoot := true
+
+var dir:= Vector2(0,1)
+
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -13,12 +19,19 @@ func _physics_process(delta: float) -> void:
 #		velocity.x = direction * SPEED
 #	else:
 #		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
 	move_8_way(delta)
 	move_and_slide()
+	if velocity != Vector2.ZERO:
+		dir = velocity.normalized()
+	
+	spawn_bullet()
 
 func get_8_way_input() -> void:
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
 	velocity = input_direction * SPEED
+	
+	
 
 func move_8_way(delta: float) -> void:
 	get_8_way_input()
@@ -42,3 +55,19 @@ func move_8_way(delta: float) -> void:
 #		sprite.play("Cima")
 #	else:
 #		sprite.stop()
+
+func spawn_bullet():
+	if can_shoot:
+		
+		if Input.is_action_pressed("Shoot"):
+			print('dir: '+str(dir))
+			var bullet_instance = bullet.instantiate()
+			bullet_instance.global_transform = global_transform
+			bullet_instance.position += dir * 40
+			bullet_instance.motion = dir
+			get_parent().add_child(bullet_instance)
+			
+			can_shoot = false
+			await get_tree().create_timer(1.0).timeout
+			can_shoot = true
+	
