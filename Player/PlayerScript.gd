@@ -6,8 +6,10 @@ const SPEED = 300.0
 
 
 @export var bullet :PackedScene
+@export var granade :PackedScene
 
 var can_shoot := true
+var can_throw_granade := true
 
 var dir:= Vector2(0,1)
 
@@ -26,6 +28,7 @@ func _physics_process(delta: float) -> void:
 		dir = velocity.normalized()
 	
 	spawn_bullet()
+	spawn_granade()
 
 func get_8_way_input() -> void:
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
@@ -70,4 +73,18 @@ func spawn_bullet():
 			can_shoot = false
 			await get_tree().create_timer(1.0).timeout
 			can_shoot = true
+			
+func spawn_granade():
+	if can_throw_granade:
+		if Input.is_action_pressed("Granade"):
+			print('dir: '+str(dir))
+			var granade_instance = granade.instantiate()
+			granade_instance.global_transform = global_transform
+			granade_instance.position += dir * 40
+			granade_instance.motion = dir
+			get_parent().add_child(granade_instance)
+			
+			can_throw_granade = false
+			await get_tree().create_timer(1.0).timeout
+			can_throw_granade = true
 	
