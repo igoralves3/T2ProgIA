@@ -10,7 +10,7 @@
 [node name="MainPlayerChar" type="CharacterBody2D" groups=["GrupoPlayer"]]
 script = ExtResource("1_q3lat")
 bullet = ExtResource("2_tok1r")
-granade = ExtResource("3_ddoul")
+grenade = ExtResource("3_ddoul")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

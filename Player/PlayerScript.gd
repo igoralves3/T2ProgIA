@@ -2,33 +2,34 @@ extends CharacterBody2D
 var canShoot: bool = true
 
 const SPEED = 300.0
-#const JUMP_VELOCITY = -400.0
-
 
 @export var bullet :PackedScene
-@export var granade :PackedScene
+@export var grenade :PackedScene
 
+var delay_entre_tiros: float = 0.1
 var can_shoot := true
-var can_throw_granade := true
+var can_throw_grenade := true
+var is_shooting:= false
 
 var dir:= Vector2(0,1)
 
 func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-#	var direction := Input.get_axis("ui_left", "ui_right")
-#	if direction:
-#		velocity.x = direction * SPEED
-#	else:
-#		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
 	move_8_way(delta)
 	move_and_slide()
 	if velocity != Vector2.ZERO:
 		dir = velocity.normalized()
 	
-	spawn_bullet()
-	spawn_granade()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Shoot"):
+		is_shooting = true
+		burst_bullet()
+
+	if event.is_action_released("Shoot"):
+		is_shooting = false
+	
+	if event.is_action_pressed("Grenade"):
+		spawn_grenade()
 
 func get_8_way_input() -> void:
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
@@ -37,7 +38,7 @@ func get_8_way_input() -> void:
 	
 
 func move_8_way(delta: float) -> void:
-	get_8_way_input()
+	get_8_way_input() # \/ será usado mais a frente
 	#var collision_info = move_and_collide(velocity * delta)
 	#if collision_info:
 	#	var collision_point = collision_info.get_position()
@@ -59,32 +60,36 @@ func move_8_way(delta: float) -> void:
 #	else:
 #		sprite.stop()
 
-func spawn_bullet():
+func burst_bullet():
+	var quantidade_de_tiros = 3
 	if can_shoot:
-		
-		if Input.is_action_pressed("Shoot"):
-			print('dir: '+str(dir))
-			var bullet_instance = bullet.instantiate()
-			bullet_instance.global_transform = global_transform
-			bullet_instance.position += dir * 40
-			bullet_instance.motion = dir
-			get_parent().add_child(bullet_instance)
-			
+		while is_shooting:
 			can_shoot = false
+			for x in quantidade_de_tiros:
+				print (x)
+				shoot_bullet()
+				await get_tree().create_timer(delay_entre_tiros).timeout
+				print(can_shoot)
 			await get_tree().create_timer(1.0).timeout
 			can_shoot = true
-			
-func spawn_granade():
-	if can_throw_granade:
-		if Input.is_action_pressed("Granade"):
+
+func shoot_bullet():
+	print('dir: '+str(dir))
+	var bullet_instance = bullet.instantiate()
+	bullet_instance.global_transform = global_transform
+	bullet_instance.position += dir * 40
+	bullet_instance.motion = dir
+	get_parent().add_child(bullet_instance)
+
+func spawn_grenade():
+	if can_throw_grenade:
+		if Input.is_action_pressed("Grenade"):
 			print('dir: '+str(dir))
-			var granade_instance = granade.instantiate()
-			granade_instance.global_transform = global_transform
-			granade_instance.position += dir * 40
-			granade_instance.motion = dir
-			get_parent().add_child(granade_instance)
-			
-			can_throw_granade = false
+			var grenade_instance = grenade.instantiate()
+			grenade_instance.global_transform = global_transform
+			grenade_instance.position += dir * 40
+			grenade_instance.motion = dir
+			get_parent().add_child(grenade_instance)
+			can_throw_grenade = false
 			await get_tree().create_timer(1.0).timeout
-			can_throw_granade = true
-	
+			can_throw_grenade = true

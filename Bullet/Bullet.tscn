@@ -4,17 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="2_v7qj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uumvb"]
+size = Vector2(12, 12)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_qratc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_v7qj8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uumvb")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(0.6, 0.6)
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
