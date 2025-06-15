@@ -1,15 +1,20 @@
 extends CharacterBody2D
 var canShoot: bool = true
 
-const SPEED = 300.0
+const SPEED = 150.0
 
 @export var bullet :PackedScene
 @export var grenade :PackedScene
 
-var delay_entre_tiros: float = 0.1
+var bullets = []
+var easy:= false
+var delay_entre_tiros: float = 0.055 # é por ai
+var cooldown_arma: float = 0.5 
 var can_shoot := true
 var can_throw_grenade := true
 var is_shooting:= false
+var internal_shooting:= false
+var quantidade_de_bullets_voando: int = 0 # provavelmente vai fora
 
 var dir:= Vector2(0,1)
 
@@ -18,13 +23,16 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if velocity != Vector2.ZERO:
 		dir = velocity.normalized()
+	bullets = bullets.filter(func(bullet):
+		return is_instance_valid(bullet) and bullet.get_parent() != null)
+	quantidade_de_bullets_voando = bullets.size()
 	
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Shoot"):
+	if event.is_action_pressed("Shoot"): #atira se não tiver 5 ou mais balas voando
 		is_shooting = true
 		burst_bullet()
-
+	
 	if event.is_action_released("Shoot"):
 		is_shooting = false
 	
@@ -61,25 +69,39 @@ func move_8_way(delta: float) -> void:
 #		sprite.stop()
 
 func burst_bullet():
-	var quantidade_de_tiros = 3
+	var quantidade_de_tiros = 2
+	if quantidade_de_bullets_voando <= 3:
+		quantidade_de_tiros = 2
+	if quantidade_de_bullets_voando > 3:
+		quantidade_de_tiros = 6 - quantidade_de_bullets_voando
 	if can_shoot:
-		while is_shooting:
+		if easy == true:
+			while is_shooting:
+				can_shoot = false
+				for x in quantidade_de_tiros:
+				#print(quantidade_de_bullets_voando, "easy")
+					shoot_bullet()
+					await get_tree().create_timer(delay_entre_tiros).timeout
+				can_shoot = true
+		else:
 			can_shoot = false
 			for x in quantidade_de_tiros:
-				print (x)
 				shoot_bullet()
 				await get_tree().create_timer(delay_entre_tiros).timeout
-				print(can_shoot)
-			await get_tree().create_timer(1.0).timeout
 			can_shoot = true
 
 func shoot_bullet():
 	print('dir: '+str(dir))
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_transform = global_transform
-	bullet_instance.position += dir * 40
+	bullet_instance.position += dir * 20
 	bullet_instance.motion = dir
 	get_parent().add_child(bullet_instance)
+	bullets.append(bullet_instance)
+	if bullets.size() > 4: #unico lugar que reconhece essa desgraça como > 4
+		can_shoot = false
+		await get_tree().create_timer(cooldown_arma).timeout
+		can_shoot = true
 
 func spawn_grenade():
 	if can_throw_grenade:

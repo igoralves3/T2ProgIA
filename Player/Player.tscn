@@ -8,6 +8,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2ndj"]
 
 [node name="MainPlayerChar" type="CharacterBody2D" groups=["GrupoPlayer"]]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_q3lat")
 bullet = ExtResource("2_tok1r")
 grenade = ExtResource("3_ddoul")

@@ -11,7 +11,7 @@ script = ExtResource("1_qratc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.045, 0.045)
 texture = ExtResource("2_v7qj8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -22,6 +22,7 @@ position = Vector2(4.76837e-07, 4.76837e-07)
 scale = Vector2(0.6, 0.6)
 
 [node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
