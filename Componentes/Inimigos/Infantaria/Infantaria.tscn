@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7jtwgsgdbpl2"]
+
+[ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_agxu4"]
+[ext_resource type="Script" uid="uid://725tjqccjsfs" path="res://Componentes/Inimigos/Infantaria/infantaria.gd" id="1_pf2kk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3wb0l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_agxu4")
+}],
+"loop": true,
+"name": &"Corrida",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pf2kk"]
+radius = 0.0
+
+[node name="Infantaria" type="CharacterBody2D"]
+scale = Vector2(0.01, 0.01)
+script = ExtResource("1_pf2kk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3wb0l")
+animation = &"Corrida"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.88774, -2.69608)
+shape = SubResource("CapsuleShape2D_pf2kk")

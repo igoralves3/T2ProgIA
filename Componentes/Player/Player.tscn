@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7ye3664gw7kb"]
 
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_3qydi"]
-[ext_resource type="Script" uid="uid://dmc5325t0172w" path="res://Player/PlayerScript.gd" id="1_q3lat"]
-[ext_resource type="PackedScene" uid="uid://d324awvm2boeg" path="res://Bullet/Bullet.tscn" id="2_tok1r"]
-[ext_resource type="PackedScene" uid="uid://bwoeweqsm7xw8" path="res://Granada/Granada.tscn" id="3_ddoul"]
+[ext_resource type="Script" uid="uid://dmc5325t0172w" path="res://Componentes/Player/PlayerScript.gd" id="1_q3lat"]
+[ext_resource type="PackedScene" uid="uid://d324awvm2boeg" path="res://Componentes/Bullet/Bullet.tscn" id="2_tok1r"]
+[ext_resource type="PackedScene" uid="uid://bwoeweqsm7xw8" path="res://Componentes/Granada/Granada.tscn" id="3_ddoul"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2ndj"]
 
