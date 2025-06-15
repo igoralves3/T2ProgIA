@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwoeweqsm7xw8"]
 
-[ext_resource type="Script" uid="uid://cpbmqewsoh7lx" path="res://Granada/Granada.gd" id="1_yonep"]
+[ext_resource type="Script" uid="uid://cpbmqewsoh7lx" path="res://Componentes/Granada/Granada.gd" id="1_yonep"]
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="2_setla"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4newe"]
