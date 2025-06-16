@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7ye3664gw7kb"]
 
-[ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_3qydi"]
 [ext_resource type="Script" uid="uid://dmc5325t0172w" path="res://Componentes/Player/PlayerScript.gd" id="1_q3lat"]
 [ext_resource type="PackedScene" uid="uid://d324awvm2boeg" path="res://Componentes/Bullet/Bullet.tscn" id="2_tok1r"]
 [ext_resource type="PackedScene" uid="uid://bwoeweqsm7xw8" path="res://Componentes/Granada/Granada.tscn" id="3_ddoul"]
+[ext_resource type="SpriteFrames" uid="uid://cqmfjswyo7gfj" path="res://Componentes/Player/player_sprite_frames.tres" id="4_5mq5v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2ndj"]
 
@@ -13,9 +13,12 @@ script = ExtResource("1_q3lat")
 bullet = ExtResource("2_tok1r")
 grenade = ExtResource("3_ddoul")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_3qydi")
+sprite_frames = ExtResource("4_5mq5v")
+animation = &"throw_grenade"
+frame_progress = 0.744346
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_l2ndj")
