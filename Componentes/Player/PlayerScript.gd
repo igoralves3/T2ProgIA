@@ -6,6 +6,8 @@ const SPEED = 150.0
 @export var bullet :PackedScene
 @export var grenade :PackedScene
 
+@onready var _animated_sprite = $PlayerSprite
+
 var bullets = []
 var easy:= false
 var delay_entre_tiros: float = 0.055 # é por ai
@@ -39,8 +41,38 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Grenade"):
 		spawn_grenade()
 
+
+func update_animation(input_direction: Vector2) -> void:
+	
+	
+	if input_direction.x > 0 and input_direction.y == 0:
+		_animated_sprite.play("run_right")		
+	elif input_direction.x < 0 and input_direction.y == 0:
+		_animated_sprite.play("run_left")
+	elif  input_direction.x == 0 and input_direction.y > 0:
+		_animated_sprite.play("run_down")		
+	elif input_direction.x == 0 and input_direction.y < 0:
+		_animated_sprite.play("run_up")
+	elif input_direction.x > 0 and input_direction.y > 0:
+		_animated_sprite.play("run_bottom_right")		
+	elif input_direction.x < 0 and input_direction.y < 0:
+		_animated_sprite.play("run_top_left")
+	elif  input_direction.x < 0 and input_direction.y > 0:
+		_animated_sprite.play("run_bottom_left")		
+	elif input_direction.x > 0 and input_direction.y < 0:
+		_animated_sprite.play("run_top_right")
+	else:
+		_animated_sprite.stop()
+		_animated_sprite.frame = 0
+		
+		
+
 func get_8_way_input() -> void:
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
+		
+	update_animation(input_direction)	
+		
+		
 	velocity = input_direction * SPEED
 	
 	
