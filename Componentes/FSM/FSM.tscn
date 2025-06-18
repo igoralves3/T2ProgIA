@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdekohsk4it0n"]
+
+[ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="1_qmkgt"]
+[ext_resource type="Script" uid="uid://od64n0h3m3mo" path="res://Scripts/Classes/flee.gd" id="2_k4fti"]
+[ext_resource type="Script" uid="uid://bwlb3cbdttuh2" path="res://Scripts/Classes/seek.gd" id="3_t7cux"]
+[ext_resource type="Script" uid="uid://crev8iknffvfn" path="res://Scripts/Classes/wander.gd" id="4_rtixv"]
+[ext_resource type="Script" uid="uid://dbmg342k1f422" path="res://Scripts/Classes/hover.gd" id="5_os3vl"]
+
+[node name="Fsm" type="Node"]
+script = ExtResource("1_qmkgt")
+
+[node name="Flee" type="Node" parent="."]
+script = ExtResource("2_k4fti")
+
+[node name="Seek" type="Node" parent="."]
+script = ExtResource("3_t7cux")
+
+[node name="Wander" type="Node" parent="."]
+script = ExtResource("4_rtixv")
+
+[node name="Hover" type="Node" parent="."]
+script = ExtResource("5_os3vl")
