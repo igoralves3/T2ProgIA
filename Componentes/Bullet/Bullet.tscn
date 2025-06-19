@@ -1,25 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://d324awvm2boeg"]
+[gd_scene load_steps=5 format=3 uid="uid://d324awvm2boeg"]
 
 [ext_resource type="Script" uid="uid://d161eemr20v38" path="res://Componentes/Bullet/bullet.gd" id="1_qratc"]
-[ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="2_v7qj8"]
+[ext_resource type="Texture2D" uid="uid://co5mfclbkc6al" path="res://SpriteSheets/VFX.png" id="2_kwpdk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o668q"]
+atlas = ExtResource("2_kwpdk")
+region = Rect2(9, 37, 2.05319, 2.03764)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uumvb"]
-size = Vector2(12, 12)
+size = Vector2(2, 2)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_qratc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.045, 0.045)
-texture = ExtResource("2_v7qj8")
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_o668q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uumvb")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(4.76837e-07, 4.76837e-07)
-scale = Vector2(0.6, 0.6)
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.1, 0.1)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true

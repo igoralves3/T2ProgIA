@@ -15,7 +15,6 @@ var cooldown_arma: float = 0.5
 var can_shoot := true
 var can_throw_grenade := true
 var is_shooting:= false
-var internal_shooting:= false
 var quantidade_de_bullets_voando: int = 0 # provavelmente vai fora
 
 var dir:= Vector2(0,1)
@@ -27,8 +26,7 @@ func _physics_process(delta: float) -> void:
 		dir = velocity.normalized()
 	bullets = bullets.filter(func(bullet):
 		return is_instance_valid(bullet) and bullet.get_parent() != null)
-	quantidade_de_bullets_voando = bullets.size()
-	
+	#print(quantidade_de_bullets_voando)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"): #atira se não tiver 5 ou mais balas voando
@@ -61,6 +59,10 @@ func update_animation(input_direction: Vector2) -> void:
 		_animated_sprite.play("run_bottom_left")		
 	elif input_direction.x > 0 and input_direction.y < 0:
 		_animated_sprite.play("run_top_right")
+	elif can_throw_grenade == false:
+		_animated_sprite.play("throw_grenade")
+		await get_tree().create_timer(0.3).timeout
+		_animated_sprite.stop()
 	else:
 		_animated_sprite.stop()
 		_animated_sprite.frame = 0
@@ -87,18 +89,7 @@ func move_8_way(delta: float) -> void:
 	#	move_and_collide(velocity * delta * 3)
 		
 #	animate_8_way()
-	
-#func animate_8_way():
-#	if velocity.x > 0:
-#		sprite.play("Direita")
-#	elif velocity.x < 0:
-#		sprite.play("Esquerda")
-#	elif velocity.y > 0:
-#		sprite.play("Baixo")
-#	elif velocity.y < 0:
-#		sprite.play("Cima")
-#	else:
-#		sprite.stop()
+
 
 func burst_bullet():
 	var quantidade_de_tiros = 2
@@ -111,7 +102,6 @@ func burst_bullet():
 			while is_shooting:
 				can_shoot = false
 				for x in quantidade_de_tiros:
-				#print(quantidade_de_bullets_voando, "easy")
 					shoot_bullet()
 					await get_tree().create_timer(delay_entre_tiros).timeout
 				can_shoot = true
@@ -129,12 +119,18 @@ func shoot_bullet():
 	bullet_instance.position += dir * 20
 	bullet_instance.motion = dir
 	get_parent().add_child(bullet_instance)
-	bullets.append(bullet_instance)
+	#bullets.append(bullet_instance)
+	quantidade_de_bullets_voando += 1
+	bullet_instance.die.connect(remove_bullet)
+	#get_tree().get_nodes_in_group("Balas").size
 	if bullets.size() > 4: #unico lugar que reconhece essa desgraça como > 4
 		can_shoot = false
 		await get_tree().create_timer(cooldown_arma).timeout
 		can_shoot = true
 
+func remove_bullet():
+	quantidade_de_bullets_voando = quantidade_de_bullets_voando - 1
+	
 func spawn_grenade():
 	if can_throw_grenade:
 		if Input.is_action_pressed("Grenade"):
@@ -145,5 +141,6 @@ func spawn_grenade():
 			grenade_instance.motion = dir
 			get_parent().add_child(grenade_instance)
 			can_throw_grenade = false
+#			_animated_sprite.play("throw_grenade")
 			await get_tree().create_timer(1.0).timeout
 			can_throw_grenade = true

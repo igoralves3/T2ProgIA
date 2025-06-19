@@ -6,6 +6,8 @@
 [ext_resource type="SpriteFrames" uid="uid://cqmfjswyo7gfj" path="res://Componentes/Player/player_sprite_frames.tres" id="4_5mq5v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2ndj"]
+radius = 1.66667
+height = 5.33333
 
 [node name="MainPlayerChar" type="CharacterBody2D" groups=["GrupoPlayer"]]
 scale = Vector2(3, 3)
@@ -17,8 +19,6 @@ grenade = ExtResource("3_ddoul")
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("4_5mq5v")
 animation = &"throw_grenade"
-frame_progress = 0.744346
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_l2ndj")
