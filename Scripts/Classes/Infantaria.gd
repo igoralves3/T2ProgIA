@@ -17,3 +17,6 @@ func _init(vida: int, type: String, speed: int, fireRate: float, pontos: int, al
 	self.fireRate = fireRate
 	self.pontos =  pontos
 	self.alvo = alvo
+	
+func _physics_process(delta: float) -> void:
+	move_and_slide()

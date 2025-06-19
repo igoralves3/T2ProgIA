@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7jtwgsgdbpl2"]
+[gd_scene load_steps=7 format=3 uid="uid://c7jtwgsgdbpl2"]
 
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_agxu4"]
 [ext_resource type="Script" uid="uid://725tjqccjsfs" path="res://Componentes/Inimigos/Infantaria/infantaria.gd" id="1_pf2kk"]
+[ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="3_8nlaf"]
+[ext_resource type="Script" uid="uid://crev8iknffvfn" path="res://Scripts/Classes/wander.gd" id="4_dqxkc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3wb0l"]
 animations = [{
@@ -18,7 +20,7 @@ animations = [{
 radius = 0.0
 
 [node name="Infantaria" type="CharacterBody2D"]
-scale = Vector2(0.01, 0.01)
+scale = Vector2(0.1, 0.1)
 script = ExtResource("1_pf2kk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -28,3 +30,22 @@ animation = &"Corrida"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.88774, -2.69608)
 shape = SubResource("CapsuleShape2D_pf2kk")
+debug_color = Color(1, 0, 0, 1)
+
+[node name="LabelState" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_8nlaf")
+initial_state = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character", "_animated_sprite")]
+script = ExtResource("4_dqxkc")
+character = NodePath("../..")
+_animated_sprite = NodePath("../../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://crev8iknffvfn"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/Wander" method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,2 +1,47 @@
 extends State
 class_name Wander
+
+
+@export var character: CharacterBody2D
+@export var other_player: CharacterBody2D
+
+@export var move_speed: float = 50.0
+
+@export var _animated_sprite: AnimatedSprite2D
+
+var move_direction: Vector2
+const SPEED = 150.0
+
+func enter() -> void:
+	if character:
+		print('enter')
+		if character.position.x < get_viewport().size.x / 2:
+			move_direction = Vector2(-1,0)
+		elif character.position.x > get_viewport().size.x / 2:
+			move_direction = Vector2(1,0)
+		else:
+			var r = randi() % 2
+			if r == 0:
+				move_direction = Vector2(1,0)
+			else:
+				move_direction = Vector2(-1,0)
+		
+func exit() -> void:
+	pass
+	
+func update(delta: float) -> void:
+	pass
+	
+func physics_update(delta: float) -> void:
+	if character:
+		character.velocity = move_direction * SPEED
+		for i in character.get_slide_collision_count():
+			var collision = character.get_slide_collision(i)
+			print("I collided with ", collision.get_collider().name)
+	if other_player:
+		pass
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	print('fora')
+	queue_free()
