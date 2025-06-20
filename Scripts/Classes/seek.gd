@@ -1,2 +1,52 @@
 extends State
 class_name Seek
+
+@export var character: CharacterBody2D
+@export var other_player: CharacterBody2D
+@export var move_speed: float = 50.0
+
+var move_direction: Vector2
+var wonder_time: float
+
+var destination: Vector2
+
+func randomize_wonder():
+	move_direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
+	wonder_time = randf_range(1,5)
+
+
+
+func update_position() -> void:
+	var direction = destination - character.global_position
+	character.velocity = direction.normalized() * move_speed
+
+func enter() -> void:
+	if not other_player:
+		var currentScene = get_tree().get_current_scene().get_name()
+		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+	randomize_wonder()
+	
+func exit() -> void:
+	pass
+	
+func update(delta: float) -> void:
+	if wonder_time > 0:
+		wonder_time -= delta
+	else:
+		randomize_wonder()
+	
+func physics_update(delta: float) -> void:
+	if character:
+		character.velocity = move_direction * move_speed
+	if other_player:
+		var direction = other_player.global_position - character.global_position
+		
+		if direction.length() < 250:
+			print('proximo')
+			
+		
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	print('fora')
+	queue_free()

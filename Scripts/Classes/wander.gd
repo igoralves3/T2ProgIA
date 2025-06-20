@@ -12,6 +12,8 @@ class_name Wander
 var move_direction: Vector2
 const SPEED = 150.0
 
+@onready var player = $Player
+
 func enter() -> void:
 	if character:
 		print('enter')
@@ -25,6 +27,14 @@ func enter() -> void:
 				move_direction = Vector2(1,0)
 			else:
 				move_direction = Vector2(-1,0)
+				
+	if not other_player:
+		var currentScene = get_tree().get_current_scene().get_name()
+		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')	
+	
+	
+	
+	
 		
 func exit() -> void:
 	pass
@@ -39,7 +49,10 @@ func physics_update(delta: float) -> void:
 			var collision = character.get_slide_collision(i)
 			print("I collided with ", collision.get_collider().name)
 	if other_player:
-		pass
+		var direction = other_player.global_position - character.global_position
+		if direction.length() < 250:
+			transitioned.emit(self,"Seek")
+	
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

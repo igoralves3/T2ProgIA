@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Player
+
 var canShoot: bool = true
 
 const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita

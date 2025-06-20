@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7jtwgsgdbpl2"]
+[gd_scene load_steps=8 format=3 uid="uid://c7jtwgsgdbpl2"]
 
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_agxu4"]
 [ext_resource type="Script" uid="uid://725tjqccjsfs" path="res://Componentes/Inimigos/Infantaria/infantaria.gd" id="1_pf2kk"]
 [ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="3_8nlaf"]
 [ext_resource type="Script" uid="uid://crev8iknffvfn" path="res://Scripts/Classes/wander.gd" id="4_dqxkc"]
+[ext_resource type="Script" uid="uid://bwlb3cbdttuh2" path="res://Scripts/Classes/seek.gd" id="5_dqxkc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3wb0l"]
 animations = [{
@@ -40,7 +41,7 @@ offset_bottom = 23.0
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_8nlaf")
-initial_state = NodePath("Wander")
+initial_state = NodePath("Seek")
 
 [node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character", "_animated_sprite")]
 script = ExtResource("4_dqxkc")
@@ -48,4 +49,9 @@ character = NodePath("../..")
 _animated_sprite = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://crev8iknffvfn"
 
+[node name="Seek" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+script = ExtResource("5_dqxkc")
+character = NodePath("../..")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/Wander" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/Seek" method="_on_visible_on_screen_notifier_2d_screen_exited"]
