@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var canShoot: bool = true
 
-const SPEED = 150.0
+const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita
 
 @export var bullet :PackedScene
 @export var grenade :PackedScene
@@ -15,7 +15,7 @@ var cooldown_arma: float = 0.5
 var can_shoot := true
 var can_throw_grenade := true
 var is_shooting:= false
-var quantidade_de_bullets_voando: int = 0 # provavelmente vai fora
+var quantidade_de_bullets_voando: int = 0 
 
 var dir:= Vector2(0,1)
 
@@ -65,7 +65,7 @@ func update_animation(input_direction: Vector2) -> void:
 		_animated_sprite.stop()
 	else:
 		_animated_sprite.stop()
-		_animated_sprite.frame = 0
+	#	_animated_sprite.frame = 0 #o jogo não usa a princípio
 		
 		
 
@@ -135,12 +135,18 @@ func spawn_grenade():
 	if can_throw_grenade:
 		if Input.is_action_pressed("Grenade"):
 			print('dir: '+str(dir))
+			can_throw_grenade = false
+			await get_tree().create_timer(0.14).timeout #parece ser o tempo original do jogo
 			var grenade_instance = grenade.instantiate()
 			grenade_instance.global_transform = global_transform
 			grenade_instance.position += dir * 40
 			grenade_instance.motion = dir
 			get_parent().add_child(grenade_instance)
-			can_throw_grenade = false
 #			_animated_sprite.play("throw_grenade")
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(0.72).timeout #tempo real 0.72 + 0.14 total
 			can_throw_grenade = true
+
+func _on_area_2d_enemy_collision_area_entered(area: Area2D) -> void:
+	print("Area2d enemy collision")
+	print("you ded")
+	pass # Replace with function body.

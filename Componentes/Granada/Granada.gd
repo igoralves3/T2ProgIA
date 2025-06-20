@@ -1,27 +1,31 @@
-extends CharacterBody2D
+extends Area2D
 
 class_name  Grenade
+
 @export var motion := Vector2(0,0)
+var tempo_para_sumir: float = 0.72 
+const SPEED = 125.0 #para andar 90 pixels
 
-const SPEED = 90.0
+#var frames : float = 0.0
 
-var frames : float = 0.0
-
-const maxFrames = 60
+#const maxFrames = 60
 
 func _ready():
-	print('grenade')
-	
+	%Timer.wait_time = tempo_para_sumir
+	%Timer.start()
+	#print('grenade')
+
 func _physics_process(delta: float) -> void:
-	frames = frames + 1
-	if frames >= maxFrames:
-		#explosão da granada
-		print('grenade end')
-		queue_free()
 	
 	position += motion * SPEED * delta
 	
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	
+	queue_free()
+
+
+
+func _on_timer_timeout() -> void:
 	
 	queue_free()

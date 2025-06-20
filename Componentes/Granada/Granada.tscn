@@ -5,7 +5,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4newe"]
 
-[node name="Granada" type="CharacterBody2D"]
+[node name="Granada" type="Area2D"]
+collision_layer = 2
+collision_mask = 12
 script = ExtResource("1_yonep")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,3 +18,8 @@ texture = ExtResource("2_setla")
 shape = SubResource("RectangleShape2D_4newe")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
