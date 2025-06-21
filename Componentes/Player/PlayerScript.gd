@@ -143,6 +143,7 @@ func spawn_grenade():
 			grenade_instance.global_transform = global_transform
 			grenade_instance.position += dir * 40
 			grenade_instance.motion = dir
+			grenade_instance.dono = self
 			get_parent().add_child(grenade_instance)
 #			_animated_sprite.play("throw_grenade")
 			await get_tree().create_timer(0.72).timeout #tempo real 0.72 + 0.14 total
