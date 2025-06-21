@@ -13,8 +13,8 @@ radius = 5.33333
 height = 21.3333
 
 [node name="MainPlayerChar" type="CharacterBody2D" groups=["GrupoPlayer"]]
-scale = Vector2(0.75, 0.75)
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_q3lat")
 bullet = ExtResource("2_tok1r")
 grenade = ExtResource("3_ddoul")

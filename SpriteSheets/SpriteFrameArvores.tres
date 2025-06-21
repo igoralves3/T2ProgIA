@@ -1,0 +1,81 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://n7j2c88xb77c"]
+
+[ext_resource type="Texture2D" uid="uid://budf5y4uovw3b" path="res://SpriteSheets/Sprites_ArvoresLR.png" id="1_we61j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7hri"]
+atlas = ExtResource("1_we61j")
+region = Rect2(1, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55e08"]
+atlas = ExtResource("1_we61j")
+region = Rect2(33, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm32k"]
+atlas = ExtResource("1_we61j")
+region = Rect2(65, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tprrm"]
+atlas = ExtResource("1_we61j")
+region = Rect2(1, 34, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21vu1"]
+atlas = ExtResource("1_we61j")
+region = Rect2(33, 34, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46gp3"]
+atlas = ExtResource("1_we61j")
+region = Rect2(65, 34, 32, 34)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7hri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55e08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm32k")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tprrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21vu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46gp3")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7hri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55e08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm32k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tprrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21vu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46gp3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

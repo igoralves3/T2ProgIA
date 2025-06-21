@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfqumf7uknscw"]
+
+[ext_resource type="Script" uid="uid://bl6ihe2oyc7sh" path="res://arvore.gd" id="1_18k4r"]
+[ext_resource type="SpriteFrames" uid="uid://n7j2c88xb77c" path="res://SpriteSheets/SpriteFrameArvores.tres" id="2_8lcy0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18k4r"]
+size = Vector2(8, 6)
+
+[node name="Arvore" type="StaticBody2D"]
+script = ExtResource("1_18k4r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_8lcy0")
+animation = &"Left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 14)
+shape = SubResource("RectangleShape2D_18k4r")
