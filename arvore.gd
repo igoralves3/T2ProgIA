@@ -17,3 +17,6 @@ func _ready() -> void:
 		collision.position = Vector2(-4, collision.position.y)
 		if tocar_animacao:
 			animation.play()
+
+func grenade_hit():
+	queue_free()

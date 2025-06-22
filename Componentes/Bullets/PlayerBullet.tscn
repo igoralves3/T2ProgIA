@@ -7,7 +7,7 @@
 size = Vector2(2, 2)
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_l40bo")
 
@@ -29,5 +29,6 @@ scale = Vector2(0.1, 0.1)
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

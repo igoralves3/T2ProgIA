@@ -7,7 +7,7 @@
 size = Vector2(8, 8)
 
 [node name="Arvore" type="StaticBody2D"]
-collision_layer = 8
+collision_layer = 9
 collision_mask = 2
 script = ExtResource("1_18k4r")
 

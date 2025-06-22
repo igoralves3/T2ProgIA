@@ -36,3 +36,8 @@ func _on_timer_timeout() -> void:
 	await get_tree().create_timer(tempo_animacao).timeout
 #	await get_tree().process_frame
 	queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	print (body, "player bullet hit")
+	pass # Replace with function body.
