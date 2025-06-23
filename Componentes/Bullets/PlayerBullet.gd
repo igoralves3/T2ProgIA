@@ -40,4 +40,6 @@ func _on_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	print (body, "player bullet hit")
-	pass # Replace with function body.
+	body.bullet_hit()
+	queue_free()
+	

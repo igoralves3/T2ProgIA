@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=8 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="TileSet" uid="uid://dih0y41j30hyu" path="res://SpriteSheets/Area1_TileSet.tres" id="1_0o3eo"]
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://f7ucl7ufn7rt" path="res://SpriteSheets/Area1Fundo.png" id="4_farx6"]
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="5_mmikm"]
 [ext_resource type="PackedScene" uid="uid://cfqumf7uknscw" path="res://Componentes/AreaHazardDestructable/arvore.tscn" id="6_t3o0g"]
+[ext_resource type="PackedScene" uid="uid://ctqf7dpoxu84c" path="res://Componentes/AreaHazardDestructable/colisao_agua.tscn" id="7_a6koi"]
 
 [node name="Area1" type="Node2D"]
 script = ExtResource("1_t3o0g")
@@ -17,6 +18,7 @@ limit_left = 0
 limit_top = 0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAFAMv/AAAEAAAAAAAFAMz/AAAEAAEAAAAFAM3/AAAEAAIAAAAFAM7/AAAEAAMAAAAGAMv/AAAFAAAAAAAGAMz/AAAFAAEAAAAGAM3/AAAFAAIAAAAHAMv/AAAGAAAAAAAHAMz/AAAGAAEAAAAHAM3/AAAGAAIAAAAIAMv/AAAHAAAAAAAIAMz/AAAHAAEAAAAIAM3/AAAHAAIAAAAIAM7/AAAHAAMAAAA=")
 tile_set = ExtResource("1_0o3eo")
 
 [node name="Portao" type="AnimatedSprite2D" parent="."]
@@ -120,3 +122,11 @@ startFrame = 2
 [node name="Arvore18" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
 position = Vector2(143, -367)
 startFrame = 1
+
+[node name="ColisaoAgua" parent="." instance=ExtResource("7_a6koi")]
+position = Vector2(13, -160)
+scale = Vector2(0.5, 0.5)
+
+[node name="ColisaoAgua2" parent="." instance=ExtResource("7_a6koi")]
+position = Vector2(40, 248)
+scale = Vector2(1.6, 0.25)

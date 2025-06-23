@@ -20,14 +20,18 @@ bullet = ExtResource("2_tok1r")
 grenade = ExtResource("3_ddoul")
 
 [node name="CollisionFloor" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_5mq5v")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("4_5mq5v")
-animation = &"run_right"
+animation = &"death_pitfall"
+frame = 1
+frame_progress = 0.511184
 
 [node name="Area2DEnemyCollision" type="Area2D" parent="."]
+visible = false
 light_mask = 6
 visibility_layer = 6
 collision_layer = 2

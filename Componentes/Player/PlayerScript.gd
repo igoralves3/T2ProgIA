@@ -3,12 +3,14 @@ class_name Player
 
 var canShoot: bool = true
 
-const SPEED = 668.0 # 3 segundos pra atravessar a tela da esquerda pra direita
+const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita
 
 @export var bullet :PackedScene
 @export var grenade :PackedScene
 
 @onready var _animated_sprite = $PlayerSprite
+
+var tween: Tween
 
 var bullets = []
 var easy:= false
@@ -18,11 +20,13 @@ var can_shoot := true
 var can_throw_grenade := true
 var is_shooting:= false
 var quantidade_de_bullets_voando: int = 0 
-
+var can_move: bool = true
 var dir:= Vector2(0,1)
 
+
 func _physics_process(delta: float) -> void:
-	move_8_way(delta)
+	#move_8_way(delta)
+	get_8_way_input()
 	move_and_slide()
 	if velocity != Vector2.ZERO:
 		dir = velocity.normalized()
@@ -63,7 +67,7 @@ func update_animation(input_direction: Vector2) -> void:
 		_animated_sprite.play("run_top_right")
 	elif can_throw_grenade == false:
 		_animated_sprite.play("throw_grenade")
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.3).timeout #tem que arrumar aqui, ta ruim a animacao
 		_animated_sprite.stop()
 	else:
 		_animated_sprite.stop()
@@ -73,16 +77,13 @@ func update_animation(input_direction: Vector2) -> void:
 
 func get_8_way_input() -> void:
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
-		
-	update_animation(input_direction)	
-		
-		
-	velocity = input_direction * SPEED
-	
+	if can_move:
+		update_animation(input_direction)	
+		velocity = input_direction * SPEED
 	
 
-func move_8_way(delta: float) -> void:
-	get_8_way_input() # \/ será usado mais a frente
+#func move_8_way(delta: float) -> void:
+#	get_8_way_input() # \/ será usado mais a frente
 	#var collision_info = move_and_collide(velocity * delta)
 	#if collision_info:
 	#	var collision_point = collision_info.get_position()
@@ -152,4 +153,30 @@ func spawn_grenade():
 func _on_area_2d_enemy_collision_area_entered(area: Area2D) -> void:
 	print("Area2d enemy collision")
 	print("you ded")
+	#acho que nao vou usar essa funcao, melhor a morte por tocar no inimigo vir de fora (?)
 	pass # Replace with function body.
+
+func death_water(posicao_colisor):
+	can_move = false
+	var diferenca_posicao = posicao_colisor - global_position
+	diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/2)
+	var nova_posicao = global_position + diferenca_posicao
+	velocity = Vector2(0,0)
+	tween = create_tween()
+	tween.tween_property(self, "position", nova_posicao, 0.1)
+	_animated_sprite.play("death_water")
+
+func death_pitfall(posicao_colisor):
+	can_move = false
+	var diferenca_posicao = posicao_colisor - global_position
+	diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/2)
+	var nova_posicao = global_position + diferenca_posicao
+	velocity = Vector2(0,0)
+	tween = create_tween()
+	tween.tween_property(self, "position", nova_posicao, 0.1)
+	_animated_sprite.play("death_pitfall")
+
+func death_normal():
+	can_move = false
+	velocity = Vector2(0,0)
+	_animated_sprite.play("death_normal")
