@@ -36,14 +36,19 @@ func exit() -> void:
 	pass
 	
 func update(delta: float) -> void:
+	"""
 	if wonder_time > 0:
 		wonder_time -= delta
 	else:
 		randomize_wonder()
+	"""
 	
 func physics_update(delta: float) -> void:
 	if character:
 		character.velocity = move_direction * move_speed
+		for i in character.get_slide_collision_count():
+			var collision = character.get_slide_collision(i)
+			print("I collided with ", collision.get_collider().name)
 	if other_player:
 		var direction = other_player.global_position - character.global_position
 		
@@ -55,7 +60,7 @@ func physics_update(delta: float) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	print('fora')
-	queue_free()
+	get_parent().get_parent().queue_free()
 
 """
 func enter() -> void:

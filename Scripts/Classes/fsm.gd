@@ -37,7 +37,7 @@ func on_child_transition(state, new_state_name):
 	if !new_state:
 		return
 	
-	print("MUDANDO DE ESTADO!")
+	#print("MUDANDO DE ESTADO!")
 	if current_state:
 		current_state.exit()
 	
