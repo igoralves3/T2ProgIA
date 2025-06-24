@@ -142,8 +142,8 @@ func spawn_grenade():
 			await get_tree().create_timer(0.14).timeout #parece ser o tempo original do jogo
 			var grenade_instance = grenade.instantiate()
 			grenade_instance.global_transform = global_transform
-			grenade_instance.position += dir * 40
-			grenade_instance.motion = dir
+			grenade_instance.motion = Vector2.UP
+			grenade_instance.position = grenade_instance.position - Vector2(0,20)
 			grenade_instance.dono = "Player"
 			get_parent().add_child(grenade_instance)
 #			_animated_sprite.play("throw_grenade")
