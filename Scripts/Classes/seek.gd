@@ -3,17 +3,44 @@ class_name Seek
 
 @export var character: CharacterBody2D
 @export var other_player: CharacterBody2D
-@export var move_speed: float = 50.0
+@export var move_speed: float = 40.0
 
 var move_direction: Vector2
 var wonder_time: float
 
 var destination: Vector2
 
+
+func enter() -> void:
+	if not other_player:
+		var currentScene = get_tree().get_current_scene().get_name()
+		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+	
+func exit() -> void:
+	pass
+	
+func update(delta: float) -> void:
+	pass
+	
+func physics_update(delta: float) -> void:
+	if !other_player:
+		return
+	else:
+		var direction = other_player.global_position - character.global_position
+		
+		if direction.length() > 25 and character.global_position.y < other_player.global_position.y:
+			character.velocity = direction.normalized() * move_speed
+		else:
+			character.velocity = Vector2(0,0)
+			
+		if direction.length() > 150 or character.global_position.y > other_player.global_position.y:
+			transitioned.emit(self,"Wander")
+
+
+"""
 func randomize_wonder():
 	move_direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
 	wonder_time = randf_range(1,5)
-
 
 
 func update_position() -> void:
@@ -50,3 +77,4 @@ func physics_update(delta: float) -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	print('fora')
 	queue_free()
+"""
