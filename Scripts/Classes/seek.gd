@@ -32,12 +32,12 @@ func physics_update(delta: float) -> void:
 			var collision = character.get_slide_collision(i)
 			print("I collided with ", collision.get_collider().name)
 		
-		if direction.length() > 25:# and character.global_position.y < other_player.global_position.y:
+		if direction.length() > 25 and character.global_position.y < other_player.global_position.y:
 			character.velocity = direction.normalized() * move_speed
 		else:
 			character.velocity = Vector2(0,0)
 			
-		if direction.length() > 150:# or character.global_position.y > other_player.global_position.y:
+		if direction.length() > 150 or character.global_position.y > other_player.global_position.y:
 			transitioned.emit(self,"Wander")
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
