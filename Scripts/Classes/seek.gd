@@ -10,17 +10,41 @@ var wonder_time: float
 
 var destination: Vector2
 
+@export var bullet_inimigo: PackedScene
+
+@export var ray_cast : RayCast2D
+
+@export var timer: Timer
+
+
+func fire_bullet():
+	
+	var dir = (ray_cast.target_position.normalized())
+	
+	var bullet_instance = bullet_inimigo.instantiate()
+	bullet_instance.global_transform = get_parent().get_parent().global_transform
+	bullet_instance.position += dir * 20
+	bullet_instance.motion = dir
+	get_tree().current_scene.add_child(bullet_instance)
+	print(bullet_instance)
+
+func aim():
+	if other_player:
+		ray_cast.target_position = get_parent().get_parent().to_local(other_player.position)
+	
+
 
 func enter() -> void:
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+		timer.start()
 	
 func exit() -> void:
 	pass
 	
 func update(delta: float) -> void:
-	pass
+	aim()
 	
 func physics_update(delta: float) -> void:
 	if !other_player:
@@ -39,11 +63,21 @@ func physics_update(delta: float) -> void:
 			
 		if direction.length() > 150 or character.global_position.y > other_player.global_position.y:
 			transitioned.emit(self,"Wander")
+			
+			
+		aim()
+		
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	print('fora')
 	get_parent().get_parent().queue_free()
 
+
+func _on_timer_timeout() -> void:
+	print('time to shoot')
+	fire_bullet()
+	timer.start()
+	
 """
 func randomize_wonder():
 	move_direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
