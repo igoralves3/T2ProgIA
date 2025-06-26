@@ -21,9 +21,13 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pf2kk"]
 radius = 0.0
 
-[node name="Infantaria" type="CharacterBody2D"]
+[node name="Infantaria" type="CharacterBody2D" node_paths=PackedStringArray("timer")]
 scale = Vector2(0.1, 0.1)
+collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_pf2kk")
+bullet_inimigo = ExtResource("2_vi6ic")
+timer = NodePath("Timer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3wb0l")
@@ -50,17 +54,19 @@ character = NodePath("../..")
 _animated_sprite = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://crev8iknffvfn"
 
-[node name="Seek" type="Node" parent="FSM" node_paths=PackedStringArray("character", "ray_cast", "timer")]
+[node name="Seek" type="Node" parent="FSM" node_paths=PackedStringArray("character", "timer")]
 script = ExtResource("5_dqxkc")
 character = NodePath("../..")
 bullet_inimigo = ExtResource("2_vi6ic")
-ray_cast = NodePath("../../RayCast2D")
 timer = NodePath("../../Timer")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 2
+collide_with_areas = true
 
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/Wander" method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/Seek" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="FSM/Seek" method="_on_timer_timeout"]

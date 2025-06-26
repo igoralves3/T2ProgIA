@@ -11,12 +11,15 @@ extends CharacterBody2D
 
 @export var other_player: CharacterBody2D
 
-"""
 @export var bullet_inimigo: PackedScene
 @export var timetoshoot: float = 0.0
 @onready var ray_cast = $RayCast2D
 var curtimetoshoot : float = 0.0
 
+
+@export var timer: Timer
+
+"""
 func fire_bullet():
 	var dir = (ray_cast.target_position.normalized())
 	
@@ -40,8 +43,8 @@ func updateTimer(delta: float):
 """
 func _physics_process(delta: float) -> void:
 	move_and_slide()
-	#aim()
-	#updateTimer(delta)
+	aim()
+	check_collision()
 	
 func _ready():
 	
@@ -50,4 +53,32 @@ func _ready():
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
-		
+	print(other_player)	
+
+
+func fire_bullet():
+
+	
+	var bullet_instance = bullet_inimigo.instantiate()
+	#bullet_instance.global_transform = global_transform
+	bullet_instance.position = position
+	bullet_instance.motion = (ray_cast.target_position).normalized()
+	
+	get_parent().add_child(bullet_instance)
+	print(str(bullet_instance.position) + " " + str(position))
+
+func aim():
+	if other_player:	
+		ray_cast.target_position = to_local(other_player.position)
+		print(str(other_player.position))
+	
+func check_collision():
+	if ray_cast.get_collider() == other_player and timer.is_stopped():
+		timer.start()
+	elif ray_cast.get_collider() != other_player and not timer.is_stopped():
+		timer.stop()
+
+func _on_timer_timeout() -> void:
+	print('time to shoot')
+	fire_bullet()
+	

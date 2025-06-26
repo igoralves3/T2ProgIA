@@ -12,27 +12,28 @@ var destination: Vector2
 
 @export var bullet_inimigo: PackedScene
 
-@export var ray_cast : RayCast2D
+#@export var ray_cast : RayCast2D
 
 @export var timer: Timer
 
-
+"""
 func fire_bullet():
 	
-	var dir = (ray_cast.target_position.normalized())
+	var dir = (ray_cast.target_position).normalized()
 	
 	var bullet_instance = bullet_inimigo.instantiate()
-	bullet_instance.global_transform = get_parent().get_parent().global_transform
-	bullet_instance.position += dir * 20
+	#bullet_instance.global_transform = get_parent().get_parent().global_transform
+	bullet_instance.position = get_parent().get_parent().position
 	bullet_instance.motion = dir
+	bullet_instance.is_moving = true
 	get_tree().current_scene.add_child(bullet_instance)
-	print(bullet_instance)
+	print(str(bullet_instance.position) + " " + str(get_parent().get_parent().position))
 
 func aim():
 	if other_player:
 		ray_cast.target_position = get_parent().get_parent().to_local(other_player.position)
 	
-
+"""
 
 func enter() -> void:
 	if not other_player:
@@ -44,7 +45,8 @@ func exit() -> void:
 	pass
 	
 func update(delta: float) -> void:
-	aim()
+	pass
+	#aim()
 	
 func physics_update(delta: float) -> void:
 	if !other_player:
@@ -65,7 +67,7 @@ func physics_update(delta: float) -> void:
 			transitioned.emit(self,"Wander")
 			
 			
-		aim()
+		#aim()
 		
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
@@ -75,8 +77,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_timer_timeout() -> void:
 	print('time to shoot')
-	fire_bullet()
-	timer.start()
+	#fire_bullet()
+	#timer.start(10.0)
 	
 """
 func randomize_wonder():

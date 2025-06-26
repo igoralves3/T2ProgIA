@@ -4,10 +4,10 @@
 [ext_resource type="SpriteFrames" uid="uid://dm6h2s1d6kdd" path="res://Utilidades/Bullets.tres" id="2_ri6r2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uumvb"]
-size = Vector2(2, 2)
+size = Vector2(1, 1)
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_3oe5c")
 
@@ -17,15 +17,15 @@ sprite_frames = ExtResource("2_ri6r2")
 animation = &"bullet"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_uumvb")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(2.38419e-07, 2.38419e-07)
 scale = Vector2(0.1, 0.1)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerEnemy" type="Timer" parent="."]
 unique_name_in_owner = true
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerEnemy" to="." method="_on_timer_timeout"]
