@@ -10,7 +10,7 @@ var wonder_time: float
 
 var destination: Vector2
 
-@export var bullet_inimigo: PackedScene
+#@export var bullet_inimigo: PackedScene
 
 #@export var ray_cast : RayCast2D
 
