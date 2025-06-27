@@ -11,9 +11,10 @@
 position = Vector2(69, 214)
 
 [node name="Infantaria" parent="." instance=ExtResource("2_3fxi0")]
-position = Vector2(88, 141)
+position = Vector2(132, 196)
 collision_layer = 4
 collision_mask = 3
+bullet_inimigo = null
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(41, 182)
