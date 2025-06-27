@@ -14,7 +14,7 @@ var destination: Vector2
 
 #@export var ray_cast : RayCast2D
 
-@export var timer: Timer
+#@export var timer: Timer
 
 """
 func fire_bullet():
@@ -39,7 +39,7 @@ func enter() -> void:
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
-		timer.start()
+		#timer.start()
 	
 func exit() -> void:
 	pass
@@ -75,8 +75,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	get_parent().get_parent().queue_free()
 
 
-func _on_timer_timeout() -> void:
-	print('time to shoot')
+#func _on_timer_timeout() -> void:
+#	print('time to shoot')
 	#fire_bullet()
 	#timer.start(10.0)
 	

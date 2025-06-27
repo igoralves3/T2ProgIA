@@ -54,10 +54,9 @@ character = NodePath("../..")
 _animated_sprite = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://crev8iknffvfn"
 
-[node name="Seek" type="Node" parent="FSM" node_paths=PackedStringArray("character", "timer")]
+[node name="Seek" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("5_dqxkc")
 character = NodePath("../..")
-timer = NodePath("../../Timer")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 2

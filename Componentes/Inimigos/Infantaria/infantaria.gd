@@ -69,14 +69,14 @@ func updateTimer(delta: float): #esse updateTimer será usado externamente por o
 
 func fire_bullet():
 
+	if other_player:
+		var bullet_instance = bullet_inimigo.instantiate()
+		#bullet_instance.global_transform = global_transform
+		bullet_instance.position = position
+		bullet_instance.motion = (other_player.global_position - global_position).normalized()#(ray_cast.target_position).normalized()
 	
-	var bullet_instance = bullet_inimigo.instantiate()
-	#bullet_instance.global_transform = global_transform
-	bullet_instance.position = position
-	bullet_instance.motion = (other_player.global_position - global_position).normalized()#(ray_cast.target_position).normalized()
-	
-	get_parent().add_child(bullet_instance)
-	print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
+		get_parent().add_child(bullet_instance)
+		print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
 
 func aim(): #nao precisa disso tb
 	if other_player:	
