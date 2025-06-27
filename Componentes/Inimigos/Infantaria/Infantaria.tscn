@@ -46,7 +46,7 @@ offset_bottom = 23.0
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_8nlaf")
-initial_state = NodePath("Seek")
+initial_state = NodePath("Wander")
 
 [node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character", "_animated_sprite")]
 script = ExtResource("4_dqxkc")

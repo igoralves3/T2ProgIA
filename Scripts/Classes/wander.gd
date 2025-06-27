@@ -27,6 +27,7 @@ func update_position() -> void:
 	character.velocity = direction.normalized() * move_speed
 
 func enter() -> void:
+	print('wander')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
@@ -36,12 +37,12 @@ func exit() -> void:
 	pass
 	
 func update(delta: float) -> void:
-	"""
+
 	if wonder_time > 0:
 		wonder_time -= delta
 	else:
 		randomize_wonder()
-	"""
+	
 	
 func physics_update(delta: float) -> void:
 	if character:

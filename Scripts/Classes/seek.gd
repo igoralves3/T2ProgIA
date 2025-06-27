@@ -36,6 +36,7 @@ func aim():
 """
 
 func enter() -> void:
+	print('seek')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
