@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwoeweqsm7xw8"]
 
-[ext_resource type="Script" uid="uid://cpbmqewsoh7lx" path="res://Componentes/Granada/Granada.gd" id="1_yonep"]
+[ext_resource type="Script" uid="uid://ic3g1tm5qdcq" path="res://Componentes/Granada/Granada_tween.gd" id="1_tm5rw"]
 [ext_resource type="PackedScene" uid="uid://dj3v4y7fqqc74" path="res://Componentes/Explosao_Granada/ExplosaoGranada.tscn" id="2_1lei2"]
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="2_setla"]
 
@@ -9,7 +9,7 @@
 [node name="Granada" type="Area2D"]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_yonep")
+script = ExtResource("1_tm5rw")
 explosao = ExtResource("2_1lei2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

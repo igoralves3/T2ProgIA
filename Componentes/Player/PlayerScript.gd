@@ -9,6 +9,7 @@ const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita
 @export var grenade :PackedScene
 
 @onready var _animated_sprite = $PlayerSprite
+@onready var camera = %Camera2D
 
 var tween: Tween
 
@@ -22,7 +23,31 @@ var is_shooting:= false
 var quantidade_de_bullets_voando: int = 0 
 var can_move: bool = true
 var dir:= Vector2(0,1)
+var tamanho_tela
+var posicao_camera
+var centro_tela
 
+
+func _ready() -> void:
+	await get_tree().process_frame
+	tamanho_tela = get_viewport_rect().size
+
+func _process(delta):
+#	print (posicao_camera, "posicao camera")
+#	print (tamanho_tela, "tamanho tela")
+#	print (centro_tela, "centro tela")
+#	print (camera.offset, "offset")
+	centro_tela = tamanho_tela/2
+	if camera != null:
+		posicao_camera = camera.offset
+		var min_x = posicao_camera.x +11
+		var max_x = posicao_camera.x + tamanho_tela.x -11
+		var min_y = posicao_camera.y - 500
+		var max_y = posicao_camera.y + tamanho_tela.y - 18
+		
+		position.x = clamp(position.x, min_x, max_x)
+		position.y = clamp(position.y, min_y, max_y)
+	#print (self.motion)
 
 func _physics_process(delta: float) -> void:
 	#move_8_way(delta)
@@ -44,7 +69,6 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("Grenade"):
 		spawn_grenade()
-
 
 func update_animation(input_direction: Vector2) -> void:
 	
@@ -72,8 +96,6 @@ func update_animation(input_direction: Vector2) -> void:
 	else:
 		_animated_sprite.stop()
 	#	_animated_sprite.frame = 0 #o jogo não usa a princípio
-		
-		
 
 func get_8_way_input() -> void:
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
@@ -90,9 +112,6 @@ func get_8_way_input() -> void:
 		
 	#	velocity = velocity.bounce(collision_info.get_normal())
 	#	move_and_collide(velocity * delta * 3)
-		
-#	animate_8_way()
-
 
 func burst_bullet():
 	var quantidade_de_tiros = 2
@@ -133,7 +152,7 @@ func shoot_bullet():
 
 func remove_bullet():
 	quantidade_de_bullets_voando = quantidade_de_bullets_voando - 1
-	
+
 func spawn_grenade():
 	if can_throw_grenade:
 		if Input.is_action_pressed("Grenade"):

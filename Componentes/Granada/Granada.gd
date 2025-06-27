@@ -18,9 +18,9 @@ func _ready():
 	%Timer.start()
 	#print('grenade')
 
-func _physics_process(delta: float) -> void:
+#func _physics_process(delta: float) -> void:
 	
-	position += motion * SPEED * delta
+	#position += motion * SPEED * delta
 	
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

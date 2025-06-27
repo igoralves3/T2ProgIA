@@ -25,4 +25,5 @@ func _on_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 #	print (body)
-	body.grenade_hit()
+	if body.has_method("grenade_hit"):
+		body.grenade_hit()
