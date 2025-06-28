@@ -19,34 +19,11 @@ var can_shoot: bool = true
 
 @export var timer: Timer
 
-""" # fire bullet
-func fire_bullet():
-	var dir = (ray_cast.target_position.normalized())
-	
-	var bullet_instance = bullet_inimigo.instantiate()
-	bullet_instance.global_transform = global_transform
-	bullet_instance.position += dir * 20
-	bullet_instance.motion = dir
-
-func aim():
-	if other_player:
-		ray_cast.target_position = to_local(other_player.position)
-	
-
-func updateTimer(delta: float):
-	curtimetoshoot = curtimetoshoot + delta
-	
-	if curtimetoshoot > timetoshoot:
-		curtimetoshoot = 0.0
-		fire_bullet()
-		timetoshoot = randf_range(1.0,20.0)
-"""
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	#aim()
 	#check_collision()
 	updateTimer(delta)
-	
 
 func _ready():
 	

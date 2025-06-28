@@ -8,5 +8,5 @@ func meter_bala():
 	var inimigo = ListaInimigos.pick_random()
 	if inimigo.can_shoot:
 		inimigo.fire_bullet()
-	else:
+	#else:
 		
