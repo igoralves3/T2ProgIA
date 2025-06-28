@@ -32,7 +32,7 @@ func _ready():
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
-	print(other_player)	
+	#print(other_player)
 	
 
 func updateTimer(delta: float): #esse updateTimer será usado externamente por outro script para 
@@ -53,10 +53,10 @@ func fire_bullet():
 		bullet_instance.motion = (other_player.global_position - global_position).normalized()#(ray_cast.target_position).normalized()
 	
 		get_parent().add_child(bullet_instance)
-		print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
+		#print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
 
 func _on_timer_timeout() -> void:
-	print('time to shoot')
+	#print('time to shoot')
 	fire_bullet()
 	
 func bullet_hit():

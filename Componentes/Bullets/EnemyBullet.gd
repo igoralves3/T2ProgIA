@@ -16,7 +16,7 @@ func _ready():
 	%TimerEnemy.start()
 	animation.frame = 0
 	animation.stop()
-	print('enemy bullet')
+	#print('enemy bullet')
 
 func _physics_process(delta: float) -> void:
 	
@@ -26,12 +26,12 @@ func _physics_process(delta: float) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	
-	print('bala inimiga saiu')
+	#print('bala inimiga saiu')
 	queue_free()
 
 
 func _on_timer_timeout() -> void:
-	print('bala inimiga acabou')
+	#print('bala inimiga acabou')
 	#is_moving = false
 	animation.play("bullet")
 	#await get_tree().create_timer(tempo_animacao).timeout
