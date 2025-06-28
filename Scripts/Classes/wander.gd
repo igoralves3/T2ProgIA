@@ -5,7 +5,7 @@ class_name Wander
 @export var character: CharacterBody2D
 @export var other_player: CharacterBody2D
 
-@export var move_speed: float = 40.0
+@export var move_speed: float = 4.0
 
 @export var _animated_sprite: AnimatedSprite2D
 

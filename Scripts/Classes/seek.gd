@@ -3,7 +3,7 @@ class_name Seek
 
 @export var character: CharacterBody2D
 @export var other_player: CharacterBody2D
-@export var move_speed: float = 40.0
+@export var move_speed: float = 4.0
 
 var move_direction: Vector2
 var wonder_time: float

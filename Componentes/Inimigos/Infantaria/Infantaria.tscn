@@ -39,8 +39,11 @@ shape = SubResource("CapsuleShape2D_pf2kk")
 debug_color = Color(1, 0, 0, 1)
 
 [node name="LabelState" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -60.0
+offset_top = -220.0
+offset_right = -20.0
+offset_bottom = -55.0
+theme_override_font_sizes/font_size = 120
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
