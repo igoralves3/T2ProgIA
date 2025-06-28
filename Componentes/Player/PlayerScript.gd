@@ -7,7 +7,6 @@ const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita
 
 @export var bullet :PackedScene
 @export var grenade :PackedScene
-
 @onready var _animated_sprite = $PlayerSprite
 @onready var camera = %Camera2D
 

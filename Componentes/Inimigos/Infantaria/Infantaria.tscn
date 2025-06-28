@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7jtwgsgdbpl2"]
+[gd_scene load_steps=10 format=3 uid="uid://c7jtwgsgdbpl2"]
 
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_agxu4"]
 [ext_resource type="Script" uid="uid://725tjqccjsfs" path="res://Componentes/Inimigos/Infantaria/infantaria.gd" id="1_pf2kk"]
 [ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_vi6ic"]
 [ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="3_8nlaf"]
-[ext_resource type="Script" uid="uid://crev8iknffvfn" path="res://Scripts/Classes/wander.gd" id="4_dqxkc"]
 [ext_resource type="Script" uid="uid://bwlb3cbdttuh2" path="res://Scripts/Classes/seek.gd" id="5_dqxkc"]
+[ext_resource type="Script" uid="uid://dbmg342k1f422" path="res://Scripts/Classes/hover.gd" id="5_vi6ic"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3wb0l"]
 animations = [{
@@ -18,10 +18,124 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pf2kk"]
-radius = 0.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
+size = Vector2(135.175, 44.5091)
 
-[node name="Infantaria" type="CharacterBody2D" node_paths=PackedStringArray("timer")]
+[sub_resource type="GDScript" id="GDScript_vi6ic"]
+script/source = "extends State
+class_name Hover1
+
+
+@export var character: CharacterBody2D
+@export var other_player: CharacterBody2D
+
+@export var move_speed: float = 4.0
+
+@export var _animated_sprite: AnimatedSprite2D
+
+var move_direction: Vector2
+const SPEED = 150.0
+
+@onready var player = $Player
+var wonder_time: float
+
+var destination: Vector2
+
+func randomize_wonder():
+	move_direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
+	wonder_time = randf_range(1,5)
+
+
+func update_position() -> void:
+	var direction = destination - character.global_position
+	character.velocity = direction.normalized() * move_speed
+
+func enter() -> void:
+	print('wander')
+	if not other_player:
+		var currentScene = get_tree().get_current_scene().get_name()
+		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+	randomize_wonder()
+	
+func exit() -> void:
+	pass
+	
+func update(delta: float) -> void:
+
+	if wonder_time > 0:
+		wonder_time -= delta
+	else:
+		randomize_wonder()
+	
+	
+func physics_update(delta: float) -> void:
+	if character:
+		character.velocity = move_direction * move_speed
+		for i in character.get_slide_collision_count():
+			var collision = character.get_slide_collision(i)
+			print(\"I collided with \", collision.get_collider().name)
+	if other_player:
+		var direction = other_player.global_position - character.global_position
+		
+		if direction.length() < 150:
+			transitioned.emit(self,\"Seek\")
+			
+		
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	print('fora')
+	get_parent().get_parent().queue_free()
+
+\"\"\"
+func enter() -> void:
+	if character:
+		print('enter')
+		if character.position.x < get_viewport().size.x / 2:
+			move_direction = Vector2(-1,0)
+		elif character.position.x > get_viewport().size.x / 2:
+			move_direction = Vector2(1,0)
+		else:
+			var r = randi() % 2
+			if r == 0:
+				move_direction = Vector2(1,0)
+			else:
+				move_direction = Vector2(-1,0)
+				
+	if not other_player:
+		var currentScene = get_tree().get_current_scene().get_name()
+		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')	
+	
+	
+	
+	
+		
+func exit() -> void:
+	pass
+	
+func update(delta: float) -> void:
+	pass
+	
+func physics_update(delta: float) -> void:
+	if character:
+		character.velocity = move_direction * SPEED
+		for i in character.get_slide_collision_count():
+			var collision = character.get_slide_collision(i)
+			print(\"I collided with \", collision.get_collider().name)
+	if other_player:
+		var direction = other_player.global_position - character.global_position
+		if direction.length() < 250:
+			transitioned.emit(self,\"Seek\")
+	
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	print('fora')
+	queue_free()
+\"\"\"
+"
+
+[node name="Infantaria" type="CharacterBody2D" node_paths=PackedStringArray("timer") groups=["Inimigos"]]
 scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 0
@@ -34,8 +148,9 @@ sprite_frames = SubResource("SpriteFrames_3wb0l")
 animation = &"Corrida"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.38419e-06, -2.38419e-06)
 scale = Vector2(0.88774, -2.69608)
-shape = SubResource("CapsuleShape2D_pf2kk")
+shape = SubResource("RectangleShape2D_vi6ic")
 debug_color = Color(1, 0, 0, 1)
 
 [node name="LabelState" type="Label" parent="."]
@@ -49,12 +164,17 @@ theme_override_font_sizes/font_size = 120
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_8nlaf")
-initial_state = NodePath("Wander")
+initial_state = NodePath("Hover")
 
 [node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character", "_animated_sprite")]
-script = ExtResource("4_dqxkc")
+script = SubResource("GDScript_vi6ic")
 character = NodePath("../..")
 _animated_sprite = NodePath("../../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://crev8iknffvfn"
+
+[node name="Hover" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+script = ExtResource("5_vi6ic")
+character = NodePath("../..")
 metadata/_custom_type_script = "uid://crev8iknffvfn"
 
 [node name="Seek" type="Node" parent="FSM" node_paths=PackedStringArray("character")]

@@ -15,11 +15,11 @@ extends CharacterBody2D
 @export var timetoshoot: float = 5.0
 @onready var ray_cast = $RayCast2D
 var curtimetoshoot : float = 0.0
-
+var can_shoot: bool = true
 
 @export var timer: Timer
 
-"""
+""" # fire bullet
 func fire_bullet():
 	var dir = (ray_cast.target_position.normalized())
 	
@@ -78,18 +78,12 @@ func fire_bullet():
 		get_parent().add_child(bullet_instance)
 		print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
 
-func aim(): #nao precisa disso tb
-	if other_player:	
-		ray_cast.target_position = to_local(other_player.position)
-#		print(str(other_player.position), "aim infantaria")
-	
-func check_collision(): #nao vamos verificar colisao
-	if ray_cast.get_collider() == other_player and timer.is_stopped():
-		timer.start()
-	elif ray_cast.get_collider() != other_player and not timer.is_stopped():
-		timer.stop()
-
 func _on_timer_timeout() -> void:
 	print('time to shoot')
 	fire_bullet()
 	
+func bullet_hit():
+	queue_free()
+
+func grenade_hit():
+	queue_free()

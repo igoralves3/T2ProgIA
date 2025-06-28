@@ -37,14 +37,14 @@ func _on_timer_timeout() -> void:
 #	await get_tree().process_frame
 	queue_free()
 
-
 func _on_body_entered(body: Node2D) -> void:
 	die.emit()
+	set_collision_mask_value(3, false) #tirar colisao inimigo
 	is_moving = false
 	animation.play("bullet")
-	await get_tree().create_timer(tempo_animacao).timeout
 	print (body, "player bullet hit")
 	if body.has_method("bullet_hit"):
 		body.bullet_hit()
+	await get_tree().create_timer(tempo_animacao).timeout
 	queue_free()
 	

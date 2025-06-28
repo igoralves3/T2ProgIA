@@ -12,3 +12,4 @@ func _process(delta: float) -> void:
 #	print (camera.position.y, "position")
 	if player.position.y - camera.offset.y < camera_distancia_y_minima and camera.offset.y >= camera_altura_maxima_y:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
+	#player camera.offset 

@@ -19,6 +19,7 @@ frame = 6
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 visible = false
 shape = SubResource("RectangleShape2D_uumvb")
 
