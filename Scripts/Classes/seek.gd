@@ -10,12 +10,16 @@ var wonder_time: float
 
 var destination: Vector2
 
+
+
 #@export var bullet_inimigo: PackedScene
 
 #@export var ray_cast : RayCast2D
 
 #@export var timer: Timer
 
+var chances_random : int = 0
+var screen_size
 """
 func fire_bullet():
 	
@@ -36,6 +40,10 @@ func aim():
 """
 
 func enter() -> void:
+	
+	screen_size = get_viewport().size
+	
+	chances_random=1
 	print('seek')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
@@ -59,12 +67,17 @@ func physics_update(delta: float) -> void:
 			var collision = character.get_slide_collision(i)
 			print("I collided with ", collision.get_collider().name)
 		
-		if direction.length() > 25 and character.global_position.y < other_player.global_position.y:
+		if direction.length() > 25:# and character.global_position.y < other_player.global_position.y:
 			character.velocity = direction.normalized() * move_speed
 		else:
 			character.velocity = Vector2(0,0)
-			
-		if direction.length() > 150 or character.global_position.y > other_player.global_position.y:
+		"""	
+		if randi_range(0,10) > 5:
+			chances_random -= 1
+		if chances_random <= 0:
+			transitioned.emit(self,"Wander")	
+		"""
+		if direction.length() < 100:# or character.global_position.y > other_player.global_position.y:
 			transitioned.emit(self,"Wander")
 			
 			

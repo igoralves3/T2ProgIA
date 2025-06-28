@@ -17,16 +17,24 @@ var wonder_time: float
 
 var destination: Vector2
 
+var chances_random:int= 0
+
+var screen_size
+
 func randomize_wonder():
 	move_direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
 	wonder_time = randf_range(1,5)
-
+	
 
 func update_position() -> void:
 	var direction = destination - character.global_position
 	character.velocity = direction.normalized() * move_speed
 
 func enter() -> void:
+	
+	screen_size = get_viewport().size
+	print(str(screen_size))
+	chances_random = 100
 	print('wander')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
@@ -52,8 +60,13 @@ func physics_update(delta: float) -> void:
 			print("I collided with ", collision.get_collider().name)
 	if other_player:
 		var direction = other_player.global_position - character.global_position
-		
-		if direction.length() < 150:
+		"""
+		if randi_range(0,10) > 5:
+			chances_random -= 1
+		if chances_random <= 0:
+			transitioned.emit(self,"Seek")
+		"""
+		if direction.length() > 100:
 			transitioned.emit(self,"Seek")
 			
 		
