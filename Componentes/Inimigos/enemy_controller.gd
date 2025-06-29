@@ -19,5 +19,22 @@ func meter_bala():
 		inimigo.fire_bullet()
 	#else:
 
+<<<<<<< Updated upstream
+=======
+func get_active_spawners():
+	
+	Active_spawners.clear()
+	for spawner in Enemy_spawner:
+		if spawner.is_active:
+			Active_spawners.append(spawner)
+
+func timer_de_spawn_end():
+	if get_tree().get_nodes_in_group("Inimigos").size() < 5:
+		get_active_spawners()
+		var spawner = Active_spawners.pick_random()
+		if spawner.is_active:
+			spawner.spawn_enemy()
+
+>>>>>>> Stashed changes
 func timer_de_tiro_end():
 	meter_bala()
