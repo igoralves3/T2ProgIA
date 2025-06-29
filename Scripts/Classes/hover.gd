@@ -17,6 +17,9 @@ var chance_alterar_estado: float = 0.2 #20% de chance de alterar o estado a cada
 var tempo_espera_entre_estado: float = 1
 var timer_next_move: Timer
 var tempo_next_move: float = 1.5
+var pode_mudar_de_estado: bool = false
+
+
 
 func enter() -> void:
 	if not other_player:
@@ -25,9 +28,10 @@ func enter() -> void:
 		randomize_next_move()
 		timer_entre_estados = Timer.new()
 		timer_entre_estados.wait_time = tempo_timer
-		timer_entre_estados.one_shot = true
+		timer_entre_estados.one_shot = false
 		timer_entre_estados.timeout.connect(timer_entre_estados_end)
 		add_child(timer_entre_estados)
+		timer_entre_estados.start()
 		timer_next_move = Timer.new()
 		timer_next_move.wait_time = tempo_next_move
 		timer_next_move.one_shot = false
@@ -37,7 +41,22 @@ func enter() -> void:
 
 func exit() -> void:
 	pass
-	
+
+func update(delta: float) -> void:
+	var distancia_restante
+	if !other_player:
+		return
+	else:
+		if pode_mudar_de_estado:
+			pode_mudar_de_estado = false
+			if character:
+				distancia_restante = character.global_position.distance_to(destination)
+				if distancia_restante > 100 or randi_range(1,4) < 2:
+					if randi_range(1,2) < 2:
+						transitioned.emit(self,"Wander")
+				if distancia_restante < 70:
+					transitioned.emit(self,"Seek")
+					#if randi_range(1,2) < 2:
 
 func physics_update(delta: float) -> void:
 	var movendo_para: Vector2
@@ -93,7 +112,8 @@ func verificar_se_next_move_sai_da_tela(destino):
 	return sai_da_tela
 
 func timer_entre_estados_end():
-	print ("TIMER")
+	pode_mudar_de_estado = true
+	#print ("TIMER")
 
 func timer_next_move_end():
 	tentativas_temp = next_move_tentativas_sem_sair_da_tela

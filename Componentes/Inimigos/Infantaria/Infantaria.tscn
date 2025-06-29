@@ -25,8 +25,7 @@ size = Vector2(135.175, 44.5091)
 
 [node name="Infantaria" type="CharacterBody2D" groups=["Inimigos"]]
 scale = Vector2(0.1, 0.1)
-collision_layer = 4
-collision_mask = 0
+collision_layer = 5
 script = ExtResource("1_pf2kk")
 bullet_inimigo = ExtResource("2_clfx3")
 
@@ -51,7 +50,7 @@ theme_override_font_sizes/font_size = 120
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_8nlaf")
-initial_state = NodePath("Hover")
+initial_state = NodePath("Seek")
 
 [node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character", "_animated_sprite")]
 script = ExtResource("5_clfx3")
