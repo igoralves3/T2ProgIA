@@ -29,6 +29,7 @@ var tamanho_tela
 var posicao_camera
 var centro_tela
 
+signal dead_player()
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -177,8 +178,7 @@ func spawn_grenade():
 func _on_area_2d_enemy_collision_area_entered(area: Area2D) -> void:
 	print("Area2d enemy collision")
 	print("you ded")
-	#acho que nao vou usar essa funcao, melhor a morte por tocar no inimigo vir de fora (?)
-	pass # Replace with function body.
+	dead_player.emit()
 
 func death_water(posicao_colisor):
 	
@@ -192,6 +192,8 @@ func death_water(posicao_colisor):
 	tween = create_tween()
 	tween.tween_property(self, "position", nova_posicao, 0.1)
 	_animated_sprite.play("death_water")
+	await _animated_sprite.animation_finished
+	dead_player.emit()
 
 func death_pitfall(posicao_colisor):
 	
@@ -205,6 +207,8 @@ func death_pitfall(posicao_colisor):
 	tween = create_tween()
 	tween.tween_property(self, "position", nova_posicao, 0.1)
 	_animated_sprite.play("death_pitfall")
+	await _animated_sprite.animation_finished
+	dead_player.emit()
 
 func death_normal():
 	
@@ -213,3 +217,5 @@ func death_normal():
 	can_move = false
 	velocity = Vector2(0,0)
 	_animated_sprite.play("death_normal")
+	await _animated_sprite.animation_finished
+	dead_player.emit()

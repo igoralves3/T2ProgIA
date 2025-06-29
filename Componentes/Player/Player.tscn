@@ -28,9 +28,7 @@ shape = SubResource("RectangleShape2D_5mq5v")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("4_5mq5v")
-animation = &"death_pitfall"
-frame = 1
-frame_progress = 0.511184
+animation = &"run_up"
 
 [node name="Area2DEnemyCollision" type="Area2D" parent="."]
 visible = false
