@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	#aim()
 	#check_collision()
-	updateTimer(delta)
+	#updateTimer(delta) provavelmente deve dar pra deletar tudo de timer nesse script
 
 func _ready():
 	

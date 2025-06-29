@@ -26,6 +26,7 @@ window/stretch/scale_mode="integer"
 
 GrupoPlayer=""
 Inimigos=""
+Enemy_spawner=""
 
 [input]
 

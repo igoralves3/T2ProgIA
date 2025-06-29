@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=11 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="TileSet" uid="uid://dih0y41j30hyu" path="res://SpriteSheets/Area1_TileSet.tres" id="1_0o3eo"]
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cfqumf7uknscw" path="res://Componentes/AreaHazardDestructable/arvore.tscn" id="6_t3o0g"]
 [ext_resource type="PackedScene" uid="uid://ctqf7dpoxu84c" path="res://Componentes/AreaHazardDestructable/colisao_agua.tscn" id="7_a6koi"]
 [ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="8_76dhw"]
+[ext_resource type="PackedScene" uid="uid://du6w2bmlb8rr5" path="res://Componentes/Inimigos/enemy_spawner.tscn" id="9_iuddv"]
+[ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="10_6vjpy"]
 
 [node name="Area1" type="Node2D"]
 script = ExtResource("1_t3o0g")
@@ -15,7 +17,6 @@ script = ExtResource("1_t3o0g")
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 top_level = true
-zoom = Vector2(0.7, 0.7)
 limit_left = 0
 limit_top = 0
 
@@ -141,3 +142,7 @@ scale = Vector2(1.6, 0.25)
 position = Vector2(133, 28)
 alvo = NodePath(".")
 other_player = NodePath("../MainPlayerChar")
+
+[node name="EnemyController" parent="." instance=ExtResource("10_6vjpy")]
+
+[node name="Enemy_Spawner" parent="." instance=ExtResource("9_iuddv")]
