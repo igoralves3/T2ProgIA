@@ -10,6 +10,8 @@ signal die
 var is_moving = true
 @onready var animation = $Sprite2D
 
+@onready var SFXEnemyDeath = $SFXEnemyDeath
+
 func _ready():
 	%Timer.wait_time = tempo_para_sumir
 	%Timer.start()
@@ -44,6 +46,9 @@ func _on_body_entered(body: Node2D) -> void:
 	animation.play("bullet")
 	print (body, "player bullet hit")
 	if body.has_method("bullet_hit"):
+		
+		SFXEnemyDeath.play()
+		
 		body.bullet_hit()
 	await get_tree().create_timer(tempo_animacao).timeout
 	queue_free()

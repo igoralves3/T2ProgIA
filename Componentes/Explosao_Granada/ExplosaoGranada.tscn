@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj3v4y7fqqc74"]
+[gd_scene load_steps=4 format=3 uid="uid://dj3v4y7fqqc74"]
 
 [ext_resource type="Script" uid="uid://6bwdlfq6div8" path="res://Componentes/Explosao_Granada/ExplosaoGranada.gd" id="1_2bxbb"]
+[ext_resource type="AudioStream" uid="uid://c6jrqwoutiur6" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (4).wav" id="2_otu8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otu8y"]
 size = Vector2(112, 113)
@@ -21,6 +22,10 @@ shape = SubResource("RectangleShape2D_otu8y")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="SFXGranadeBlast" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_otu8y")
+volume_db = -16.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

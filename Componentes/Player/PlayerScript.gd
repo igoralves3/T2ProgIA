@@ -10,6 +10,9 @@ const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita
 @onready var _animated_sprite = $PlayerSprite
 @onready var camera = %Camera2D
 
+@onready var SFXShootBullet = $SFXShootBullet
+@onready var SFXPlayerDeath = $SFXPlayerDeath
+
 var tween: Tween
 
 var bullets = []
@@ -135,6 +138,9 @@ func burst_bullet():
 
 func shoot_bullet():
 	print('dir: '+str(dir))
+	
+	SFXShootBullet.play()
+	
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_transform = global_transform
 	bullet_instance.position += dir * 20
@@ -175,6 +181,9 @@ func _on_area_2d_enemy_collision_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
 
 func death_water(posicao_colisor):
+	
+	SFXPlayerDeath.play()
+	
 	can_move = false
 	var diferenca_posicao = posicao_colisor - global_position
 	diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/2)
@@ -185,6 +194,9 @@ func death_water(posicao_colisor):
 	_animated_sprite.play("death_water")
 
 func death_pitfall(posicao_colisor):
+	
+	SFXPlayerDeath.play()
+	
 	can_move = false
 	var diferenca_posicao = posicao_colisor - global_position
 	diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/2)
@@ -195,6 +207,9 @@ func death_pitfall(posicao_colisor):
 	_animated_sprite.play("death_pitfall")
 
 func death_normal():
+	
+	SFXPlayerDeath.play()
+	
 	can_move = false
 	velocity = Vector2(0,0)
 	_animated_sprite.play("death_normal")

@@ -19,6 +19,9 @@ var can_shoot: bool = true
 
 @export var timer: Timer
 
+@onready var SFXDeath = $SFXDeath
+
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	#aim()
@@ -60,7 +63,13 @@ func _on_timer_timeout() -> void:
 	fire_bullet()
 	
 func bullet_hit():
+	
+	SFXDeath.play()
+	
 	queue_free()
 
 func grenade_hit():
+	
+	SFXDeath.play()
+	
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7jtwgsgdbpl2"]
+[gd_scene load_steps=11 format=3 uid="uid://c7jtwgsgdbpl2"]
 
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_agxu4"]
 [ext_resource type="Script" uid="uid://725tjqccjsfs" path="res://Componentes/Inimigos/Infantaria/infantaria.gd" id="1_pf2kk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://crev8iknffvfn" path="res://Scripts/Classes/wander.gd" id="5_clfx3"]
 [ext_resource type="Script" uid="uid://bwlb3cbdttuh2" path="res://Scripts/Classes/seek.gd" id="5_dqxkc"]
 [ext_resource type="Script" uid="uid://dbmg342k1f422" path="res://Scripts/Classes/hover.gd" id="5_vi6ic"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (2).wav" id="8_04x4o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3wb0l"]
 animations = [{
@@ -71,6 +72,10 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="SFXDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_04x4o")
+volume_db = -16.0
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/Wander" method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/Seek" method="_on_visible_on_screen_notifier_2d_screen_exited"]
