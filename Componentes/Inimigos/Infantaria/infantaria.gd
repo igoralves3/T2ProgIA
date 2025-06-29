@@ -21,6 +21,8 @@ var can_shoot: bool = true
 
 @onready var SFXDeath = $SFXDeath
 
+signal dead_enemy(myself: CharacterBody2D)
+
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -65,11 +67,11 @@ func _on_timer_timeout() -> void:
 func bullet_hit():
 	
 	SFXDeath.play()
-	
+	dead_enemy.emit(self)	
 	queue_free()
 
 func grenade_hit():
 	
 	SFXDeath.play()
-	
+	dead_enemy.emit(self)	
 	queue_free()

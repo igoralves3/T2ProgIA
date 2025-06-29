@@ -1,7 +1,10 @@
 extends Node2D
 
 @export var mob_scene: PackedScene
+@export var limite_de_inimigos: int = 4
 @export var area: Node
+
+var ListaInimigos: Array
 
 var player
 
@@ -11,14 +14,26 @@ func _ready() -> void:
 func _on_mob_timer_timeout():
 	self.global_position.y = player.global_position.y - 256
 	# Create a new instance of the Mob scene.
-	var mob = mob_scene.instantiate()
+	if ListaInimigos.size() < limite_de_inimigos:
+		var mob = mob_scene.instantiate()
+	
+		# Choose a random location on Path2D.
+		var mob_spawn_location = $MobPath/MobSpawnLocation
+		mob_spawn_location.progress_ratio = randf()
+	
+		# Set the mob's position to the random location using global coordinates.
+		mob.global_position = mob_spawn_location.global_position
 
-	# Choose a random location on Path2D.
-	var mob_spawn_location = $MobPath/MobSpawnLocation
-	mob_spawn_location.progress_ratio = randf()
+		# Connect dead_enemy signal
+		mob.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
+		ListaInimigos.append(mob)
 
-	# Set the mob's position to the random location using global coordinates.
-	mob.global_position = mob_spawn_location.global_position
+		# Spawn the mob by adding it to the Main scene.
+		area.add_child(mob)
 
-	# Spawn the mob by adding it to the Main scene.
-	area.add_child(mob)
+func _on_mob_dead_enemy(enemy):
+	# Handle the enemy death here (e.g., remove from list, spawn more, etc.)
+	if enemy in ListaInimigos:
+		ListaInimigos.erase(enemy)
+	# Optionally, queue_free the enemy if not already done
+	# enemy.queue_free()
