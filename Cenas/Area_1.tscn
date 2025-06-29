@@ -158,3 +158,5 @@ visible = false
 stream = ExtResource("12_uvug2")
 volume_db = -16.0
 autoplay = true
+
+[connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]

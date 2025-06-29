@@ -29,7 +29,7 @@ var tamanho_tela
 var posicao_camera
 var centro_tela
 
-signal dead_player()
+signal dead_player
 
 func _ready() -> void:
 	await get_tree().process_frame
