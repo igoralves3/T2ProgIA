@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=13 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="TileSet" uid="uid://dih0y41j30hyu" path="res://SpriteSheets/Area1_TileSet.tres" id="1_0o3eo"]
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dg6sn0dcxjlqf" path="res://Componentes/Inimigos/enemy_spawner.tscn" id="9_iuddv"]
 [ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="10_6vjpy"]
 [ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="11_lyvvr"]
+[ext_resource type="AudioStream" uid="uid://bn5r8yi6ibkip" path="res://Audio/BGM/NES/4 - In-Game Theme 1.mp3" id="12_uvug2"]
 
 [node name="Area1" type="Node2D"]
 script = ExtResource("1_t3o0g")
@@ -153,3 +154,8 @@ area = NodePath("..")
 
 [node name="Enemy_Spawner" parent="." instance=ExtResource("9_iuddv")]
 visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_uvug2")
+volume_db = -16.0
+autoplay = true

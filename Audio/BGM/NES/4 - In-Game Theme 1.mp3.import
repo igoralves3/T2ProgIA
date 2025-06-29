@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bn5r8yi6ibkip"
+path="res://.godot/imported/4 - In-Game Theme 1.mp3-bb8bad6f865fe3bcc666549a5398c2c2.mp3str"
+
+[deps]
+
+source_file="res://Audio/BGM/NES/4 - In-Game Theme 1.mp3"
+dest_files=["res://.godot/imported/4 - In-Game Theme 1.mp3-bb8bad6f865fe3bcc666549a5398c2c2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
