@@ -228,7 +228,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mvjr2")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_normal",
 "speed": 5.0
 }, {
@@ -245,7 +245,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tkq12")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_pitfall",
 "speed": 5.0
 }, {
@@ -262,7 +262,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oh5in")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_water",
 "speed": 5.0
 }, {

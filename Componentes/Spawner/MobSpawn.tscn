@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwayse1d5026n"]
+
+[ext_resource type="Script" uid="uid://es0ea158525" path="res://EnemySpawner.gd" id="1_nrmvy"]
+
+[sub_resource type="Curve2D" id="Curve2D_c1tod"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 128, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, 0, 225, 128)
+}
+point_count = 4
+
+[node name="Node" type="Node2D"]
+script = ExtResource("1_nrmvy")
+
+[node name="MobTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="MobPath" type="Path2D" parent="."]
+position = Vector2(-1, 0)
+curve = SubResource("Curve2D_c1tod")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(1, 128)
+rotation = -1.5708
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
