@@ -75,3 +75,8 @@ func grenade_hit():
 	SFXDeath.play()
 	dead_enemy.emit(self)	
 	queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	dead_enemy.emit(self)
+	queue_free()

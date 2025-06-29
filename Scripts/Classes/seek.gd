@@ -55,12 +55,6 @@ func physics_update(delta: float) -> void:
 			transitioned.emit(self,"Wander")
 			
 			
-		#aim()
-		
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print('fora')
-	get_parent().get_parent().queue_free()
 
 
 #func _on_timer_timeout() -> void:

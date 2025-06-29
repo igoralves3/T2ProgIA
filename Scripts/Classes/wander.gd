@@ -69,13 +69,6 @@ func physics_update(delta: float) -> void:
 		if direction.length() > 100:
 			transitioned.emit(self,"Seek")
 			
-		
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print('fora')
-	get_parent().get_parent().queue_free()
-
 """
 func enter() -> void:
 	if character:

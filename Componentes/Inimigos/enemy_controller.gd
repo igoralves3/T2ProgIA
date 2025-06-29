@@ -14,9 +14,10 @@ func _ready() -> void:
 
 func meter_bala():
 	ListaInimigos = get_tree().get_nodes_in_group("Inimigos")
-	var inimigo = ListaInimigos.pick_random()
-	if inimigo.can_shoot:
-		inimigo.fire_bullet()
+	if ListaInimigos.size()>0:
+		var inimigo = ListaInimigos.pick_random()
+		if inimigo.can_shoot:
+			inimigo.fire_bullet()
 	#else:
 
 func timer_de_tiro_end():
