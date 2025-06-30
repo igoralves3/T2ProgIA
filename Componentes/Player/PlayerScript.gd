@@ -26,6 +26,7 @@ var tamanho_tela
 var posicao_camera
 var centro_tela
 var is_reloading_scene: bool = false
+var grenadeAmmo: int = 5
 
 signal dead_player
 
@@ -158,10 +159,11 @@ func remove_bullet():
 	quantidade_de_bullets_voando = quantidade_de_bullets_voando - 1
 
 func spawn_grenade():
-	if can_throw_grenade:
+	if can_throw_grenade and grenadeAmmo > 0:
 		if Input.is_action_pressed("Grenade"):
 			print('dir: '+str(dir))
 			can_throw_grenade = false
+			grenadeAmmo-=1
 			await get_tree().create_timer(0.14).timeout #parece ser o tempo original do jogo
 			var grenade_instance = grenade.instantiate()
 			grenade_instance.global_transform = global_transform
@@ -179,6 +181,7 @@ func death_water(posicao_colisor):
 	SFXPlayerDeath.play()
 	
 	can_move = false
+	can_shoot = false
 	var diferenca_posicao = posicao_colisor - global_position
 	diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/2)
 	var nova_posicao = global_position + diferenca_posicao
@@ -194,6 +197,7 @@ func death_pitfall(posicao_colisor):
 	SFXPlayerDeath.play()
 	
 	can_move = false
+	can_shoot = false
 	var diferenca_posicao = posicao_colisor - global_position
 	diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/2)
 	var nova_posicao = global_position + diferenca_posicao
@@ -210,6 +214,7 @@ func death_normal():
 	$Area2DEnemyCollision.set_collision_layer_value(2, false)
 	SFXPlayerDeath.play()
 	can_move = false
+	can_shoot = false
 	velocity = Vector2(0,0)
 	_animated_sprite.play("death_normal")
 	await _animated_sprite.animation_finished

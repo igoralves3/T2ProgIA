@@ -6,10 +6,7 @@ var states: Dictionary = {}
 
 var current_state
 
-var label_state: Label
-
 func _ready():
-	label_state = get_parent().get_node("LabelState")
 		
 	for child in get_children():
 		if child is State:
@@ -19,7 +16,6 @@ func _ready():
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
-		label_state.text = current_state.name.to_lower()
 	
 func _process(delta: float) -> void:
 	if current_state:
@@ -43,6 +39,3 @@ func on_child_transition(state, new_state_name):
 	
 	new_state.enter()
 	current_state = new_state
-	
-	if label_state:
-		label_state.text = new_state_name

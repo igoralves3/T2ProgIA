@@ -140,11 +140,6 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(40, 248)
 scale = Vector2(1.6, 0.25)
 
-[node name="Infantaria" parent="." node_paths=PackedStringArray("alvo", "other_player") instance=ExtResource("8_76dhw")]
-position = Vector2(133, 28)
-alvo = NodePath(".")
-other_player = NodePath("../MainPlayerChar")
-
 [node name="EnemyController" parent="." instance=ExtResource("10_6vjpy")]
 
 [node name="MobSpawner" parent="." node_paths=PackedStringArray("area") instance=ExtResource("11_lyvvr")]
