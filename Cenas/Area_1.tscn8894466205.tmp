@@ -1,0 +1,161 @@
+[gd_scene load_steps=13 format=4 uid="uid://bqawtwe2n84sn"]
+
+[ext_resource type="TileSet" uid="uid://dih0y41j30hyu" path="res://SpriteSheets/Area1_TileSet.tres" id="1_0o3eo"]
+[ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
+[ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/SpriteFramePorta.tres" id="2_r24xy"]
+[ext_resource type="Texture2D" uid="uid://f7ucl7ufn7rt" path="res://SpriteSheets/Area1Fundo.png" id="4_farx6"]
+[ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="5_mmikm"]
+[ext_resource type="PackedScene" uid="uid://cfqumf7uknscw" path="res://Componentes/AreaHazardDestructable/arvore.tscn" id="6_t3o0g"]
+[ext_resource type="PackedScene" uid="uid://ctqf7dpoxu84c" path="res://Componentes/AreaHazardDestructable/colisao_agua.tscn" id="7_a6koi"]
+[ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="8_76dhw"]
+[ext_resource type="PackedScene" uid="uid://dg6sn0dcxjlqf" path="res://Componentes/Inimigos/enemy_spawner.tscn" id="9_iuddv"]
+[ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="10_6vjpy"]
+[ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="11_lyvvr"]
+[ext_resource type="AudioStream" uid="uid://bn5r8yi6ibkip" path="res://Audio/BGM/NES/4 - In-Game Theme 1.mp3" id="12_uvug2"]
+
+[node name="Area1" type="Node2D"]
+script = ExtResource("1_t3o0g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+top_level = true
+limit_left = 0
+limit_top = 0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(224, 0)
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("1_0o3eo")
+
+[node name="Portao" type="AnimatedSprite2D" parent="."]
+position = Vector2(112, -1762)
+sprite_frames = ExtResource("2_r24xy")
+animation = &"open"
+frame_progress = 0.566537
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+offset = Vector2(0, -1792)
+transform = Transform2D(1, 0, 0, 1, 0, -1792)
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -3
+offset_right = 224.0
+offset_bottom = 2048.0
+texture = ExtResource("4_farx6")
+
+[node name="MainPlayerChar" parent="." instance=ExtResource("5_mmikm")]
+unique_name_in_owner = true
+position = Vector2(117, 201)
+
+[node name="TodasArvores" type="Node" parent="."]
+
+[node name="Arvore" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(161, 231)
+isLeft = false
+
+[node name="Arvore2" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(209, 147)
+isLeft = false
+startFrame = 1
+
+[node name="Arvore3" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(144, 211)
+startFrame = 1
+
+[node name="Arvore4" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(126, 229)
+startFrame = 1
+
+[node name="Arvore5" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(78, 21)
+startFrame = 1
+
+[node name="Arvore6" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(153, -25)
+
+[node name="Arvore7" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(80, -108)
+startFrame = 1
+
+[node name="Arvore8" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(135, -26)
+isLeft = false
+startFrame = 2
+
+[node name="Arvore9" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(150, -40)
+isLeft = false
+startFrame = 2
+
+[node name="Arvore10" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(0, -223)
+startFrame = 1
+
+[node name="Arvore11" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(33, -223)
+isLeft = false
+startFrame = 1
+
+[node name="Arvore13" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(136, -622)
+startFrame = 1
+
+[node name="Arvore14" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(15, -621)
+
+[node name="Arvore15" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(87, -686)
+isLeft = false
+startFrame = 2
+
+[node name="Arvore12" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(15, -239)
+
+[node name="Arvore16" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(136, -238)
+startFrame = 2
+
+[node name="Arvore17" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(87, -301)
+isLeft = false
+
+[node name="Arvore19" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(207, -429)
+startFrame = 2
+
+[node name="Arvore18" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(143, -367)
+startFrame = 1
+
+[node name="Arvore20" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
+position = Vector2(15, 145)
+
+[node name="ColisaoAgua" parent="." instance=ExtResource("7_a6koi")]
+position = Vector2(13, -160)
+scale = Vector2(0.5, 0.5)
+
+[node name="ColisaoAgua2" parent="." instance=ExtResource("7_a6koi")]
+position = Vector2(40, 248)
+scale = Vector2(1.6, 0.25)
+
+[node name="Infantaria" parent="." node_paths=PackedStringArray("alvo", "other_player") instance=ExtResource("8_76dhw")]
+visible = false
+position = Vector2(133, 28)
+alvo = NodePath(".")
+other_player = NodePath("../MainPlayerChar")
+
+[node name="EnemyController" parent="." instance=ExtResource("10_6vjpy")]
+
+[node name="MobSpawner" parent="." node_paths=PackedStringArray("area") instance=ExtResource("11_lyvvr")]
+mob_scene = ExtResource("8_76dhw")
+area = NodePath("..")
+
+[node name="Enemy_Spawner" parent="." instance=ExtResource("9_iuddv")]
+visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_uvug2")
+volume_db = -16.0
+autoplay = true

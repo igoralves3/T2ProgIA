@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7jtwgsgdbpl2"]
+[gd_scene load_steps=12 format=3 uid="uid://c7jtwgsgdbpl2"]
 
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_agxu4"]
 [ext_resource type="Script" uid="uid://725tjqccjsfs" path="res://Componentes/Inimigos/Infantaria/infantaria.gd" id="1_pf2kk"]
@@ -21,11 +21,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
-size = Vector2(135.175, 44.5091)
+size = Vector2(135.175, 7.41819)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04x4o"]
+size = Vector2(120, 120)
 
 [node name="Infantaria" type="CharacterBody2D" groups=["Inimigos"]]
 scale = Vector2(0.1, 0.1)
-collision_layer = 5
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_pf2kk")
 bullet_inimigo = ExtResource("2_clfx3")
 
@@ -33,8 +37,8 @@ bullet_inimigo = ExtResource("2_clfx3")
 sprite_frames = SubResource("SpriteFrames_3wb0l")
 animation = &"Corrida"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.38419e-06, -2.38419e-06)
+[node name="ColisaoChao" type="CollisionShape2D" parent="."]
+position = Vector2(-2.38419e-06, 50)
 scale = Vector2(0.88774, -2.69608)
 shape = SubResource("RectangleShape2D_vi6ic")
 debug_color = Color(1, 0, 0, 1)
@@ -75,6 +79,17 @@ collide_with_areas = true
 [node name="SFXDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_04x4o")
 volume_db = -16.0
+
+[node name="Area2DColisaoMorte" type="Area2D" parent="."]
+light_mask = 4
+visibility_layer = 2
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DColisaoMorte"]
+position = Vector2(7.15256e-06, 7.15256e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_04x4o")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -10,7 +10,6 @@ func _ready() -> void:
 	timer_de_tiro.timeout.connect(timer_de_tiro_end)
 	add_child(timer_de_tiro)
 	timer_de_tiro.start()
-	
 
 func meter_bala():
 	ListaInimigos = get_tree().get_nodes_in_group("Inimigos")

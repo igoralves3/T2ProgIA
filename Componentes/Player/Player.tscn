@@ -31,16 +31,16 @@ sprite_frames = ExtResource("4_5mq5v")
 animation = &"run_up"
 
 [node name="Area2DEnemyCollision" type="Area2D" parent="."]
-visible = false
-light_mask = 6
-visibility_layer = 6
+light_mask = 0
+visibility_layer = 0
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionEnemies" type="CollisionShape2D" parent="Area2DEnemyCollision"]
-light_mask = 2
-visibility_layer = 2
+light_mask = 0
+visibility_layer = 0
 shape = SubResource("CapsuleShape2D_l2ndj")
+debug_color = Color(0, 0.595, 0.7, 0.784314)
 
 [node name="SFXShootBullet" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_4q2vn")
@@ -49,5 +49,3 @@ volume_db = -16.0
 [node name="SFXPlayerDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_hycio")
 volume_db = -16.0
-
-[connection signal="area_entered" from="Area2DEnemyCollision" to="." method="_on_area_2d_enemy_collision_area_entered"]

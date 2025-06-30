@@ -9,12 +9,9 @@ const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita
 @export var grenade :PackedScene
 @onready var _animated_sprite = $PlayerSprite
 @onready var camera = %Camera2D
-
 @onready var SFXShootBullet = $SFXShootBullet
 @onready var SFXPlayerDeath = $SFXPlayerDeath
-
 var tween: Tween
-
 var bullets = []
 var easy:= false
 var delay_entre_tiros: float = 0.055 # é por ai
@@ -28,18 +25,16 @@ var dir:= Vector2(0,1)
 var tamanho_tela
 var posicao_camera
 var centro_tela
+var is_reloading_scene: bool = false
 
 signal dead_player
 
 func _ready() -> void:
+	is_reloading_scene = false
 	await get_tree().process_frame
 	tamanho_tela = get_viewport_rect().size
 
 func _process(delta):
-#	print (posicao_camera, "posicao camera")
-#	print (tamanho_tela, "tamanho tela")
-#	print (centro_tela, "centro tela")
-#	print (camera.offset, "offset")
 	centro_tela = tamanho_tela/2
 	if camera != null:
 		posicao_camera = camera.offset
@@ -144,7 +139,10 @@ func shoot_bullet():
 	
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_transform = global_transform
-	bullet_instance.position += dir * 20
+	if dir == Vector2(0, -1):
+		bullet_instance.position += Vector2(dir.x * 15 + 6,dir.y * 15) #arruma a posicao do tiro olhando para cima
+	else:
+		bullet_instance.position += dir * 15
 	bullet_instance.motion = dir
 	get_parent().add_child(bullet_instance)
 	#bullets.append(bullet_instance)
@@ -175,13 +173,9 @@ func spawn_grenade():
 			await get_tree().create_timer(0.72).timeout #tempo real 0.72 + 0.14 total
 			can_throw_grenade = true
 
-func _on_area_2d_enemy_collision_area_entered(area: Area2D) -> void:
-	print("Area2d enemy collision")
-	print("you ded")
-	dead_player.emit()
-
 func death_water(posicao_colisor):
-	
+	set_collision_layer_value(2, false)
+	$Area2DEnemyCollision.set_collision_layer_value(2, false)
 	SFXPlayerDeath.play()
 	
 	can_move = false
@@ -193,10 +187,10 @@ func death_water(posicao_colisor):
 	tween.tween_property(self, "position", nova_posicao, 0.1)
 	_animated_sprite.play("death_water")
 	await _animated_sprite.animation_finished
-	dead_player.emit()
+	emit_death()
 
 func death_pitfall(posicao_colisor):
-	
+	$Area2DEnemyCollision.set_collision_layer_value(2, false)
 	SFXPlayerDeath.play()
 	
 	can_move = false
@@ -208,14 +202,20 @@ func death_pitfall(posicao_colisor):
 	tween.tween_property(self, "position", nova_posicao, 0.1)
 	_animated_sprite.play("death_pitfall")
 	await _animated_sprite.animation_finished
-	dead_player.emit()
+	emit_death()
 
 func death_normal():
-	
+	print ("death normals playerscript")
+	set_collision_layer_value(2, false)
+	$Area2DEnemyCollision.set_collision_layer_value(2, false)
 	SFXPlayerDeath.play()
-	
 	can_move = false
 	velocity = Vector2(0,0)
 	_animated_sprite.play("death_normal")
 	await _animated_sprite.animation_finished
-	dead_player.emit()
+	emit_death()
+
+func emit_death():
+	if not is_reloading_scene:
+		is_reloading_scene = true
+		dead_player.emit()
