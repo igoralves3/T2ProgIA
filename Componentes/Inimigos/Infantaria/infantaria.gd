@@ -17,11 +17,14 @@ var is_enemy: bool = true
 
 @onready var SFXDeath = $SFXDeath
 
+@onready var _animated_sprite = $AnimatedSprite2D
+
 signal dead_enemy(myself: CharacterBody2D)
 
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+	update_animation(look_at_player())
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		# get_collider() nos dá o nó com que colidimos.
@@ -40,7 +43,39 @@ func _physics_process(delta: float) -> void:
 			# Opcional: fazer o inimigo parar ou ser destruído também.
 			# queue_free()
 
+
+func look_at_player() -> Vector2:
+	if other_player:
+		var player_position = other_player.global_position
+		var direction = other_player.global_position - global_position
+		return direction
+	return Vector2.DOWN
+	
+
+func update_animation(input_direction: Vector2):
+	
+	if input_direction.x > 0 and (input_direction.y > -10 and input_direction.y < 10):
+		_animated_sprite.play("right")		
+	elif input_direction.x < 0 and (input_direction.y > -10 and input_direction.y < 10):
+		_animated_sprite.play("left")
+	elif (input_direction.x > -10 and input_direction.x < 10) and input_direction.y > 0:
+		_animated_sprite.play("down")		
+	elif (input_direction.x > -10 and input_direction.x < 10) and input_direction.y < 0:
+		_animated_sprite.play("up")
+	elif input_direction.x > 0 and input_direction.y > 0:
+		_animated_sprite.play("bottom_right")		
+	elif input_direction.x < 0 and input_direction.y < 0:
+		_animated_sprite.play("top_left")
+	elif  input_direction.x < 0 and input_direction.y > 0:
+		_animated_sprite.play("bottom_left")		
+	elif input_direction.x > 0 and input_direction.y < 0:
+		_animated_sprite.play("top_right")
+	else:
+		_animated_sprite.stop()
+	#	_animated_sprite.frame = 0 #o jogo não usa a princípio
+
 func _ready():
+	_animated_sprite.play('down')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
