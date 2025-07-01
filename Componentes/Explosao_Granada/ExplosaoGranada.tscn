@@ -1,24 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj3v4y7fqqc74"]
+[gd_scene load_steps=5 format=3 uid="uid://dj3v4y7fqqc74"]
 
 [ext_resource type="Script" uid="uid://6bwdlfq6div8" path="res://Componentes/Explosao_Granada/ExplosaoGranada.gd" id="1_2bxbb"]
+[ext_resource type="SpriteFrames" uid="uid://bk2etwn5fmmes" path="res://SpriteSheets/explosao_granada.tres" id="2_67w5c"]
 [ext_resource type="AudioStream" uid="uid://c6jrqwoutiur6" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (4).wav" id="2_otu8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otu8y"]
-size = Vector2(112, 113)
+size = Vector2(28, 28.5)
 
 [node name="ExplosaoGranada" type="Area2D"]
-modulate = Color(1, 0, 0, 1)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_2bxbb")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_67w5c")
+frame_progress = 0.616874
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -1.5)
+visible = false
 shape = SubResource("RectangleShape2D_otu8y")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -17,6 +17,7 @@ var move_normalized: Vector2
 var tentantivas_de_cruzar_o_player: int = 2 #da pra botar um random float
 var timer_para_mudar_de_estado: Timer
 var pode_mudar_de_estado: bool = false
+var infantaria_node
 
 
 func enter() -> void:
@@ -30,6 +31,7 @@ func enter() -> void:
 		timer_para_mudar_de_estado.timeout.connect(timer_para_mudar_de_estado_end)
 		add_child(timer_para_mudar_de_estado)
 		timer_para_mudar_de_estado.start()
+	infantaria_node = get_parent().get_parent()
 
 func exit() -> void:
 	pass
@@ -60,6 +62,7 @@ func physics_update(delta: float) -> void:
 			character.velocity = Vector2(0,0)
 			tentativas_temp = next_move_tentativas_sem_sair_da_tela
 			await randomize_next_move()
+	infantaria_node.motion_direction = movendo_para.normalized()
 
 func _random_inside_unit_circle() -> Vector2:
 	var theta : float = randf() * 2 * PI

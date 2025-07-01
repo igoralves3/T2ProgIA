@@ -9,22 +9,35 @@ extends CharacterBody2D
 @export var other_player: CharacterBody2D
 @export var bullet_inimigo: PackedScene
 @export var timetoshoot: float = 5.0
-@onready var ray_cast = $RayCast2D
 var curtimetoshoot : float = 0.0
 var can_shoot: bool = true
 var is_enemy: bool = true
 @export var timer: Timer
-
+var timer_olhar_para_jogador: Timer
+var olhando_para_jogador: bool = false
 @onready var SFXDeath = $SFXDeath
-
+var motion_direction:= Vector2(1,0)
 @onready var _animated_sprite = $AnimatedSprite2D
 
 signal dead_enemy(myself: CharacterBody2D)
 
+func _ready():
+	_animated_sprite.play('down')
+	if not other_player:
+		var currentScene = get_tree().get_current_scene().get_name()
+		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+	timer_olhar_para_jogador = Timer.new()
+	timer_olhar_para_jogador.wait_time = randf_range(1,2)
+	timer_olhar_para_jogador.one_shot = true
+	timer_olhar_para_jogador.timeout.connect(timer_olhar_para_jogador_end)
+	add_child(timer_olhar_para_jogador)
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
-	update_animation(look_at_player())
+	if olhando_para_jogador:
+		update_animation(look_at_player())
+	else:
+		update_animation(motion_direction)
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		# get_collider() nos dá o nó com que colidimos.
@@ -74,13 +87,11 @@ func update_animation(input_direction: Vector2):
 		_animated_sprite.stop()
 	#	_animated_sprite.frame = 0 #o jogo não usa a princípio
 
-func _ready():
-	_animated_sprite.play('down')
-	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
-		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
 
 func fire_bullet():
+	print ('fire BULLET')
+	olhando_para_jogador = true
+	timer_olhar_para_jogador.start()
 	if other_player:
 		var bullet_instance = bullet_inimigo.instantiate()
 		#bullet_instance.global_transform = global_transform
@@ -110,3 +121,6 @@ func grenade_hit():
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	dead_enemy.emit(self)
 	queue_free()
+
+func timer_olhar_para_jogador_end():
+	olhando_para_jogador = false

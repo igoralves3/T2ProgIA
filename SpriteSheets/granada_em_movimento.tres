@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dukajhqkur2cr"]
+
+[ext_resource type="Texture2D" uid="uid://bcvix7famfjp1" path="res://SpriteSheets/GranadasBombasVFX.png" id="1_ihmew"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d81p7"]
+atlas = ExtResource("1_ihmew")
+region = Rect2(38, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcfyw"]
+atlas = ExtResource("1_ihmew")
+region = Rect2(19, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17734"]
+atlas = ExtResource("1_ihmew")
+region = Rect2(0, 0, 18, 18)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_d81p7")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_qcfyw")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_17734")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_qcfyw")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_d81p7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]

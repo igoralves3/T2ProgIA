@@ -26,7 +26,7 @@ var tamanho_tela
 var posicao_camera
 var centro_tela
 var is_reloading_scene: bool = false
-var grenadeAmmo: int = 5
+var grenadeAmmo: int = 50
 
 signal dead_player
 
@@ -34,6 +34,7 @@ func _ready() -> void:
 	is_reloading_scene = false
 	await get_tree().process_frame
 	tamanho_tela = get_viewport_rect().size
+	dir = Vector2(0,-1) # comeca olhando pra cima
 
 func _process(delta):
 	centro_tela = tamanho_tela/2

@@ -2,24 +2,28 @@
 
 [ext_resource type="Script" uid="uid://ic3g1tm5qdcq" path="res://Componentes/Granada/Granada_tween.gd" id="1_tm5rw"]
 [ext_resource type="PackedScene" uid="uid://dj3v4y7fqqc74" path="res://Componentes/Explosao_Granada/ExplosaoGranada.tscn" id="2_1lei2"]
-[ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="2_setla"]
+[ext_resource type="SpriteFrames" uid="uid://dukajhqkur2cr" path="res://SpriteSheets/granada_em_movimento.tres" id="3_1lei2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4newe"]
 
 [node name="Granada" type="Area2D"]
 collision_layer = 0
 collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("1_tm5rw")
 explosao = ExtResource("2_1lei2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_setla")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_1lei2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_4newe")
+disabled = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true

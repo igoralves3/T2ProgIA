@@ -277,7 +277,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
-size = Vector2(135.175, 7.41819)
+size = Vector2(70, 6.60066)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04x4o"]
 size = Vector2(120, 120)
@@ -290,13 +290,14 @@ bullet_inimigo = ExtResource("2_clfx3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k73oa")
-animation = &"up"
+animation = &"right"
+frame_progress = 0.879384
 
 [node name="ColisaoChao" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13)
+visible = false
+position = Vector2(-1, 10)
 scale = Vector2(0.2, -0.606)
 shape = SubResource("RectangleShape2D_vi6ic")
-debug_color = Color(1, 0, 0, 1)
 
 [node name="LabelState" type="Label" parent="."]
 offset_left = -60.0
@@ -306,6 +307,7 @@ offset_bottom = -55.0
 theme_override_font_sizes/font_size = 10
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_8nlaf")
@@ -325,10 +327,6 @@ character = NodePath("../..")
 script = ExtResource("5_vi6ic")
 character = NodePath("../..")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-collision_mask = 2
-collide_with_areas = true
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="SFXDeath" type="AudioStreamPlayer2D" parent="."]
@@ -336,6 +334,7 @@ stream = ExtResource("8_04x4o")
 volume_db = -16.0
 
 [node name="Area2DColisaoMorte" type="Area2D" parent="."]
+visible = false
 light_mask = 4
 visibility_layer = 2
 scale = Vector2(0.1, 0.1)

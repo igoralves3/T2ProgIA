@@ -13,6 +13,7 @@ var destination: Vector2
 var chances_random:int= 0
 var timer_para_mudar_de_estado: Timer
 var pode_mudar_de_estado: bool = false
+var infantaria_node
 
 func randomize_wander():
 	move_direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
@@ -35,7 +36,8 @@ func enter() -> void:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
 	randomize_wander()
-	
+	infantaria_node = get_parent().get_parent()
+
 func exit() -> void:
 	pass
 	
@@ -67,7 +69,7 @@ func physics_update(delta: float) -> void:
 				transitioned.emit(self,"Seek")
 			if direction.length() < 100:
 				transitioned.emit(self,"Hover")
-			
+	infantaria_node.motion_direction = move_direction
 
 func timer_para_mudar_de_estado_end():
 	pode_mudar_de_estado = true

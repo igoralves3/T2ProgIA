@@ -18,7 +18,7 @@ var tempo_espera_entre_estado: float = 1
 var timer_next_move: Timer
 var tempo_next_move: float = 1.5
 var pode_mudar_de_estado: bool = false
-
+var infantaria_node
 
 
 func enter() -> void:
@@ -38,6 +38,7 @@ func enter() -> void:
 		timer_next_move.timeout.connect(timer_next_move_end)
 		add_child(timer_next_move)
 		timer_next_move.start()
+	infantaria_node = get_parent().get_parent()
 
 func exit() -> void:
 	pass
@@ -72,7 +73,7 @@ func physics_update(delta: float) -> void:
 			character.velocity = Vector2(0,0)
 			tentativas_temp = next_move_tentativas_sem_sair_da_tela
 			await randomize_next_move()
-			
+	infantaria_node.motion_direction = movendo_para.normalized()
 #	if other_player:
 		#print (other_player.global_position)
 #		randomize_next_move()

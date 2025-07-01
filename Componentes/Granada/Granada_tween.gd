@@ -2,7 +2,7 @@ extends Area2D
 
 
 @export var motion := Vector2(0,0)
-var tempo_para_sumir: float = 2#0.72 
+var tempo_para_sumir: float = 0.72 
 const SPEED = 125.0 #para andar 90 pixels
 var objeto_alvo #para ser o jogador
 var dono: String = ""
@@ -15,12 +15,13 @@ var posicao_inicial: Vector2
 var ponto_partida: Vector2
 var ponto_chegada: Vector2
 @export var alvo: Vector2 = Vector2(110, -110)
-@export var duracao_trajeto: float = 1.0
+@export var duracao_trajeto: float = 0.72 #tempo do jogo
 @export var amplitude_onda: float = 10.0
 @export var frequencia_onda: float = 0.50
-@export var desvio_lateral: float = 80.0
+@export var desvio_lateral: float = 20.0
 
 func _ready():
+	$AnimatedSprite2D.play()
 	posicao_inicial = self.global_position
 	%Timer.wait_time = tempo_para_sumir
 	%Timer.start()

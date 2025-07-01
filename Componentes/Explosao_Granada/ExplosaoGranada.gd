@@ -1,6 +1,6 @@
 extends Area2D
 
-var tempo_para_sumir: float = 1.255 #+- isso
+var tempo_para_sumir: float = 0.258 #+- isso
 var dono: String = ""
 
 @onready var SFXGranadeBlast = $SFXGranadeBlast
@@ -9,10 +9,9 @@ var dono: String = ""
 func _ready():
 	%Timer.wait_time = tempo_para_sumir
 	%Timer.start()
-	print('explosao')
-	
+#	print('explosao')
 	SFXGranadeBlast.play()
-	
+	$AnimatedSprite2D.play()
 	if dono == "Player": #jogador
 		set_collision_layer_value(2, true) #layer do jogador
 		set_collision_mask_value(3, true) #ver inimigos
@@ -25,7 +24,7 @@ func _ready():
 #	print (dono)
 
 func _on_timer_timeout() -> void:
-	print('fim explosao')
+#	print('fim explosao')
 	queue_free()
 
 
