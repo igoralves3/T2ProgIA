@@ -19,6 +19,9 @@ var olhando_para_jogador: bool = false
 var motion_direction:= Vector2(1,0)
 @onready var _animated_sprite = $AnimatedSprite2D
 
+@export var colisao_chao: CollisionShape2D
+@export var area_colisao_morte: Area2D
+
 signal dead_enemy(myself: CharacterBody2D)
 
 func _ready():

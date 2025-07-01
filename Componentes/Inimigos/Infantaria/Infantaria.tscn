@@ -294,7 +294,6 @@ animation = &"right"
 frame_progress = 0.879384
 
 [node name="ColisaoChao" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1, 10)
 scale = Vector2(0.2, -0.606)
 shape = SubResource("RectangleShape2D_vi6ic")
@@ -333,7 +332,6 @@ stream = ExtResource("8_04x4o")
 volume_db = -16.0
 
 [node name="Area2DColisaoMorte" type="Area2D" parent="."]
-visible = false
 light_mask = 4
 visibility_layer = 2
 scale = Vector2(0.1, 0.1)
