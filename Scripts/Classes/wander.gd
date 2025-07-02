@@ -65,10 +65,14 @@ func physics_update(delta: float) -> void:
 		"""
 		if pode_mudar_de_estado:
 			pode_mudar_de_estado = false
-			if direction.length() > 50:
-				transitioned.emit(self,"Seek")
-			if direction.length() < 100:
+			if randi_range(2,3) < 3:
 				transitioned.emit(self,"Hover")
+			else:
+				transitioned.emit(self,"Seek")
+#			if direction.length() > 50:
+#				transitioned.emit(self,"Seek")
+#			if direction.length() < 100:
+#				transitioned.emit(self,"Hover")
 	infantaria_node.motion_direction = move_direction
 
 func timer_para_mudar_de_estado_end():

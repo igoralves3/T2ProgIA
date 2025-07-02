@@ -12,7 +12,7 @@ var offset_y_para_circulo: float = 10
 var next_move_tentativas_sem_sair_da_tela: int = 2
 var tentativas_temp: int = 2 #preciso dessa desgraca
 var timer_entre_estados: Timer
-var tempo_timer:float = 3
+var tempo_timer_entre_estados:float = 1
 var chance_alterar_estado: float = 0.2 #20% de chance de alterar o estado a cada
 var tempo_espera_entre_estado: float = 1
 var timer_next_move: Timer
@@ -27,7 +27,7 @@ func enter() -> void:
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
 		randomize_next_move()
 		timer_entre_estados = Timer.new()
-		timer_entre_estados.wait_time = tempo_timer
+		timer_entre_estados.wait_time = tempo_timer_entre_estados
 		timer_entre_estados.one_shot = false
 		timer_entre_estados.timeout.connect(timer_entre_estados_end)
 		add_child(timer_entre_estados)
@@ -50,12 +50,14 @@ func update(delta: float) -> void:
 	else:
 		if pode_mudar_de_estado:
 			pode_mudar_de_estado = false
+			if randi_range(1,3) < 2:
+				transitioned.emit(self,"Wander")
 			if character:
 				distancia_restante = character.global_position.distance_to(destination)
-				if distancia_restante > 100 or randi_range(1,4) < 2:
-					if randi_range(1,2) < 2:
+				if distancia_restante > 40 or randi_range(1,4) < 2:
+					if randi_range(2,3) < 2:
 						transitioned.emit(self,"Wander")
-				if distancia_restante < 70:
+				if distancia_restante < 40:
 					transitioned.emit(self,"Seek")
 					#if randi_range(1,2) < 2:
 

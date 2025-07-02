@@ -4,7 +4,7 @@ class_name Player
 var canShoot: bool = true
 
 const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita
-
+@export var god_mode: bool = false
 @export var bullet :PackedScene
 @export var grenade :PackedScene
 @onready var _animated_sprite = $PlayerSprite
@@ -35,6 +35,9 @@ func _ready() -> void:
 	await get_tree().process_frame
 	tamanho_tela = get_viewport_rect().size
 	dir = Vector2(0,-1) # comeca olhando pra cima
+	if god_mode:
+		set_collision_layer_value(2, false)
+		$Area2DEnemyCollision.set_collision_layer_value(2, false)
 
 func _process(delta):
 	centro_tela = tamanho_tela/2
@@ -135,7 +138,7 @@ func burst_bullet():
 			can_shoot = true
 
 func shoot_bullet():
-	print('dir: '+str(dir))
+#	print('dir: '+str(dir))
 	
 	SFXShootBullet.play()
 	

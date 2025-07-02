@@ -18,8 +18,7 @@ var olhando_para_jogador: bool = false
 @onready var SFXDeath = $SFXDeath
 var motion_direction:= Vector2(1,0)
 @onready var _animated_sprite = $AnimatedSprite2D
-var tempo_fora_tela: float = 3
-var tempo_desde_spawn: float = 0.2
+var tempo_fora_tela: float = 2
 
 @export var colisao_chao: CollisionShape2D
 @export var area_colisao_morte: Area2D
@@ -63,9 +62,10 @@ func _physics_process(delta: float) -> void:
 	if other_player:
 		var cameraoffset = other_player.posicao_camera
 		if global_position.x < 0 or global_position.x > 224:
-			tempo_fora_tela - delta
+			print(tempo_fora_tela)
+			tempo_fora_tela = tempo_fora_tela - delta
 		if global_position.y > cameraoffset.y +256 or global_position.y < cameraoffset.y:
-			tempo_fora_tela - delta
+			tempo_fora_tela = tempo_fora_tela - delta
 		if tempo_fora_tela < 0:
 			dead_enemy.emit(self)
 			queue_free()
@@ -105,7 +105,6 @@ func update_animation(input_direction: Vector2):
 
 
 func fire_bullet():
-	print ('fire BULLET')
 	olhando_para_jogador = true
 	timer_olhar_para_jogador.start()
 	if other_player:
