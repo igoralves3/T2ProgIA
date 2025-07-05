@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqqxo1s2dkdpx"]
+
+[ext_resource type="Script" uid="uid://dmc2v6kvm7tsw" path="res://Componentes/item_granada_extra/item_granada_extra.gd" id="1_hqsir"]
+[ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="2_wy0w3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ryvb"]
+
+[node name="ItemGranadaExtra" type="Area2D"]
+scale = Vector2(0.1, 0.1)
+collision_layer = 3
+script = ExtResource("1_hqsir")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wy0w3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_6ryvb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
