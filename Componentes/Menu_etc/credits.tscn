@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjficjjbp1gjq"]
+
+[ext_resource type="Script" uid="uid://cyti635vfaa0h" path="res://Componentes/Menu_etc/credits_roll.gd" id="1_5cprk"]
+
+[sub_resource type="Animation" id="Animation_5cprk"]
+resource_name = "CreditsRoll"
+length = 22.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabelCredits:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.9667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 725), Vector2(0, -720)]
+}
+
+[sub_resource type="Animation" id="Animation_ujmqe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabelCredits:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 725)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_22vwx"]
+_data = {
+&"CreditsRoll": SubResource("Animation_5cprk"),
+&"RESET": SubResource("Animation_ujmqe")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5cprk")
+
+[node name="AnimationCreditsRoll" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_22vwx")
+}
+
+[node name="RichTextLabelCredits" type="RichTextLabel" parent="."]
+z_index = 3
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 725.0
+offset_bottom = 725.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[font_size=24]Credits[/font_size]
+
+[font_size=24]Game Directors… and everything else[/font_size]
+Gustavo John
+Igor Alves
+João Pioner
+
+[font_size=24]Game Assets[/font_size]
+Font Pixeloid
+[url=https://www.ggbot.net/]GGBotNet[/url]
+
+[font_size=24]Music[/font_size]
+3 - Midnight Candy Chase (loop)
+[url=https://oscarleites.itch.io/]Oscar Leites[/url]
+
+[font_size=24]SFXs[/font_size]
+[url=https://yourpalrob.itch.io/]YourPalRob[/url]
+[url=https://drtwelele.itch.io/]drtwelele[/url]
+[url=https://kronbits.itch.io/]KronBits[/url]
+
+[font_size=24]Game Engine[/font_size]
+Godot Engine
+
+[font_size=24]Image Generated Assets[/font_size]
+Stable Diffusion
+
+[font_size=24]Tools[/font_size]
+GIMP
+ComfyUI
+Audacity
+[url=https://pixelartvillage.com/]PixelArtVillage[/url]"
+autowrap_mode = 1
+tab_size = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

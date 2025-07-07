@@ -45,20 +45,14 @@ func _physics_process(delta: float) -> void:
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		# get_collider() nos dá o nó com que colidimos.
-		# Verificamos se ele existe e se está no grupo "player".
 		if collision and collision.get_collider().is_in_group("GrupoPlayer"):
 			
-			# Pegamos uma referência direta ao nó do jogador que foi atingido.
 			var superJoe = collision.get_collider()
 			
-			# Chamamos a função pública 'morrer' que criamos no script do jogador.
-			# É importante que a função 'morrer' exista no script do player.
 			if superJoe.has_method("death_normal"):
 				superJoe.set_collision_layer_value(2, false)
 				superJoe.death_normal()
 
-			# Opcional: fazer o inimigo parar ou ser destruído também.
-			# queue_free()
 	if other_player:
 		var cameraoffset = other_player.posicao_camera
 		if global_position.x < 0 or global_position.x > 224:

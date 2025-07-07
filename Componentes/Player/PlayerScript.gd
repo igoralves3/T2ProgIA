@@ -181,8 +181,7 @@ func spawn_grenade():
 			can_throw_grenade = true
 
 func death_water(posicao_colisor):
-	set_collision_layer_value(2, false)
-	$Area2DEnemyCollision.set_collision_layer_value(2, false)
+	disable_collisions()
 	SFXPlayerDeath.play()
 	
 	can_move = false
@@ -198,7 +197,7 @@ func death_water(posicao_colisor):
 	emit_death()
 
 func death_pitfall(posicao_colisor):
-	$Area2DEnemyCollision.set_collision_layer_value(2, false)
+	disable_collisions()
 	SFXPlayerDeath.play()
 	
 	can_move = false
@@ -214,9 +213,8 @@ func death_pitfall(posicao_colisor):
 	emit_death()
 
 func death_normal():
-	print ("death normals playerscript")
-	set_collision_layer_value(2, false)
-	$Area2DEnemyCollision.set_collision_layer_value(2, false)
+#	print ("death normals playerscript")
+	disable_collisions()
 	SFXPlayerDeath.play()
 	can_move = false
 	can_shoot = false
@@ -224,6 +222,13 @@ func death_normal():
 	_animated_sprite.play("death_normal")
 	await _animated_sprite.animation_finished
 	emit_death()
+
+func disable_collisions():
+	set_collision_layer_value(1, false)
+	set_collision_layer_value(2, false)
+	set_collision_layer_value(4, false)
+	set_collision_layer_value(5, false)
+	$Area2DEnemyCollision.set_collision_layer_value(2, false)
 
 func emit_death():
 	if not is_reloading_scene:
