@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbewe"]
 
 [node name="InfantariaMoto" type="Area2D"]
+z_index = 20
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_4eghu")
