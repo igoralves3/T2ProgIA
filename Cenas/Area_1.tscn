@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=16 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
 [ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/SpriteFramePorta.tres" id="2_r24xy"]
@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="11_lyvvr"]
 [ext_resource type="AudioStream" uid="uid://bn5r8yi6ibkip" path="res://Audio/BGM/NES/4 - In-Game Theme 1.mp3" id="12_uvug2"]
 [ext_resource type="PackedScene" uid="uid://bqqxo1s2dkdpx" path="res://Componentes/item_granada_extra/item_granada_extra.tscn" id="13_so2n7"]
-[ext_resource type="PackedScene" uid="uid://d0d724dgyu3xp" path="res://Componentes/Spawner/MotoSpawn.tscn" id="14_f5gam"]
+[ext_resource type="PackedScene" path="res://Componentes/Spawner/MotoSpawn.tscn" id="14_f5gam"]
+[ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="15_2mqp0"]
 
 [node name="Area1" type="Node2D"]
 script = ExtResource("1_t3o0g")
@@ -161,5 +162,9 @@ position = Vector2(142, -316)
 
 [node name="MotoSpawn" parent="." instance=ExtResource("14_f5gam")]
 position = Vector2(201, -830)
+
+[node name="Checkpoint" parent="." instance=ExtResource("15_2mqp0")]
+collision_layer = 0
+collision_mask = 2
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
