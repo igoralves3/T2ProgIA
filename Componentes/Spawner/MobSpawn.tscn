@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwayse1d5026n"]
 
-[ext_resource type="Script" uid="uid://es0ea158525" path="res://EnemySpawner.gd" id="1_nrmvy"]
+[ext_resource type="Script" uid="uid://2n776hh5ug8s" path="res://EnemySpawner.gd" id="1_nrmvy"]
 
 [sub_resource type="Curve2D" id="Curve2D_c1tod"]
 _data = {

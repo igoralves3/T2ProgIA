@@ -7,7 +7,7 @@ class_name Wander
 @export var _animated_sprite: AnimatedSprite2D
 var move_direction: Vector2
 const SPEED = 150.0
-@onready var player = $Player
+#@onready var player = $Player
 var wander_time: float
 var destination: Vector2
 var chances_random:int= 0

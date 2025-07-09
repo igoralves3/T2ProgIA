@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0d724dgyu3xp"]
+
+[ext_resource type="Script" uid="uid://dvhvjurqvvyba" path="res://Componentes/Spawner/moto_spawn.gd" id="1_dfnhx"]
+[ext_resource type="PackedScene" uid="uid://v03caxnfgonm" path="res://Componentes/Infantaria_Moto/Infantaria_Moto.tscn" id="2_pwclo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwclo"]
+
+[node name="MotoSpawn" type="Area2D" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_dfnhx")
+moto_scene = ExtResource("2_pwclo")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pwclo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
