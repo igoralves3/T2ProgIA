@@ -54,15 +54,16 @@ func _physics_process(delta: float) -> void:
 				superJoe.death_normal()
 
 	if other_player:
-		var cameraoffset = other_player.posicao_camera
-		if global_position.x < 0 or global_position.x > 224:
-			print(tempo_fora_tela)
-			tempo_fora_tela = tempo_fora_tela - delta
-		if global_position.y > cameraoffset.y +256 or global_position.y < cameraoffset.y:
-			tempo_fora_tela = tempo_fora_tela - delta
-		if tempo_fora_tela < 0:
-			dead_enemy.emit(self)
-			queue_free()
+		if other_player.posicao_camera != null:
+			var cameraoffset = other_player.posicao_camera
+			if global_position.x < 0 or global_position.x > 224:
+				print(tempo_fora_tela)
+				tempo_fora_tela = tempo_fora_tela - delta
+			if global_position.y > cameraoffset.y +256 or global_position.y < cameraoffset.y:
+				tempo_fora_tela = tempo_fora_tela - delta
+			if tempo_fora_tela < 0:
+				dead_enemy.emit(self)
+				queue_free()
 	
 
 

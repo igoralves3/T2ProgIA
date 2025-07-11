@@ -37,6 +37,7 @@ func enter() -> void:
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
 	randomize_wander()
 	infantaria_node = get_parent().get_parent()
+	pode_mudar_de_estado = false
 
 func exit() -> void:
 	pass
@@ -56,13 +57,7 @@ func physics_update(delta: float) -> void:
 			var collision = character.get_slide_collision(i)
 #			print("I collided with ", collision.get_collider().name)
 	if other_player:
-		var direction = other_player.global_position - character.global_position
-		"""
-		if randi_range(0,10) > 5:
-			chances_random -= 1
-		if chances_random <= 0:
-			transitioned.emit(self,"Seek")
-		"""
+#		var direction = other_player.global_position - character.global_position
 		if pode_mudar_de_estado:
 			pode_mudar_de_estado = false
 			if randi_range(2,3) < 3:
@@ -77,50 +72,3 @@ func physics_update(delta: float) -> void:
 
 func timer_para_mudar_de_estado_end():
 	pode_mudar_de_estado = true
-
-"""
-func enter() -> void:
-	if character:
-		print('enter')
-		if character.position.x < get_viewport().size.x / 2:
-			move_direction = Vector2(-1,0)
-		elif character.position.x > get_viewport().size.x / 2:
-			move_direction = Vector2(1,0)
-		else:
-			var r = randi() % 2
-			if r == 0:
-				move_direction = Vector2(1,0)
-			else:
-				move_direction = Vector2(-1,0)
-				
-	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
-		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')	
-	
-	
-	
-	
-		
-func exit() -> void:
-	pass
-	
-func update(delta: float) -> void:
-	pass
-	
-func physics_update(delta: float) -> void:
-	if character:
-		character.velocity = move_direction * SPEED
-		for i in character.get_slide_collision_count():
-			var collision = character.get_slide_collision(i)
-			print("I collided with ", collision.get_collider().name)
-	if other_player:
-		var direction = other_player.global_position - character.global_position
-		if direction.length() < 250:
-			transitioned.emit(self,"Seek")
-	
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print('fora')
-	queue_free()
-"""

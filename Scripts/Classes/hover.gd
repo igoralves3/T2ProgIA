@@ -39,6 +39,7 @@ func enter() -> void:
 		add_child(timer_next_move)
 		timer_next_move.start()
 	infantaria_node = get_parent().get_parent()
+	pode_mudar_de_estado = false
 
 func exit() -> void:
 	pass

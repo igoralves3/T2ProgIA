@@ -33,8 +33,10 @@ func enter() -> void:
 		timer_para_mudar_de_estado.start()
 	infantaria_node = get_parent().get_parent()
 	randomize_next_move()
+	pode_mudar_de_estado = false
 
 func exit() -> void:
+	
 	pass
 	
 func update(delta: float) -> void:
