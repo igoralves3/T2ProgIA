@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://duxxreg1jlx5n"]
+
+[ext_resource type="Script" uid="uid://ic3g1tm5qdcq" path="res://Componentes/Granada/Granada_tween.gd" id="1_h4lpm"]
+[ext_resource type="PackedScene" uid="uid://dj3v4y7fqqc74" path="res://Componentes/Explosao_Granada/ExplosaoGranada.tscn" id="2_ob2de"]
+[ext_resource type="SpriteFrames" uid="uid://dodfvmwsuttc4" path="res://Componentes/Inimigos/Infantaria/Morteiro/bala_morteiro.tres" id="3_h4lpm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4newe"]
+
+[node name="Bala_Morteiro" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_h4lpm")
+explosao = ExtResource("2_ob2de")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_h4lpm")
+frame_progress = 0.427637
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_4newe")
+disabled = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://725tjqccjsfs" path="res://Componentes/Inimigos/Infantaria/infantaria.gd" id="1_pf2kk"]
 [ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_clfx3"]
-[ext_resource type="SpriteFrames" uid="uid://q58bsb8a8xr8" path="res://Componentes/Inimigos/Infantaria/Infantaria.tres" id="3_04x4o"]
+[ext_resource type="SpriteFrames" uid="uid://7nr1tpaoasut" path="res://Componentes/Inimigos/Infantaria/Infantaria.tres" id="3_04x4o"]
 [ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="3_8nlaf"]
 [ext_resource type="Script" uid="uid://crev8iknffvfn" path="res://Scripts/Classes/wander.gd" id="5_clfx3"]
 [ext_resource type="Script" uid="uid://bwlb3cbdttuh2" path="res://Scripts/Classes/seek.gd" id="5_dqxkc"]
@@ -46,12 +46,6 @@ horizontal_alignment = 1
 script = ExtResource("3_8nlaf")
 initial_state = NodePath("Hover")
 
-[node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character", "_animated_sprite")]
-script = ExtResource("5_clfx3")
-character = NodePath("../..")
-_animated_sprite = NodePath("../../AnimatedSprite2D")
-metadata/_custom_type_script = "uid://crev8iknffvfn"
-
 [node name="Seek" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("5_dqxkc")
 character = NodePath("../..")
@@ -59,6 +53,9 @@ character = NodePath("../..")
 [node name="Hover" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("5_vi6ic")
 character = NodePath("../..")
+
+[node name="Wander" type="Node" parent="FSM"]
+script = ExtResource("5_clfx3")
 
 [node name="Timer" type="Timer" parent="."]
 

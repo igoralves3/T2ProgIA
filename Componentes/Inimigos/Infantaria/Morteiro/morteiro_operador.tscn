@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cw2o5fqgpnb4e"]
+
+[ext_resource type="Script" uid="uid://vfxmkgex23l7" path="res://Componentes/Inimigos/Infantaria/Morteiro/morteiro_operador.gd" id="1_nwg8a"]
+[ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_kwc7r"]
+[ext_resource type="SpriteFrames" uid="uid://bgi8msrqvpetc" path="res://Componentes/Inimigos/Infantaria/Morteiro/morteiro_operador.tres" id="3_gx57r"]
+[ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="4_hlhq7"]
+[ext_resource type="Script" uid="uid://b58qqklhmit11" path="res://Componentes/Inimigos/Infantaria/Morteiro/wander_morteiro.gd" id="5_tmqb0"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (2).wav" id="8_uw1d2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
+size = Vector2(70, 6.60066)
+
+[node name="Operador_morteiro" type="CharacterBody2D" groups=["Inimigos"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_nwg8a")
+bullet_inimigo = ExtResource("2_kwc7r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_gx57r")
+animation = &"top_right"
+
+[node name="ColisaoChao" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 10)
+scale = Vector2(0.2, -0.606)
+shape = SubResource("RectangleShape2D_vi6ic")
+
+[node name="LabelState" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -26.0
+offset_right = 23.0
+offset_bottom = -12.0
+theme_override_font_sizes/font_size = 10
+text = "seek"
+horizontal_alignment = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+show_behind_parent = true
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_hlhq7")
+initial_state = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+script = ExtResource("5_tmqb0")
+character = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="SFXDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_uw1d2")
+volume_db = -16.0
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
