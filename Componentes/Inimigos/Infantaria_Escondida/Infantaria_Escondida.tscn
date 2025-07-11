@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c32yog5j06bf5"]
+
+[ext_resource type="Script" uid="uid://cjna5hukf5ftf" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_Escondida.gd" id="1_b1lhq"]
+[ext_resource type="SpriteFrames" uid="uid://4bq82ywa33gh" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_Escondida2.tres" id="2_cj4gx"]
+[ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="2_is51w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y64g"]
+
+[node name="InfantariaEscondida" type="CharacterBody2D"]
+script = ExtResource("1_b1lhq")
+_infantaria = ExtResource("2_is51w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_cj4gx")
+animation = &"bottom_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7y64g")
