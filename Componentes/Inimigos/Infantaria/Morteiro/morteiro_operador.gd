@@ -12,12 +12,12 @@ var olhando_para_jogador: bool = false
 var motion_direction:= Vector2(1,0)
 @onready var _animated_sprite = $AnimatedSprite2D
 var tempo_fora_tela: float = 2
-@export var camperando: bool = false	
+@export var camperando: bool = true
 
 signal dead_enemy(myself: CharacterBody2D)
 
 func _ready():
-	_animated_sprite.play('down')
+	_animated_sprite.play('atirando')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
@@ -33,7 +33,8 @@ func _physics_process(delta: float) -> void:
 	if olhando_para_jogador:
 		update_animation(look_at_player())
 	else:
-		update_animation(motion_direction)
+		if not camperando:
+			update_animation(motion_direction)
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		# get_collider() nos dá o nó com que colidimos.

@@ -166,7 +166,7 @@ func remove_bullet():
 func spawn_grenade():
 	if can_throw_grenade and grenadeAmmo > 0:
 		if Input.is_action_pressed("Grenade"):
-			print('dir: '+str(dir))
+#			print('dir: '+str(dir))
 			can_throw_grenade = false
 			grenadeAmmo-=1
 			await get_tree().create_timer(0.14).timeout #parece ser o tempo original do jogo

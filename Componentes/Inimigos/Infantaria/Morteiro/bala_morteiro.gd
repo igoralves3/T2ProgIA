@@ -2,10 +2,9 @@ extends Area2D
 
 
 @export var motion := Vector2(0,0)
-var tempo_para_sumir: float = 0.72 
-const SPEED = 125.0 #para andar 90 pixels
+var tempo_para_sumir: float = 2.1 # provavelmente isso
+#const SPEED = 125.0 #para andar 90 pixels ;;; irrelevante
 var objeto_alvo #para ser o jogador
-var dono: String = ""
 @export var explosao: PackedScene
 
 #var frames : float = 0.0
@@ -15,7 +14,7 @@ var posicao_inicial: Vector2
 var ponto_partida: Vector2
 var ponto_chegada: Vector2
 @export var alvo: Vector2 = Vector2(110, -110)
-@export var duracao_trajeto: float = 0.72 #tempo do jogo
+@export var duracao_trajeto: float = 2.1 #tempo do jogo
 @export var amplitude_onda: float = 10.0
 @export var frequencia_onda: float = 0.50
 @export var desvio_lateral: float = 20.0
@@ -25,8 +24,7 @@ func _ready():
 	posicao_inicial = self.global_position
 	%Timer.wait_time = tempo_para_sumir
 	%Timer.start()
-	if dono == "Player":
-		alvo = Vector2(global_position.x, global_position.y - 90)
+	alvo = Vector2(global_position.x, global_position.y - 90)
 	iniciar_movimento_ida()
 	#print('grenade')
 
@@ -42,8 +40,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func gera_explosao():
 	var explosao_instance = explosao.instantiate()
 	explosao_instance.global_transform = global_transform
-#	if dono:
-	explosao_instance.dono = dono
 	get_parent().add_child(explosao_instance)
 
 func _on_timer_timeout() -> void:

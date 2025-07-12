@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://duxxreg1jlx5n"]
 
-[ext_resource type="Script" uid="uid://ic3g1tm5qdcq" path="res://Componentes/Granada/Granada_tween.gd" id="1_h4lpm"]
+[ext_resource type="Script" uid="uid://c415hxfuoq66n" path="res://Componentes/Inimigos/Infantaria/Morteiro/bala_morteiro.gd" id="1_h4lpm"]
 [ext_resource type="PackedScene" uid="uid://dj3v4y7fqqc74" path="res://Componentes/Explosao_Granada/ExplosaoGranada.tscn" id="2_ob2de"]
 [ext_resource type="SpriteFrames" uid="uid://dodfvmwsuttc4" path="res://Componentes/Inimigos/Infantaria/Morteiro/bala_morteiro.tres" id="3_h4lpm"]
 

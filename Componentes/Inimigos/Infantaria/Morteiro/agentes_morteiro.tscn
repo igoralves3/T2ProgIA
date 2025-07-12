@@ -7,17 +7,15 @@
 
 [node name="Agentes_morteiro" type="Node2D"]
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "oieee"
+[node name="Operador_morteiro" parent="." instance=ExtResource("2_cpy00")]
 
 [node name="Morteiro" type="Area2D" parent="."]
+position = Vector2(0, 6)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Morteiro"]
+[node name="MorteiroAnim" type="AnimatedSprite2D" parent="Morteiro"]
 sprite_frames = ExtResource("1_bjqxk")
+animation = &"DR0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morteiro"]
+visible = false
 shape = SubResource("CircleShape2D_fmgid")
-
-[node name="Operador_morteiro" parent="." instance=ExtResource("2_cpy00")]

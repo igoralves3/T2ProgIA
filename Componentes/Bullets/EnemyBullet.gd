@@ -4,7 +4,7 @@ extends Area2D
 
 @export var motion := Vector2(0,0)
 var tempo_para_sumir: float = 1.92 # acredito ser esse o valor real do jogo original
-const SPEED = 70#317 # calculando que a bala anda 135 pixels no jogo antes de sumir, esse é pra ser o valor real
+var SPEED = 70#317 # calculando que a bala anda 135 pixels no jogo antes de sumir, esse é pra ser o valor real
 var tempo_animacao: float = 0.24
 signal die #remove numero de bullets da tela
 var is_moving = true

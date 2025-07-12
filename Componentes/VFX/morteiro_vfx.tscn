@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cap6w227pub3j"]
+
+[ext_resource type="SpriteFrames" uid="uid://u03j7iobq8op" path="res://Componentes/VFX/morteiro_vfx.tres" id="1_oygif"]
+[ext_resource type="Script" uid="uid://cwl1pcrvcplh8" path="res://Componentes/VFX/morteiro_vfx.gd" id="2_2uxaw"]
+
+[node name="MorteiroVFX" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_oygif")
+frame_progress = 0.181676
+script = ExtResource("2_2uxaw")
