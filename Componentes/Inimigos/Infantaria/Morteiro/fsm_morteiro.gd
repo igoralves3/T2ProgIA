@@ -8,7 +8,7 @@ extends State
 @export var item_teste: PackedScene
 var destination: Vector2
 var infantaria_node
-var morteiro_anim
+@export var morteiro_anim:  AnimatedSprite2D
 
 func update_position() -> void:
 	var direction = destination - character.global_position
@@ -21,7 +21,8 @@ func enter() -> void:
 	if not other_player:
 		get_other_player()
 	infantaria_node = get_parent().get_parent()
-	morteiro_anim = infantaria_node.get_parent().get_node("Morteiro").get_node("MorteiroAnim")
+	if morteiro_anim:
+		morteiro_anim = infantaria_node.get_parent().get_node("Morteiro").get_node("MorteiroAnim")
 
 func get_other_player():
 	var currentScene = get_tree().get_current_scene().get_name()
@@ -34,14 +35,18 @@ func update(delta: float) -> void:
 	pass
 
 func physics_update(delta: float) -> void:
-	pass
+	if other_player:
+		var distance = other_player.global_position- character.global_position
+		if distance.length() < 20:
+			transitioned.emit(self,"Flee")
 
 func atirar_morteiro():
 	if not other_player:
 		get_other_player()
 	var distancia =  other_player.global_position - infantaria_node.global_position
 	var distancia_normalized = Vector2(distancia.x/224,distancia.y/256).normalized()
-	apontar_morteiro(distancia_normalized)
+	if morteiro_anim:
+		apontar_morteiro(distancia_normalized)
 	print (distancia_normalized)
 	pass
 

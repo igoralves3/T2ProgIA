@@ -17,14 +17,15 @@ var ponto_chegada: Vector2
 @export var duracao_trajeto: float = 2.1 #tempo do jogo
 @export var amplitude_onda: float = 10.0
 @export var frequencia_onda: float = 0.50
-@export var desvio_lateral: float = 20.0
+@export var desvio_lateral: float = -20.0#20.0
 
 func _ready():
 	$AnimatedSprite2D.play()
 	posicao_inicial = self.global_position
 	%Timer.wait_time = tempo_para_sumir
 	%Timer.start()
-	alvo = Vector2(global_position.x, global_position.y - 90)
+	#alvo = Vector2(global_position.x, global_position.y - 90)
+	alvo = Vector2(global_position.x-45, global_position.y + 45)
 	iniciar_movimento_ida()
 	#print('grenade')
 

@@ -14,13 +14,29 @@ var motion_direction:= Vector2(1,0)
 var tempo_fora_tela: float = 2
 @export var camperando: bool = true
 
+var ativo = false
+var fugindo = false
+
+@export var morteiro_bullet: PackedScene
+@export var morteiro : Area2D
+
+var pode_atirar = true
+
+var recharge_frames = 0
+
 signal dead_enemy(myself: CharacterBody2D)
 
 func _ready():
+	print('morteiro pronto')
 	_animated_sprite.play('atirando')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+		
+	if not morteiro:
+		var currentScene = get_tree().get_current_scene().get_name()
+		morteiro = get_parent().get_parent().get_node('Morteiro')#get_node('/root/'+currentScene+'/Agentes_morteiro/Morteiro')
+		
 	timer_olhar_para_jogador = Timer.new()
 	timer_olhar_para_jogador.wait_time = randf_range(1,2)
 	timer_olhar_para_jogador.one_shot = true
@@ -29,22 +45,39 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
-	if olhando_para_jogador:
-		update_animation(look_at_player())
-	else:
-		if not camperando:
-			update_animation(motion_direction)
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		# get_collider() nos dá o nó com que colidimos.
-		if collision and collision.get_collider().is_in_group("GrupoPlayer"):
+	if ativo:
+		if other_player:
+			var direction = other_player.global_position - global_position
+		
+			if direction.length() < 100:
+				if pode_atirar:
+					pode_atirar = false
+					print('atirando')
+					#fire_bullet()
+					fire_morteiro()
+				else:
+					recharge_frames += delta + 1
+					if recharge_frames >= 120:
+						recharge_frames=0
+						pode_atirar=true
+				
+		
+		move_and_slide()
+		if olhando_para_jogador:
+			update_animation(look_at_player())
+		else:
+			if not camperando:
+				update_animation(motion_direction)
+		for i in range(get_slide_collision_count()):
+			var collision = get_slide_collision(i)
+			# get_collider() nos dá o nó com que colidimos.
+			if collision and collision.get_collider().is_in_group("GrupoPlayer"):
 			
-			var superJoe = collision.get_collider()
+				var superJoe = collision.get_collider()
 			
-			if superJoe.has_method("death_normal"):
-				superJoe.set_collision_layer_value(2, false)
-				superJoe.death_normal()
+				if superJoe.has_method("death_normal"):
+					superJoe.set_collision_layer_value(2, false)
+					superJoe.death_normal()
 
 
 
@@ -95,6 +128,7 @@ func _on_timer_timeout() -> void:
 	fire_bullet()
 
 func bullet_hit():
+	print('morteiro morto')
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SFXDeath.play()
@@ -102,17 +136,35 @@ func bullet_hit():
 	queue_free()
 
 func grenade_hit():
+	print('morteiro morto')
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SFXDeath.play()
 	dead_enemy.emit(self)	
 	queue_free()
 
+func fire_morteiro():
+	if morteiro_bullet:
+		
+		var mb_instance = morteiro_bullet.instantiate()
+		mb_instance.global_position = global_position
+		get_parent().get_parent().add_child(mb_instance)
+		
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	print('morteiro fora')
+	ativo = false
 	dead_enemy.emit(self)
 	queue_free()
 
 func timer_olhar_para_jogador_end():
-	olhando_para_jogador = false
-	queue_free()
+	if ativo:
+		print('morteiro fugiu')
+		olhando_para_jogador = false
+		#fugindo = true
+		#queue_free()
+
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	ativo = true

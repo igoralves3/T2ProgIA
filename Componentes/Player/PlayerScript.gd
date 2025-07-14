@@ -57,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	#move_8_way(delta)
 	get_8_way_input()
 	move_and_slide()
+	
 	if velocity != Vector2.ZERO:
 		dir = velocity.normalized()
 	bullets = bullets.filter(func(bullet):

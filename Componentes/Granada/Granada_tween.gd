@@ -27,6 +27,8 @@ func _ready():
 	%Timer.start()
 	if dono == "Player":
 		alvo = Vector2(global_position.x, global_position.y - 90)
+	elif dono == "Moto":
+		alvo = Vector2(global_position.x, global_position.y + 90)
 	iniciar_movimento_ida()
 	#print('grenade')
 

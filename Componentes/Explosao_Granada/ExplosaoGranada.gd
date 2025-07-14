@@ -32,3 +32,6 @@ func _on_body_entered(body: Node2D) -> void:
 #	print (body)
 	if body.has_method("grenade_hit"):
 		body.grenade_hit()
+		
+	if dono != "Player" and body.has_method("death_normal"):
+		body.death_normal()

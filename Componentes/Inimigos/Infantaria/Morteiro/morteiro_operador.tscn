@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw2o5fqgpnb4e"]
+[gd_scene load_steps=11 format=3 uid="uid://cw2o5fqgpnb4e"]
 
 [ext_resource type="Script" uid="uid://vfxmkgex23l7" path="res://Componentes/Inimigos/Infantaria/Morteiro/morteiro_operador.gd" id="1_nwg8a"]
 [ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_kwc7r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="4_hlhq7"]
 [ext_resource type="Script" uid="uid://b58qqklhmit11" path="res://Componentes/Inimigos/Infantaria/Morteiro/wander_morteiro.gd" id="5_tmqb0"]
 [ext_resource type="Script" uid="uid://b2tvp0pkvxebm" path="res://Componentes/Inimigos/Infantaria/Morteiro/fsm_morteiro.gd" id="6_7v3ji"]
+[ext_resource type="Script" uid="uid://od64n0h3m3mo" path="res://Scripts/Classes/flee.gd" id="7_pewby"]
 [ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (2).wav" id="8_uw1d2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
@@ -59,6 +60,11 @@ character = NodePath("../..")
 _animated_sprite = NodePath("../../AnimatedSprite2D")
 item_teste = ExtResource("2_kwc7r")
 
+[node name="Flee" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+script = ExtResource("7_pewby")
+character = NodePath("../..")
+metadata/_custom_type_script = "uid://od64n0h3m3mo"
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="SFXDeath" type="AudioStreamPlayer2D" parent="."]
@@ -76,5 +82,6 @@ collision_mask = 2
 position = Vector2(7.15256e-06, 7.15256e-06)
 shape = SubResource("RectangleShape2D_7v3ji")
 
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
