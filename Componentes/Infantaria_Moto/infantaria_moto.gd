@@ -15,6 +15,8 @@ var other_player : CharacterBody2D
 
 var can_throw_grenade = true
 
+@onready var _animated_sprite2d := $AnimatedSprite2D
+
 func _ready():
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
@@ -22,23 +24,35 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	
 	if parada == false:
+		_animated_sprite2d.play("moto_azul")
 		position.x = position.x -SPEED * delta
 		if other_player:
 			if global_position.x >= other_player.global_position.x - 25 and global_position.x <= other_player.global_position.x + 25:
-				if pode_parar:
-					parada = true
-					pode_parar = false
+				#if pode_parar and can_throw_grenade:
+				parada = true
+				pode_parar = false
 			
 	else:
+		
+		if other_player:
+			if not (global_position.x >= other_player.global_position.x - 25 and global_position.x <= other_player.global_position.x + 25):
+				parada = false
+		
+		_animated_sprite2d.play("granada")
 		frames_parada += delta + 1
-		if frames_parada >= 120:
-			parada = false
-		if frames_parada >= 60:
+		var frame_anim = _animated_sprite2d.frame
+		#if frames_parada >= 120:
+		
+			#parada = false
+		#if frames_parada >= 60:
+		if frame_anim == 3:
 			#frames_parada=0
-			if can_throw_grenade:
-				can_throw_grenade=false
-				throw_granade()
+			#if can_throw_grenade:
+			parada = false
+			can_throw_grenade=false
+			throw_granade()
 			
 		
 		if position.y >= other_player.position.y:

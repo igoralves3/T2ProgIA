@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwxmn82dihyfs" path="res://Componentes/Infantaria_Moto/infantaria_moto.gd" id="1_4eghu"]
 [ext_resource type="PackedScene" uid="uid://bwoeweqsm7xw8" path="res://Componentes/Granada/Granada.tscn" id="2_cx8jn"]
-[ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="2_qbewe"]
+[ext_resource type="SpriteFrames" uid="uid://bfk3pytwpxqlu" path="res://SpriteSheets/Veiculos.tres" id="3_cx8jn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbewe"]
 
@@ -13,9 +13,9 @@ collision_mask = 0
 script = ExtResource("1_4eghu")
 grenade = ExtResource("2_cx8jn")
 
-[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_qbewe")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_cx8jn")
+animation = &"moto_azul"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

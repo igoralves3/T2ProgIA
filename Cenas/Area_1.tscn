@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=20 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
 [ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/SpriteFramePorta.tres" id="2_r24xy"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c32yog5j06bf5" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_Escondida.tscn" id="16_ea284"]
 [ext_resource type="PackedScene" uid="uid://n3wxtopay5nf" path="res://Componentes/Inimigos/Infantaria/Morteiro/agentes_morteiro.tscn" id="17_emitg"]
 [ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="18_1xk7e"]
+[ext_resource type="PackedScene" uid="uid://btm45nn61a8k2" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_E_Prisioneiro.tscn" id="19_su8h8"]
 
 [node name="Area1" type="Node2D"]
 script = ExtResource("1_t3o0g")
@@ -201,5 +202,8 @@ grenadeBonus = 5
 
 [node name="Portao2" parent="." instance=ExtResource("18_1xk7e")]
 position = Vector2(112, -1762)
+
+[node name="InimigosEPrisioneiro" parent="." instance=ExtResource("19_su8h8")]
+position = Vector2(142, -532)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
