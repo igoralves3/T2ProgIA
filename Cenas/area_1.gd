@@ -22,4 +22,5 @@ func _process(delta: float) -> void:
 	#player camera.offset 
 
 func _on_main_player_char_dead_player():
+	GameManager.restartGame()
 	get_tree().reload_current_scene()

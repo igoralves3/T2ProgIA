@@ -12,6 +12,15 @@ func newGame():
 	lifes = 3
 	medals = 0
 	hasCheckpoint = false
+	print(lifes)
+
+func restartGame():
+	if lifes == 0:
+		print("game over")
+		newGame()
+	else:
+		lifes-=1
+		print(lifes)
 
 func setCheckPoint(newCheckPoint: Vector2):
 	print(newCheckPoint)
