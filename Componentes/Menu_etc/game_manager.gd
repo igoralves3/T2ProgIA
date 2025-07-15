@@ -12,7 +12,8 @@ func newGame():
 	lifes = 3
 	medals = 0
 	hasCheckpoint = false
-	print(lifes)
+	print("vidas: ", lifes)
+	
 
 func restartGame():
 	if lifes == 0:
@@ -20,7 +21,7 @@ func restartGame():
 		newGame()
 	else:
 		lifes-=1
-		print(lifes)
+		print("vidas: ", lifes)
 
 func setCheckPoint(newCheckPoint: Vector2):
 	print(newCheckPoint)
@@ -32,6 +33,7 @@ func setStartPoint(newStartPoint: Vector2):
 
 func addPoints(points: int):
 	score += points
+	print("score: ", score)
 
 func getSpawnPostion():
 	if hasCheckpoint:
