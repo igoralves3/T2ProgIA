@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=19 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
 [ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/SpriteFramePorta.tres" id="2_r24xy"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="15_2mqp0"]
 [ext_resource type="PackedScene" uid="uid://c32yog5j06bf5" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_Escondida.tscn" id="16_ea284"]
 [ext_resource type="PackedScene" uid="uid://n3wxtopay5nf" path="res://Componentes/Inimigos/Infantaria/Morteiro/agentes_morteiro.tscn" id="17_emitg"]
+[ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="18_1xk7e"]
 
 [node name="Area1" type="Node2D"]
 script = ExtResource("1_t3o0g")
@@ -34,10 +35,10 @@ tile_set = ExtResource("2_uvug2")
 collision_visibility_mode = 1
 
 [node name="Portao" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(112, -1762)
 sprite_frames = ExtResource("2_r24xy")
 animation = &"open"
-frame_progress = 0.566537
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
@@ -197,5 +198,8 @@ position = Vector2(198, -754)
 [node name="ItemGranadaExtra2" parent="." instance=ExtResource("13_so2n7")]
 position = Vector2(166, -751)
 grenadeBonus = 5
+
+[node name="Portao2" parent="." instance=ExtResource("18_1xk7e")]
+position = Vector2(112, -1762)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
