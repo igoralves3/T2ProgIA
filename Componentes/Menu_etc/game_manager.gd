@@ -14,6 +14,8 @@ func newGame():
 	hasCheckpoint = false
 
 func setCheckPoint(newCheckPoint: Vector2):
+	print(newCheckPoint)
+	hasCheckpoint = true
 	self.checkPoint = newCheckPoint
 
 func setStartPoint(newStartPoint: Vector2):
