@@ -166,7 +166,7 @@ autoplay = true
 position = Vector2(142, -316)
 
 [node name="MotoSpawn" parent="." instance=ExtResource("14_f5gam")]
-position = Vector2(201, -830)
+position = Vector2(209, -841)
 
 [node name="Checkpoint" parent="." instance=ExtResource("15_2mqp0")]
 collision_layer = 0
