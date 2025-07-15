@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://hhmvhtd8clrs"]
+
+[ext_resource type="Texture2D" uid="uid://dmwbbx3fp3sje" path="res://SpriteSheets/prisioneiro_spritesheet.png" id="1_p67m2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g41iv"]
+atlas = ExtResource("1_p67m2")
+region = Rect2(2, 46, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t25dr"]
+atlas = ExtResource("1_p67m2")
+region = Rect2(22, 46, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwn4u"]
+atlas = ExtResource("1_p67m2")
+region = Rect2(42, 46, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8pxu"]
+atlas = ExtResource("1_p67m2")
+region = Rect2(62, 46, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4sml"]
+atlas = ExtResource("1_p67m2")
+region = Rect2(2, 14, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6on8j"]
+atlas = ExtResource("1_p67m2")
+region = Rect2(22, 14, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myi6j"]
+atlas = ExtResource("1_p67m2")
+region = Rect2(42, 14, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf738"]
+atlas = ExtResource("1_p67m2")
+region = Rect2(62, 14, 20, 28)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g41iv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t25dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwn4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8pxu")
+}],
+"loop": true,
+"name": &"livre",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4sml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6on8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myi6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf738")
+}],
+"loop": true,
+"name": &"preso",
+"speed": 5.0
+}]

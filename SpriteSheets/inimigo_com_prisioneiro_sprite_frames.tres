@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://dhslnnl2cmxvx"]
+
+[ext_resource type="Texture2D" uid="uid://d36r3b4war2lw" path="res://SpriteSheets/imimigos que carregam prisioneiro.png" id="1_wyyse"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi0k8"]
+atlas = ExtResource("1_wyyse")
+region = Rect2(5, 5, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w4mr"]
+atlas = ExtResource("1_wyyse")
+region = Rect2(24, 5, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn26u"]
+atlas = ExtResource("1_wyyse")
+region = Rect2(43, 5, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh2fb"]
+atlas = ExtResource("1_wyyse")
+region = Rect2(62, 5, 16, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi0k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w4mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn26u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh2fb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

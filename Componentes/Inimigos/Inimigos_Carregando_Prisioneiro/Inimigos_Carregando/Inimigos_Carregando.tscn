@@ -1,6 +1,5 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtguxsdx7rqqy"]
 
-[ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_4pou2"]
 [ext_resource type="Script" uid="uid://daurn06o12usm" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_Carregando/inimigos_carregando.gd" id="1_dr1rh"]
 [ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/CommandoSFX2.wav" id="3_kcdnx"]
 
@@ -12,10 +11,9 @@ size = Vector2(120, 120)
 [node name="InimigosCarregando" type="CharacterBody2D"]
 script = ExtResource("1_dr1rh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5.96046e-07)
-scale = Vector2(0.171875, 0.171875)
-texture = ExtResource("1_4pou2")
+sprite_frames = ExtResource("2_kcdnx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hfvxu")

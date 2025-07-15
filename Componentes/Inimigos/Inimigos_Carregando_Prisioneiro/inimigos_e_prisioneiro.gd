@@ -22,4 +22,6 @@ func _physics_process(delta: float) -> void:
 				position.x =position.x - SPEED * delta
 			elif global_position.x > other_player.global_position.x:
 				position.x =position.x + SPEED * delta
+	elif not inimigo_esq and not inimigo_dir:
+		prisioneiro.preso = false
 			

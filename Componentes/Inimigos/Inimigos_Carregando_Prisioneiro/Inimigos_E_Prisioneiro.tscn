@@ -11,9 +11,9 @@ prisioneiro = NodePath("Prisioneiro")
 inimigo_dir = NodePath("InimigoDir")
 
 [node name="InimigoEsq" parent="." instance=ExtResource("2_kypbl")]
-position = Vector2(-25, 0)
+position = Vector2(-22, 0)
 
 [node name="Prisioneiro" parent="." instance=ExtResource("3_d4i56")]
 
 [node name="InimigoDir" parent="." instance=ExtResource("2_kypbl")]
-position = Vector2(26, 0)
+position = Vector2(22, 0)
