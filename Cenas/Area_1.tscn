@@ -169,6 +169,22 @@ position = Vector2(142, -316)
 position = Vector2(209, -841)
 
 [node name="Checkpoint" parent="." instance=ExtResource("15_2mqp0")]
+position = Vector2(0, -195)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Checkpoint2" parent="." instance=ExtResource("15_2mqp0")]
+position = Vector2(0, -585)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Checkpoint3" parent="." instance=ExtResource("15_2mqp0")]
+position = Vector2(0, -1087)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Checkpoint4" parent="." instance=ExtResource("15_2mqp0")]
+position = Vector2(0, -1450)
 collision_layer = 0
 collision_mask = 2
 
