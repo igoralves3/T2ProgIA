@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2j2xgntus103"]
+[gd_scene load_steps=4 format=3 uid="uid://d2j2xgntus103"]
 
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="1_uillb"]
 [ext_resource type="PackedScene" uid="uid://n3wxtopay5nf" path="res://Componentes/Inimigos/Infantaria/Morteiro/agentes_morteiro.tscn" id="3_3wh8d"]
+[ext_resource type="PackedScene" uid="uid://btm45nn61a8k2" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_E_Prisioneiro.tscn" id="3_6dacf"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,3 +19,6 @@ god_mode = true
 
 [node name="Agentes_morteiro" parent="." instance=ExtResource("3_3wh8d")]
 position = Vector2(115, 82)
+
+[node name="InimigosEPrisioneiro" parent="." instance=ExtResource("3_6dacf")]
+position = Vector2(109, 157)

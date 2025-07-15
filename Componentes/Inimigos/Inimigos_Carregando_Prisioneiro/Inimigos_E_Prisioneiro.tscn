@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://btm45nn61a8k2"]
+
+[ext_resource type="Script" uid="uid://scuas3n66gey" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/inimigos_e_prisioneiro.gd" id="1_m2vvp"]
+[ext_resource type="PackedScene" uid="uid://dtguxsdx7rqqy" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_Carregando/Inimigos_Carregando.tscn" id="2_kypbl"]
+[ext_resource type="PackedScene" uid="uid://bn56cfxohj435" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Prisioneiro/Prisioneiro.tscn" id="3_d4i56"]
+
+[node name="InimigosEPrisioneiro" type="Node2D" node_paths=PackedStringArray("inimigo_esq", "prisioneiro", "inimigo_dir")]
+script = ExtResource("1_m2vvp")
+inimigo_esq = NodePath("InimigoEsq")
+prisioneiro = NodePath("Prisioneiro")
+inimigo_dir = NodePath("InimigoDir")
+
+[node name="InimigoEsq" parent="." instance=ExtResource("2_kypbl")]
+position = Vector2(-25, 0)
+
+[node name="Prisioneiro" parent="." instance=ExtResource("3_d4i56")]
+
+[node name="InimigoDir" parent="." instance=ExtResource("2_kypbl")]
+position = Vector2(26, 0)
