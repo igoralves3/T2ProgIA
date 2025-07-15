@@ -1,0 +1,78 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://bfk3pytwpxqlu"]
+
+[ext_resource type="Texture2D" uid="uid://c4ada5ytja0ad" path="res://SpriteSheets/granadas e motos/motos (1).png" id="1_epdrh"]
+[ext_resource type="Texture2D" uid="uid://b4bj42i8hcuc6" path="res://SpriteSheets/granadas e motos/motos (2).png" id="2_iuxf2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epdrh"]
+atlas = ExtResource("1_epdrh")
+region = Rect2(12, 6, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuxf2"]
+atlas = ExtResource("1_epdrh")
+region = Rect2(63, 6, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpwfa"]
+atlas = ExtResource("1_epdrh")
+region = Rect2(114, 6, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keyjl"]
+atlas = ExtResource("1_epdrh")
+region = Rect2(165, 6, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q0uc"]
+atlas = ExtResource("2_iuxf2")
+region = Rect2(7, 4, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uftve"]
+atlas = ExtResource("2_iuxf2")
+region = Rect2(58, 4, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n3se"]
+atlas = ExtResource("2_iuxf2")
+region = Rect2(109, 4, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c85mw"]
+atlas = ExtResource("2_iuxf2")
+region = Rect2(160, 4, 48, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epdrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuxf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpwfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keyjl")
+}],
+"loop": true,
+"name": &"granada",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q0uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uftve")
+}],
+"loop": true,
+"name": &"moto_azul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n3se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c85mw")
+}],
+"loop": true,
+"name": &"moto_marrom",
+"speed": 5.0
+}]
