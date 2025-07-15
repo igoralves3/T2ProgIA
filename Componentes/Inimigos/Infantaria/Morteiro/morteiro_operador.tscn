@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://b58qqklhmit11" path="res://Componentes/Inimigos/Infantaria/Morteiro/wander_morteiro.gd" id="5_tmqb0"]
 [ext_resource type="Script" uid="uid://b2tvp0pkvxebm" path="res://Componentes/Inimigos/Infantaria/Morteiro/fsm_morteiro.gd" id="6_7v3ji"]
 [ext_resource type="Script" uid="uid://od64n0h3m3mo" path="res://Scripts/Classes/flee.gd" id="7_pewby"]
-[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (2).wav" id="8_uw1d2"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/CommandoSFX2.wav" id="8_uw1d2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
 size = Vector2(70, 6.60066)

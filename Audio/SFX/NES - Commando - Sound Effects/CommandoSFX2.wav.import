@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ce5jm4cji0b6a"
-path="res://.godot/imported/Commando SFX (2).wav-1fc9036d6a4d7380a64614fbd27296be.sample"
+path="res://.godot/imported/CommandoSFX2.wav-91d49086bfdb306674c4f9a066f1f44c.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (2).wav"
-dest_files=["res://.godot/imported/Commando SFX (2).wav-1fc9036d6a4d7380a64614fbd27296be.sample"]
+source_file="res://Audio/SFX/NES - Commando - Sound Effects/CommandoSFX2.wav"
+dest_files=["res://.godot/imported/CommandoSFX2.wav-91d49086bfdb306674c4f9a066f1f44c.sample"]
 
 [params]
 

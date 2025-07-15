@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="1_4pou2"]
 [ext_resource type="Script" uid="uid://daurn06o12usm" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_Carregando/inimigos_carregando.gd" id="1_dr1rh"]
-[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (2).wav" id="3_kcdnx"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/CommandoSFX2.wav" id="3_kcdnx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfvxu"]
 

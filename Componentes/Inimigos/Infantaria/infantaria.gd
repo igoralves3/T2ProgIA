@@ -15,11 +15,12 @@ var is_enemy: bool = true
 @export var timer: Timer
 var timer_olhar_para_jogador: Timer
 var olhando_para_jogador: bool = false
-@onready var SFXDeath = $SFXDeath
 var motion_direction:= Vector2(1,0)
 @onready var _animated_sprite = $AnimatedSprite2D
 var tempo_fora_tela: float = 2
-
+#var soundmaster = SoundController
+@export var som_morte = AudioStream
+@export var som_tiro = AudioStream
 @export var colisao_chao: CollisionShape2D
 @export var area_colisao_morte: Area2D
 
@@ -116,14 +117,15 @@ func _on_timer_timeout() -> void:
 func bullet_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	SFXDeath.play()
+	SoundController.play_button(som_morte)
+	#SFXDeath.play()
 	dead_enemy.emit(self)	
 	queue_free()
 
 func grenade_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	SFXDeath.play()
+	#SFXDeath.play()
 	dead_enemy.emit(self)	
 	queue_free()
 

@@ -1,4 +1,3 @@
-class_name SoundController
 extends Node
 
 var volume_BGM: float = 50
@@ -16,7 +15,8 @@ func _ready():
 func play_button(Audio) -> void:
 	var sfx = get_free_sfx_stream()
 	if sfx != null:
-		sfx.stream = load(Audio)
+		sfx.stream = Audio
+#		sfx.stream = load(Audio)
 		sfx.play()
 
 func get_free_sfx_stream():
