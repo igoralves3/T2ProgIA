@@ -49,7 +49,7 @@ offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/separation = 13
+theme_override_constants/separation = 18
 alignment = 1
 vertical = true
 
@@ -58,7 +58,7 @@ z_index = 3
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_3hc65")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "GAME START"
 
 [node name="OptionsButton" type="Button" parent="UIContainer/ButtonsContainer/Control/BoxContainer"]
@@ -66,7 +66,7 @@ z_index = 3
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_3hc65")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "OPTIONS"
 
 [node name="CreditsButton" type="Button" parent="UIContainer/ButtonsContainer/Control/BoxContainer"]
@@ -74,7 +74,7 @@ z_index = 3
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_3hc65")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "CREDITS"
 
 [node name="ExitButton" type="Button" parent="UIContainer/ButtonsContainer/Control/BoxContainer"]
@@ -82,7 +82,7 @@ z_index = 3
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_3hc65")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "EXIT GAME"
 
 [node name="OptionsContainer" type="MarginContainer" parent="UIContainer"]
@@ -101,7 +101,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_fonts/font = ExtResource("4_3hc65")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 tab_alignment = 1
 current_tab = 0
 
@@ -122,39 +122,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -90.5
-offset_right = 125.0
-offset_bottom = 57.5
+offset_left = -10.0
+offset_top = -76.0
+offset_right = 140.0
+offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.6, 0.6)
 mouse_filter = 2
 theme_override_constants/v_separation = 50
 
 [node name="MasterSoundSlider" type="HSlider" parent="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/FlowContainer"]
 z_index = 3
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
 step = 0.05
 value = 100.0
-tick_count = 5
-ticks_on_borders = true
 
 [node name="BGMSlider" type="HSlider" parent="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/FlowContainer"]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
 step = 0.05
 value = 50.0
-tick_count = 5
-ticks_on_borders = true
 
 [node name="SFXSlider" type="HSlider" parent="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/FlowContainer"]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
 step = 0.05
 value = 100.0
-tick_count = 5
-ticks_on_borders = true
 
 [node name="VLabelsContainer" type="VBoxContainer" parent="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control"]
 z_index = 1
@@ -164,10 +159,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -299.5
-offset_top = -94.5
-offset_right = -217.5
-offset_bottom = 62.5
+offset_left = -92.0
+offset_top = -70.0
+offset_right = -44.0
+offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -177,21 +172,21 @@ theme_override_constants/separation = 41
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_3hc65")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "MASTER"
 
 [node name="Label2" type="Label" parent="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/VLabelsContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_3hc65")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "MUSIC"
 
 [node name="Label3" type="Label" parent="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/VLabelsContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_3hc65")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "SFX"
 
 [node name="BackButton" type="Button" parent="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control"]
@@ -202,13 +197,14 @@ anchor_left = 0.03
 anchor_top = 0.97
 anchor_right = 0.03
 anchor_bottom = 0.97
-offset_top = -39.99
-offset_right = 72.0
-offset_bottom = -0.98999
+offset_left = 0.28
+offset_top = -18.86
+offset_right = 40.28
+offset_bottom = -0.860001
 grow_vertical = 0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_3hc65")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 10
 text = "BACK"
 
 [node name="DifficultyContainer" type="MarginContainer" parent="UIContainer"]
@@ -229,65 +225,55 @@ anchor_left = 0.03
 anchor_top = 0.97
 anchor_right = 0.03
 anchor_bottom = 0.97
-offset_top = -40.0
-offset_right = 72.0
-offset_bottom = -1.0
+offset_left = 0.28
+offset_top = -19.32
+offset_right = 40.28
+offset_bottom = -1.32001
 grow_vertical = 0
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 25
-text = "Back"
+theme_override_fonts/font = ExtResource("4_3hc65")
+theme_override_font_sizes/font_size = 10
+text = "BACK"
 
 [node name="BoxContainer" type="BoxContainer" parent="UIContainer/DifficultyContainer/Control"]
 layout_mode = 2
-offset_left = 447.0
-offset_top = 274.0
-offset_right = 577.0
-offset_bottom = 445.0
+offset_left = 51.0
+offset_top = 46.0
+offset_right = 181.0
+offset_bottom = 217.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/separation = 13
 vertical = true
 
 [node name="2 players" type="Button" parent="UIContainer/DifficultyContainer/Control/BoxContainer"]
+visible = false
 z_index = 3
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 20
-text = "2 Players"
+theme_override_fonts/font = ExtResource("4_3hc65")
+theme_override_font_sizes/font_size = 10
+text = "2 PLAYERS"
 
 [node name="EasyButton" type="Button" parent="UIContainer/DifficultyContainer/Control/BoxContainer"]
+visible = false
 z_index = 3
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 20
-text = "Easy"
-
-[node name="MediumButton" type="Button" parent="UIContainer/DifficultyContainer/Control/BoxContainer"]
-z_index = 3
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 20
-text = "Medium"
-
-[node name="HardButton" type="Button" parent="UIContainer/DifficultyContainer/Control/BoxContainer"]
-z_index = 3
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 20
-text = "Hard"
+theme_override_fonts/font = ExtResource("4_3hc65")
+theme_override_font_sizes/font_size = 10
+text = "EASY"
 
 [node name="ImpossivelButton" type="Button" parent="UIContainer/DifficultyContainer/Control/BoxContainer"]
 z_index = 3
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 20
-text = "Impossible"
+theme_override_fonts/font = ExtResource("4_3hc65")
+theme_override_font_sizes/font_size = 10
+text = "NORMAL"
 
 [connection signal="pressed" from="UIContainer/ButtonsContainer/Control/BoxContainer/GameStartButton" to="." method="_on_game_start_button_pressed"]
 [connection signal="pressed" from="UIContainer/ButtonsContainer/Control/BoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
@@ -301,6 +287,4 @@ text = "Impossible"
 [connection signal="pressed" from="UIContainer/DifficultyContainer/Control/BackButtonDifficulty" to="." method="_on_back_button_difficulty_pressed"]
 [connection signal="pressed" from="UIContainer/DifficultyContainer/Control/BoxContainer/2 players" to="." method="_on__players_pressed"]
 [connection signal="pressed" from="UIContainer/DifficultyContainer/Control/BoxContainer/EasyButton" to="." method="_on_easy_button_pressed"]
-[connection signal="pressed" from="UIContainer/DifficultyContainer/Control/BoxContainer/MediumButton" to="." method="_on_medium_button_pressed"]
-[connection signal="pressed" from="UIContainer/DifficultyContainer/Control/BoxContainer/HardButton" to="." method="_on_hard_button_pressed"]
 [connection signal="pressed" from="UIContainer/DifficultyContainer/Control/BoxContainer/ImpossivelButton" to="." method="_on_impossivel_button_pressed"]

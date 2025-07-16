@@ -17,16 +17,14 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	if inimigo_esq or inimigo_dir:
-		var distance = global_position - other_player.global_position
-		if distance.length() < 100:
-			position += direction_side
-			"""
-			position.y =position.y - SPEED * delta
-			if global_position.x < other_player.global_position.x:
-				position.x =position.x - SPEED * delta
-			elif global_position.x > other_player.global_position.x:
-				position.x =position.x + SPEED * delta
-			"""
+		if other_player != null:
+			var distance = global_position - other_player.global_position
+			if distance.length() < 100:
+				position.y =position.y - SPEED * delta
+				if global_position.x < other_player.global_position.x:
+					position.x =position.x - SPEED * delta
+				elif global_position.x > other_player.global_position.x:
+					position.x =position.x + SPEED * delta
 	elif not inimigo_esq and not inimigo_dir:
 		prisioneiro.preso = false
 			

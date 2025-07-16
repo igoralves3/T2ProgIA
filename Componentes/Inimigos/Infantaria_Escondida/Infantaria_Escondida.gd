@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		if distance < 50:
 			andar_pela_cena()
 			
-		
+
 func look_at_player() -> Vector2:
 	if other_player:
 		var player_position = other_player.global_position
