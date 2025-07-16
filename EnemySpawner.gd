@@ -53,6 +53,7 @@ func _on_mob_timer_timeout():
 func _on_mob_dead_enemy(enemy):
 	# Handle the enemy death here (e.g., remove from list, spawn more, etc.)
 	if enemy in ListaInimigos:
+		GameManager.addPoints(enemy.pontos)
 		ListaInimigos.erase(enemy)
 	# Optionally, queue_free the enemy if not already done
 	# enemy.queue_free()
