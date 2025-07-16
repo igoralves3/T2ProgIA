@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d324awvm2boeg" path="res://Componentes/Bullets/PlayerBullet.tscn" id="2_tok1r"]
 [ext_resource type="PackedScene" uid="uid://bwoeweqsm7xw8" path="res://Componentes/Granada/Granada.tscn" id="3_ddoul"]
 [ext_resource type="SpriteFrames" uid="uid://cqmfjswyo7gfj" path="res://Componentes/Player/player_sprite_frames.tres" id="4_5mq5v"]
-[ext_resource type="AudioStream" uid="uid://dgj3v1nfvx6hh" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (1).wav" id="5_4q2vn"]
+[ext_resource type="AudioStream" uid="uid://dgj3v1nfvx6hh" path="res://Audio/SFX/NES - Commando - Sound Effects/ShootBullet.wav" id="5_4q2vn"]
 [ext_resource type="AudioStream" uid="uid://kglyefil237g" path="res://Audio/BGM/NES/12 - Death Theme.mp3" id="6_hycio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mq5v"]

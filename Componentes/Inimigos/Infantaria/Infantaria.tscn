@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://crev8iknffvfn" path="res://Scripts/Classes/wander.gd" id="5_clfx3"]
 [ext_resource type="Script" uid="uid://bwlb3cbdttuh2" path="res://Scripts/Classes/seek.gd" id="5_dqxkc"]
 [ext_resource type="Script" uid="uid://dbmg342k1f422" path="res://Scripts/Classes/hover.gd" id="5_vi6ic"]
-[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/CommandoSFX2.wav" id="8_04x4o"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="8_04x4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
 size = Vector2(70, 6.60066)

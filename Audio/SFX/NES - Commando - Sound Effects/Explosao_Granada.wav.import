@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c6jrqwoutiur6"
-path="res://.godot/imported/Commando SFX (4).wav-76aad9fd2f64e87381d8ee9ca7416705.sample"
+path="res://.godot/imported/Explosao_Granada.wav-4c9935a92ea7dc2f99b50f9246279fab.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (4).wav"
-dest_files=["res://.godot/imported/Commando SFX (4).wav-76aad9fd2f64e87381d8ee9ca7416705.sample"]
+source_file="res://Audio/SFX/NES - Commando - Sound Effects/Explosao_Granada.wav"
+dest_files=["res://.godot/imported/Explosao_Granada.wav-4c9935a92ea7dc2f99b50f9246279fab.sample"]
 
 [params]
 

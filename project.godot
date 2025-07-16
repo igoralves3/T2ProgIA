@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SoundController="*res://Componentes/Menu_etc/sound_controller.tscn"
+SoundMasterController="*res://Componentes/Menu_etc/sound_controller.tscn"
 GameManager="*res://Componentes/Menu_etc/game_manager.gd"
+SoundController="*res://Componentes/Menu_etc/sound_controller.tscn"
 
 [display]
 

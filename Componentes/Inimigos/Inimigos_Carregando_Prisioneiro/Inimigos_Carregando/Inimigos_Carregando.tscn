@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtguxsdx7rqqy"]
 
 [ext_resource type="Script" uid="uid://daurn06o12usm" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_Carregando/inimigos_carregando.gd" id="1_dr1rh"]
-[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/CommandoSFX2.wav" id="2_00vq5"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="2_00vq5"]
 [ext_resource type="SpriteFrames" uid="uid://dhslnnl2cmxvx" path="res://SpriteSheets/inimigo_com_prisioneiro_sprite_frames.tres" id="2_kcdnx"]
 [ext_resource type="AudioStream" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (2).wav" id="3_kcdnx"]
 

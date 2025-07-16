@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dgj3v1nfvx6hh"
-path="res://.godot/imported/Commando SFX (1).wav-08d30a5c33161f1d7a18aba32109f8b8.sample"
+path="res://.godot/imported/ShootBullet.wav-f2aaffacf227bb26acd54aec512de7d6.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (1).wav"
-dest_files=["res://.godot/imported/Commando SFX (1).wav-08d30a5c33161f1d7a18aba32109f8b8.sample"]
+source_file="res://Audio/SFX/NES - Commando - Sound Effects/ShootBullet.wav"
+dest_files=["res://.godot/imported/ShootBullet.wav-f2aaffacf227bb26acd54aec512de7d6.sample"]
 
 [params]
 

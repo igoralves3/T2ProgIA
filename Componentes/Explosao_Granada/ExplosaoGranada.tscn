@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6bwdlfq6div8" path="res://Componentes/Explosao_Granada/ExplosaoGranada.gd" id="1_2bxbb"]
 [ext_resource type="SpriteFrames" uid="uid://bk2etwn5fmmes" path="res://SpriteSheets/explosao_granada.tres" id="2_67w5c"]
-[ext_resource type="AudioStream" uid="uid://c6jrqwoutiur6" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (4).wav" id="2_otu8y"]
+[ext_resource type="AudioStream" uid="uid://c6jrqwoutiur6" path="res://Audio/SFX/NES - Commando - Sound Effects/Explosao_Granada.wav" id="2_otu8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otu8y"]
 size = Vector2(28, 28.5)
