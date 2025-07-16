@@ -8,10 +8,10 @@ var camera_distancia_y_minima = 170
 var camera_altura_maxima_y = -1791.5
 
 var currentCheckpoint: Vector2
-@onready var startPoint: Vector2 = Vector2(74,100)
+#@onready var startPoint: Vector2 = Vector2(74,100)
 
 func _ready() -> void:
-	GameManager.setStartPoint(startPoint)
+	GameManager.setStartPoint(player.global_position)
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
 
 func _process(delta: float) -> void:
