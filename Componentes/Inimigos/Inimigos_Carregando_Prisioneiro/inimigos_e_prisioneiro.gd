@@ -10,6 +10,8 @@ const SPEED:int = 50
 
 var direction_side := Vector2(-0.7,-1)
 
+var move = false
+
 func _ready():
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
@@ -20,11 +22,15 @@ func _physics_process(delta: float) -> void:
 		if other_player != null:
 			var distance = global_position - other_player.global_position
 			if distance.length() < 100:
-				position.y =position.y - SPEED * delta
-				if global_position.x < other_player.global_position.x:
-					position.x =position.x - SPEED * delta
-				elif global_position.x > other_player.global_position.x:
-					position.x =position.x + SPEED * delta
+				move = true
+				
 	elif not inimigo_esq and not inimigo_dir:
 		prisioneiro.preso = false
+		
+	if move:
+		position.y =position.y - SPEED * delta
+				#if global_position.x < other_player.global_position.x:
+		position.x =position.x - SPEED * delta
+				#elif global_position.x > other_player.global_position.x:
+				#	position.x =position.x + SPEED * delta
 			
