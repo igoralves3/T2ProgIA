@@ -29,8 +29,9 @@ func _physics_process(delta: float) -> void:
 		_animated_sprite2d.play("moto_azul")
 		position.x = position.x -SPEED * delta
 		if other_player:
+#			if global_position.x >= other_player.global_position.x - 25 and global_position.x <= other_player.global_position.x + 25:
 			if global_position.x >= other_player.global_position.x - 25 and global_position.x <= other_player.global_position.x + 25:
-				#if pode_parar and can_throw_grenade:
+				#if pode_parar and can_throw_grenade: #olhar aqui
 				parada = true
 				pode_parar = false
 			

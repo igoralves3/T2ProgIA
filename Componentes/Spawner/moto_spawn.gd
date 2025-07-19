@@ -19,7 +19,7 @@ func _on_timer_timeout() -> void:
 		
 		var moto = moto_scene.instantiate()
 		moto_exists = moto
-		moto.global_position = global_position
+		moto.global_position = Vector2(global_position.x + 20,global_position.y)
 		
 		get_parent().add_child(moto)	
 		
