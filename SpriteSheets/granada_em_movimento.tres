@@ -32,7 +32,27 @@ animations = [{
 "duration": 0.75,
 "texture": SubResource("AtlasTexture_d81p7")
 }],
+"loop": true,
+"name": &"inimigo",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_d81p7")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_qcfyw")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_17734")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_qcfyw")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_d81p7")
+}],
 "loop": false,
-"name": &"default",
+"name": &"player",
 "speed": 5.0
 }]

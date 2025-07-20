@@ -50,7 +50,6 @@ func _on_timer_timeout() -> void:
 #	print (body, "player bullet hit")
 	if body.has_method("death_normal"):
 		
-	#	SFXEnemyDeath.play()
 		
 		body.death_normal()
 	await get_tree().create_timer(tempo_animacao).timeout
@@ -66,7 +65,6 @@ func _on_area_entered(area: Area2D) -> void:
 	#print (area, "player bullet hit")
 	if area.get_parent().has_method("death_normal"):
 		
-	#	SFXEnemyDeath.play()
 	#	print ("death normal area2d")
 		area.get_parent().death_normal()
 	await get_tree().create_timer(tempo_animacao).timeout

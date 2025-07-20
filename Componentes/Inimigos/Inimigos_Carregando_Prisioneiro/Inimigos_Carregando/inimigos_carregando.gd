@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-@onready var SFXDeath = $SFXDeath
-
-
 @onready var _animated_sprite:= $AnimatedSprite2D
 
 @export var som_morte = AudioStream

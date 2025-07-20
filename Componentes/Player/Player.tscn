@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7ye3664gw7kb"]
+[gd_scene load_steps=10 format=3 uid="uid://b7ye3664gw7kb"]
 
 [ext_resource type="Script" uid="uid://dmc5325t0172w" path="res://Componentes/Player/PlayerScript.gd" id="1_q3lat"]
 [ext_resource type="PackedScene" uid="uid://d324awvm2boeg" path="res://Componentes/Bullets/PlayerBullet.tscn" id="2_tok1r"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cqmfjswyo7gfj" path="res://Componentes/Player/player_sprite_frames.tres" id="4_5mq5v"]
 [ext_resource type="AudioStream" uid="uid://dgj3v1nfvx6hh" path="res://Audio/SFX/NES - Commando - Sound Effects/ShootBullet.wav" id="5_4q2vn"]
 [ext_resource type="AudioStream" uid="uid://kglyefil237g" path="res://Audio/BGM/NES/12 - Death Theme.mp3" id="6_hycio"]
+[ext_resource type="PackedScene" uid="uid://cxbhqcaby8h74" path="res://Componentes/VFX/bullet_vfx.tscn" id="6_kpe2d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mq5v"]
 size = Vector2(10.6667, 3.66667)
@@ -20,6 +21,9 @@ collision_mask = 25
 script = ExtResource("1_q3lat")
 bullet = ExtResource("2_tok1r")
 grenade = ExtResource("3_ddoul")
+SFXShootBullet = ExtResource("5_4q2vn")
+SFXPlayerDeath = ExtResource("6_hycio")
+Bullet_VFX = ExtResource("6_kpe2d")
 
 [node name="CollisionFloor" type="CollisionShape2D" parent="."]
 light_mask = 0
@@ -40,11 +44,3 @@ collision_mask = 4
 [node name="CollisionEnemies" type="CollisionShape2D" parent="Area2DEnemyCollision"]
 shape = SubResource("CapsuleShape2D_l2ndj")
 debug_color = Color(0, 0.595, 0.7, 0.388235)
-
-[node name="SFXShootBullet" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_4q2vn")
-volume_db = -16.0
-
-[node name="SFXPlayerDeath" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_hycio")
-volume_db = -16.0

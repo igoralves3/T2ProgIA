@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxbhqcaby8h74"]
+
+[ext_resource type="SpriteFrames" uid="uid://bqgf0okskpe5a" path="res://Componentes/VFX/bullet_vfx.tres" id="1_e6ymb"]
+[ext_resource type="Script" uid="uid://7b41io6rhf0c" path="res://Componentes/VFX/bullet_vfx.gd" id="2_e6ymb"]
+
+[node name="BulletVFX" type="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0.85098)
+sprite_frames = ExtResource("1_e6ymb")
+script = ExtResource("2_e6ymb")

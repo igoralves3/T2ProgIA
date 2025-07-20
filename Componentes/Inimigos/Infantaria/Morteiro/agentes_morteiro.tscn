@@ -13,6 +13,8 @@ morteiro_bullet = ExtResource("2_b2yx3")
 
 [node name="Morteiro" type="Area2D" parent="."]
 position = Vector2(0, 6)
+collision_layer = 4
+collision_mask = 0
 
 [node name="MorteiroAnim" type="AnimatedSprite2D" parent="Morteiro"]
 sprite_frames = ExtResource("1_bjqxk")

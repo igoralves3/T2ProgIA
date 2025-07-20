@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtguxsdx7rqqy"]
+[gd_scene load_steps=6 format=3 uid="uid://dtguxsdx7rqqy"]
 
 [ext_resource type="Script" uid="uid://daurn06o12usm" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_Carregando/inimigos_carregando.gd" id="1_dr1rh"]
-[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="2_00vq5"]
 [ext_resource type="SpriteFrames" uid="uid://dhslnnl2cmxvx" path="res://SpriteSheets/inimigo_com_prisioneiro_sprite_frames.tres" id="2_kcdnx"]
-[ext_resource type="AudioStream" path="res://Audio/SFX/NES - Commando - Sound Effects/Commando SFX (2).wav" id="3_kcdnx"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="3_kcdnx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfvxu"]
 
@@ -12,7 +11,7 @@ size = Vector2(120, 120)
 
 [node name="InimigosCarregando" type="CharacterBody2D"]
 script = ExtResource("1_dr1rh")
-som_morte = ExtResource("2_00vq5")
+som_morte = ExtResource("3_kcdnx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5.96046e-07)
@@ -20,10 +19,6 @@ sprite_frames = ExtResource("2_kcdnx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hfvxu")
-
-[node name="SFXDeath" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_kcdnx")
-volume_db = -16.0
 
 [node name="Area2DColisaoMorte" type="Area2D" parent="."]
 light_mask = 4

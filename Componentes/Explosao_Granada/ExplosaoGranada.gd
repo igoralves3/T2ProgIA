@@ -2,15 +2,13 @@ extends Area2D
 
 var tempo_para_sumir: float = 0.258 #+- isso
 var dono: String = ""
-
-@onready var SFXGranadeBlast = $SFXGranadeBlast
-
+@export var SFXExplosao = AudioStream
 
 func _ready():
 	%Timer.wait_time = tempo_para_sumir
 	%Timer.start()
 #	print('explosao')
-	SFXGranadeBlast.play()
+	SoundController.play_button(SFXExplosao)
 	$AnimatedSprite2D.play()
 	if dono == "Player": #jogador
 		set_collision_layer_value(2, true) #layer do jogador

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="1_uillb"]
 [ext_resource type="PackedScene" uid="uid://n3wxtopay5nf" path="res://Componentes/Inimigos/Infantaria/Morteiro/agentes_morteiro.tscn" id="3_3wh8d"]
 [ext_resource type="PackedScene" uid="uid://btm45nn61a8k2" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_E_Prisioneiro.tscn" id="3_6dacf"]
-[ext_resource type="PackedScene" uid="uid://d0d724dgyu3xp" path="res://Componentes/Spawner/MotoSpawn.tscn" id="4_6dacf"]
+[ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="5_usgop"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,11 +18,10 @@ unique_name_in_owner = true
 position = Vector2(69, 214)
 god_mode = true
 
-[node name="Agentes_morteiro" parent="." instance=ExtResource("3_3wh8d")]
-position = Vector2(115, 82)
-
 [node name="InimigosEPrisioneiro" parent="." instance=ExtResource("3_6dacf")]
 position = Vector2(109, 157)
 
-[node name="MotoSpawn" parent="." instance=ExtResource("4_6dacf")]
-position = Vector2(208, 120)
+[node name="EnemyController" parent="." instance=ExtResource("5_usgop")]
+
+[node name="Agentes_morteiro" parent="." instance=ExtResource("3_3wh8d")]
+position = Vector2(111, 17)

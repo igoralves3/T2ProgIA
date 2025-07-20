@@ -15,7 +15,9 @@ script = ExtResource("1_tm5rw")
 explosao = ExtResource("2_1lei2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 6
 sprite_frames = ExtResource("3_1lei2")
+animation = &"inimigo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

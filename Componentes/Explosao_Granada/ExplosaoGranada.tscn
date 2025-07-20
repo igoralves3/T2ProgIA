@@ -11,6 +11,7 @@ size = Vector2(28, 28.5)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_2bxbb")
+SFXExplosao = ExtResource("2_otu8y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_67w5c")
@@ -25,10 +26,6 @@ visible = false
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-
-[node name="SFXGranadeBlast" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_otu8y")
-volume_db = -16.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

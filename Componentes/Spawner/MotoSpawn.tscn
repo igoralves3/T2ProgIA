@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0d724dgyu3xp"]
 
 [ext_resource type="Script" uid="uid://dvhvjurqvvyba" path="res://Componentes/Spawner/moto_spawn.gd" id="1_dfnhx"]
-[ext_resource type="PackedScene" uid="uid://v03caxnfgonm" path="res://Componentes/Infantaria_Moto/Infantaria_Moto.tscn" id="2_pwclo"]
+[ext_resource type="PackedScene" uid="uid://v03caxnfgonm" path="res://Componentes/Infantaria_Moto/Infantaria_Moto_Ponte.tscn" id="2_pwclo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwclo"]
 

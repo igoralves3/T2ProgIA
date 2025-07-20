@@ -1,7 +1,7 @@
 extends State
 class_name Flee
 
-const SPEED = 100
+const SPEED = 50
 
 @export var character: CharacterBody2D
 

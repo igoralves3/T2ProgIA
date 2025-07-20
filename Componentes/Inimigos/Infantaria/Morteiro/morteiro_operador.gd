@@ -8,7 +8,7 @@ var can_shoot: bool = true
 var is_enemy: bool = true
 var timer_olhar_para_jogador: Timer
 var olhando_para_jogador: bool = false
-@onready var SFXDeath = $SFXDeath
+@export var som_morte = AudioStream
 var motion_direction:= Vector2(1,0)
 @onready var _animated_sprite = $AnimatedSprite2D
 var tempo_fora_tela: float = 2
@@ -20,7 +20,7 @@ var fugindo = false
 @export var morteiro_bullet: PackedScene
 @export var morteiro : Area2D
 
-var pode_atirar = true
+var pode_atirar = false
 
 var recharge_frames = 0
 
@@ -46,20 +46,20 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if ativo:
-		if other_player:
-			var direction = other_player.global_position - global_position
+		#if other_player:
+		#	var direction = other_player.global_position - global_position
 		
-			if direction.length() < 100:
-				if pode_atirar:
-					pode_atirar = false
-					print('atirando')
-					#fire_bullet()
-					fire_morteiro()
-				else:
-					recharge_frames += delta + 1
-					if recharge_frames >= 120:
-						recharge_frames=0
-						pode_atirar=true
+#			if direction.length() < 100:
+#				if pode_atirar:
+#					pode_atirar = false
+#					print('atirando')
+#					#fire_bullet()
+#					fire_morteiro()
+#				else:
+#					recharge_frames += delta + 1
+#					if recharge_frames >= 120:
+#						recharge_frames=0
+#						pode_atirar=true
 				
 		
 		move_and_slide()
@@ -79,8 +79,6 @@ func _physics_process(delta: float) -> void:
 					superJoe.set_collision_layer_value(2, false)
 					superJoe.death_normal()
 
-
-
 func look_at_player() -> Vector2:
 	if other_player:
 		var player_position = other_player.global_position
@@ -88,10 +86,7 @@ func look_at_player() -> Vector2:
 		return direction
 	return Vector2.DOWN
 
-
-
 func update_animation(input_direction: Vector2):
-	
 	if input_direction.x > 0 and (input_direction.y > -10 and input_direction.y < 10):
 		_animated_sprite.play("right")		
 	elif input_direction.x < 0 and (input_direction.y > -10 and input_direction.y < 10):
@@ -114,15 +109,16 @@ func update_animation(input_direction: Vector2):
 
 
 func fire_bullet():
-	olhando_para_jogador = true
-	timer_olhar_para_jogador.start()
-	if other_player:
-		var bullet_instance = bullet_inimigo.instantiate()
-		#bullet_instance.global_transform = global_transform
-		bullet_instance.position = position
-		bullet_instance.motion = (other_player.global_position - global_position).normalized()#(ray_cast.target_position).normalized()
-		get_parent().add_child(bullet_instance)
-		#print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
+	if pode_atirar:
+		olhando_para_jogador = true
+		timer_olhar_para_jogador.start()
+		if other_player:
+			var bullet_instance = bullet_inimigo.instantiate()
+			#bullet_instance.global_transform = global_transform
+			bullet_instance.position = position
+			bullet_instance.motion = (other_player.global_position - global_position).normalized()#(ray_cast.target_position).normalized()
+			get_parent().add_child(bullet_instance)
+			#print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
 
 func _on_timer_timeout() -> void:
 	fire_bullet()
@@ -131,35 +127,31 @@ func bullet_hit():
 	print('morteiro morto')
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	SFXDeath.play()
+	SoundController.play_button(som_morte)
 	dead_enemy.emit(self)	
 	queue_free()
 
 func grenade_hit():
-	print('morteiro morto')
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	SFXDeath.play()
+	SoundController.play_button(som_morte)
 	dead_enemy.emit(self)	
+	get_parent().get_node("Morteiro").queue_free()
 	queue_free()
 
 func fire_morteiro():
 	if morteiro_bullet:
-		
 		var mb_instance = morteiro_bullet.instantiate()
 		mb_instance.global_position = global_position
 		get_parent().get_parent().add_child(mb_instance)
-		
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	print('morteiro fora')
 	ativo = false
 	dead_enemy.emit(self)
 	queue_free()
 
 func timer_olhar_para_jogador_end():
 	if ativo:
-		print('morteiro fugiu')
 		olhando_para_jogador = false
 		#fugindo = true
 		#queue_free()
@@ -168,3 +160,5 @@ func timer_olhar_para_jogador_end():
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	ativo = true
+	var fsm_morteiro = get_node("FSM/Morteiro")
+	fsm_morteiro.pode_atirar_granada = true

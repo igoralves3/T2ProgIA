@@ -2,12 +2,12 @@ extends AnimatedSprite2D
 
 var flip_horizontal: bool = false
 var offset_animation
-var tempo_para_sumir: float = 0.12
+var tempo_para_sumir: float = 0.03
 
 func _ready():
 	flip_h = flip_horizontal
 #	offset = offset_animation
-	self.play("default")
+	#self.play("default")
 	pass
 
 func _physics_process(delta: float) -> void:

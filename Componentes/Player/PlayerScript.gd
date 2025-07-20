@@ -9,8 +9,9 @@ const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita
 @export var grenade :PackedScene
 @onready var _animated_sprite = $PlayerSprite
 @onready var camera = %Camera2D
-@onready var SFXShootBullet = $SFXShootBullet
-@onready var SFXPlayerDeath = $SFXPlayerDeath
+@export var SFXShootBullet = AudioStream
+@export var SFXPlayerDeath = AudioStream
+@export var Bullet_VFX: PackedScene
 var tween: Tween
 var bullets = []
 var easy:= false
@@ -26,6 +27,7 @@ var tamanho_tela
 var posicao_camera
 var centro_tela
 var is_reloading_scene: bool = false
+var bullet_offset
 @export var grenadeAmmo: int = 50
 
 signal dead_player
@@ -141,15 +143,48 @@ func burst_bullet():
 
 func shoot_bullet():
 #	print('dir: '+str(dir))
-	
-	SFXShootBullet.play()
-	
+	var direcao_anim
+	SoundController.play_button(SFXShootBullet)
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_transform = global_transform
-	if dir == Vector2(0, -1):
-		bullet_instance.position += Vector2(dir.x * 15 + 6,dir.y * 15) #arruma a posicao do tiro olhando para cima
+	if dir == Vector2(0, -1):  #arruma a posicao do tiro olhando para cima
+		bullet_instance.position += Vector2(dir.x * 15 + 6,dir.y * 15 +2)
+		bullet_offset = Vector2(dir.x * 15 + 6,dir.y * 15 +2)
+		direcao_anim = "U"
+	elif dir == Vector2(0, 1):  #baixo
+		bullet_instance.position += Vector2(dir.x * 15 + -3,dir.y * 15 -6)
+		bullet_offset = Vector2(dir.x * 15 + -3,dir.y * 15 -6)
+		direcao_anim = "D"
+	elif dir == Vector2(-1, 0): #esquerda
+		bullet_instance.position += Vector2(dir.x * 15,dir.y * 15 -2)
+		bullet_offset = Vector2(dir.x * 15,dir.y * 15 -1)
+		direcao_anim = "L"
+	elif dir == Vector2(1, 0): #direita
+		bullet_instance.position += Vector2(dir.x * 15,dir.y * 15 -2)
+		bullet_offset = Vector2(dir.x * 15,dir.y * 15 -1)
+		direcao_anim = "R"
+	elif dir.x > 0.7 and dir.x < 0.71 and dir.y < 0.7: #diagonal direita cima
+		bullet_instance.position += Vector2(dir.x * 15 + +1,dir.y * 15 +3)
+		bullet_offset = Vector2(dir.x * 15 + +1,dir.y * 15 +3)
+		direcao_anim = "UR"
+	elif dir.x < -0.7 and dir.x > -0.71 and dir.y < -0.7: #up left eu acho
+		bullet_instance.position += Vector2(dir.x * 15 -1,dir.y * 15 +3)
+		bullet_offset = Vector2(dir.x * 15 -1,dir.y * 15 +3)
+		direcao_anim = "UL"
+	elif dir.x > 0.7 and dir.x < 0.71 and dir.y > 0.7: #diagonal direita baixo
+		bullet_instance.position += Vector2(dir.x * 15 + -3,dir.y * 15 -4)
+		bullet_offset = Vector2(dir.x * 15 + -3,dir.y * 15 -4)
+		direcao_anim = "DR"
+	elif dir.x < -0.7 and dir.x > -0.71 and dir.y > 0.7: #diagonal esquerda baixo
+		bullet_instance.position += Vector2(dir.x * 15 + +3,dir.y * 15 -4)
+		bullet_offset = Vector2(dir.x * 15 + +3,dir.y * 15 -4)
+		direcao_anim = "DL"
 	else:
 		bullet_instance.position += dir * 15
+	var vfx_instance = Bullet_VFX.instantiate()
+	vfx_instance.global_position = global_position + bullet_offset
+	vfx_instance.play(direcao_anim)
+	get_parent().add_child(vfx_instance)
 	bullet_instance.motion = dir
 	get_parent().add_child(bullet_instance)
 	#bullets.append(bullet_instance)
@@ -183,7 +218,7 @@ func spawn_grenade():
 
 func death_water(posicao_colisor):
 	disable_collisions()
-	SFXPlayerDeath.play()
+	SoundController.play_button(SFXPlayerDeath)
 	
 	can_move = false
 	can_shoot = false
@@ -199,7 +234,7 @@ func death_water(posicao_colisor):
 
 func death_pitfall(posicao_colisor):
 	disable_collisions()
-	SFXPlayerDeath.play()
+	SoundController.play_button(SFXPlayerDeath)
 	
 	can_move = false
 	can_shoot = false
@@ -216,7 +251,7 @@ func death_pitfall(posicao_colisor):
 func death_normal():
 #	print ("death normals playerscript")
 	disable_collisions()
-	SFXPlayerDeath.play()
+	SoundController.play_button(SFXPlayerDeath)
 	can_move = false
 	can_shoot = false
 	velocity = Vector2(0,0)

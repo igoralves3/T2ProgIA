@@ -1,21 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://v03caxnfgonm"]
 
-[ext_resource type="Script" uid="uid://bwxmn82dihyfs" path="res://Componentes/Infantaria_Moto/infantaria_moto.gd" id="1_4eghu"]
-[ext_resource type="PackedScene" uid="uid://bwoeweqsm7xw8" path="res://Componentes/Granada/Granada.tscn" id="2_cx8jn"]
-[ext_resource type="SpriteFrames" uid="uid://bfk3pytwpxqlu" path="res://SpriteSheets/Veiculos.tres" id="3_cx8jn"]
+[ext_resource type="Script" uid="uid://bwxmn82dihyfs" path="res://Componentes/Infantaria_Moto/infantaria_moto_ponte.gd" id="1_ncsjl"]
+[ext_resource type="PackedScene" uid="uid://bwoeweqsm7xw8" path="res://Componentes/Granada/Granada.tscn" id="2_yxyx3"]
+[ext_resource type="SpriteFrames" uid="uid://bfk3pytwpxqlu" path="res://SpriteSheets/Veiculos.tres" id="3_dn5do"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbewe"]
 
-[node name="InfantariaMoto" type="Area2D"]
-z_index = 20
+[node name="InfantariaMoto" type="Area2D" groups=["InimigosGranadas"]]
+z_index = 5
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_4eghu")
-grenade = ExtResource("2_cx8jn")
+script = ExtResource("1_ncsjl")
+grenade = ExtResource("2_yxyx3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("3_cx8jn")
+sprite_frames = ExtResource("3_dn5do")
 animation = &"moto_azul"
+frame_progress = 0.0619427
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

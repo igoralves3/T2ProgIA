@@ -18,7 +18,6 @@ var olhando_para_jogador: bool = false
 var motion_direction:= Vector2(1,0)
 @onready var _animated_sprite = $AnimatedSprite2D
 var tempo_fora_tela: float = 2
-#var soundmaster = SoundController
 @export var som_morte = AudioStream
 @export var som_tiro = AudioStream
 @export var colisao_chao: CollisionShape2D
@@ -118,14 +117,13 @@ func bullet_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
-	#SFXDeath.play()
 	dead_enemy.emit(self)	
 	queue_free()
 
 func grenade_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	#SFXDeath.play()
+	SoundController.play_button(som_morte)
 	dead_enemy.emit(self)	
 	queue_free()
 
