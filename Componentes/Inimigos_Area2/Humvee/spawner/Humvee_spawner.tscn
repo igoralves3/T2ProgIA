@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://due6ib0036l6r"]
+
+[ext_resource type="Script" uid="uid://lbketonn0sqd" path="res://Componentes/Inimigos_Area2/Humvee/spawner/humvee_spawner.gd" id="1_foayu"]
+[ext_resource type="PackedScene" uid="uid://g6eq2h380ube" path="res://Componentes/Inimigos_Area2/Humvee/Humvee.tscn" id="2_yp3yf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3ns7"]
+
+[node name="HumveeSpawner" type="Area2D" node_paths=PackedStringArray("_timer")]
+script = ExtResource("1_foayu")
+humvee = ExtResource("2_yp3yf")
+_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m3ns7")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

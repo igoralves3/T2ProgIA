@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://g6eq2h380ube"]
+
+[ext_resource type="SpriteFrames" uid="uid://dunxktyirethy" path="res://SpriteSheets/sprite_frames_moto_terra.tres" id="1_xjkle"]
+[ext_resource type="Script" uid="uid://bcycgjmt0oxgl" path="res://Componentes/Inimigos_Area2/Humvee/humvee.gd" id="1_yi5w7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6x5s"]
+
+[node name="Humvee" type="Area2D"]
+script = ExtResource("1_yi5w7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_xjkle")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m6x5s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

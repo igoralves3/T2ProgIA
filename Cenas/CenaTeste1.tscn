@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2j2xgntus103"]
+[gd_scene load_steps=9 format=3 uid="uid://d2j2xgntus103"]
 
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="1_uillb"]
 [ext_resource type="PackedScene" uid="uid://n3wxtopay5nf" path="res://Componentes/Inimigos/Infantaria/Morteiro/agentes_morteiro.tscn" id="3_3wh8d"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://co6icc8rb7ob1" path="res://Componentes/Inimigos_Area2/Moto_Terra/Moto_Terra.tscn" id="5_hsyue"]
 [ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="5_usgop"]
 [ext_resource type="PackedScene" uid="uid://cfloxpubtlrsx" path="res://Componentes/Inimigos_Area2/Moto_Terra/spawner/moto_terra_spawner.tscn" id="6_hsyue"]
+[ext_resource type="PackedScene" uid="uid://g6eq2h380ube" path="res://Componentes/Inimigos_Area2/Humvee/Humvee.tscn" id="7_5m3pg"]
+[ext_resource type="PackedScene" uid="uid://due6ib0036l6r" path="res://Componentes/Inimigos_Area2/Humvee/spawner/Humvee_spawner.tscn" id="8_ab8h8"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -29,7 +31,13 @@ position = Vector2(109, 157)
 position = Vector2(110, 32)
 
 [node name="MotoTerra" parent="." instance=ExtResource("5_hsyue")]
-position = Vector2(181, 118)
+position = Vector2(177, 99)
 
 [node name="MotoTerraSpawner" parent="." instance=ExtResource("6_hsyue")]
-position = Vector2(208, 184)
+position = Vector2(209, 128)
+
+[node name="Humvee" parent="." instance=ExtResource("7_5m3pg")]
+position = Vector2(104, 98)
+
+[node name="HumveeSpawner" parent="." instance=ExtResource("8_ab8h8")]
+position = Vector2(199, 189)
