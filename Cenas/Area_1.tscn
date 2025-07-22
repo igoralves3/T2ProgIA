@@ -223,8 +223,8 @@ position = Vector2(112, -1762)
 [node name="InimigosEPrisioneiro" parent="." instance=ExtResource("19_su8h8")]
 position = Vector2(142, -532)
 
-[node name="Trigger" parent="." instance=ExtResource("20_gxw08")]
+[node name="Trigger_Mobs_Portao" parent="." instance=ExtResource("20_gxw08")]
 position = Vector2(3, -1612)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
-[connection signal="area_entered" from="Trigger" to="MobSpawner" method="_on_trigger_area_entered"]
+[connection signal="area_entered" from="Trigger_Mobs_Portao" to="MobSpawner" method="_on_trigger_area_entered"]

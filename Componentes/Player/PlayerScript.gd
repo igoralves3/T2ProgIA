@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-var canShoot: bool = true
-
 const SPEED = 68.0 # 3 segundos pra atravessar a tela da esquerda pra direita
 @export var god_mode: bool = false
 @export var bullet :PackedScene
@@ -29,6 +27,9 @@ var centro_tela
 var is_reloading_scene: bool = false
 var bullet_offset
 @export var grenadeAmmo: int = 50
+var last_input_direction = "run_up"
+var dying = false
+var cooldown_da_arma: bool = false
 
 signal dead_player
 
@@ -53,18 +54,18 @@ func _process(delta):
 		
 		position.x = clamp(position.x, min_x, max_x)
 		position.y = clamp(position.y, min_y, max_y)
+
 	#print (self.motion)
 
 func _physics_process(delta: float) -> void:
-	#move_8_way(delta)
 	get_8_way_input()
 	move_and_slide()
-	
 	if velocity != Vector2.ZERO:
 		dir = velocity.normalized()
 	bullets = bullets.filter(func(bullet):
 		return is_instance_valid(bullet) and bullet.get_parent() != null)
-	#print(quantidade_de_bullets_voando)
+	if cooldown_da_arma:
+		can_shoot = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"): #atira se não tiver 5 ou mais balas voando
@@ -81,65 +82,72 @@ func update_animation(input_direction: Vector2) -> void:
 	
 	
 	if input_direction.x > 0 and input_direction.y == 0:
-		_animated_sprite.play("run_right")		
+		_animated_sprite.play("run_right")
+		last_input_direction = "run_right"
 	elif input_direction.x < 0 and input_direction.y == 0:
 		_animated_sprite.play("run_left")
+		last_input_direction = "run_left"
 	elif  input_direction.x == 0 and input_direction.y > 0:
-		_animated_sprite.play("run_down")		
+		_animated_sprite.play("run_down")
+		last_input_direction = "run_down"
 	elif input_direction.x == 0 and input_direction.y < 0:
 		_animated_sprite.play("run_up")
+		last_input_direction = "run_up"
 	elif input_direction.x > 0 and input_direction.y > 0:
-		_animated_sprite.play("run_bottom_right")		
+		_animated_sprite.play("run_bottom_right")
+		last_input_direction = "run_button_right"
 	elif input_direction.x < 0 and input_direction.y < 0:
 		_animated_sprite.play("run_top_left")
+		last_input_direction = "run_top_left"
 	elif  input_direction.x < 0 and input_direction.y > 0:
-		_animated_sprite.play("run_bottom_left")		
+		_animated_sprite.play("run_bottom_left")
+		last_input_direction = "run_bottom_left"
 	elif input_direction.x > 0 and input_direction.y < 0:
 		_animated_sprite.play("run_top_right")
+		last_input_direction = "run_top_right"
 	elif can_throw_grenade == false:
 		_animated_sprite.play("throw_grenade")
-		await get_tree().create_timer(0.3).timeout #tem que arrumar aqui, ta ruim a animacao
-		_animated_sprite.stop()
+		var timer1 = get_tree().create_timer(0.3) #tem que arrumar aqui, ta ruim a animacao
+		timer1.timeout.connect(stop_animated_sprite)
 	else:
 		_animated_sprite.stop()
 	#	_animated_sprite.frame = 0 #o jogo não usa a princípio
+
+func stop_animated_sprite():
+	if not dying:
+		if can_throw_grenade == false:
+			_animated_sprite.stop()
 
 func get_8_way_input() -> void:
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
 	if can_move:
 		update_animation(input_direction)	
 		velocity = input_direction * SPEED
-	
 
-#func move_8_way(delta: float) -> void:
-#	get_8_way_input() # \/ será usado mais a frente
-	#var collision_info = move_and_collide(velocity * delta)
-	#if collision_info:
-	#	var collision_point = collision_info.get_position()
-		
-	#	velocity = velocity.bounce(collision_info.get_normal())
-	#	move_and_collide(velocity * delta * 3)
 
 func burst_bullet():
-	var quantidade_de_tiros = 2
-	if quantidade_de_bullets_voando <= 3:
-		quantidade_de_tiros = 2
-	if quantidade_de_bullets_voando > 3:
-		quantidade_de_tiros = 6 - quantidade_de_bullets_voando
+	var quantidade_de_tiros = 1
+#	if quantidade_de_bullets_voando <= 3:
+#		quantidade_de_tiros = 2
+#	if quantidade_de_bullets_voando > 3:
+#		quantidade_de_tiros = 6 - quantidade_de_bullets_voando
 	if can_shoot:
+		if can_throw_grenade == false:
+			_animated_sprite.play(last_input_direction)
 		if easy == true:
 			while is_shooting:
 				can_shoot = false
 				for x in quantidade_de_tiros:
 					shoot_bullet()
-					await get_tree().create_timer(delay_entre_tiros).timeout
-				can_shoot = true
+					var timer1 = get_tree().create_timer(delay_entre_tiros)
+					timer1.timeout.connect(shoot_bullet)
 		else:
 			can_shoot = false
 			for x in quantidade_de_tiros:
 				shoot_bullet()
-				await get_tree().create_timer(delay_entre_tiros).timeout
-			can_shoot = true
+				var timer2 = get_tree().create_timer(delay_entre_tiros)
+				timer2.timeout.connect(shoot_bullet)
+				timer2.timeout.connect(enable_bullet_shooting)
 
 func shoot_bullet():
 #	print('dir: '+str(dir))
@@ -191,10 +199,10 @@ func shoot_bullet():
 	quantidade_de_bullets_voando += 1
 	bullet_instance.die.connect(remove_bullet)
 	#get_tree().get_nodes_in_group("Balas").size
-	if bullets.size() > 4: #unico lugar que reconhece essa desgraça como > 4
-		can_shoot = false
-		await get_tree().create_timer(cooldown_arma).timeout
-		can_shoot = true
+	if quantidade_de_bullets_voando > 4: #unico lugar que reconhece essa desgraça como > 4
+		cooldown_da_arma = true
+		var timer1 = get_tree().create_timer(cooldown_arma)
+		timer1.timeout.connect(acabou_cooldown_da_arma)
 
 func remove_bullet():
 	quantidade_de_bullets_voando = quantidade_de_bullets_voando - 1
@@ -205,16 +213,20 @@ func spawn_grenade():
 #			print('dir: '+str(dir))
 			can_throw_grenade = false
 			grenadeAmmo-=1
-			await get_tree().create_timer(0.14).timeout #parece ser o tempo original do jogo
-			var grenade_instance = grenade.instantiate()
-			grenade_instance.global_transform = global_transform
-			grenade_instance.motion = Vector2.UP
-			grenade_instance.position = grenade_instance.position - Vector2(0,20)
-			grenade_instance.dono = "Player"
-			get_parent().add_child(grenade_instance)
-#			_animated_sprite.play("throw_grenade")
-			await get_tree().create_timer(0.72).timeout #tempo real 0.72 + 0.14 total
-			can_throw_grenade = true
+			_animated_sprite.play("throw_grenade")
+			var timer1 = get_tree().create_timer(0.14) #parece ser o tempo original do jogo
+			timer1.timeout.connect(spawn_grenade_part2)
+
+
+func spawn_grenade_part2():
+	var grenade_instance = grenade.instantiate()
+	grenade_instance.global_transform = global_transform
+	grenade_instance.motion = Vector2.UP
+	grenade_instance.position = grenade_instance.position - Vector2(0,20)
+	grenade_instance.dono = "Player"
+	get_parent().add_child(grenade_instance)
+	var timer4 = get_tree().create_timer(0.72) #tempo real 0.72 + 0.14 total
+	timer4.timeout.connect(enable_grenades)
 
 func death_water(posicao_colisor):
 	disable_collisions()
@@ -229,8 +241,8 @@ func death_water(posicao_colisor):
 	tween = create_tween()
 	tween.tween_property(self, "position", nova_posicao, 0.1)
 	_animated_sprite.play("death_water")
-	await _animated_sprite.animation_finished
-	emit_death()
+	_animated_sprite.animation_finished.connect(emit_death)
+#	emit_death()
 
 func death_pitfall(posicao_colisor):
 	disable_collisions()
@@ -245,8 +257,8 @@ func death_pitfall(posicao_colisor):
 	tween = create_tween()
 	tween.tween_property(self, "position", nova_posicao, 0.1)
 	_animated_sprite.play("death_pitfall")
-	await _animated_sprite.animation_finished
-	emit_death()
+	_animated_sprite.animation_finished.connect(emit_death)
+#	emit_death()
 
 func death_normal():
 #	print ("death normals playerscript")
@@ -256,10 +268,11 @@ func death_normal():
 	can_shoot = false
 	velocity = Vector2(0,0)
 	_animated_sprite.play("death_normal")
-	await _animated_sprite.animation_finished
-	emit_death()
+	_animated_sprite.animation_finished.connect(emit_death)
+#	emit_death()
 
 func disable_collisions():
+	dying = true
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(2, false)
 	set_collision_layer_value(4, false)
@@ -267,6 +280,22 @@ func disable_collisions():
 	$Area2DEnemyCollision.set_collision_layer_value(2, false)
 
 func emit_death():
+	print ("emit death before bool")
 	if not is_reloading_scene:
+		print("emit death after bool")
 		is_reloading_scene = true
 		dead_player.emit()
+
+func enable_bullet_shooting():
+	if not dying:
+		can_shoot = true
+
+func acabou_cooldown_da_arma():
+	if not dying:
+		cooldown_da_arma = false
+		can_shoot = true
+
+func enable_grenades():
+	if not dying:
+		can_throw_grenade = true
+		_animated_sprite.play(last_input_direction)

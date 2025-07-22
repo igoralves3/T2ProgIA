@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://v03caxnfgonm"]
 
-[ext_resource type="Script" uid="uid://bwxmn82dihyfs" path="res://Componentes/Infantaria_Moto/infantaria_moto_ponte.gd" id="1_ncsjl"]
+[ext_resource type="Script" uid="uid://bwxmn82dihyfs" path="res://Componentes/Inimigos/Infantaria_Moto/infantaria_moto_ponte.gd" id="1_ncsjl"]
 [ext_resource type="PackedScene" uid="uid://bwoeweqsm7xw8" path="res://Componentes/Granada/Granada.tscn" id="2_yxyx3"]
 [ext_resource type="SpriteFrames" uid="uid://bfk3pytwpxqlu" path="res://SpriteSheets/Veiculos.tres" id="3_dn5do"]
 

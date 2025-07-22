@@ -96,7 +96,7 @@ func spawn_bala_morteiro():
 	var bala = bala_morteiro.instantiate()
 	var vfx = morteiro_vfx.instantiate()
 	bala.objeto_alvo = other_player
-	bala.position = morteiro_area2d.position + offset_da_bala
+	bala.position = morteiro_area2d.position + Vector2(offset_da_bala.x, offset_da_bala.y + 10)
 	vfx.position = morteiro_area2d.position + offset_da_bala
 	vfx.flip_horizontal = flip_vfx
 	infantaria_self.get_parent().add_child(bala)
