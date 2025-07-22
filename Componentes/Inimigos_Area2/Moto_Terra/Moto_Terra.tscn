@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://co6icc8rb7ob1"]
+
+[ext_resource type="Script" uid="uid://pitjxp5fdcbj" path="res://Componentes/Inimigos_Area2/Moto_Terra/moto_terra.gd" id="1_ibqoi"]
+[ext_resource type="SpriteFrames" uid="uid://dunxktyirethy" path="res://SpriteSheets/sprite_frames_moto_terra.tres" id="2_v4npk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyxj"]
+
+[node name="MotoTerra" type="Area2D"]
+script = ExtResource("1_ibqoi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_v4npk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.92, 1)
+shape = SubResource("RectangleShape2D_tbyxj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
