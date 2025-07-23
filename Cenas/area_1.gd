@@ -22,6 +22,13 @@ func _process(delta: float) -> void:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
 	#player camera.offset 
 
+func next_level():
+	GameManager.addMedals()
+
 func _on_main_player_char_dead_player():
 	GameManager.reduceLifes()
 	get_tree().reload_current_scene()
+
+
+func _on_level_end_trigger_area_entered(area):
+	next_level()

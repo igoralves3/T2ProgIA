@@ -38,6 +38,9 @@ func addPoints(points: int):
 	score += points
 	print("score: ", score)
 
+func addMedals():
+	medals += 1
+
 func getSpawnPostion():
 	if hasCheckpoint:
 		return checkPoint
