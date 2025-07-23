@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://d1irdg45ysxr1"]
+
+[ext_resource type="Texture2D" uid="uid://lt5tp7588j5h" path="res://SpriteSheets/inimigos_spritesheet.webp" id="1_8yqwd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0gxi"]
+atlas = ExtResource("1_8yqwd")
+region = Rect2(93, 353, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo6dv"]
+atlas = ExtResource("1_8yqwd")
+region = Rect2(112, 353, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idrx8"]
+atlas = ExtResource("1_8yqwd")
+region = Rect2(147, 353, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmcc3"]
+atlas = ExtResource("1_8yqwd")
+region = Rect2(166, 353, 16, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0gxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo6dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idrx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmcc3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

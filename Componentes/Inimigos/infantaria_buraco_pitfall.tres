@@ -1,0 +1,126 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://of373fynckmq"]
+
+[ext_resource type="Texture2D" uid="uid://lt5tp7588j5h" path="res://SpriteSheets/inimigos_spritesheet.webp" id="1_5ga13"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwm5b"]
+atlas = ExtResource("1_5ga13")
+region = Rect2(318, 309, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15yyp"]
+atlas = ExtResource("1_5ga13")
+region = Rect2(337, 309, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evs5m"]
+atlas = ExtResource("1_5ga13")
+region = Rect2(356, 309, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wchqc"]
+atlas = ExtResource("1_5ga13")
+region = Rect2(375, 309, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfwux"]
+atlas = ExtResource("1_5ga13")
+region = Rect2(394, 309, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bsp0"]
+atlas = ExtResource("1_5ga13")
+region = Rect2(413, 309, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ghco"]
+atlas = ExtResource("1_5ga13")
+region = Rect2(432, 309, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l61w"]
+atlas = ExtResource("1_5ga13")
+region = Rect2(451, 309, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jeml"]
+atlas = ExtResource("1_5ga13")
+region = Rect2(470, 309, 16, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwm5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15yyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evs5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wchqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfwux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bsp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ghco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l61w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jeml")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfwux")
+}],
+"loop": true,
+"name": &"direita",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evs5m")
+}],
+"loop": true,
+"name": &"esquerda",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wchqc")
+}],
+"loop": true,
+"name": &"frente",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bsp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ghco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l61w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jeml")
+}],
+"loop": true,
+"name": &"morrendo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwm5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15yyp")
+}],
+"loop": true,
+"name": &"saindo_do_buraco",
+"speed": 5.0
+}]

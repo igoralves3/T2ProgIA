@@ -1,0 +1,87 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://wulfb2ltjxyb"]
+
+[ext_resource type="Texture2D" uid="uid://blu76qei4kqiu" path="res://SpriteSheets/agorasei.png" id="1_qx3y5"]
+[ext_resource type="Texture2D" uid="uid://dy33rsesgfqar" path="res://SpriteSheets/Super_Joe_Lives.png" id="2_2aywn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_css0p"]
+atlas = ExtResource("1_qx3y5")
+region = Rect2(127, 806, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_supog"]
+atlas = ExtResource("1_qx3y5")
+region = Rect2(138, 806, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5sl0"]
+atlas = ExtResource("1_qx3y5")
+region = Rect2(149, 806, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17i1d"]
+atlas = ExtResource("2_2aywn")
+region = Rect2(0, 0, 11, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03ct4"]
+atlas = ExtResource("1_qx3y5")
+region = Rect2(309, 519, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_css0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_supog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5sl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17i1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03ct4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03ct4")
+}],
+"loop": false,
+"name": &"granada",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_css0p")
+}],
+"loop": false,
+"name": &"medalha1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_supog")
+}],
+"loop": false,
+"name": &"medalha2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5sl0")
+}],
+"loop": false,
+"name": &"medalha3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17i1d")
+}],
+"loop": false,
+"name": &"vidas",
+"speed": 5.0
+}]

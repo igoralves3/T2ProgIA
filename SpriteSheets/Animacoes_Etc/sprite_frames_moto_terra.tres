@@ -1,13 +1,13 @@
 [gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dunxktyirethy"]
 
-[ext_resource type="Texture2D" uid="uid://cor3ts7v8iro7" path="res://SpriteSheets/motos.png" id="1_dpiw6"]
+[ext_resource type="Texture2D" uid="uid://cor3ts7v8iro7" path="res://SpriteSheets/motos.png" id="1_golh7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awaod"]
-atlas = ExtResource("1_dpiw6")
+atlas = ExtResource("1_golh7")
 region = Rect2(67, 4, 48, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bssct"]
-atlas = ExtResource("1_dpiw6")
+atlas = ExtResource("1_golh7")
 region = Rect2(16, 4, 48, 24)
 
 [resource]

@@ -1,0 +1,116 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cj8edhspj8mp3"]
+
+[ext_resource type="Texture2D" uid="uid://djwgy7v8ojnrs" path="res://SpriteSheets/MissilVFX.png" id="1_rk2kj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt2vm"]
+atlas = ExtResource("1_rk2kj")
+region = Rect2(76, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdvwf"]
+atlas = ExtResource("1_rk2kj")
+region = Rect2(95, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_054xv"]
+atlas = ExtResource("1_rk2kj")
+region = Rect2(114, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ma43"]
+atlas = ExtResource("1_rk2kj")
+region = Rect2(38, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sreke"]
+atlas = ExtResource("1_rk2kj")
+region = Rect2(19, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty07q"]
+atlas = ExtResource("1_rk2kj")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml330"]
+atlas = ExtResource("1_rk2kj")
+region = Rect2(57, 0, 18, 18)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt2vm")
+}],
+"loop": true,
+"name": &"D1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdvwf")
+}],
+"loop": true,
+"name": &"D2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_054xv")
+}],
+"loop": true,
+"name": &"D3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ma43")
+}],
+"loop": true,
+"name": &"L1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sreke")
+}],
+"loop": true,
+"name": &"L2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty07q")
+}],
+"loop": true,
+"name": &"L3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty07q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sreke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ma43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml330")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt2vm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdvwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_054xv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml330")
+}],
+"loop": true,
+"name": &"reto",
+"speed": 5.0
+}]
