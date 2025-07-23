@@ -30,11 +30,10 @@ var bullet_offset
 var last_input_direction = "run_up"
 var dying = false
 var cooldown_da_arma: bool = false
-
+var HUD
 signal dead_player
 
 func _ready() -> void:
-	print(grenadeAmmo)
 	is_reloading_scene = false
 	await get_tree().process_frame
 	tamanho_tela = get_viewport_rect().size
@@ -42,6 +41,8 @@ func _ready() -> void:
 	if god_mode:
 		set_collision_layer_value(2, false)
 		$Area2DEnemyCollision.set_collision_layer_value(2, false)
+	get_HUD()
+	HUD.single_update()
 
 func _process(delta):
 	centro_tela = tamanho_tela/2
@@ -214,9 +215,15 @@ func spawn_grenade():
 #			print('dir: '+str(dir))
 			can_throw_grenade = false
 			grenadeAmmo-=1
+			GameManager.granadas = grenadeAmmo
 			_animated_sprite.play("throw_grenade")
 			var timer1 = get_tree().create_timer(0.14) #parece ser o tempo original do jogo
 			timer1.timeout.connect(spawn_grenade_part2)
+			if HUD != null:
+				HUD.single_update()
+			else:
+				get_HUD()
+				HUD.single_update()
 
 
 func spawn_grenade_part2():
@@ -304,3 +311,8 @@ func enable_grenades():
 	if not dying:
 		can_throw_grenade = true
 		_animated_sprite.play(last_input_direction)
+
+func get_HUD():
+	var HUD1 = get_tree().get_nodes_in_group("HUD")
+	if not HUD1.is_empty():
+		HUD = HUD1[0]

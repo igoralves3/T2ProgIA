@@ -6,11 +6,12 @@ var podeSpawnar: bool = true
 @export var area: Node
 
 var ListaInimigos: Array
-
+var HUD
 var player
 
 func _ready() -> void:
 	player = %MainPlayerChar
+	get_HUD()
 
 func _on_mob_timer_timeout():
 	if podeSpawnar:
@@ -57,6 +58,11 @@ func _on_mob_dead_enemy(enemy):
 	if enemy in ListaInimigos:
 		GameManager.addPoints(enemy.pontos)
 		ListaInimigos.erase(enemy)
+		if HUD != null:
+			HUD.single_update()
+		else:
+			get_HUD()
+			HUD.single_update()
 	# Optionally, queue_free the enemy if not already done
 	# enemy.queue_free()
 
@@ -64,3 +70,8 @@ func _on_mob_dead_enemy(enemy):
 func _on_trigger_area_entered(area: Area2D) -> void:
 	podeSpawnar = !podeSpawnar
 	print("pode spawnar?", podeSpawnar)
+
+func get_HUD():
+	var HUD1 = get_tree().get_nodes_in_group("HUD")
+	if not HUD1.is_empty():
+		HUD = HUD1[0]

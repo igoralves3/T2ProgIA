@@ -1,0 +1,182 @@
+[gd_scene load_steps=6 format=3 uid="uid://fy47plw4s21o"]
+
+[ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="1_n8lu3"]
+[ext_resource type="Script" uid="uid://cn6pohru1fina" path="res://Componentes/Menu_etc/hud.gd" id="1_r7yd2"]
+[ext_resource type="Texture2D" uid="uid://dy33rsesgfqar" path="res://SpriteSheets/Super_Joe_Lives.png" id="1_vln5r"]
+[ext_resource type="SpriteFrames" uid="uid://wulfb2ltjxyb" path="res://SpriteSheets/Animacoes_Etc/HUD.tres" id="2_c6eb1"]
+[ext_resource type="Texture2D" uid="uid://cb8kerv7hjxgh" path="res://SpriteSheets/medalha1.png" id="4_kd5dh"]
+
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("vida_extra", "medalha1", "label_granadas", "label_score_normal", "label_high_score") groups=["HUD"]]
+script = ExtResource("1_r7yd2")
+vida_extra = NodePath("Control/ContainerDeReferencias/VidaExtra")
+medalha1 = NodePath("Control/ContainerDeReferencias/Medalha1")
+label_granadas = NodePath("Control/GranadasHBox/LabelGranadas")
+label_score_normal = NodePath("Control/ScoreVBox/HBoxContainer2/LabelPontuacao")
+label_high_score = NodePath("Control/HighScoreVBox2/HBoxContainer2/LabelPontuacaoTOP")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VidasExtrasHBox" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 71.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/VidasExtrasHBox"]
+layout_mode = 2
+texture = ExtResource("1_vln5r")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Control/VidasExtrasHBox"]
+layout_mode = 2
+texture = ExtResource("1_vln5r")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="Control/VidasExtrasHBox"]
+layout_mode = 2
+texture = ExtResource("1_vln5r")
+stretch_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="Control/VidasExtrasHBox"]
+layout_mode = 2
+texture = ExtResource("1_vln5r")
+stretch_mode = 3
+
+[node name="GranadasHBox" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -9.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/GranadasHBox"]
+sprite_frames = ExtResource("2_c6eb1")
+animation = &"granada"
+offset = Vector2(-9, 0)
+
+[node name="Label" type="Label" parent="Control/GranadasHBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n8lu3")
+theme_override_font_sizes/font_size = 9
+text = "="
+
+[node name="LabelGranadas" type="Label" parent="Control/GranadasHBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n8lu3")
+theme_override_font_sizes/font_size = 9
+text = "9"
+
+[node name="Medalhas" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Medalha1" type="TextureRect" parent="Control/Medalhas"]
+layout_mode = 2
+texture = ExtResource("4_kd5dh")
+stretch_mode = 2
+
+[node name="ScoreVBox" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 18.0
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ScoreVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/ScoreVBox/HBoxContainer"]
+modulate = Color(0.726223, 3.41728e-06, 5.77569e-07, 1)
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n8lu3")
+theme_override_font_sizes/font_size = 9
+text = "1UP"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/ScoreVBox"]
+layout_mode = 2
+
+[node name="LabelPontuacao" type="Label" parent="Control/ScoreVBox/HBoxContainer2"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n8lu3")
+theme_override_font_sizes/font_size = 9
+text = "7777777"
+horizontal_alignment = 2
+
+[node name="HighScoreVBox2" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_right = 25.5
+offset_bottom = 18.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HighScoreVBox2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HighScoreVBox2/HBoxContainer"]
+modulate = Color(0.726223, 3.41728e-06, 5.77569e-07, 1)
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n8lu3")
+theme_override_font_sizes/font_size = 9
+text = "TOP SCORE"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/HighScoreVBox2"]
+layout_mode = 2
+
+[node name="LabelPontuacaoTOP" type="Label" parent="Control/HighScoreVBox2/HBoxContainer2"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n8lu3")
+theme_override_font_sizes/font_size = 9
+text = "50000"
+horizontal_alignment = 1
+
+[node name="ContainerDeReferencias" type="BoxContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Medalha1" type="TextureRect" parent="Control/ContainerDeReferencias"]
+layout_mode = 2
+texture = ExtResource("4_kd5dh")
+stretch_mode = 2
+
+[node name="VidaExtra" type="TextureRect" parent="Control/ContainerDeReferencias"]
+layout_mode = 2
+texture = ExtResource("1_vln5r")
+stretch_mode = 2

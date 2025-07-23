@@ -3,9 +3,10 @@ extends Node
 var checkPoint: Vector2
 var startPoint: Vector2
 var hasCheckpoint: bool
-var score: int
-var lifes: int
-var medals: int
+var score: int = 0
+var lifes: int = 3
+var medals: int = 0 ##nao tem update especifico ainda
+var granadas: int = 5
 
 var currentScene = ""
 

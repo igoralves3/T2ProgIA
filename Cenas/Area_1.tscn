@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=22 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
 [ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/Animacoes_Etc/SpriteFramePorta.tres" id="2_r24xy"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="18_1xk7e"]
 [ext_resource type="PackedScene" uid="uid://btm45nn61a8k2" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_E_Prisioneiro.tscn" id="19_su8h8"]
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="20_gxw08"]
+[ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="21_gdtqj"]
 
 [node name="Area1" type="Node2D"]
 script = ExtResource("1_t3o0g")
@@ -235,6 +236,8 @@ position = Vector2(3, -1612)
 
 [node name="LevelEndTrigger" parent="." instance=ExtResource("20_gxw08")]
 position = Vector2(-1, -1758)
+
+[node name="HUD" parent="." instance=ExtResource("21_gdtqj")]
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="MobSpawner" method="_on_trigger_area_entered"]
