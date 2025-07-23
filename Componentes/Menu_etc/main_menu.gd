@@ -87,13 +87,8 @@ func _on_hard_button_pressed() -> void:
 #	MasterContr.play_button("res://UI/components/Sounds/Laugh_spooky_4.ogg")
 
 func _on_impossivel_button_pressed() -> void:
-	var area1 = Area1_scene.instantiate()
-	add_child(area1)
-#	GameManager.DificuldadeAtual = GameManager.DifficuldadeIA.IMPOSSIVEL
-#	var tabuleiro = tabuleiro_scene.instantiate()
-#	add_child(tabuleiro)
-	%UIContainer.hide()
-#	MasterContr.play_button("res://UI/components/Sounds/Laugh_spooky_4.ogg")
+	GameManager.newGame()
+	get_tree().root.get_node("Game").change_scene("res://Cenas/Area_1.tscn")
 
 func unhide_main_menu():
 	%UIContainer.show()

@@ -7,18 +7,21 @@ var score: int
 var lifes: int
 var medals: int
 
+var currentScene = ""
+
 func newGame():
 	score = 0
 	lifes = 3
 	medals = 0
 	hasCheckpoint = false
-	print("vidas: ", lifes)
 	
 
-func restartGame():
+func reduceLifes():
 	if lifes == 0:
 		print("game over")
+		currentScene = ""
 		newGame()
+		#get_tree().root.get_node("Game").change_scene("res://Componentes/Menu_etc/main_menu.tscn")
 	else:
 		lifes-=1
 		print("vidas: ", lifes)

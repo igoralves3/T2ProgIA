@@ -12,6 +12,7 @@ var currentCheckpoint: Vector2
 
 func _ready() -> void:
 	GameManager.setStartPoint(player.global_position)
+	GameManager.currentScene = "res://Cenas/area2/Area_2.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
 
 func _process(delta: float) -> void:
@@ -22,5 +23,4 @@ func _process(delta: float) -> void:
 	#player camera.offset 
 
 func _on_main_player_char_dead_player():
-	GameManager.restartGame()
-	get_tree().reload_current_scene()
+	GameManager.reduceLifes()
