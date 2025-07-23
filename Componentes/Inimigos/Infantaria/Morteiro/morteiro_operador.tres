@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=41 format=3 uid="uid://bgi8msrqvpetc"]
 
-[ext_resource type="Texture2D" uid="uid://lt5tp7588j5h" path="res://Utilidades/inimigos_spritesheet.webp" id="1_jfdja"]
-[ext_resource type="Texture2D" uid="uid://1hf6cqhrxi5q" path="res://Utilidades/InimigosSpriteSheet.png" id="2_e66ch"]
+[ext_resource type="Texture2D" uid="uid://lt5tp7588j5h" path="res://SpriteSheets/inimigos_spritesheet.webp" id="1_jfdja"]
+[ext_resource type="Texture2D" uid="uid://1hf6cqhrxi5q" path="res://SpriteSheets/InimigosSpriteSheet.png" id="2_e66ch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_84xy0"]
 atlas = ExtResource("1_jfdja")

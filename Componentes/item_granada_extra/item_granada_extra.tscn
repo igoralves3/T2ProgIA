@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqqxo1s2dkdpx"]
 
 [ext_resource type="Script" uid="uid://dmc2v6kvm7tsw" path="res://Componentes/item_granada_extra/item_granada_extra.gd" id="1_hqsir"]
-[ext_resource type="Texture2D" uid="uid://7kbessfkqj0h" path="res://Sprites/granadas/granadas.png" id="2_58vp6"]
-[ext_resource type="Texture2D" uid="uid://cd3qe6lsh6e4r" path="res://Sprites/granadas/granadas (2).png" id="3_1ltlc"]
-[ext_resource type="Texture2D" uid="uid://c2n57hsmmh876" path="res://Sprites/granadas/granadas (3).png" id="4_da5es"]
+[ext_resource type="Texture2D" uid="uid://7kbessfkqj0h" path="res://SpriteSheets/granadas e motos/granadas/granadas.png" id="2_58vp6"]
+[ext_resource type="Texture2D" uid="uid://cd3qe6lsh6e4r" path="res://SpriteSheets/granadas e motos/granadas/granadas (2).png" id="3_1ltlc"]
+[ext_resource type="Texture2D" uid="uid://c2n57hsmmh876" path="res://SpriteSheets/granadas e motos/granadas/granadas (3).png" id="4_da5es"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ryvb"]
 

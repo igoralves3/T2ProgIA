@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qgyddrdsl8es"
-path="res://.godot/imported/granadas (5).png-b76cd59fd96102024df4c6b75e621c09.ctex"
+uid="uid://bc8vjmupupxxg"
+path="res://.godot/imported/veiculos.png-a33c0a801e7602a0bac8b607fe27ea2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/granadas/granadas (5).png"
-dest_files=["res://.godot/imported/granadas (5).png-b76cd59fd96102024df4c6b75e621c09.ctex"]
+source_file="res://SpriteSheets/veiculos.png"
+dest_files=["res://.godot/imported/veiculos.png-a33c0a801e7602a0bac8b607fe27ea2b.ctex"]
 
 [params]
 

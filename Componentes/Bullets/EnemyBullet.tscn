@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhjm8msao1hfe"]
 
 [ext_resource type="Script" uid="uid://clc1yb7lj7mec" path="res://Componentes/Bullets/EnemyBullet.gd" id="1_3oe5c"]
-[ext_resource type="SpriteFrames" uid="uid://dm6h2s1d6kdd" path="res://Utilidades/Bullets.tres" id="2_ri6r2"]
+[ext_resource type="SpriteFrames" uid="uid://dm6h2s1d6kdd" path="res://SpriteSheets/Animacoes_Etc/Bullets.tres" id="2_ri6r2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uumvb"]
 size = Vector2(1, 1)

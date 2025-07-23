@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb3rnk4ejhw3e"
-path="res://.godot/imported/projeteis.png-9f63b975f5d402384f2200431702ca86.ctex"
+uid="uid://ctyhlk0seojkp"
+path="res://.godot/imported/morteiro.png-421078a34279b21180f96f5011a93bba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Utilidades/projeteis.png"
-dest_files=["res://.godot/imported/projeteis.png-9f63b975f5d402384f2200431702ca86.ctex"]
+source_file="res://SpriteSheets/morteiro.png"
+dest_files=["res://.godot/imported/morteiro.png-421078a34279b21180f96f5011a93bba.ctex"]
 
 [params]
 

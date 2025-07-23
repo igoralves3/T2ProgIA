@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfqumf7uknscw"]
 
-[ext_resource type="Script" uid="uid://bl6ihe2oyc7sh" path="res://arvore.gd" id="1_18k4r"]
-[ext_resource type="SpriteFrames" uid="uid://n7j2c88xb77c" path="res://SpriteSheets/SpriteFrameArvores.tres" id="2_8lcy0"]
+[ext_resource type="Script" uid="uid://bl6ihe2oyc7sh" path="res://Componentes/AreaHazardDestructable/arvore.gd" id="1_18k4r"]
+[ext_resource type="SpriteFrames" uid="uid://n7j2c88xb77c" path="res://SpriteSheets/Animacoes_Etc/SpriteFrameArvores.tres" id="2_8lcy0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18k4r"]
 size = Vector2(8, 8)

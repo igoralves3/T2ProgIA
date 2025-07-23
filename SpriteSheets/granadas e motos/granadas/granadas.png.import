@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctyhlk0seojkp"
-path="res://.godot/imported/morteiro.png-625fecb9c194b00756e99c1fbc1d22ef.ctex"
+uid="uid://7kbessfkqj0h"
+path="res://.godot/imported/granadas.png-74a95a96e7ab115c2dcd38568add043f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Utilidades/morteiro.png"
-dest_files=["res://.godot/imported/morteiro.png-625fecb9c194b00756e99c1fbc1d22ef.ctex"]
+source_file="res://SpriteSheets/granadas e motos/granadas/granadas.png"
+dest_files=["res://.godot/imported/granadas.png-74a95a96e7ab115c2dcd38568add043f.ctex"]
 
 [params]
 

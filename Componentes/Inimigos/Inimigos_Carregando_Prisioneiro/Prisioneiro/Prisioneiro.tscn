@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn56cfxohj435"]
 
 [ext_resource type="Script" uid="uid://h06sodsvdfup" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Prisioneiro/prisioneiro.gd" id="1_2l4wp"]
-[ext_resource type="SpriteFrames" uid="uid://hhmvhtd8clrs" path="res://SpriteSheets/sprite_frames_prisioneiro.tres" id="2_2l4wp"]
+[ext_resource type="SpriteFrames" uid="uid://hhmvhtd8clrs" path="res://SpriteSheets/Animacoes_Etc/sprite_frames_prisioneiro.tres" id="2_2l4wp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7oju6"]
 

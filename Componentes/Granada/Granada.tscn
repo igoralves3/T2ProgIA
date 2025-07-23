@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ic3g1tm5qdcq" path="res://Componentes/Granada/Granada_tween.gd" id="1_tm5rw"]
 [ext_resource type="PackedScene" uid="uid://dj3v4y7fqqc74" path="res://Componentes/Explosao_Granada/ExplosaoGranada.tscn" id="2_1lei2"]
-[ext_resource type="SpriteFrames" uid="uid://dukajhqkur2cr" path="res://SpriteSheets/granada_em_movimento.tres" id="3_1lei2"]
+[ext_resource type="SpriteFrames" uid="uid://dukajhqkur2cr" path="res://SpriteSheets/Animacoes_Etc/granada_em_movimento.tres" id="3_1lei2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4newe"]
 

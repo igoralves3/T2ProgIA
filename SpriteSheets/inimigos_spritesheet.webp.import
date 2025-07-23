@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cor3ts7v8iro7"
-path="res://.godot/imported/motos.png-e1c31039fc85c1b82ed39746cf3a940d.ctex"
+uid="uid://lt5tp7588j5h"
+path="res://.godot/imported/inimigos_spritesheet.webp-00181489552aab0cca679930caf274ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Utilidades/motos.png"
-dest_files=["res://.godot/imported/motos.png-e1c31039fc85c1b82ed39746cf3a940d.ctex"]
+source_file="res://SpriteSheets/inimigos_spritesheet.webp"
+dest_files=["res://.godot/imported/inimigos_spritesheet.webp-00181489552aab0cca679930caf274ea.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://co6icc8rb7ob1"]
 
 [ext_resource type="Script" uid="uid://pitjxp5fdcbj" path="res://Componentes/Inimigos_Area2/Moto_Terra/moto_terra.gd" id="1_ibqoi"]
-[ext_resource type="SpriteFrames" uid="uid://dunxktyirethy" path="res://SpriteSheets/sprite_frames_moto_terra.tres" id="2_v4npk"]
+[ext_resource type="SpriteFrames" uid="uid://dunxktyirethy" path="res://SpriteSheets/Animacoes_Etc/sprite_frames_moto_terra.tres" id="2_v4npk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyxj"]
 

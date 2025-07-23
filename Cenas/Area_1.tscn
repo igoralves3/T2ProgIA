@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
-[ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/SpriteFramePorta.tres" id="2_r24xy"]
+[ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/Animacoes_Etc/SpriteFramePorta.tres" id="2_r24xy"]
 [ext_resource type="TileSet" uid="uid://wof1f0qku4s1" path="res://SpriteSheets/Area1_TileSet2.tres" id="2_uvug2"]
 [ext_resource type="Texture2D" uid="uid://f7ucl7ufn7rt" path="res://SpriteSheets/Area1Fundo.png" id="4_farx6"]
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="5_mmikm"]

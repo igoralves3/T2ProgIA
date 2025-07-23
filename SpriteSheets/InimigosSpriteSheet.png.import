@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lt5tp7588j5h"
-path="res://.godot/imported/inimigos_spritesheet.webp-7217b5a7557c6bc48b85536f2ecf8db9.ctex"
+uid="uid://1hf6cqhrxi5q"
+path="res://.godot/imported/InimigosSpriteSheet.png-5366dd9947c8f43b81c5e6a0fc148e26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Utilidades/inimigos_spritesheet.webp"
-dest_files=["res://.godot/imported/inimigos_spritesheet.webp-7217b5a7557c6bc48b85536f2ecf8db9.ctex"]
+source_file="res://SpriteSheets/InimigosSpriteSheet.png"
+dest_files=["res://.godot/imported/InimigosSpriteSheet.png-5366dd9947c8f43b81c5e6a0fc148e26.ctex"]
 
 [params]
 

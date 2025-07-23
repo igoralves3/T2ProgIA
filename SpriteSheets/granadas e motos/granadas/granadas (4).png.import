@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1hf6cqhrxi5q"
-path="res://.godot/imported/InimigosSpriteSheet.png-d3d18ed80ec30a94946fc92898f6c5cd.ctex"
+uid="uid://cf5l587e5f1hc"
+path="res://.godot/imported/granadas (4).png-f578ce804b10d4ca301a4c62cad957c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Utilidades/InimigosSpriteSheet.png"
-dest_files=["res://.godot/imported/InimigosSpriteSheet.png-d3d18ed80ec30a94946fc92898f6c5cd.ctex"]
+source_file="res://SpriteSheets/granadas e motos/granadas/granadas (4).png"
+dest_files=["res://.godot/imported/granadas (4).png-f578ce804b10d4ca301a4c62cad957c9.ctex"]
 
 [params]
 
