@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://b76r5h47g0m81" path="res://Componentes/AreaHazardDestructable/colisao_agua.gd" id="1_3eww3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmv0"]
-size = Vector2(46, 46)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3eww3"]
+height = 32.0
 
 [node name="ColisaoAgua" type="Area2D"]
-collision_layer = 19
+collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_3eww3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cnmv0")
+shape = SubResource("CapsuleShape2D_3eww3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -142,12 +142,17 @@ startFrame = 1
 position = Vector2(15, 145)
 
 [node name="ColisaoAgua" parent="." instance=ExtResource("7_a6koi")]
-position = Vector2(13, -160)
+position = Vector2(17, -158)
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+
+[node name="ColisaoAgua3" parent="." instance=ExtResource("7_a6koi")]
+position = Vector2(5, -159)
 scale = Vector2(0.5, 0.5)
 
 [node name="ColisaoAgua2" parent="." instance=ExtResource("7_a6koi")]
-position = Vector2(40, 248)
-scale = Vector2(1.6, 0.25)
+position = Vector2(60, 249)
+scale = Vector2(1.6, 0.3)
 
 [node name="EnemyController" parent="." instance=ExtResource("10_6vjpy")]
 
@@ -169,22 +174,24 @@ position = Vector2(142, -316)
 [node name="MotoSpawn" parent="." instance=ExtResource("14_f5gam")]
 position = Vector2(209, -841)
 
-[node name="Checkpoint" parent="." instance=ExtResource("15_2mqp0")]
+[node name="GrupoCheckpoints" type="Node" parent="."]
+
+[node name="Checkpoint" parent="GrupoCheckpoints" instance=ExtResource("15_2mqp0")]
 position = Vector2(0, -195)
 collision_layer = 0
 collision_mask = 2
 
-[node name="Checkpoint2" parent="." instance=ExtResource("15_2mqp0")]
+[node name="Checkpoint2" parent="GrupoCheckpoints" instance=ExtResource("15_2mqp0")]
 position = Vector2(0, -585)
 collision_layer = 0
 collision_mask = 2
 
-[node name="Checkpoint3" parent="." instance=ExtResource("15_2mqp0")]
+[node name="Checkpoint3" parent="GrupoCheckpoints" instance=ExtResource("15_2mqp0")]
 position = Vector2(0, -1087)
 collision_layer = 0
 collision_mask = 2
 
-[node name="Checkpoint4" parent="." instance=ExtResource("15_2mqp0")]
+[node name="Checkpoint4" parent="GrupoCheckpoints" instance=ExtResource("15_2mqp0")]
 position = Vector2(0, -1450)
 collision_layer = 0
 collision_mask = 2

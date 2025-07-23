@@ -12,15 +12,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
 size = Vector2(70, 6.60066)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_04x4o"]
-size = Vector2(120, 120)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04x4o"]
+radius = 50.0
+height = 200.0
 
-[node name="Infantaria" type="CharacterBody2D" groups=["Inimigos"]]
+[node name="Infantaria" type="CharacterBody2D" node_paths=PackedStringArray("colisao_chao", "area_colisao_morte") groups=["Inimigos"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 19
 script = ExtResource("1_pf2kk")
 bullet_inimigo = ExtResource("2_clfx3")
 som_morte = ExtResource("8_04x4o")
+colisao_chao = NodePath("ColisaoChao")
+area_colisao_morte = NodePath("Area2DColisaoMorte")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_04x4o")
@@ -69,7 +72,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DColisaoMorte"]
 position = Vector2(7.15256e-06, 7.15256e-06)
-shape = SubResource("RectangleShape2D_04x4o")
+shape = SubResource("CapsuleShape2D_04x4o")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

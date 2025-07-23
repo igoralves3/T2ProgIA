@@ -38,20 +38,20 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 
-"""func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	set_collision_mask_value(3, false) #tirar colisao inimigo
 	die.emit()
 	is_moving = false
 	animation.play("bullet")
 #	print (body, "player bullet hit")
+	set_collision_mask_value(3, false) #tirar colisao inimigo
+	die.emit()
+	is_moving = false
+	animation.play("bullet")
 	if body.has_method("bullet_hit"):
-		
-		
 		body.bullet_hit()
 	await get_tree().create_timer(tempo_animacao).timeout
 	queue_free()
-	
-"""
 
 func _on_area_entered(area: Area2D) -> void:
 	set_collision_mask_value(3, false) #tirar colisao inimigo

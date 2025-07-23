@@ -46,9 +46,7 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		# get_collider() nos dá o nó com que colidimos.
 		if collision and collision.get_collider().is_in_group("GrupoPlayer"):
-			
 			var superJoe = collision.get_collider()
-			
 			if superJoe.has_method("death_normal"):
 				superJoe.set_collision_layer_value(2, false)
 				superJoe.death_normal()
@@ -64,7 +62,7 @@ func _physics_process(delta: float) -> void:
 			if tempo_fora_tela < 0:
 				dead_enemy.emit(self)
 				queue_free()
-	
+
 
 
 func look_at_player() -> Vector2:

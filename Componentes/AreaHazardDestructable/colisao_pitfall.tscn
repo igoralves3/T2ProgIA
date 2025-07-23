@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://yd2uns8r1tki" path="res://Componentes/AreaHazardDestructable/colisao_pitfall.gd" id="1_mukru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmv0"]
-size = Vector2(46, 46)
+size = Vector2(46, 66)
 
 [node name="ColisaoPitfall" type="Area2D"]
 collision_layer = 16
@@ -11,6 +11,7 @@ collision_mask = 2
 script = ExtResource("1_mukru")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 33)
 shape = SubResource("RectangleShape2D_cnmv0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

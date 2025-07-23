@@ -41,7 +41,7 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 
-"""func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 #	print ("enemybullet entered")
 	set_collision_mask_value(2, false) #tirar colisao inimigo
 	die.emit()
@@ -49,13 +49,11 @@ func _on_timer_timeout() -> void:
 	animation.play("bullet")
 #	print (body, "player bullet hit")
 	if body.has_method("death_normal"):
-		
-		
 		body.death_normal()
 	await get_tree().create_timer(tempo_animacao).timeout
 	queue_free()
 	
-"""
+
 func _on_area_entered(area: Area2D) -> void:
 	#print ("enemybullet entered AREA2D")
 	set_collision_mask_value(2, false) #tirar colisao inimigo
@@ -64,8 +62,6 @@ func _on_area_entered(area: Area2D) -> void:
 	animation.play("bullet")
 	#print (area, "player bullet hit")
 	if area.get_parent().has_method("death_normal"):
-		
-	#	print ("death normal area2d")
 		area.get_parent().death_normal()
 	await get_tree().create_timer(tempo_animacao).timeout
 	queue_free()

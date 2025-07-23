@@ -17,7 +17,7 @@ height = 21.3333
 
 [node name="MainPlayerChar" type="CharacterBody2D" groups=["GrupoPlayer"]]
 collision_layer = 27
-collision_mask = 25
+collision_mask = 9
 script = ExtResource("1_q3lat")
 bullet = ExtResource("2_tok1r")
 grenade = ExtResource("3_ddoul")

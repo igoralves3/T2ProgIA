@@ -190,9 +190,10 @@ func shoot_bullet():
 	else:
 		bullet_instance.position += dir * 15
 	var vfx_instance = Bullet_VFX.instantiate()
-	vfx_instance.global_position = global_position + bullet_offset
-	vfx_instance.play(direcao_anim)
-	get_parent().add_child(vfx_instance)
+	if direcao_anim != null and bullet_offset != null:
+		vfx_instance.global_position = global_position + bullet_offset
+		vfx_instance.play(direcao_anim)
+		get_parent().add_child(vfx_instance)
 	bullet_instance.motion = dir
 	get_parent().add_child(bullet_instance)
 	#bullets.append(bullet_instance)
@@ -235,7 +236,7 @@ func death_water(posicao_colisor):
 	can_move = false
 	can_shoot = false
 	var diferenca_posicao = posicao_colisor - global_position
-	diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/2)
+	diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/5)
 	var nova_posicao = global_position + diferenca_posicao
 	velocity = Vector2(0,0)
 	tween = create_tween()
@@ -250,9 +251,13 @@ func death_pitfall(posicao_colisor):
 	
 	can_move = false
 	can_shoot = false
+	print (posicao_colisor, "colisor")
+	print (global_position, "global")
 	var diferenca_posicao = posicao_colisor - global_position
-	diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/2)
+	diferenca_posicao = Vector2(diferenca_posicao.x/4,diferenca_posicao.y)
+	print (diferenca_posicao, "diferenca")
 	var nova_posicao = global_position + diferenca_posicao
+	print (nova_posicao, "nova posicao")
 	velocity = Vector2(0,0)
 	tween = create_tween()
 	tween.tween_property(self, "position", nova_posicao, 0.1)
