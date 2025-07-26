@@ -55,6 +55,10 @@ func _on_body_entered(body: Node2D) -> void:
 	
 
 func _on_area_entered(area: Area2D) -> void:
+	
+	if area is Humvee:
+		return
+	
 	#print ("enemybullet entered AREA2D")
 	set_collision_mask_value(2, false) #tirar colisao inimigo
 	die.emit()

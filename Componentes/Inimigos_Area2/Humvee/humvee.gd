@@ -1,12 +1,19 @@
 extends Area2D
 
+class_name Humvee
+
 @onready var _animated_sprite = $AnimatedSprite2D
+
+@onready var timer = $Timer
+@onready var weapon_position = $WeaponPosition
 
 const speed := 100
 
 var dir := 1
 
 @export var other_player: CharacterBody2D
+
+@export var bullet_inimigo: PackedScene
 
 func _ready() -> void:
 	if not other_player:
@@ -42,3 +49,15 @@ func _on_body_entered(body: Node2D) -> void:
 		print('player colidiu')
 		if body.has_method('death_normal'):
 			body.death_normal()
+			
+func fire_bullet():
+	var bullet_instance = bullet_inimigo.instantiate()
+	#bullet_instance.global_transform = global_transform
+	bullet_instance.position = weapon_position.global_position
+	bullet_instance.motion = (Vector2.DOWN).normalized()#(ray_cast.target_position).normalized()
+	get_parent().add_child(bullet_instance)
+	#print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
+
+
+func _on_timer_timeout() -> void:
+	fire_bullet()
