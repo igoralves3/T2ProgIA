@@ -15,9 +15,17 @@ func _ready() -> void:
 	if global_position.x > get_viewport().size.x / 2:
 		_animated_sprite.flip_h = true
 		dir = -1
-	_animated_sprite.play("default")
+		_animated_sprite.play("andando_p_esquerda")
+	else:
+		_animated_sprite.flip_h = false
+		dir = 1
+		_animated_sprite.play("andando_p_direita")
 
 func _physics_process(delta: float) -> void:
+	if dir > 0:
+		_animated_sprite.play("andando_p_esquerda")
+	elif dir < 0:
+		_animated_sprite.play("andando_p_direita")
 	position.x += dir * speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:

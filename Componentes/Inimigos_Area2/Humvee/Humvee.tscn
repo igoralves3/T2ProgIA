@@ -10,6 +10,7 @@ script = ExtResource("1_yi5w7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_yi5w7")
+animation = &"andando_p_esquerda"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 visible = false
