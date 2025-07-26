@@ -5,7 +5,7 @@ var volume_SFX: float = 100
 var volume_master: float = 100
 @onready var AudioSFXArray= [AudioStreamPlayer]
 @onready var Master:= AudioBusLayout
-var SFXBusDic = ["SFX1","SFX2","SFX3","SFX4","SFX5","SFX6","SFX7","SFX8", "SFX9", "SFX10"]
+var SFXBusDic = ["SFX1","SFX2","SFX3","SFX4","SFX5","SFX6","SFX7","SFX8", "SFX9", "SFX10", "SFX11", "SFX12", "SFX13", "SFX14", "SFX15", "SFX16", "SFX17", "SFX18", "SFX19", "SFX20"]
 
 
 func _ready():

@@ -74,13 +74,13 @@ offset = Vector2(-9, 0)
 [node name="Label" type="Label" parent="Control/GranadasHBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 11
 text = "="
 
 [node name="LabelGranadas" type="Label" parent="Control/GranadasHBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 11
 text = "9"
 
 [node name="Medalhas" type="HBoxContainer" parent="Control"]
@@ -116,7 +116,7 @@ modulate = Color(0.726223, 3.41728e-06, 5.77569e-07, 1)
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 10
 text = "1UP"
 horizontal_alignment = 1
 
@@ -127,7 +127,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 10
 text = "7777777"
 horizontal_alignment = 2
 
@@ -150,7 +150,7 @@ modulate = Color(0.726223, 3.41728e-06, 5.77569e-07, 1)
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 10
 text = "TOP SCORE"
 horizontal_alignment = 1
 
@@ -161,7 +161,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 10
 text = "50000"
 horizontal_alignment = 1
 

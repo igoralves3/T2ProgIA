@@ -57,6 +57,7 @@ texture = ExtResource("4_farx6")
 [node name="MainPlayerChar" parent="." instance=ExtResource("5_mmikm")]
 unique_name_in_owner = true
 position = Vector2(109, 200)
+god_mode = true
 
 [node name="TodasArvores" type="Node" parent="."]
 
