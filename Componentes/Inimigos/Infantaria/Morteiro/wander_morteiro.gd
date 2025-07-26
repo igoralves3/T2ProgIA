@@ -26,7 +26,7 @@ func enter() -> void:
 	#print('wander')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
-		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	randomize_wander()
 	infantaria_node = get_parent().get_parent()
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Comandos Remake"
-run/main_scene="uid://bqawtwe2n84sn"
+run/main_scene="uid://6awtj6fxpxmw"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -29,7 +29,7 @@ func _ready():
 	_animated_sprite.play('down')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
-		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	timer_olhar_para_jogador = Timer.new()
 	timer_olhar_para_jogador.wait_time = randf_range(1,2)
 	timer_olhar_para_jogador.one_shot = true

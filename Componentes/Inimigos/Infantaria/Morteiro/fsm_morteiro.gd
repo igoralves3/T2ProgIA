@@ -30,7 +30,7 @@ func enter() -> void:
 
 func get_other_player():
 	var currentScene = get_tree().get_current_scene().get_name()
-	other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+	other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 
 func exit() -> void:
 	infantaria_self.pode_atirar = true

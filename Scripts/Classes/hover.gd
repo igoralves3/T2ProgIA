@@ -2,7 +2,7 @@ extends State
 class_name Hover
 
 @export var character: CharacterBody2D
-@export var other_player: CharacterBody2D
+@onready var other_player: CharacterBody2D
 @export var move_speed: float = 50.0
 var move_direction: Vector2
 var destination: Vector2
@@ -24,7 +24,7 @@ var infantaria_node
 func enter() -> void:
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
-		other_player = get_node('/root/'+currentScene+'/MainPlayerChar')
+		other_player = get_tree().get_nodes_in_group("GrupoPlayer")[0]
 		randomize_next_move()
 		timer_entre_estados = Timer.new()
 		timer_entre_estados.wait_time = tempo_timer_entre_estados
