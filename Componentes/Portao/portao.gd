@@ -21,3 +21,5 @@ func _physics_process(delta: float) -> void:
 func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
 	ativo = true
 	
+func _on_trigger_mobs_portao_area_entered(area: Area2D) -> void:
+	door_open = true

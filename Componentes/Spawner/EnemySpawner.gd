@@ -66,12 +66,12 @@ func _on_mob_dead_enemy(enemy):
 	# Optionally, queue_free the enemy if not already done
 	# enemy.queue_free()
 
-
-func _on_trigger_area_entered(area: Area2D) -> void:
-	podeSpawnar = !podeSpawnar
-	print("pode spawnar?", podeSpawnar)
-
 func get_HUD():
 	var HUD1 = get_tree().get_nodes_in_group("HUD")
 	if not HUD1.is_empty():
 		HUD = HUD1[0]
+
+
+func _on_trigger_mobs_portao_area_entered(area: Area2D) -> void:
+	podeSpawnar = false
+	print(podeSpawnar)
