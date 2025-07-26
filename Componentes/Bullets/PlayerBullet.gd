@@ -1,6 +1,6 @@
 extends Area2D
 
-#class_name Bullet
+class_name PlayerBullet
 
 @export var motion := Vector2(0,0)
 var tempo_para_sumir: float = 0.3 # acredito ser esse o valor real do jogo original

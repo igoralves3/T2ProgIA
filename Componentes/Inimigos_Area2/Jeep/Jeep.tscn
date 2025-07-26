@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5qr642bsk56r"]
+
+[ext_resource type="Script" uid="uid://bwhqif4s0l1do" path="res://Componentes/Inimigos_Area2/Jeep/jeep.gd" id="1_3hai1"]
+[ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_ragcb"]
+[ext_resource type="SpriteFrames" uid="uid://ciweup6h5l42k" path="res://Componentes/Inimigos_Area2/Humvee/humvee_spriteframes.tres" id="3_2kn6r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ragcb"]
+
+[node name="Jeep" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 19
+script = ExtResource("1_3hai1")
+bullet_inimigo = ExtResource("2_ragcb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_2kn6r")
+animation = &"atirando_baixo"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ragcb")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="WeaponPosition" type="Node2D" parent="."]
+position = Vector2(8, 10)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
