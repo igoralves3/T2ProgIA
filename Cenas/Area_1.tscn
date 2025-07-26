@@ -229,7 +229,9 @@ position = Vector2(112, -1762)
 position = Vector2(142, -532)
 
 [node name="Trigger_Mobs_Portao" parent="." instance=ExtResource("20_gxw08")]
-position = Vector2(3, -1612)
+position = Vector2(0, -1600)
+collision_layer = 0
+collision_mask = 2
 
 [node name="LevelEndTrigger" parent="." instance=ExtResource("20_gxw08")]
 position = Vector2(-1, -1758)
@@ -238,4 +240,5 @@ position = Vector2(-1, -1758)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="MobSpawner" method="_on_trigger_area_entered"]
+[connection signal="area_entered" from="Trigger_Mobs_Portao" to="Portao2" method="_on_trigger_mobs_portao_area_entered"]
 [connection signal="area_entered" from="LevelEndTrigger" to="." method="_on_level_end_trigger_area_entered"]

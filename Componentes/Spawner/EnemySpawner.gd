@@ -68,7 +68,7 @@ func _on_mob_dead_enemy(enemy):
 
 
 func _on_trigger_area_entered(area: Area2D) -> void:
-	podeSpawnar = !podeSpawnar
+	podeSpawnar = false
 	print("pode spawnar?", podeSpawnar)
 
 func get_HUD():

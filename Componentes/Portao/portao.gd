@@ -21,3 +21,16 @@ func _physics_process(delta: float) -> void:
 func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
 	ativo = true
 	
+
+
+func _on_trigger_mobs_portao_area_entered(area):
+	print("abre os portoes")
+	var timer = Timer.new()
+	timer.wait_time = 0.5
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	timer.timeout.connect(func():
+		print("abertos")
+		door_open = true
+	)
