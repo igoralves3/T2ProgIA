@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://gctuu1s5gx5r"]
+
+[ext_resource type="SpriteFrames" uid="uid://d0yydur7oy3b1" path="res://SpriteSheets/Animacoes_Etc/Intermission1.tres" id="1_4g65l"]
+[ext_resource type="Script" uid="uid://bfddoy8xl1ov0" path="res://Cenas/Intermissions/intermission_1.gd" id="1_7fj7t"]
+[ext_resource type="AudioStream" uid="uid://bvmsrvacylfmn" path="res://Audio/SFX/NES - Commando - Sound Effects/keys.wav" id="2_b3oon"]
+[ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="3_7fj7t"]
+[ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="3_b3oon"]
+[ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="4_b3oon"]
+
+[node name="Intermission1" type="Node2D" node_paths=PackedStringArray("timer_label", "label", "animacao", "timer_avancar_cena")]
+script = ExtResource("1_7fj7t")
+timer_label = NodePath("Control/Label/Timer")
+label = NodePath("Control/Label")
+som_texto = ExtResource("2_b3oon")
+animacao = NodePath("AnimatedSprite2D")
+timer_avancar_cena = NodePath("Timer_Avancar_Cena")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -34.0
+offset_top = -44.0
+offset_right = 244.0
+offset_bottom = 283.0
+texture = ExtResource("3_b3oon")
+
+[node name="Label" type="Label" parent="Control"]
+modulate = Color(0.81, 0.81, 0.81, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 69.0
+offset_right = 208.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("3_7fj7t")
+theme_override_font_sizes/font_size = 10
+text = "BROKE THE 1ST AREA
+NOW RUSH TO THE 2ND AREA"
+
+[node name="Timer" type="Timer" parent="Control/Label"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(112, 160)
+sprite_frames = ExtResource("1_4g65l")
+animation = &"animacao"
+frame_progress = 0.850175
+
+[node name="HUD" parent="." instance=ExtResource("4_b3oon")]
+
+[node name="Timer_Avancar_Cena" type="Timer" parent="."]
+
+[connection signal="timeout" from="Control/Label/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer_Avancar_Cena" to="." method="_on_timer_avancar_cena_timeout"]
