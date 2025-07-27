@@ -24,7 +24,7 @@ var pode_atirar = false
 
 var recharge_frames = 0
 
-signal dead_enemy(myself: CharacterBody2D)
+signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready():
 	print('morteiro pronto')
@@ -128,14 +128,14 @@ func bullet_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
-	dead_enemy.emit(self)	
+	dead_enemy.emit(self, pontos)	
 	queue_free()
 
 func grenade_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
-	dead_enemy.emit(self)	
+	dead_enemy.emit(self, pontos)	
 	get_parent().get_node("Morteiro").queue_free()
 	queue_free()
 
@@ -147,7 +147,7 @@ func fire_morteiro():
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	ativo = false
-	dead_enemy.emit(self)
+	dead_enemy.emit(self, pontos)
 	queue_free()
 
 func timer_olhar_para_jogador_end():

@@ -53,10 +53,10 @@ func _on_mob_timer_timeout():
 				print('mob on collision')
 				area.remove_child(mob)
 
-func _on_mob_dead_enemy(enemy):
+func _on_mob_dead_enemy(enemy, pontos):
 	# Handle the enemy death here (e.g., remove from list, spawn more, etc.)
 	if enemy in ListaInimigos:
-		GameManager.addPoints(enemy.pontos)
+		GameManager.addPoints(pontos)
 		ListaInimigos.erase(enemy)
 		if HUD != null:
 			HUD.single_update()

@@ -23,7 +23,7 @@ var tempo_fora_tela: float = 2
 @export var colisao_chao: CollisionShape2D
 @export var area_colisao_morte: Area2D
 
-signal dead_enemy(myself: CharacterBody2D)
+signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready():
 	_animated_sprite.play('down')
@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 			if global_position.y > cameraoffset.y +256 or global_position.y < cameraoffset.y:
 				tempo_fora_tela = tempo_fora_tela - delta
 			if tempo_fora_tela < 0:
-				dead_enemy.emit(self)
+				dead_enemy.emit(self, pontos)
 				queue_free()
 
 
@@ -115,19 +115,19 @@ func bullet_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
-	dead_enemy.emit(self)	
+	dead_enemy.emit(self, pontos)	
 	queue_free()
 
 func grenade_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
-	dead_enemy.emit(self)	
+	dead_enemy.emit(self, pontos)
 	queue_free()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	dead_enemy.emit(self)
+	dead_enemy.emit(self, 0)
 	queue_free()
 
 func timer_olhar_para_jogador_end():

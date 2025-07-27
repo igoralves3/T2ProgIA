@@ -57,7 +57,7 @@ texture = ExtResource("4_farx6")
 
 [node name="MainPlayerChar" parent="." instance=ExtResource("5_mmikm")]
 unique_name_in_owner = true
-position = Vector2(110, -1524)
+position = Vector2(120, 142)
 god_mode = true
 
 [node name="TodasArvores" type="Node" parent="."]
@@ -160,7 +160,6 @@ scale = Vector2(1.6, 0.3)
 
 [node name="MobSpawner" parent="." node_paths=PackedStringArray("area") instance=ExtResource("11_lyvvr")]
 mob_scene = ExtResource("8_76dhw")
-podeSpawnar = false
 area = NodePath("..")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
