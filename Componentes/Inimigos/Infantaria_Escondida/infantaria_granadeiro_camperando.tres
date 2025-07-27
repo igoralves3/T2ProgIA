@@ -1,0 +1,172 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://2b1vs8rjiou1"]
+
+[ext_resource type="Texture2D" uid="uid://lt5tp7588j5h" path="res://SpriteSheets/inimigos_spritesheet.webp" id="1_tsgml"]
+[ext_resource type="Texture2D" uid="uid://1hf6cqhrxi5q" path="res://SpriteSheets/InimigosSpriteSheet.png" id="2_00tnl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvu0k"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(375, 290, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb4c0"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(534, 11, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k06s7"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(489, 290, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1g53"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(509, 352, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df4pi"]
+atlas = ExtResource("2_00tnl")
+region = Rect2(585, 200, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsgml"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(318, 290, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00tnl"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(337, 290, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycfn2"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(413, 290, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1osgk"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(432, 290, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqml8"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(451, 290, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm3cw"]
+atlas = ExtResource("1_tsgml")
+region = Rect2(470, 290, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvu0k")
+}],
+"loop": true,
+"name": &"baixo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb4c0")
+}],
+"loop": true,
+"name": &"cima",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k06s7")
+}, {
+"duration": 0.35,
+"texture": SubResource("AtlasTexture_a1g53")
+}, {
+"duration": 0.35,
+"texture": SubResource("AtlasTexture_df4pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k06s7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsgml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00tnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvu0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycfn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1osgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqml8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm3cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k06s7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1osgk")
+}],
+"loop": true,
+"name": &"direita",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycfn2")
+}],
+"loop": true,
+"name": &"direita_baixo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1osgk")
+}],
+"loop": true,
+"name": &"direita_cima",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsgml")
+}],
+"loop": true,
+"name": &"esquerda",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00tnl")
+}],
+"loop": true,
+"name": &"esquerda_baixo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsgml")
+}],
+"loop": true,
+"name": &"esquerda_cima",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqml8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm3cw")
+}],
+"loop": false,
+"name": &"saindo",
+"speed": 5.0
+}]

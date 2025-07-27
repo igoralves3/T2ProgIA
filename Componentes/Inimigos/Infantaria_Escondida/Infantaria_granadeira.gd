@@ -22,10 +22,13 @@ var tempo_fora_tela: float = 2
 var pode_atirar_granada: bool = false
 var old_velocity: Vector2
 var last_input_direction
-var esta_parado: bool = false
 var firing_grenade: bool = false
 var enemy_controller
 var Array_granadas_jogadas: Array
+@export var Sprite_frames_caminhando = SpriteFrames
+@export var Sprite_frames_camperando = SpriteFrames
+@export var Sprite_frames_turret = SpriteFrames
+@export var ta_no_turret: bool = false
 
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
@@ -36,10 +39,14 @@ func _ready():
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	enemy_controller = get_tree().get_first_node_in_group("EnemyController")
 	if camperando:
-		esta_parado = true
+		_animated_sprite.set_sprite_frames(Sprite_frames_camperando)
+		if ta_no_turret:
+			_animated_sprite.set_sprite_frames(Sprite_frames_turret)
 		pode_atirar_granada = false
 		_animated_sprite.stop()
+		olhando_para_jogador = true
 	if not camperando:
+		colisao_chao.disabled = false
 		enemy_controller.update_granadas(0) #adiciona a infantaria atual no array de cooldown se estiver cooldown
 	timer_olhar_para_jogador = Timer.new()
 	timer_olhar_para_jogador.wait_time = randf_range(1,2)
@@ -55,18 +62,13 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	
-#	print(timer_jogar_granada.time_left)
 	move_and_slide()
 	if olhando_para_jogador:
 		if not firing_grenade:
 			update_animation(look_at_player())
-		if esta_parado:
-			_animated_sprite.stop()
 	else:
-		if not esta_parado:
-			if not firing_grenade:
-				update_animation(motion_direction)
+		if not firing_grenade:
+			update_animation(motion_direction)
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		if collision and collision.get_collider().is_in_group("GrupoPlayer"):
@@ -127,7 +129,8 @@ func fire_bullet():
 	timer_olhar_para_jogador.start()
 	if other_player:
 		var bullet_instance = bullet_inimigo.instantiate()
-		#bullet_instance.global_transform = global_transform
+		if camperando:
+			bullet_instance.set_collision_mask_value(1, false)
 		bullet_instance.position = position
 		bullet_instance.motion = (other_player.global_position - global_position).normalized()#(ray_cast.target_position).normalized()
 		get_parent().add_child(bullet_instance)
@@ -170,12 +173,14 @@ func post_grenade():
 		update_animation(last_input_direction)
 
 func bullet_hit():
+	set_physics_process(false)
+	_animated_sprite.play("death")
+	_animated_sprite.animation_finished.connect(queue_free)
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
 	remover_granadas_filhas_do_controller()
-	queue_free()
 
 func remover_granadas_filhas_do_controller():
 	for granada in Array_granadas_jogadas:
@@ -183,15 +188,15 @@ func remover_granadas_filhas_do_controller():
 			if granada.has_method("remover_granada_controller"):
 				granada.remover_granada_controller()
 
-
 func grenade_hit():
+	set_physics_process(false)
+	_animated_sprite.play("death")
+	_animated_sprite.animation_finished.connect(queue_free)
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
 	remover_granadas_filhas_do_controller()
-	queue_free()
-
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	dead_enemy.emit(self, 0)
@@ -199,11 +204,29 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
 func timer_olhar_para_jogador_end():
-	print ("olhar jogador")
-	olhando_para_jogador = false
+	if not camperando:
+		olhando_para_jogador = false
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	can_shoot = true
 	if not camperando:
 		pode_atirar_granada = true
+
+func saindo_da_moita():
+	_animated_sprite.play("saindo")
+	_animated_sprite.animation_finished.connect(saiu_da_moita)
+	set_physics_process(false)
+
+func saiu_da_moita():
+	_animated_sprite.set_sprite_frames(Sprite_frames_caminhando)
+	set_physics_process(true)
+	var timer_ativar_collision = Timer.new()
+	timer_ativar_collision.wait_time = 0.3
+	timer_ativar_collision.one_shot = true
+	timer_ativar_collision.timeout.connect(ativar_colisao_chao)
+	add_child(timer_ativar_collision)
+	timer_ativar_collision.start()
+
+func ativar_colisao_chao():
+	colisao_chao.disabled = false

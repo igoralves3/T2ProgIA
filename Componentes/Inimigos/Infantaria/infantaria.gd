@@ -104,18 +104,24 @@ func _on_timer_timeout() -> void:
 	fire_bullet()
 
 func bullet_hit():
+	set_physics_process(false)
+	_animated_sprite.play("death")
+	_animated_sprite.animation_finished.connect(queue_free)
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)	
-	queue_free()
+#	queue_free()
 
 func grenade_hit():
+	set_physics_process(false)
+	_animated_sprite.play("death")
+	_animated_sprite.animation_finished.connect(queue_free)
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
-	queue_free()
+
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

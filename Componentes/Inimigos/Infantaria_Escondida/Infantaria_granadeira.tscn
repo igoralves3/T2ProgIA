@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx7d6d33wlnsw"]
+[gd_scene load_steps=14 format=3 uid="uid://dx7d6d33wlnsw"]
 
 [ext_resource type="Script" uid="uid://c04crb6kqx8vi" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_granadeira.gd" id="1_ho7k7"]
 [ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_ncmoc"]
@@ -6,9 +6,11 @@
 [ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="3_fdaxw"]
 [ext_resource type="AudioStream" uid="uid://dgj3v1nfvx6hh" path="res://Audio/SFX/NES - Commando - Sound Effects/ShootBullet.wav" id="4_trkf1"]
 [ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="5_7nmyq"]
-[ext_resource type="SpriteFrames" uid="uid://dl8alejavs7lq" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_granadeiro.tres" id="6_0gvon"]
+[ext_resource type="SpriteFrames" uid="uid://dl8alejavs7lq" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_granadeiro_caminhando.tres" id="6_0gvon"]
 [ext_resource type="Script" uid="uid://bxia24phixrgy" path="res://Scripts/Classes/standing.gd" id="6_flat6"]
+[ext_resource type="SpriteFrames" uid="uid://2b1vs8rjiou1" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_granadeiro_camperando.tres" id="7_o0t5i"]
 [ext_resource type="Script" uid="uid://bp3ejt8do2ih6" path="res://Scripts/Classes/run.gd" id="7_trkf1"]
+[ext_resource type="SpriteFrames" uid="uid://b526bn1066duf" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_granadeiro_turret.tres" id="8_g8l2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
 size = Vector2(70, 6.60066)
@@ -28,15 +30,19 @@ som_tiro = ExtResource("4_trkf1")
 colisao_chao = NodePath("ColisaoChao")
 area_colisao_morte = NodePath("Area2DColisaoMorte")
 fsm_run = NodePath("FSM/Run")
+Sprite_frames_caminhando = ExtResource("6_0gvon")
+Sprite_frames_camperando = ExtResource("7_o0t5i")
+Sprite_frames_turret = ExtResource("8_g8l2s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("6_0gvon")
-animation = &"throw"
+animation = &"baixo"
 
 [node name="ColisaoChao" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 10)
 scale = Vector2(0.2, -0.606)
 shape = SubResource("RectangleShape2D_vi6ic")
+disabled = true
 
 [node name="LabelState" type="Label" parent="."]
 offset_left = -21.0

@@ -27,8 +27,9 @@ area_colisao_morte = NodePath("Area2DColisaoMorte")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_04x4o")
-animation = &"right"
-frame_progress = 0.879384
+animation = &"death"
+frame = 22
+frame_progress = 1.0
 
 [node name="ColisaoChao" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 10)

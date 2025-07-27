@@ -63,8 +63,7 @@ texture = ExtResource("4_farx6")
 
 [node name="MainPlayerChar" parent="." instance=ExtResource("5_mmikm")]
 unique_name_in_owner = true
-position = Vector2(61, -541)
-god_mode = true
+position = Vector2(114, -59)
 
 [node name="TodasArvores" type="Node" parent="."]
 
@@ -203,19 +202,23 @@ collision_mask = 0
 [node name="GrupoInfantariaEscondida" type="Node" parent="."]
 
 [node name="Infantaria_granadeira7" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
-position = Vector2(15, -957)
+position = Vector2(15, -956)
 camperando = true
 
 [node name="Infantaria_granadeira6" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
-position = Vector2(109, -926)
+position = Vector2(110, -924)
+camperando = true
+
+[node name="Infantaria_granadeira9" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(221, -983)
 camperando = true
 
 [node name="Infantaria_granadeira5" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
-position = Vector2(62, -1022)
+position = Vector2(63, -1021)
 camperando = true
 
 [node name="Infantaria_granadeira4" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
-position = Vector2(161, -1054)
+position = Vector2(159, -1053)
 camperando = true
 
 [node name="Infantaria_granadeira3" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
@@ -223,11 +226,55 @@ position = Vector2(206, -1150)
 camperando = true
 
 [node name="Infantaria_granadeira" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
-position = Vector2(110, -1148)
+position = Vector2(111, -1148)
 camperando = true
 
 [node name="Infantaria_granadeira2" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
-position = Vector2(13, -1150)
+position = Vector2(14, -1150)
+camperando = true
+
+[node name="Infantaria_granadeira10" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(86, -1250)
+camperando = true
+ta_no_turret = true
+
+[node name="Infantaria_granadeira11" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(182, -1349)
+camperando = true
+ta_no_turret = true
+
+[node name="Infantaria_granadeira12" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(146, -1348)
+camperando = true
+ta_no_turret = true
+
+[node name="Infantaria_granadeira13" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(22, -1379)
+camperando = true
+ta_no_turret = true
+
+[node name="Infantaria_granadeira14" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(111, -1474)
+camperando = true
+ta_no_turret = true
+
+[node name="Infantaria_granadeira15" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(17, -1507)
+camperando = true
+ta_no_turret = true
+
+[node name="Infantaria_granadeira16" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(49, -1507)
+camperando = true
+ta_no_turret = true
+
+[node name="Infantaria_granadeira17" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(202, -1571)
+camperando = true
+ta_no_turret = true
+
+[node name="Infantaria_granadeira8" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
+position = Vector2(152, -289)
 camperando = true
 
 [node name="Agentes_morteiro" parent="." instance=ExtResource("17_emitg")]
