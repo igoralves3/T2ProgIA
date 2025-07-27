@@ -6,18 +6,21 @@ var volume_master: float = 100
 @onready var AudioSFXArray= [AudioStreamPlayer]
 @onready var Master:= AudioBusLayout
 var SFXBusDic = ["SFX1","SFX2","SFX3","SFX4","SFX5","SFX6","SFX7","SFX8", "SFX9", "SFX10", "SFX11", "SFX12", "SFX13", "SFX14", "SFX15", "SFX16", "SFX17", "SFX18", "SFX19", "SFX20"]
-
+var AudioBGM
 
 func _ready():
 	AudioSFXArray = get_node("GroupSFX").get_children()
-	
+	AudioBGM = get_node("AudioBGM")
 
 func play_button(Audio) -> void:
 	var sfx = get_free_sfx_stream()
 	if sfx != null:
 		sfx.stream = Audio
-#		sfx.stream = load(Audio)
 		sfx.play()
+
+func play_bgm(BGM) -> void:
+	AudioBGM.stream = BGM
+	AudioBGM.play()
 
 func get_free_sfx_stream():
 	var streamSFX: AudioStreamPlayer

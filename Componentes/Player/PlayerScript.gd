@@ -222,7 +222,6 @@ func spawn_grenade():
 				get_HUD()
 				HUD.single_update()
 
-
 func spawn_grenade_part2():
 	var grenade_instance = grenade.instantiate()
 	grenade_instance.global_transform = global_transform
@@ -235,50 +234,49 @@ func spawn_grenade_part2():
 
 func death_water(posicao_colisor):
 	if not god_mode:
-		disable_collisions()
-		SoundController.play_button(SFXPlayerDeath)
-		can_move = false
-		can_shoot = false
-		var diferenca_posicao = posicao_colisor - global_position
-		diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/5)
-		var nova_posicao = global_position + diferenca_posicao
-		velocity = Vector2(0,0)
-		tween = create_tween()
-		tween.tween_property(self, "position", nova_posicao, 0.1)
-		_animated_sprite.play("death_water")
-		_animated_sprite.animation_finished.connect(emit_death)
+		if not is_reloading_scene:
+			SoundController.play_bgm(SFXPlayerDeath)
+			disable_collisions()
+			can_move = false
+			can_shoot = false
+			var diferenca_posicao = posicao_colisor - global_position
+			diferenca_posicao = Vector2(diferenca_posicao.x/5,diferenca_posicao.y/5)
+			var nova_posicao = global_position + diferenca_posicao
+			velocity = Vector2(0,0)
+			tween = create_tween()
+			tween.tween_property(self, "position", nova_posicao, 0.1)
+			_animated_sprite.play("death_water")
+			_animated_sprite.animation_finished.connect(emit_death)
 #	emit_death()
 
 func death_pitfall(posicao_colisor):
 	if not god_mode:
-		disable_collisions()
-		SoundController.play_button(SFXPlayerDeath)
-		can_move = false
-		can_shoot = false
-		print (posicao_colisor, "colisor")
-		print (global_position, "global")
-		var diferenca_posicao = posicao_colisor - global_position
-		diferenca_posicao = Vector2(diferenca_posicao.x/4,diferenca_posicao.y)
-		print (diferenca_posicao, "diferenca")
-		var nova_posicao = global_position + diferenca_posicao
-		print (nova_posicao, "nova posicao")
-		velocity = Vector2(0,0)
-		tween = create_tween()
-		tween.tween_property(self, "position", nova_posicao, 0.1)
-		_animated_sprite.play("death_pitfall")
-		_animated_sprite.animation_finished.connect(emit_death)
+		if not is_reloading_scene:
+			SoundController.play_bgm(SFXPlayerDeath)
+			disable_collisions()
+			can_move = false
+			can_shoot = false
+			var diferenca_posicao = posicao_colisor - global_position
+			diferenca_posicao = Vector2(diferenca_posicao.x/4,diferenca_posicao.y)
+			var nova_posicao = global_position + diferenca_posicao
+			velocity = Vector2(0,0)
+			tween = create_tween()
+			tween.tween_property(self, "position", nova_posicao, 0.1)
+			_animated_sprite.play("death_pitfall")
+			_animated_sprite.animation_finished.connect(emit_death)
 #	emit_death()
 
 func death_normal():
 #	print ("death normals playerscript")
 	if not god_mode:
-		disable_collisions()
-		SoundController.play_button(SFXPlayerDeath)
-		can_move = false
-		can_shoot = false
-		velocity = Vector2(0,0)
-		_animated_sprite.play("death_normal")
-		_animated_sprite.animation_finished.connect(emit_death)
+		if not is_reloading_scene:
+			SoundController.play_bgm(SFXPlayerDeath)
+			disable_collisions()
+			can_move = false
+			can_shoot = false
+			velocity = Vector2(0,0)
+			_animated_sprite.play("death_normal")
+			_animated_sprite.animation_finished.connect(emit_death)
 #	emit_death()
 
 func disable_collisions():
@@ -290,11 +288,9 @@ func disable_collisions():
 	$Area2DEnemyCollision.set_collision_layer_value(2, false)
 
 func emit_death():
-	print ("emit death before bool")
-	if not is_reloading_scene:
-		print("emit death after bool")
-		is_reloading_scene = true
-		dead_player.emit()
+	GameManager.retry = true
+	is_reloading_scene = true
+	dead_player.emit()
 
 func enable_bullet_shooting():
 	if not dying:

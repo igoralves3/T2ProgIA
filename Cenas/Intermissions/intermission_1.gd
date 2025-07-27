@@ -22,7 +22,7 @@ func _on_timer_timeout() -> void:
 	if qtd_de_letras < texto.length():
 		qtd_de_letras += 1
 		label.text = texto.substr(0, qtd_de_letras)
-		SoundMasterController.play_button(som_texto)
+		SoundController.play_button(som_texto)
 
 func _on_timer_avancar_cena_timeout() -> void: ##avanca a cena aqui
 	pass # Replace with function body.

@@ -8,25 +8,66 @@ script = ExtResource("1_wqk41")
 [node name="AudioBGM" type="AudioStreamPlayer" parent="."]
 pitch_scale = 0.8
 autoplay = true
+bus = &"BGM"
 
 [node name="GroupSFX" type="Node" parent="."]
 
 [node name="AudioSFX" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX1"
 
 [node name="AudioSFX2" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX2"
 
 [node name="AudioSFX3" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX3"
 
 [node name="AudioSFX4" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX4"
 
 [node name="AudioSFX5" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX5"
 
 [node name="AudioSFX6" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX6"
 
 [node name="AudioSFX7" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX7"
 
 [node name="AudioSFX8" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX8"
 
 [node name="AudioSFX9" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX9"
 
 [node name="AudioSFX10" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX10"
+
+[node name="AudioSFX11" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX11"
+
+[node name="AudioSFX12" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX12"
+
+[node name="AudioSFX13" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX13"
+
+[node name="AudioSFX14" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX14"
+
+[node name="AudioSFX15" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX15"
+
+[node name="AudioSFX16" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX16"
+
+[node name="AudioSFX17" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX17"
+
+[node name="AudioSFX18" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX18"
+
+[node name="AudioSFX19" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX19"
+
+[node name="AudioSFX20" type="AudioStreamPlayer" parent="GroupSFX"]
+bus = &"SFX20"

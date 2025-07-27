@@ -26,6 +26,9 @@ func single_update():
 	update_geral()
 
 func update_geral():
+	if label_high_score.text.is_valid_int():
+		if GameManager.score > int(label_high_score.text):
+			label_high_score.text = str(GameManager.score)
 	label_score_normal.text = str(GameManager.score)
 	label_granadas.text = str(GameManager.granadas)
 	if $%VidasExtrasHBox.get_child_count() < GameManager.lifes:

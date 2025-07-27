@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ceoxva8fjco0y"
+path="res://.godot/imported/05 Fortress.wav-7819ff6dfa0feb80d674418f4dd0b6c8.sample"
+
+[deps]
+
+source_file="res://Audio/BGM/NES/05 Fortress.wav"
+dest_files=["res://.godot/imported/05 Fortress.wav-7819ff6dfa0feb80d674418f4dd0b6c8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

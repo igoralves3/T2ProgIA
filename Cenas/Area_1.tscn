@@ -1,16 +1,20 @@
-[gd_scene load_steps=22 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=26 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
 [ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/Animacoes_Etc/SpriteFramePorta.tres" id="2_r24xy"]
+[ext_resource type="AudioStream" uid="uid://cngnxk5h4cy0n" path="res://Audio/BGM/NES/02 Start Demo ~ BGM 1.wav" id="2_twte5"]
 [ext_resource type="TileSet" uid="uid://wof1f0qku4s1" path="res://SpriteSheets/Area1_TileSet2.tres" id="2_uvug2"]
+[ext_resource type="AudioStream" uid="uid://dcukornkrw1yy" path="res://Audio/BGM/NES/06 Stage Clear Demo.wav" id="3_8k6ck"]
+[ext_resource type="AudioStream" uid="uid://cx17lmbscs616" path="res://Audio/BGM/NES/04 Restart ~ BGM 1.wav" id="4_7onqb"]
 [ext_resource type="Texture2D" uid="uid://f7ucl7ufn7rt" path="res://SpriteSheets/Area1Fundo.png" id="4_farx6"]
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="5_mmikm"]
+[ext_resource type="AudioStream" uid="uid://ceoxva8fjco0y" path="res://Audio/BGM/NES/05 Fortress.wav" id="5_vw23y"]
 [ext_resource type="PackedScene" uid="uid://cfqumf7uknscw" path="res://Componentes/AreaHazardDestructable/arvore.tscn" id="6_t3o0g"]
 [ext_resource type="PackedScene" uid="uid://ctqf7dpoxu84c" path="res://Componentes/AreaHazardDestructable/colisao_agua.tscn" id="7_a6koi"]
 [ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="8_76dhw"]
 [ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="10_6vjpy"]
+[ext_resource type="AudioStream" uid="uid://bnmxywjbuya0b" path="res://Audio/BGM/NES/03 Player Out.wav" id="10_8k6ck"]
 [ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="11_lyvvr"]
-[ext_resource type="AudioStream" uid="uid://bn5r8yi6ibkip" path="res://Audio/BGM/NES/4 - In-Game Theme 1.mp3" id="12_uvug2"]
 [ext_resource type="PackedScene" uid="uid://bqqxo1s2dkdpx" path="res://Componentes/item_granada_extra/item_granada_extra.tscn" id="13_so2n7"]
 [ext_resource type="PackedScene" uid="uid://d0d724dgyu3xp" path="res://Componentes/Spawner/MotoSpawn.tscn" id="14_f5gam"]
 [ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="15_2mqp0"]
@@ -24,6 +28,10 @@
 
 [node name="Area1" type="Node2D"]
 script = ExtResource("1_t3o0g")
+musica_inicial = ExtResource("2_twte5")
+musica_intermission = ExtResource("3_8k6ck")
+musica_retry = ExtResource("4_7onqb")
+"música_fortress" = ExtResource("5_vw23y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -58,7 +66,7 @@ texture = ExtResource("4_farx6")
 [node name="MainPlayerChar" parent="." instance=ExtResource("5_mmikm")]
 unique_name_in_owner = true
 position = Vector2(120, 142)
-god_mode = true
+SFXPlayerDeath = ExtResource("10_8k6ck")
 
 [node name="TodasArvores" type="Node" parent="."]
 
@@ -161,11 +169,6 @@ scale = Vector2(1.6, 0.3)
 [node name="MobSpawner" parent="." node_paths=PackedStringArray("area") instance=ExtResource("11_lyvvr")]
 mob_scene = ExtResource("8_76dhw")
 area = NodePath("..")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_uvug2")
-volume_db = -16.0
-autoplay = true
 
 [node name="ItemGranadaExtra" parent="." instance=ExtResource("13_so2n7")]
 position = Vector2(142, -316)

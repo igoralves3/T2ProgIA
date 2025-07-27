@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cwswwme5y4q48"
+path="res://.godot/imported/09 Game Over.wav-7e5b9c570a18f26f84e8d2844fec75f4.sample"
+
+[deps]
+
+source_file="res://Audio/BGM/NES/09 Game Over.wav"
+dest_files=["res://.godot/imported/09 Game Over.wav-7e5b9c570a18f26f84e8d2844fec75f4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

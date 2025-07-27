@@ -5,17 +5,18 @@ var startPoint: Vector2
 var hasCheckpoint: bool
 var score: int = 0
 var lifes: int = 3
-var medals: int = 0 ##nao tem update especifico ainda
+var medals: int = 0 
 var granadas: int = 5
-
 var currentScene = ""
+var retry = false #morreu e tá dando retry
 
 func newGame():
 	score = 0
 	lifes = 3
 	medals = 0
 	hasCheckpoint = false
-	
+	retry = false
+	granadas = 5
 
 func reduceLifes():
 	if lifes == 0:

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cngnxk5h4cy0n"
+path="res://.godot/imported/02 Start Demo ~ BGM 1.wav-be55e8e24eced40c4f58c89b5e29f697.sample"
+
+[deps]
+
+source_file="res://Audio/BGM/NES/02 Start Demo ~ BGM 1.wav"
+dest_files=["res://.godot/imported/02 Start Demo ~ BGM 1.wav-be55e8e24eced40c4f58c89b5e29f697.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

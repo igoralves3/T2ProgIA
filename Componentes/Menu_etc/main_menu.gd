@@ -7,7 +7,7 @@ var volumeSFX: float
 @onready var BGMBus = AudioServer.get_bus_index("BGM")
 @export var credits_scene: PackedScene
 @export var Area1_scene: PackedScene
-#@onready var MasterContr = SoundMasterController
+#@onready var MasterContr = SoundController
 
 #func _ready() -> void:
 	

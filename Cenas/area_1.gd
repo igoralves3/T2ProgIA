@@ -6,7 +6,10 @@ var posicao_player: Vector2
 var posicao_camera: Vector2
 var camera_distancia_y_minima = 170
 var camera_altura_maxima_y = -1791.5
-
+@export var musica_inicial: AudioStream
+@export var musica_intermission: AudioStream
+@export var musica_retry: AudioStream
+@export var música_fortress: AudioStream
 var currentCheckpoint: Vector2
 #@onready var startPoint: Vector2 = Vector2(74,100)
 
@@ -14,6 +17,10 @@ func _ready() -> void:
 	GameManager.setStartPoint(player.global_position)
 	GameManager.currentScene = "res://Cenas/Area_1.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
+	if not GameManager.retry:
+		SoundController.play_bgm(musica_inicial)
+	if GameManager.retry:
+		SoundController.play_bgm(musica_retry)
 
 func _process(delta: float) -> void:
 #	print (camera.offset.y, "offset")
