@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=22 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
 [ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/Animacoes_Etc/SpriteFramePorta.tres" id="2_r24xy"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="18_1xk7e"]
 [ext_resource type="PackedScene" uid="uid://btm45nn61a8k2" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_E_Prisioneiro.tscn" id="19_su8h8"]
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="20_gxw08"]
+[ext_resource type="PackedScene" uid="uid://imu3blxtr0mq" path="res://Componentes/DoorSpawner/DoorSpawner.tscn" id="21_de5qm"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="21_gdtqj"]
 
 [node name="Area1" type="Node2D"]
@@ -56,7 +57,7 @@ texture = ExtResource("4_farx6")
 
 [node name="MainPlayerChar" parent="." instance=ExtResource("5_mmikm")]
 unique_name_in_owner = true
-position = Vector2(109, 200)
+position = Vector2(110, -1524)
 god_mode = true
 
 [node name="TodasArvores" type="Node" parent="."]
@@ -159,6 +160,7 @@ scale = Vector2(1.6, 0.3)
 
 [node name="MobSpawner" parent="." node_paths=PackedStringArray("area") instance=ExtResource("11_lyvvr")]
 mob_scene = ExtResource("8_76dhw")
+podeSpawnar = false
 area = NodePath("..")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -193,6 +195,11 @@ collision_mask = 2
 position = Vector2(0, -1450)
 collision_layer = 0
 collision_mask = 2
+
+[node name="DoorSpawner" parent="." instance=ExtResource("21_de5qm")]
+position = Vector2(113, -1803)
+collision_layer = 0
+collision_mask = 0
 
 [node name="InfantariaEscondida" parent="." instance=ExtResource("16_ea284")]
 position = Vector2(15, -957)
@@ -234,11 +241,13 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="LevelEndTrigger" parent="." instance=ExtResource("20_gxw08")]
-position = Vector2(-1, -1758)
+position = Vector2(1, -1764)
 
 [node name="HUD" parent="." instance=ExtResource("21_gdtqj")]
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
+[connection signal="area_entered" from="Trigger_Mobs_Portao" to="." method="_on_trigger_mobs_portao_area_entered"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="MobSpawner" method="_on_trigger_area_entered"]
+[connection signal="area_entered" from="Trigger_Mobs_Portao" to="DoorSpawner" method="_on_trigger_mobs_portao_area_entered"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="Portao2" method="_on_trigger_mobs_portao_area_entered"]
 [connection signal="area_entered" from="LevelEndTrigger" to="." method="_on_level_end_trigger_area_entered"]

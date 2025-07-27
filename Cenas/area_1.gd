@@ -20,9 +20,9 @@ func _process(delta: float) -> void:
 #	print (camera.position.y, "position")
 	if player.position.y - camera.offset.y < camera_distancia_y_minima and camera.offset.y >= camera_altura_maxima_y:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
-	#player camera.offset 
 
 func next_level():
+	print("Voce venceu!")
 	GameManager.addMedals()
 
 func _on_main_player_char_dead_player():
@@ -32,3 +32,7 @@ func _on_main_player_char_dead_player():
 
 func _on_level_end_trigger_area_entered(area):
 	next_level()
+
+
+func _on_trigger_mobs_portao_area_entered(area):
+	$Trigger_Mobs_Portao.queue_free()

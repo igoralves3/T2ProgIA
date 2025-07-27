@@ -2,7 +2,7 @@ extends Node2D
 
 @export var mob_scene: PackedScene
 @export var limite_de_inimigos: int = 4
-var podeSpawnar: bool = true
+@export var podeSpawnar: bool = true
 @export var area: Node
 
 var ListaInimigos: Array
