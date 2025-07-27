@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://m4vgho7mtbbr"]
+[gd_scene load_steps=6 format=3 uid="uid://m4vgho7mtbbr"]
 
 [ext_resource type="Script" uid="uid://mk15w4gad1mb" path="res://Componentes/Menu_etc/main_menu.gd" id="1_4hclx"]
 [ext_resource type="PackedScene" uid="uid://cjficjjbp1gjq" path="res://Componentes/Menu_etc/credits.tscn" id="2_ib78o"]
 [ext_resource type="PackedScene" uid="uid://bqawtwe2n84sn" path="res://Cenas/Area_1.tscn" id="3_3hc65"]
 [ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="4_3hc65"]
+[ext_resource type="AudioStream" uid="uid://in1bt4bdu5p8" path="res://Audio/BGM/NES/01 Credit.wav" id="4_ai6wg"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_4hclx")
 credits_scene = ExtResource("2_ib78o")
 Area1_scene = ExtResource("3_3hc65")
+Somvfx = ExtResource("4_ai6wg")
 
 [node name="UIContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -279,7 +281,9 @@ text = "NORMAL"
 [connection signal="pressed" from="UIContainer/ButtonsContainer/Control/BoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="UIContainer/ButtonsContainer/Control/BoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="UIContainer/ButtonsContainer/Control/BoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="drag_ended" from="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/FlowContainer/MasterSoundSlider" to="." method="_on_master_sound_slider_drag_ended"]
 [connection signal="value_changed" from="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/FlowContainer/MasterSoundSlider" to="." method="_on_master_sound_slider_value_changed"]
+[connection signal="drag_ended" from="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/FlowContainer/BGMSlider" to="." method="_on_bgm_slider_drag_ended"]
 [connection signal="value_changed" from="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/FlowContainer/BGMSlider" to="." method="_on_bgm_slider_value_changed"]
 [connection signal="drag_ended" from="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/FlowContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="value_changed" from="UIContainer/OptionsContainer/HTabsContainer/TabContainer/SOUND/Control/FlowContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]

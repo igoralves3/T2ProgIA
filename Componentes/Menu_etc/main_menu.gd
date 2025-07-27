@@ -7,6 +7,7 @@ var volumeSFX: float
 @onready var BGMBus = AudioServer.get_bus_index("BGM")
 @export var credits_scene: PackedScene
 @export var Area1_scene: PackedScene
+@export var Somvfx: AudioStream
 #@onready var MasterContr = SoundController
 
 #func _ready() -> void:
@@ -27,8 +28,8 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	var vol = value / 100
 	SoundController.set_sfx_volume(vol)
 	volumeSFX = vol
-#func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
-#	MasterContr.play_button("res://UI/components/Sounds/Laugh_spooky_4.ogg")
+func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
+	SoundController.play_button(Somvfx)
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
@@ -72,20 +73,6 @@ func _on_easy_button_pressed() -> void:
 	%UIContainer.hide()
 #	MasterContr.play_button("res://UI/components/Sounds/Laugh_spooky_4.ogg")
 
-func _on_medium_button_pressed() -> void:
-#	GameManager.DificuldadeAtual = GameManager.DifficuldadeIA.MEDIO
-#	var tabuleiro = tabuleiro_scene.instantiate()
-#	add_child(tabuleiro)
-	%UIContainer.hide()
-#	MasterContr.play_button("res://UI/components/Sounds/Laugh_spooky_4.ogg")
-
-func _on_hard_button_pressed() -> void:
-#	GameManager.DificuldadeAtual = GameManager.DifficuldadeIA.DIFICIL
-#	var tabuleiro = tabuleiro_scene.instantiate()
-#	add_child(tabuleiro)
-	%UIContainer.hide()
-#	MasterContr.play_button("res://UI/components/Sounds/Laugh_spooky_4.ogg")
-
 func _on_impossivel_button_pressed() -> void:
 	GameManager.newGame()
 	get_tree().root.get_node("Game").change_scene("res://Cenas/Area_1.tscn")
@@ -100,3 +87,11 @@ func _on__players_pressed():
 	#add_child(tabuleiro)
 	%UIContainer.hide()
 	#MasterContr.play_button("res://UI/components/Sounds/Laugh_spooky_4.ogg")
+
+
+func _on_master_sound_slider_drag_ended(value_changed: bool) -> void:
+	SoundController.play_button(Somvfx)
+
+
+func _on_bgm_slider_drag_ended(value_changed: bool) -> void:
+	SoundController.play_bgm(Somvfx)

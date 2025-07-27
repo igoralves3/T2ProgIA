@@ -11,12 +11,14 @@ var qtd_de_letras: int = 0
 @export var timer_avancar_cena: Timer
 @export var tempo_avancar_cena: float = 7.0
 
+
 func _ready() -> void:
 	animacao.play()
 	label.text = ""
 	timer_label.wait_time = tempo_timer
 	timer_label.one_shot = false
 	timer_label.start()
+	GameManager.retry = false
 
 func _on_timer_timeout() -> void:
 	if qtd_de_letras < texto.length():

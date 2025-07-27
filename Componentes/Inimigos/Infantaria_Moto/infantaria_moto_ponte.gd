@@ -70,7 +70,6 @@ func _physics_process(delta: float) -> void:
 func fire_grenade():
 	var grenade_instance = grenade.instantiate()
 	grenade_instance.global_transform = global_transform
-	grenade_instance.motion = Vector2.DOWN
 	grenade_instance.position = grenade_instance.position- Vector2(0,20)
 	grenade_instance.dono = "Moto"
 	grenade_instance.alvo = other_player.global_position
