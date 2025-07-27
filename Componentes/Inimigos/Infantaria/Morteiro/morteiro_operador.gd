@@ -4,8 +4,7 @@ extends CharacterBody2D
 @onready var pontos: int = 200
 @export var other_player: CharacterBody2D
 @export var bullet_inimigo: PackedScene
-var can_shoot: bool = true
-var is_enemy: bool = true
+var can_shoot: bool = false
 var timer_olhar_para_jogador: Timer
 var olhando_para_jogador: bool = false
 @export var som_morte = AudioStream
@@ -20,7 +19,7 @@ var fugindo = false
 @export var morteiro_bullet: PackedScene
 @export var morteiro : Area2D
 
-var pode_atirar = false
+var pode_atirar_morteiro = false
 
 var recharge_frames = 0
 
@@ -46,22 +45,6 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if ativo:
-		#if other_player:
-		#	var direction = other_player.global_position - global_position
-		
-#			if direction.length() < 100:
-#				if pode_atirar:
-#					pode_atirar = false
-#					print('atirando')
-#					#fire_bullet()
-#					fire_morteiro()
-#				else:
-#					recharge_frames += delta + 1
-#					if recharge_frames >= 120:
-#						recharge_frames=0
-#						pode_atirar=true
-				
-		
 		move_and_slide()
 		if olhando_para_jogador:
 			update_animation(look_at_player())
@@ -109,7 +92,7 @@ func update_animation(input_direction: Vector2):
 
 
 func fire_bullet():
-	if pode_atirar:
+	if can_shoot:
 		olhando_para_jogador = true
 		timer_olhar_para_jogador.start()
 		if other_player:

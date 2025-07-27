@@ -1,24 +1,17 @@
 extends Area2D
 
-
-@export var motion := Vector2(0,0)
 var tempo_para_sumir_player: float = 0.72 # 1.90 para os inimigos
 var tempo_para_sumir_inimigos: float = 1.9
 var tempo_timer
 const SPEED = 125.0 #para andar 90 pixels
-var objeto_alvo #para ser o jogador
 var dono: String = ""
 @export var explosao: PackedScene
-var float_offset: float = 0
-
 var posicao_inicial: Vector2
 var ponto_partida: Vector2
 var ponto_chegada: Vector2
 @export var alvo: Vector2 = Vector2(110, -110)
 @export var duracao_trajeto: float = 0.72 #tempo do jogo
-@export var amplitude_onda: float = 100.0
-@export var frequencia_onda: float = 0.50
-@export var desvio_lateral: float = 60.0
+var enemy_controller
 
 func _ready():
 	$AnimatedSprite2D.play("inimigo")
@@ -46,6 +39,8 @@ func gera_explosao():
 
 func _on_timer_timeout() -> void:
 	gera_explosao()
+	if dono == "Granadeiro":
+		enemy_controller.granadas_voando = enemy_controller.granadas_voando - 1
 	queue_free()
 
 func maisumagranada():

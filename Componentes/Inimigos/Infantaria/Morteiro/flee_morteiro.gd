@@ -1,8 +1,5 @@
 extends State
-
-
 const SPEED = 50
-
 @export var character: CharacterBody2D
 
 func _ready():

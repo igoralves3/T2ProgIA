@@ -6,6 +6,7 @@ var timer_de_tiro: Timer
 var timer_de_granada: Timer
 var tempo_entre_tiros: float = 1
 var tempo_entre_granadas: float = 1
+var granadas_voando: int = 0
 
 func _ready() -> void:
 	timer_de_tiro = Timer.new()
@@ -45,3 +46,16 @@ func timer_de_tiro_end():
 
 func timer_de_granada_end():
 	meter_granada()
+
+func update_granadas(valor):
+	granadas_voando = granadas_voando + valor
+#	if granadas_voando > 4:
+#		var ListaGranada = get_tree().get_nodes_in_group("InimigosSoGranadeiros")
+#		var GranadeirosAtivos: Array
+#		for inimigo in ListaInimigosGranada:
+#			if inimigo.pode_atirar_granada == true:
+#				GranadeirosAtivos.append(inimigo)
+#		if GranadeirosAtivos.size()>0:
+#			var inimigo = GranadeirosAtivos.pick_random()
+#			inimigo.fire_grenade()
+		

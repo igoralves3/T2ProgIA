@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw2o5fqgpnb4e"]
+[gd_scene load_steps=12 format=3 uid="uid://cw2o5fqgpnb4e"]
 
 [ext_resource type="Script" uid="uid://vfxmkgex23l7" path="res://Componentes/Inimigos/Infantaria/Morteiro/morteiro_operador.gd" id="1_nwg8a"]
 [ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_kwc7r"]
 [ext_resource type="SpriteFrames" uid="uid://bgi8msrqvpetc" path="res://Componentes/Inimigos/Infantaria/Morteiro/morteiro_operador.tres" id="3_gx57r"]
 [ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="4_hlhq7"]
-[ext_resource type="Script" uid="uid://b58qqklhmit11" path="res://Componentes/Inimigos/Infantaria/Morteiro/wander_morteiro.gd" id="5_tmqb0"]
 [ext_resource type="Script" uid="uid://b2tvp0pkvxebm" path="res://Componentes/Inimigos/Infantaria/Morteiro/fsm_morteiro.gd" id="6_7v3ji"]
-[ext_resource type="Script" uid="uid://od64n0h3m3mo" path="res://Scripts/Classes/flee.gd" id="7_pewby"]
 [ext_resource type="PackedScene" uid="uid://duxxreg1jlx5n" path="res://Componentes/Inimigos/Infantaria/Morteiro/bala_morteiro.tscn" id="7_saaua"]
 [ext_resource type="PackedScene" uid="uid://cap6w227pub3j" path="res://Componentes/VFX/morteiro_vfx.tscn" id="8_d2v5y"]
 [ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="8_uw1d2"]
+[ext_resource type="Script" uid="uid://e3bpit4tvd" path="res://Componentes/Inimigos/Infantaria/Morteiro/flee_morteiro.gd" id="10_d2v5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
 size = Vector2(70, 6.60066)
@@ -50,11 +49,6 @@ show_behind_parent = true
 script = ExtResource("4_hlhq7")
 initial_state = NodePath("Morteiro")
 
-[node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character", "_animated_sprite")]
-script = ExtResource("5_tmqb0")
-character = NodePath("../..")
-_animated_sprite = NodePath("../../AnimatedSprite2D")
-
 [node name="Morteiro" type="Node" parent="FSM" node_paths=PackedStringArray("infantaria_self") groups=["InimigosGranadas"]]
 script = ExtResource("6_7v3ji")
 infantaria_self = NodePath("../..")
@@ -62,9 +56,8 @@ bala_morteiro = ExtResource("7_saaua")
 morteiro_vfx = ExtResource("8_d2v5y")
 
 [node name="Flee" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
-script = ExtResource("7_pewby")
+script = ExtResource("10_d2v5y")
 character = NodePath("../..")
-metadata/_custom_type_script = "uid://od64n0h3m3mo"
 
 [node name="Timer" type="Timer" parent="."]
 

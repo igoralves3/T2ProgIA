@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpqkrkth6wair"]
+
+[ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="1_ifr7e"]
+[ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="3_q6yta"]
+[ext_resource type="PackedScene" uid="uid://dx7d6d33wlnsw" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_granadeira.tscn" id="4_8itat"]
+[ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="9_pg4bh"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+limit_left = 0
+limit_top = 0
+
+[node name="MainPlayerChar" parent="." instance=ExtResource("1_ifr7e")]
+unique_name_in_owner = true
+position = Vector2(69, 214)
+god_mode = true
+
+[node name="EnemyController" parent="." instance=ExtResource("3_q6yta")]
+
+[node name="HUD" parent="." instance=ExtResource("9_pg4bh")]
+
+[node name="Infantaria_granadeira" parent="." instance=ExtResource("4_8itat")]
+position = Vector2(206, 106)

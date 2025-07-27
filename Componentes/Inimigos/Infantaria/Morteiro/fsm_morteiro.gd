@@ -33,7 +33,7 @@ func get_other_player():
 	other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 
 func exit() -> void:
-	infantaria_self.pode_atirar = true
+	infantaria_self.can_shoot = true
 	pode_atirar_granada = false
 	pass
 	

@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://dx7d6d33wlnsw"]
+
+[ext_resource type="Script" uid="uid://c04crb6kqx8vi" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_granadeira.gd" id="1_ho7k7"]
+[ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_ncmoc"]
+[ext_resource type="PackedScene" uid="uid://bwoeweqsm7xw8" path="res://Componentes/Granada/Granada.tscn" id="3_0gvon"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="3_fdaxw"]
+[ext_resource type="AudioStream" uid="uid://dgj3v1nfvx6hh" path="res://Audio/SFX/NES - Commando - Sound Effects/ShootBullet.wav" id="4_trkf1"]
+[ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="5_7nmyq"]
+[ext_resource type="SpriteFrames" uid="uid://dl8alejavs7lq" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_granadeiro.tres" id="6_0gvon"]
+[ext_resource type="Script" uid="uid://bxia24phixrgy" path="res://Scripts/Classes/standing.gd" id="6_flat6"]
+[ext_resource type="Script" uid="uid://bp3ejt8do2ih6" path="res://Scripts/Classes/run.gd" id="7_trkf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
+size = Vector2(70, 6.60066)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04x4o"]
+radius = 50.0
+height = 200.0
+
+[node name="Infantaria_granadeira" type="CharacterBody2D" node_paths=PackedStringArray("colisao_chao", "area_colisao_morte", "fsm_run") groups=["Inimigos", "InimigosSoGranadeiros"]]
+collision_layer = 4
+collision_mask = 19
+script = ExtResource("1_ho7k7")
+bullet_inimigo = ExtResource("2_ncmoc")
+granada = ExtResource("3_0gvon")
+som_morte = ExtResource("3_fdaxw")
+som_tiro = ExtResource("4_trkf1")
+colisao_chao = NodePath("ColisaoChao")
+area_colisao_morte = NodePath("Area2DColisaoMorte")
+fsm_run = NodePath("FSM/Run")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("6_0gvon")
+animation = &"throw"
+
+[node name="ColisaoChao" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 10)
+scale = Vector2(0.2, -0.606)
+shape = SubResource("RectangleShape2D_vi6ic")
+
+[node name="LabelState" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -26.0
+offset_right = 23.0
+offset_bottom = -12.0
+theme_override_font_sizes/font_size = 10
+text = "seek"
+horizontal_alignment = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_7nmyq")
+initial_state = NodePath("Standing")
+
+[node name="Standing" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+script = ExtResource("6_flat6")
+character = NodePath("../..")
+
+[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+script = ExtResource("7_trkf1")
+character = NodePath("../..")
+
+[node name="Area2DColisaoMorte" type="Area2D" parent="."]
+light_mask = 4
+visibility_layer = 2
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DColisaoMorte"]
+position = Vector2(7.15256e-06, 7.15256e-06)
+shape = SubResource("CapsuleShape2D_04x4o")
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

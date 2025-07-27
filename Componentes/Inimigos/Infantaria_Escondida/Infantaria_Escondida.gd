@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 @export var other_player: CharacterBody2D
-
 @onready var _animated_sprite = $AnimatedSprite2D
-
 @export var _infantaria: PackedScene
+var camperando = true
+
 
 func _ready():
 	_animated_sprite.play('down')

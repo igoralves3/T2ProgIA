@@ -9,7 +9,7 @@ var camera_altura_maxima_y = -1791.5
 @export var musica_inicial: AudioStream
 @export var musica_intermission: AudioStream
 @export var musica_retry: AudioStream
-@export var música_fortress: AudioStream
+@export var musica_fortress: AudioStream
 var currentCheckpoint: Vector2
 #@onready var startPoint: Vector2 = Vector2(74,100)
 

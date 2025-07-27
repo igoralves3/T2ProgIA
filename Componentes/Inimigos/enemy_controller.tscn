@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://cxx7m5sa0g51w" path="res://Componentes/Inimigos/enemy_controller.gd" id="1_b116y"]
 
-[node name="EnemyController" type="Node2D"]
+[node name="EnemyController" type="Node2D" groups=["EnemyController"]]
 script = ExtResource("1_b116y")

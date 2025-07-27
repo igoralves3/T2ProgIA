@@ -36,6 +36,8 @@ Enemy_spawner=""
 InimigosGranadas=""
 HUD=""
 FinalMobs=""
+EnemyController=""
+InimigosSoGranadeiros=""
 
 [input]
 
