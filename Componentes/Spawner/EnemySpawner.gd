@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var mob_scene: PackedScene
+@export var infantaria: PackedScene
+@export var granadeiro: PackedScene
 @export var limite_de_inimigos: int = 4
 @export var podeSpawnar: bool = true
 @export var area: Node
@@ -18,7 +19,7 @@ func _on_mob_timer_timeout():
 		self.global_position.y = player.global_position.y - 256
 		# Create a new instance of the Mob scene.
 		if ListaInimigos.size() < limite_de_inimigos:
-			var mob = mob_scene.instantiate()
+			var mob = infantaria.instantiate() # infantaria.instantiate()
 	
 			# Choose a random location on Path2D.
 			var mob_spawn_location = $MobPath/MobSpawnLocation

@@ -40,8 +40,12 @@ func gera_explosao():
 func _on_timer_timeout() -> void:
 	gera_explosao()
 	if dono == "Granadeiro":
-		enemy_controller.granadas_voando = enemy_controller.granadas_voando - 1
+		enemy_controller.update_granadas(-1)
 	queue_free()
+
+func remover_granada_controller():
+	if dono == "Granadeiro":
+		enemy_controller.update_granadas(-1)
 
 func maisumagranada():
 	ponto_partida = posicao_inicial

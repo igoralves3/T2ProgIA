@@ -1,15 +1,17 @@
 extends Node2D
 
 var is_active: bool = true
-var infantaria = load("res://Componentes/Inimigos/Infantaria/Infantaria.tscn")
+@export var infantaria: PackedScene
+@export var granadeiro: PackedScene
+
 var player
 
 func _ready() -> void:
 	player = %MainPlayerChar
 
 func spawn_enemy():
-	var instance = infantaria.instantiate()
-	instance.global_position = Vector2(global_position.x,player.global_position.y - 256)
+	var infantaria_instance = infantaria.instantiate()
+	infantaria_instance.global_position = Vector2(global_position.x,player.global_position.y - 256)
 	
 	#var overlaps = instance.get_overlapping_areas()
 	
@@ -21,4 +23,4 @@ func spawn_enemy():
 	#	print('mob on collision')
 	#	return
 	
-	add_child(instance)
+	add_child(infantaria_instance)

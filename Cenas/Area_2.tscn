@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://djeqqclckn4vk"]
+[gd_scene load_steps=14 format=4 uid="uid://djeqqclckn4vk"]
 
 [ext_resource type="TileSet" uid="uid://c4llvpweoft2a" path="res://SpriteSheets/Area2/Area2_Tileset.tres" id="1_r1qpv"]
 [ext_resource type="Script" uid="uid://dpjsr6v7xo34l" path="res://Cenas/area_2.gd" id="1_tydfa"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="4_tudxv"]
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="5_33he6"]
 [ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="5_lmwas"]
-[ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="6_1d85u"]
 [ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="7_7eh82"]
 [ext_resource type="PackedScene" uid="uid://dg6sn0dcxjlqf" path="res://Componentes/Inimigos/enemy_spawner.tscn" id="7_ir1mf"]
 [ext_resource type="AudioStream" uid="uid://bn5r8yi6ibkip" path="res://Audio/BGM/NES/4 - In-Game Theme 1.mp3" id="8_wkod3"]
@@ -15,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="12_q3e8m"]
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="13_1dncf"]
 
-[node name="Area1" type="Node2D"]
+[node name="Area2" type="Node2D"]
 script = ExtResource("1_tydfa")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -36,7 +35,6 @@ position = Vector2(108, -1020)
 [node name="EnemyController" parent="." instance=ExtResource("4_tudxv")]
 
 [node name="MobSpawner" parent="." node_paths=PackedStringArray("area") instance=ExtResource("5_lmwas")]
-mob_scene = ExtResource("6_1d85u")
 area = NodePath("..")
 
 [node name="Enemy_Spawner" parent="." instance=ExtResource("7_ir1mf")]

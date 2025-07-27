@@ -25,19 +25,22 @@ var last_input_direction
 var esta_parado: bool = false
 var firing_grenade: bool = false
 var enemy_controller
+var Array_granadas_jogadas: Array
 
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready():
 	_animated_sprite.play('down')
-	if camperando:
-		esta_parado = true
-		pode_atirar_granada = false
-		_animated_sprite.stop()
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	enemy_controller = get_tree().get_first_node_in_group("EnemyController")
+	if camperando:
+		esta_parado = true
+		pode_atirar_granada = false
+		_animated_sprite.stop()
+	if not camperando:
+		enemy_controller.update_granadas(0) #adiciona a infantaria atual no array de cooldown se estiver cooldown
 	timer_olhar_para_jogador = Timer.new()
 	timer_olhar_para_jogador.wait_time = randf_range(1,2)
 	timer_olhar_para_jogador.one_shot = true
@@ -158,6 +161,7 @@ func spawnar_granada():
 	grenade_instance.enemy_controller = enemy_controller
 	enemy_controller.update_granadas(+1)
 	get_parent().add_child(grenade_instance)
+	Array_granadas_jogadas.append(grenade_instance)
 
 func post_grenade():
 	firing_grenade = false
@@ -170,18 +174,28 @@ func bullet_hit():
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
+	remover_granadas_filhas_do_controller()
 	queue_free()
+
+func remover_granadas_filhas_do_controller():
+	for granada in Array_granadas_jogadas:
+		if granada != null:
+			if granada.has_method("remover_granada_controller"):
+				granada.remover_granada_controller()
+
 
 func grenade_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
+	remover_granadas_filhas_do_controller()
 	queue_free()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	dead_enemy.emit(self, 0)
+	remover_granadas_filhas_do_controller()
 	queue_free()
 
 func timer_olhar_para_jogador_end():
