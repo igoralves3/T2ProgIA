@@ -46,7 +46,7 @@ func _ready():
 		_animated_sprite.stop()
 		olhando_para_jogador = true
 	if not camperando:
-		colisao_chao.disabled = false
+		set_collision_mask_value(1, true)
 		enemy_controller.update_granadas(0) #adiciona a infantaria atual no array de cooldown se estiver cooldown
 	timer_olhar_para_jogador = Timer.new()
 	timer_olhar_para_jogador.wait_time = randf_range(1,2)
@@ -57,7 +57,8 @@ func _ready():
 	timer_jogar_granada.wait_time = 1.5
 	timer_jogar_granada.timeout.connect(timer_fire_grenade)
 	add_child(timer_jogar_granada)
-	await get_tree().get_frame()
+	if other_player.global_position.y < global_position.y:# GameManager.retry == true:
+		queue_free()
 	timer_jogar_granada.start()
 
 
@@ -87,7 +88,7 @@ func _physics_process(delta: float) -> void:
 				if global_position.y > cameraoffset.y +256 or global_position.y < cameraoffset.y:
 					tempo_fora_tela = tempo_fora_tela - delta
 				if tempo_fora_tela < 0:
-					dead_enemy.emit(self, pontos)
+					dead_enemy.emit(self, 0)
 					queue_free()
 
 
@@ -229,4 +230,4 @@ func saiu_da_moita():
 	timer_ativar_collision.start()
 
 func ativar_colisao_chao():
-	colisao_chao.disabled = false
+	set_collision_mask_value(1, true)

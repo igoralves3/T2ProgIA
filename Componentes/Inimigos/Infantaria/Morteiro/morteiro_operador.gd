@@ -130,7 +130,7 @@ func fire_morteiro():
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	ativo = false
-	dead_enemy.emit(self, pontos)
+	dead_enemy.emit(self, 0)
 	queue_free()
 
 func timer_olhar_para_jogador_end():

@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var _animated_sprite:= $AnimatedSprite2D
 
 @export var som_morte = AudioStream
-@export var pontos = 200
+@export var pontos = 1000
 
 signal dead_enemy(myself: CharacterBody2D, points: int)
 

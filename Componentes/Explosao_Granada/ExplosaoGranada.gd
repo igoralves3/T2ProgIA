@@ -11,11 +11,11 @@ func _ready():
 	SoundController.play_button(SFXExplosao)
 	$AnimatedSprite2D.play()
 	if dono == "Player": #jogador
-		set_collision_layer_value(2, true) #layer do jogador
+#		set_collision_layer_value(2, true) #layer do jogador
 		set_collision_mask_value(3, true) #ver inimigos
 		set_collision_mask_value(4, true) #ver objetos destrutiveis
 	else: #inimigo
-		set_collision_layer_value(3, true) #layer do inimigo
+#		set_collision_layer_value(3, true) #layer do inimigo
 		set_collision_mask_value(2, true) #ver jogador
 
 #func _process(delta: float) -> void:
@@ -36,6 +36,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is Turret:
-		if area.has_method("grenade_hit"):
-			area.grenade_hit()
+#if area is Turret:
+	if area.has_method("grenade_hit"):
+		area.grenade_hit()

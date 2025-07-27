@@ -20,7 +20,6 @@ limit_top = 0
 [node name="MainPlayerChar" parent="." instance=ExtResource("1_ifr7e")]
 unique_name_in_owner = true
 position = Vector2(69, 214)
-god_mode = true
 
 [node name="EnemyController" parent="." instance=ExtResource("3_q6yta")]
 
@@ -38,9 +37,6 @@ area = NodePath(".")
 
 [node name="Infantaria_granadeira" parent="." instance=ExtResource("5_ugj8a")]
 position = Vector2(56, 97)
-camperando = true
 
 [node name="Infantaria_granadeira2" parent="." instance=ExtResource("5_ugj8a")]
 position = Vector2(166, 94)
-camperando = true
-ta_no_turret = true

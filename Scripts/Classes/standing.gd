@@ -14,7 +14,7 @@ func enter() -> void:
 	if not character.camperando:
 		await get_tree().process_frame
 		transitioned.emit(self,"Run")
-	distancia_pra_fugir = randf_range(0, 30)
+	distancia_pra_fugir = randf_range(0, 90)
 
 
 func exit() -> void:

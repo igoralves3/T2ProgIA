@@ -18,7 +18,6 @@ var tempo_fora_tela: float = 2
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready():
-	print ("infantaria ready")
 	_animated_sprite.play('down')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
@@ -52,7 +51,7 @@ func _physics_process(delta: float) -> void:
 			if global_position.y > cameraoffset.y +256 or global_position.y < cameraoffset.y:
 				tempo_fora_tela = tempo_fora_tela - delta
 			if tempo_fora_tela < 0:
-				dead_enemy.emit(self, pontos)
+				dead_enemy.emit(self, 0)
 				queue_free()
 
 
