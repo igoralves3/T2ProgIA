@@ -10,6 +10,8 @@ extends Area2D
 var enemies_to_spawn = 0
 var spawn_timer: Timer
 
+signal stoppedSpawning
+
 func _ready():
 	spawn_timer = Timer.new()
 	spawn_timer.wait_time = spawn_delay
@@ -59,7 +61,7 @@ func _spawn_single_enemy():
 	var new_mob = infantaria.instantiate()
 
 	# Add the new mob to the "Door Enemies" group
-	new_mob.add_to_group("Door Enemies")
+	new_mob.add_to_group("FinalMobs")
 
 	# Set the enemy's position.
 	# The final position is the spawner's global position, plus the collision shape's offset from the spawner,
@@ -72,3 +74,4 @@ func _spawn_single_enemy():
 
 func _on_trigger_mobs_portao_area_entered(area):
 	spawn_enemies()
+	emit_signal("stoppedSpawning")
