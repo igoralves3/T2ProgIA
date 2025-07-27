@@ -35,6 +35,7 @@ Inimigos=""
 Enemy_spawner=""
 InimigosGranadas=""
 HUD=""
+FinalMobs=""
 
 [input]
 
