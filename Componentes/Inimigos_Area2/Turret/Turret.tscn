@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cok23fi8vgvcq"]
+
+[ext_resource type="Script" uid="uid://d16vbw6ij42ri" path="res://Componentes/Inimigos_Area2/Turret/turret.gd" id="1_1qi3n"]
+[ext_resource type="SpriteFrames" uid="uid://but6l1ypbt74x" path="res://SpriteSheets/Animacoes_Etc/pillbox_spriteframes.tres" id="1_oi1o7"]
+[ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_5o8cl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qi3n"]
+size = Vector2(33, 42)
+
+[node name="Turret" type="Area2D"]
+collision_layer = 4
+collision_mask = 19
+script = ExtResource("1_1qi3n")
+bullet_inimigo = ExtResource("2_5o8cl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_oi1o7")
+animation = &"1atira_baixo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_1qi3n")
+
+[node name="WeaponPosition" type="Node2D" parent="."]
+position = Vector2(13, -2)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
