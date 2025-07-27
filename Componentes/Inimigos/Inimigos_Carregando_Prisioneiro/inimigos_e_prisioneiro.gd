@@ -34,3 +34,7 @@ func _physics_process(delta: float) -> void:
 				#elif global_position.x > other_player.global_position.x:
 				#	position.x =position.x + SPEED * delta
 			
+
+
+func _on_prisioneiro_queue_free_yourself():
+	queue_free()

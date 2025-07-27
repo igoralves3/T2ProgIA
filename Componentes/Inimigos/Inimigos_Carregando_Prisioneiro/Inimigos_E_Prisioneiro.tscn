@@ -17,3 +17,5 @@ position = Vector2(-22, 0)
 
 [node name="InimigoDir" parent="." instance=ExtResource("2_kypbl")]
 position = Vector2(22, 0)
+
+[connection signal="queueFreeYourself" from="Prisioneiro" to="." method="_on_prisioneiro_queue_free_yourself"]

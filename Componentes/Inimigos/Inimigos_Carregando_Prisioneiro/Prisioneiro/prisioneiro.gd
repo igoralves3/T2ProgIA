@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 @onready var _animated_sprite := $AnimatedSprite2D
 
+signal queueFreeYourself
+
 
 func _process(delta: float) -> void:
 	if preso:
@@ -26,4 +28,4 @@ func start_timer():
 
 func _on_timer_timeout():
 	GameManager.addPoints(1000)
-	queue_free()
+	queueFreeYourself.emit()
