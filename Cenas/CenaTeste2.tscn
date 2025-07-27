@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpqkrkth6wair"]
+[gd_scene load_steps=7 format=3 uid="uid://dpqkrkth6wair"]
 
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="1_ifr7e"]
 [ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="3_q6yta"]
 [ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="4_8itat"]
+[ext_resource type="PackedScene" uid="uid://bqxgebxbd4alj" path="res://Componentes/Inimigos_Area2/Jeep/spawner/jeep_spawner.tscn" id="5_ugj8a"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="9_pg4bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8itat"]
@@ -34,3 +35,6 @@ disabled = true
 
 [node name="Node" parent="." node_paths=PackedStringArray("area") instance=ExtResource("4_8itat")]
 area = NodePath(".")
+
+[node name="JeepSpawner" parent="." instance=ExtResource("5_ugj8a")]
+position = Vector2(153, 208)
