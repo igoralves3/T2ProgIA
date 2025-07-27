@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var type: String
-@onready var pontos: int = 200
+@onready var pontos: int = 400
 @export var other_player: CharacterBody2D
 @export var bullet_inimigo: PackedScene
 var can_shoot: bool = false
