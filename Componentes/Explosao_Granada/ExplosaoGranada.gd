@@ -33,3 +33,9 @@ func _on_body_entered(body: Node2D) -> void:
 		
 	if dono != "Player" and body.has_method("death_normal"):
 		body.death_normal()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is Turret:
+		if area.has_method("grenade_hit"):
+			area.grenade_hit()
