@@ -23,9 +23,12 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print('coletou granada')
+#		print('coletou granada')
 		body.grenadeAmmo =body.grenadeAmmo + grenadeBonus
-		print('granadas: '+str(body.grenadeAmmo))
+		GameManager.granadas = GameManager.granadas + grenadeBonus
+#		print('granadas: '+str(body.grenadeAmmo))
+		var HUD = get_tree().get_nodes_in_group("HUD")[0]
+		HUD.single_update()
 		queue_free()
-	else:
-		print('nao coletou')
+#	else:
+#		print('nao coletou')

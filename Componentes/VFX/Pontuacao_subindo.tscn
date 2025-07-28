@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://x6tm6efbrcrv"]
+
+[ext_resource type="SpriteFrames" uid="uid://bc57wn3e111gv" path="res://Componentes/VFX/Pontuacao_Subindo.tres" id="1_51gpk"]
+[ext_resource type="Script" uid="uid://bdnppn1otitp" path="res://Componentes/VFX/pontuacao_subindo.gd" id="2_fe5c2"]
+
+[node name="pontuacao_subindo" type="AnimatedSprite2D" node_paths=PackedStringArray("timer_sumir")]
+sprite_frames = ExtResource("1_51gpk")
+animation = &"1000"
+script = ExtResource("2_fe5c2")
+timer_sumir = NodePath("Tempo_para_sumir")
+
+[node name="Tempo_para_sumir" type="Timer" parent="."]
+
+[connection signal="timeout" from="Tempo_para_sumir" to="." method="_on_tempo_para_sumir_timeout"]

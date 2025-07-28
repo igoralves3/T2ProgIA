@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @export var som_morte = AudioStream
 @export var pontos = 1000
+@export var pontuacao_spawn: PackedScene
 
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
@@ -15,5 +16,9 @@ func bullet_hit():
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	#SFXDeath.play()
 	SoundController.play_button(som_morte)
-	dead_enemy.emit(self, pontos)	
+	dead_enemy.emit(self, pontos)
+	var pontuacao = pontuacao_spawn.instantiate()
+	pontuacao.global_position = global_position
+	pontuacao.dono = "Prisioneiro"
+	get_tree().root.add_child(pontuacao)
 	queue_free()
