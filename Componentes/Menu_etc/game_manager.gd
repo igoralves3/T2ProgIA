@@ -4,6 +4,7 @@ var checkPoint: Vector2
 var startPoint: Vector2
 var hasCheckpoint: bool
 var score: int = 0
+var extra_life_score: int = 10000
 var lifes: int = 3
 var medals: int = 0 
 var granadas: int = 5
@@ -17,6 +18,7 @@ func newGame():
 	hasCheckpoint = false
 	retry = false
 	granadas = 5
+	extra_life_score = 10000
 
 func reduceLifes():
 	if lifes == 0:
@@ -38,8 +40,9 @@ func setStartPoint(newStartPoint: Vector2):
 
 func addPoints(points: int):
 	score += points
-	if score%10000 == 0 and score != 0:
+	if score >= extra_life_score:
 		lifes+=1
+		extra_life_score = extra_life_score + 10000
 	print("score: ", score)
 
 func addMedals():

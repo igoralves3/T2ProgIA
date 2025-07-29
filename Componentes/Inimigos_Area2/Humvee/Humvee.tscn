@@ -4,22 +4,26 @@
 [ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_o2cxe"]
 [ext_resource type="SpriteFrames" uid="uid://ciweup6h5l42k" path="res://Componentes/Inimigos_Area2/Humvee/humvee_spriteframes.tres" id="2_yi5w7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6x5s"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2cxe"]
+size = Vector2(41, 19)
 
 [node name="Humvee" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_yi5w7")
 bullet_inimigo = ExtResource("2_o2cxe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_yi5w7")
-animation = &"andando_p_esquerda"
+animation = &"andando_p_direita"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 visible = false
+scale = Vector2(2.35, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_m6x5s")
+position = Vector2(0.5, 5.5)
+shape = SubResource("RectangleShape2D_o2cxe")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
