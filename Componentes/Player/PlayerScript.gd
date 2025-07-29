@@ -38,6 +38,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	tamanho_tela = get_viewport_rect().size
 	dir = Vector2(0,-1) # comeca olhando pra cima
+	grenadeAmmo = GameManager.granadas
 	get_HUD()
 	HUD.single_update()
 

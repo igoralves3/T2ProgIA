@@ -69,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dwrqi")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -77,15 +77,26 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_12wlu")
 }],
-"loop": true,
+"loop": false,
 "name": &"direita",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4owb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf6fl")
+}],
+"loop": false,
+"name": &"escondendo",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7axsd")
 }],
-"loop": true,
+"loop": false,
 "name": &"esquerda",
 "speed": 5.0
 }, {
@@ -93,7 +104,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hseol")
 }],
-"loop": true,
+"loop": false,
 "name": &"frente",
 "speed": 5.0
 }, {
@@ -110,7 +121,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dwrqi")
 }],
-"loop": true,
+"loop": false,
 "name": &"morrendo",
 "speed": 5.0
 }, {
@@ -121,7 +132,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b4owb")
 }],
-"loop": true,
-"name": &"saindo da agua",
+"loop": false,
+"name": &"saindo",
 "speed": 5.0
 }]

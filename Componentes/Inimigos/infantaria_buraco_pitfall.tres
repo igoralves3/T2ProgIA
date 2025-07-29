@@ -68,7 +68,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0jeml")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -76,15 +76,26 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sfwux")
 }],
-"loop": true,
+"loop": false,
 "name": &"direita",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15yyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwm5b")
+}],
+"loop": false,
+"name": &"escondendo",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_evs5m")
 }],
-"loop": true,
+"loop": false,
 "name": &"esquerda",
 "speed": 5.0
 }, {
@@ -92,7 +103,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wchqc")
 }],
-"loop": true,
+"loop": false,
 "name": &"frente",
 "speed": 5.0
 }, {
@@ -109,7 +120,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0jeml")
 }],
-"loop": true,
+"loop": false,
 "name": &"morrendo",
 "speed": 5.0
 }, {
@@ -120,7 +131,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_15yyp")
 }],
-"loop": true,
-"name": &"saindo_do_buraco",
+"loop": false,
+"name": &"saindo",
 "speed": 5.0
 }]

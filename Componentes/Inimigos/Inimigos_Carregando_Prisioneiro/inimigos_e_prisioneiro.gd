@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED:int = 50
+const SPEED:int = 40
 
 @export var inimigo_esq: CharacterBody2D
 @export var prisioneiro: CharacterBody2D
@@ -16,6 +16,8 @@ func _ready():
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
+	if other_player.global_position.y < global_position.y:# GameManager.retry == true:
+		queue_free()
 	
 func _physics_process(delta: float) -> void:
 	if inimigo_esq or inimigo_dir:

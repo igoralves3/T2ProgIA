@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://djeqqclckn4vk"]
+[gd_scene load_steps=15 format=4 uid="uid://djeqqclckn4vk"]
 
 [ext_resource type="TileSet" uid="uid://c4llvpweoft2a" path="res://SpriteSheets/Area2/Area2_Tileset.tres" id="1_r1qpv"]
 [ext_resource type="Script" uid="uid://dpjsr6v7xo34l" path="res://Cenas/area_2.gd" id="1_tydfa"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bqqxo1s2dkdpx" path="res://Componentes/item_granada_extra/item_granada_extra.tscn" id="9_3xyyb"]
 [ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="12_q3e8m"]
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="13_1dncf"]
+[ext_resource type="PackedScene" uid="uid://cr8vmfa6vf60a" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_escondida.tscn" id="14_tudxv"]
 
 [node name="Area2" type="Node2D"]
 script = ExtResource("1_tydfa")
@@ -184,6 +185,20 @@ scale = Vector2(1, 0.15)
 [node name="ColisaoPitfall22" parent="GrupoDeathTraps" instance=ExtResource("4_kb30a")]
 position = Vector2(193, -286)
 scale = Vector2(1, 0.2)
+
+[node name="Infantaria_Escondida" parent="." instance=ExtResource("14_tudxv")]
+position = Vector2(187, -1161)
+
+[node name="Infantaria_Escondida2" parent="." instance=ExtResource("14_tudxv")]
+position = Vector2(10, -1162)
+
+[node name="Infantaria_Escondida3" parent="." instance=ExtResource("14_tudxv")]
+position = Vector2(38, -553)
+submersa = false
+
+[node name="Infantaria_Escondida4" parent="." instance=ExtResource("14_tudxv")]
+position = Vector2(114, -602)
+submersa = false
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="MobSpawner" method="_on_trigger_area_entered"]
