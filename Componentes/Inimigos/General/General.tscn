@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmdvex1fvmnn5"]
+[gd_scene load_steps=9 format=3 uid="uid://bmdvex1fvmnn5"]
 
 [ext_resource type="SpriteFrames" uid="uid://d1irdg45ysxr1" path="res://SpriteSheets/Animacoes_Etc/comandante_verde_spriteframe.tres" id="1_7l76y"]
 [ext_resource type="Script" uid="uid://8547vkjgqivp" path="res://Componentes/Inimigos/General/general.gd" id="1_mytm2"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="2_6nwec"]
+[ext_resource type="PackedScene" uid="uid://x6tm6efbrcrv" path="res://Componentes/VFX/Pontuacao_subindo.tscn" id="2_t6tlt"]
 [ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="3_gppww"]
 [ext_resource type="Script" uid="uid://dtqvbmglrnw10" path="res://Componentes/Inimigos/General/flee.gd" id="4_gppww"]
 
@@ -16,6 +18,8 @@ height = 18.0
 collision_layer = 4
 collision_mask = 19
 script = ExtResource("1_mytm2")
+pontuacao_subindo = ExtResource("2_t6tlt")
+som_morte = ExtResource("2_6nwec")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(1, -1)
@@ -37,6 +41,8 @@ position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_7l76y")
 
 [node name="Area2DColisaoMorte" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DColisaoMorte"]
 position = Vector2(0, -3)

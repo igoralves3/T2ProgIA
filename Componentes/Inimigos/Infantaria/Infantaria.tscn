@@ -16,7 +16,7 @@ size = Vector2(70, 6.60066)
 radius = 50.0
 height = 200.0
 
-[node name="Infantaria" type="CharacterBody2D" node_paths=PackedStringArray("colisao_chao", "area_colisao_morte") groups=["Inimigos"]]
+[node name="Infantaria" type="CharacterBody2D" node_paths=PackedStringArray("colisao_chao", "area_colisao_morte", "FSM") groups=["Inimigos"]]
 collision_layer = 4
 collision_mask = 19
 script = ExtResource("1_pf2kk")
@@ -24,6 +24,7 @@ bullet_inimigo = ExtResource("2_clfx3")
 som_morte = ExtResource("8_04x4o")
 colisao_chao = NodePath("ColisaoChao")
 area_colisao_morte = NodePath("Area2DColisaoMorte")
+FSM = NodePath("FSM")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_04x4o")
@@ -59,8 +60,9 @@ character = NodePath("../..")
 script = ExtResource("5_vi6ic")
 character = NodePath("../..")
 
-[node name="Wander" type="Node" parent="FSM"]
+[node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("5_clfx3")
+character = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="."]
 

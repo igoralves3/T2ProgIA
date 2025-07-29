@@ -34,7 +34,7 @@ func update_geral():
 	if $%VidasExtrasHBox.get_child_count() < GameManager.lifes:
 		var nova_vida = vida_extra.duplicate()
 		$%VidasExtrasHBox.add_child(nova_vida)
-	if $%VidasExtrasHBox.get_child_count() > GameManager.lifes:
+	if $%VidasExtrasHBox.get_child_count() > GameManager.lifes :
 		$%VidasExtrasHBox.get_children().front().queue_free()
 	if $%Medalhas.get_child_count() < GameManager.medals:
 		var nova_medalha = medalha1.duplicate()

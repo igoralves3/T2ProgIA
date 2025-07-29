@@ -19,18 +19,23 @@ var timer_para_mudar_de_estado: Timer
 var pode_mudar_de_estado: bool = false
 var infantaria_node
 var float_temp: float = 0.1
+var wait_time_mudar_de_estado: float = 1
+
+func _ready() -> void:
+	timer_para_mudar_de_estado = Timer.new()
+	timer_para_mudar_de_estado.wait_time = randf_range(1,3)
+	timer_para_mudar_de_estado.one_shot = false
+	timer_para_mudar_de_estado.timeout.connect(timer_para_mudar_de_estado_end)
+	add_child(timer_para_mudar_de_estado)
 
 func enter() -> void:
+	wait_time_mudar_de_estado = randf_range(1,3)
+	timer_para_mudar_de_estado.wait_time = wait_time_mudar_de_estado
+	timer_para_mudar_de_estado.start(wait_time_mudar_de_estado)
 	tentantivas_de_cruzar_o_player = randi_range(1,2)
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
-		timer_para_mudar_de_estado = Timer.new()
-		timer_para_mudar_de_estado.wait_time = randf_range(1,3)
-		timer_para_mudar_de_estado.one_shot = false
-		timer_para_mudar_de_estado.timeout.connect(timer_para_mudar_de_estado_end)
-		add_child(timer_para_mudar_de_estado)
-		timer_para_mudar_de_estado.start()
 	infantaria_node = get_parent().get_parent()
 	randomize_next_move()
 	pode_mudar_de_estado = false
@@ -98,3 +103,6 @@ func verificar_se_next_move_sai_da_tela(destino):
 
 func timer_para_mudar_de_estado_end():
 	pode_mudar_de_estado = true
+
+func collision_update():
+	transitioned.emit(self,"Wander")
