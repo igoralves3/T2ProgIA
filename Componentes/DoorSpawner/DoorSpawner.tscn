@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://imu3blxtr0mq"]
+[gd_scene load_steps=5 format=3 uid="uid://imu3blxtr0mq"]
 
 [ext_resource type="Script" uid="uid://djkj55ydwxadn" path="res://Componentes/DoorSpawner/door_spawner.gd" id="1_r42gs"]
 [ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="2_kdje4"]
+[ext_resource type="PackedScene" uid="uid://bmdvex1fvmnn5" path="res://Componentes/Inimigos/General/General.tscn" id="3_ffwif"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdje4"]
 size = Vector2(72, 57.5)
@@ -9,6 +10,7 @@ size = Vector2(72, 57.5)
 [node name="DoorSpawner" type="Area2D"]
 script = ExtResource("1_r42gs")
 infantaria = ExtResource("2_kdje4")
+general = ExtResource("3_ffwif")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kdje4")

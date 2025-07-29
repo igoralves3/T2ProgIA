@@ -121,8 +121,6 @@ func grenade_hit():
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
 
-
-
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	dead_enemy.emit(self, 0)
 	queue_free()

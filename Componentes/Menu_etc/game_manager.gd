@@ -38,6 +38,8 @@ func setStartPoint(newStartPoint: Vector2):
 
 func addPoints(points: int):
 	score += points
+	if score%10000 == 0:
+		lifes+=1
 	print("score: ", score)
 
 func addMedals():

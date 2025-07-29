@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmdvex1fvmnn5"]
+
+[ext_resource type="SpriteFrames" uid="uid://d1irdg45ysxr1" path="res://SpriteSheets/Animacoes_Etc/comandante_verde_spriteframe.tres" id="1_7l76y"]
+[ext_resource type="Script" uid="uid://8547vkjgqivp" path="res://Componentes/Inimigos/General/general.gd" id="1_mytm2"]
+[ext_resource type="Script" uid="uid://bhrthd0krs05v" path="res://Scripts/Classes/fsm.gd" id="3_gppww"]
+[ext_resource type="Script" uid="uid://dtqvbmglrnw10" path="res://Componentes/Inimigos/General/flee.gd" id="4_gppww"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l76y"]
+size = Vector2(12, 6)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mytm2"]
+radius = 6.0
+height = 18.0
+
+[node name="General" type="CharacterBody2D" groups=["Inimigos"]]
+collision_layer = 4
+collision_mask = 19
+script = ExtResource("1_mytm2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1, -1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_7l76y")
+
+[node name="LabelState" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -27.0
+offset_right = 22.0
+offset_bottom = -13.0
+theme_override_font_sizes/font_size = 10
+text = "seek"
+horizontal_alignment = 1
+
+[node name="ColisaoChao" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_7l76y")
+
+[node name="Area2DColisaoMorte" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DColisaoMorte"]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_mytm2")
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_gppww")
+initial_state = NodePath("Flee")
+
+[node name="Flee" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+script = ExtResource("4_gppww")
+character = NodePath("../..")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

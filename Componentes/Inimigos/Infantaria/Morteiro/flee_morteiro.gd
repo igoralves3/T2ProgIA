@@ -15,4 +15,4 @@ func update(delta: float) -> void:
 	pass
 	
 func physics_update(delta: float) -> void:
-	character.global_position = character.global_position + Vector2.RIGHT * SPEED * delta
+	character.global_position = character.global_position + Vector2.DOWN * SPEED * delta

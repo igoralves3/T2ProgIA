@@ -29,13 +29,16 @@ func _on_spawn_timer_timeout():
 		spawn_timer.stop()
 		return
 
-	_spawn_single_enemy()
+	if enemies_to_spawn == 1:
+		_spawn_single_enemy("general")
+	else:
+		_spawn_single_enemy("infantaria")
 	enemies_to_spawn -= 1
 	if enemies_to_spawn <= 0:
 		spawn_timer.stop()
 
-func _spawn_single_enemy():
-	if not infantaria:
+func _spawn_single_enemy(type: String):
+	if not infantaria or not general:
 		return
 
 	var collision_shape = $CollisionShape2D
@@ -58,7 +61,11 @@ func _spawn_single_enemy():
 	var random_local_position = Vector2(random_x, random_y)
 
 	# Instantiate the enemy.
-	var new_mob = infantaria.instantiate()
+	var new_mob
+	if (type == "infantaria"):
+		new_mob = infantaria.instantiate()
+	else:
+		new_mob = general.instantiate()
 
 	# Add the new mob to the "Door Enemies" group
 	new_mob.add_to_group("FinalMobs")

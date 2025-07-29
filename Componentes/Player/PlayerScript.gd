@@ -66,6 +66,9 @@ func _physics_process(delta: float) -> void:
 		can_shoot = false
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("godMode"): #atira se não tiver 5 ou mais balas voando
+		god_mode = !god_mode
+		print("godMode: ", god_mode)
 	if event.is_action_pressed("Shoot"): #atira se não tiver 5 ou mais balas voando
 		is_shooting = true
 		burst_bullet()
