@@ -9,10 +9,8 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	if canSpawn:
-		
 		var humvee_instance = humvee.instantiate()
 		humvee_instance.position = position
-		
 		get_parent().add_child(humvee_instance)
 		canSpawn = false
 		queue_free()

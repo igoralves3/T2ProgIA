@@ -1,22 +1,16 @@
 extends Area2D
 
 @export var jeep : PackedScene
-
 @onready var _timer = $Timer
-var canSpawn = false
-var jeep_exists = null
+var other_player: CharacterBody2D
 
-func _ready():
-	pass
-
-func _physics_process(delta: float) -> void:
-	if canSpawn and jeep_exists == null:
-		
-		var jeep_instance = jeep.instantiate()
-		jeep_exists = jeep_instance
-		jeep_instance.global_position = Vector2(global_position.x + 40,global_position.y)
-		
-		get_parent().add_child(jeep_instance)	
-
-func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	canSpawn=true
+func _on_area_entered(area: Area2D) -> void:
+	if not other_player:
+		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
+	var offset_spawn = -70
+	if other_player.global_position.x - 70 < 0:
+		offset_spawn = + 150
+	var jeep_instance = jeep.instantiate()
+	jeep_instance.global_position = Vector2(other_player.global_position.x + offset_spawn, global_position.y)
+	get_parent().add_child(jeep_instance)
+	queue_free()

@@ -21,11 +21,16 @@ animation = &"atirando_baixo"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ragcb")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="timer_bullet" type="Timer" parent="."]
 autostart = true
 
 [node name="WeaponPosition" type="Node2D" parent="."]
 position = Vector2(8, 10)
 
+[node name="timer_reset_speed" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer_bullet" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer_reset_speed" to="." method="_on_timer_reset_speed_timeout"]

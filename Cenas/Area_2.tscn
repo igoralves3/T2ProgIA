@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://djeqqclckn4vk"]
+[gd_scene load_steps=16 format=4 uid="uid://djeqqclckn4vk"]
 
 [ext_resource type="TileSet" uid="uid://c4llvpweoft2a" path="res://SpriteSheets/Area2/Area2_Tileset.tres" id="1_r1qpv"]
 [ext_resource type="Script" uid="uid://dpjsr6v7xo34l" path="res://Cenas/area_2.gd" id="1_tydfa"]
 [ext_resource type="PackedScene" uid="uid://ctqf7dpoxu84c" path="res://Componentes/AreaHazardDestructable/colisao_agua.tscn" id="3_vd7x2"]
+[ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="4_1d85u"]
 [ext_resource type="PackedScene" uid="uid://bek8hshqdrwnf" path="res://Componentes/AreaHazardDestructable/colisao_pitfall.tscn" id="4_kb30a"]
 [ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="4_tudxv"]
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="5_33he6"]
@@ -31,7 +32,9 @@ limit_top = 0
 
 [node name="MainPlayerChar" parent="." instance=ExtResource("5_33he6")]
 unique_name_in_owner = true
-position = Vector2(108, -1020)
+position = Vector2(110, 194)
+
+[node name="HUD" parent="." instance=ExtResource("4_1d85u")]
 
 [node name="EnemyController" parent="." instance=ExtResource("4_tudxv")]
 
@@ -186,17 +189,19 @@ scale = Vector2(1, 0.15)
 position = Vector2(193, -286)
 scale = Vector2(1, 0.2)
 
-[node name="Infantaria_Escondida" parent="." instance=ExtResource("14_tudxv")]
+[node name="infantaria_escondida_mapa" type="Node" parent="."]
+
+[node name="Infantaria_Escondida" parent="infantaria_escondida_mapa" instance=ExtResource("14_tudxv")]
 position = Vector2(187, -1161)
 
-[node name="Infantaria_Escondida2" parent="." instance=ExtResource("14_tudxv")]
+[node name="Infantaria_Escondida2" parent="infantaria_escondida_mapa" instance=ExtResource("14_tudxv")]
 position = Vector2(10, -1162)
 
-[node name="Infantaria_Escondida3" parent="." instance=ExtResource("14_tudxv")]
+[node name="Infantaria_Escondida3" parent="infantaria_escondida_mapa" instance=ExtResource("14_tudxv")]
 position = Vector2(38, -553)
 submersa = false
 
-[node name="Infantaria_Escondida4" parent="." instance=ExtResource("14_tudxv")]
+[node name="Infantaria_Escondida4" parent="infantaria_escondida_mapa" instance=ExtResource("14_tudxv")]
 position = Vector2(114, -602)
 submersa = false
 
