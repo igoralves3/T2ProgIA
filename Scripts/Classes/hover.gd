@@ -19,24 +19,34 @@ var timer_next_move: Timer
 var tempo_next_move: float = 1.5
 var pode_mudar_de_estado: bool = false
 var infantaria_node
+var wait_time_mudar_de_estado: float = 1
+
+func _ready() -> void:
+	timer_entre_estados = Timer.new()
+	timer_entre_estados.wait_time = tempo_timer_entre_estados
+	timer_entre_estados.one_shot = false
+	timer_entre_estados.timeout.connect(timer_entre_estados_end)
+	add_child(timer_entre_estados)
+	timer_entre_estados.start()
+	timer_next_move = Timer.new()
+	timer_next_move.wait_time = tempo_next_move
+	timer_next_move.one_shot = false
+	timer_next_move.timeout.connect(timer_next_move_end)
+	add_child(timer_next_move)
+	timer_next_move.start()
 
 
 func enter() -> void:
+	tempo_next_move = randf_range(1,1.5)
+	timer_next_move.wait_time = tempo_next_move
+	tempo_timer_entre_estados = randf_range(0.75,1.5)
+	timer_entre_estados.wait_time = tempo_timer_entre_estados
+	timer_next_move.start(tempo_next_move)
+	timer_entre_estados.start(tempo_timer_entre_estados)
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_nodes_in_group("GrupoPlayer")[0]
 		randomize_next_move()
-		timer_entre_estados = Timer.new()
-		timer_entre_estados.wait_time = tempo_timer_entre_estados
-		timer_entre_estados.one_shot = false
-		timer_entre_estados.timeout.connect(timer_entre_estados_end)
-		add_child(timer_entre_estados)
-		timer_entre_estados.start()
-		timer_next_move = Timer.new()
-		timer_next_move.wait_time = tempo_next_move
-		timer_next_move.one_shot = false
-		timer_next_move.timeout.connect(timer_next_move_end)
-		add_child(timer_next_move)
 		timer_next_move.start()
 	infantaria_node = get_parent().get_parent()
 	pode_mudar_de_estado = false
@@ -60,7 +70,7 @@ func update(delta: float) -> void:
 						transitioned.emit(self,"Wander")
 				if distancia_restante < 40:
 					transitioned.emit(self,"Seek")
-					#if randi_range(1,2) < 2:
+
 
 func physics_update(delta: float) -> void:
 	var movendo_para: Vector2
@@ -122,3 +132,6 @@ func timer_entre_estados_end():
 func timer_next_move_end():
 	tentativas_temp = next_move_tentativas_sem_sair_da_tela
 	randomize_next_move()
+
+func collision_update():
+	transitioned.emit(self,"Wander")

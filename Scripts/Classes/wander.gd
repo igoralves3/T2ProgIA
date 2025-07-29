@@ -14,6 +14,14 @@ var chances_random:int= 0
 var timer_para_mudar_de_estado: Timer
 var pode_mudar_de_estado: bool = false
 var infantaria_node
+var wait_time_mudar_de_estado: float = 1
+
+func _ready() -> void:
+	timer_para_mudar_de_estado = Timer.new()
+	timer_para_mudar_de_estado.wait_time = randf_range(1,3)
+	timer_para_mudar_de_estado.one_shot = false
+	timer_para_mudar_de_estado.timeout.connect(timer_para_mudar_de_estado_end)
+	add_child(timer_para_mudar_de_estado)
 
 func randomize_wander():
 	move_direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
@@ -24,14 +32,10 @@ func update_position() -> void:
 	character.velocity = direction.normalized() * move_speed
 
 func enter() -> void:
-	timer_para_mudar_de_estado = Timer.new()
-	timer_para_mudar_de_estado.wait_time = randf_range(1,3)
-	timer_para_mudar_de_estado.one_shot = false
-	timer_para_mudar_de_estado.timeout.connect(timer_para_mudar_de_estado_end)
-	add_child(timer_para_mudar_de_estado)
-	timer_para_mudar_de_estado.start()
+	wait_time_mudar_de_estado = randf_range(1,3)
+	timer_para_mudar_de_estado.wait_time = wait_time_mudar_de_estado
+	timer_para_mudar_de_estado.start(wait_time_mudar_de_estado)
 	chances_random = 100
-	#print('wander')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
@@ -53,8 +57,8 @@ func update(delta: float) -> void:
 func physics_update(delta: float) -> void:
 	if character:
 		character.velocity = move_direction * move_speed
-		for i in character.get_slide_collision_count():
-			var collision = character.get_slide_collision(i)
+#		for i in character.get_slide_collision_count():
+#			var collision = character.get_slide_collision(i)
 #			print("I collided with ", collision.get_collider().name)
 	if other_player:
 #		var direction = other_player.global_position - character.global_position
@@ -72,3 +76,6 @@ func physics_update(delta: float) -> void:
 
 func timer_para_mudar_de_estado_end():
 	pode_mudar_de_estado = true
+
+func collision_update():
+	randomize_wander()

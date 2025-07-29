@@ -14,10 +14,13 @@ var tempo_fora_tela: float = 2
 @export var som_tiro = AudioStream
 @export var colisao_chao: CollisionShape2D
 @export var area_colisao_morte: Area2D
+@export var FSM: Node
+var wander
 
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready():
+	wander = FSM.get_node("Wander")
 	_animated_sprite.play('down')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
@@ -29,6 +32,9 @@ func _ready():
 	add_child(timer_olhar_para_jogador)
 
 func _physics_process(delta: float) -> void:
+#	if wander != null:
+#		if wander.timer_para_mudar_de_estado != null:
+#			print(wander.timer_para_mudar_de_estado.time_left, "timeleft")
 	move_and_slide()
 	if olhando_para_jogador:
 		update_animation(look_at_player())
@@ -42,6 +48,9 @@ func _physics_process(delta: float) -> void:
 			if superJoe.has_method("death_normal"):
 				superJoe.set_collision_layer_value(2, false)
 				superJoe.death_normal()
+		else:
+			var atual_FSM = FSM.get_node(str(FSM.current_state))
+			atual_FSM.collision_update()
 
 	if other_player:
 		if other_player.posicao_camera != null:

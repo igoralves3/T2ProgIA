@@ -12,7 +12,7 @@ var retry = false #morreu e tá dando retry
 
 func newGame():
 	score = 0
-	lifes = 3
+	lifes = 2
 	medals = 0
 	hasCheckpoint = false
 	retry = false
@@ -38,7 +38,7 @@ func setStartPoint(newStartPoint: Vector2):
 
 func addPoints(points: int):
 	score += points
-	if score%10000 == 0:
+	if score%10000 == 0 and score != 0:
 		lifes+=1
 	print("score: ", score)
 
