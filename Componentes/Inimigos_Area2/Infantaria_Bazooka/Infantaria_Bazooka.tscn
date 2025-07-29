@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd3foylwhtmng"]
+
+[ext_resource type="SpriteFrames" uid="uid://0lj3txiuw4ha" path="res://Componentes/Inimigos/Infantaria_Bazuca/operador_bazuca.tres" id="1_i141y"]
+[ext_resource type="Script" uid="uid://olx724iu8sah" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/infantaria_bazooka.gd" id="2_5h48p"]
+[ext_resource type="PackedScene" uid="uid://de5w3ldopj8d7" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/tiro_bazooka/tiro_bazooka.tscn" id="2_nb7ji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5h48p"]
+
+[node name="InfantariaBazooka" type="CharacterBody2D"]
+script = ExtResource("2_5h48p")
+tiro_bazooka = ExtResource("2_nb7ji")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_i141y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5h48p")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

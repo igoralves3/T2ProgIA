@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://de5w3ldopj8d7"]
+
+[ext_resource type="SpriteFrames" uid="uid://cj8edhspj8mp3" path="res://Componentes/Inimigos/Infantaria_Bazuca/tiro_bazuca.tres" id="1_a4kvx"]
+[ext_resource type="Script" uid="uid://do70pr236a2bq" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/tiro_bazooka/tiro_bazooka.gd" id="1_y6wbq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6wbq"]
+
+[node name="TiroBazooka" type="Area2D"]
+collision_layer = 0
+collision_mask = 11
+script = ExtResource("1_y6wbq")
+dir = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_a4kvx")
+animation = &"reto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y6wbq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
