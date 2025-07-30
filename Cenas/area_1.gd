@@ -15,12 +15,12 @@ var currentCheckpoint: Vector2
 
 var finalStage = false
 var finalMobsCount: int
-var scriptedEnemies: Array
+#var scriptedEnemies: Array
 
 func _ready() -> void:
-	scriptedEnemies = get_tree().get_nodes_in_group("ScriptedEnemies")
-	for enemy in scriptedEnemies:
-		enemy.connect("dead_enemy", Callable(self, "on_dead_enemy"))
+#	scriptedEnemies = get_tree().get_nodes_in_group("ScriptedEnemies")
+#	for enemy in scriptedEnemies:
+#		enemy.connect("dead_enemy", Callable(self, "on_dead_enemy"))
 	GameManager.setStartPoint(player.global_position)
 	GameManager.currentScene = "res://Cenas/Area_1.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
@@ -31,8 +31,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	finalMobsCount = get_tree().get_nodes_in_group("FinalMobs").size()
-#	print (camera.offset.y, "offset")
-#	print (camera.position.y, "position")
 	if player.position.y - camera.offset.y < camera_distancia_y_minima and camera.offset.y >= camera_altura_maxima_y:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
 	
@@ -60,8 +58,8 @@ func _on_door_spawner_stopped_spawning():
 	timer.start()
 	timer.timeout.connect(_on_final_stage_timer_timeout)
 
-func on_dead_enemy(_enemy, pontos):
-	GameManager.addPoints(pontos)
+#func on_dead_enemy(_enemy, pontos):
+#	GameManager.addPoints(pontos)
 
 func _on_final_stage_timer_timeout():
 	finalStage = true

@@ -106,5 +106,6 @@ func grenade_hit():
 	_animated_sprite.play("morrendo")
 	_animated_sprite.animation_finished.connect(queue_free)
 	set_collision_layer_value(3, false)
+	GameManager.addPoints(pontos)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)

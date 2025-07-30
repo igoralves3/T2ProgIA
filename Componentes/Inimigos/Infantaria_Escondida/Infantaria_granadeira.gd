@@ -123,8 +123,6 @@ func update_animation(input_direction: Vector2):
 		_animated_sprite.play("direita_cima")
 	else:
 		_animated_sprite.stop()
-	#	_animated_sprite.frame = 0 #o jogo não usa a princípio
-
 
 func fire_bullet():
 	olhando_para_jogador = true
@@ -134,9 +132,8 @@ func fire_bullet():
 		if camperando:
 			bullet_instance.set_collision_mask_value(1, false)
 		bullet_instance.position = position
-		bullet_instance.motion = (other_player.global_position - global_position).normalized()#(ray_cast.target_position).normalized()
+		bullet_instance.motion = (other_player.global_position - global_position).normalized()
 		get_parent().add_child(bullet_instance)
-		#print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
 
 func timer_fire_grenade():
 	if not camperando:
@@ -181,8 +178,9 @@ func bullet_hit():
 	_animated_sprite.animation_finished.connect(queue_free)
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	#SoundController.play_button(som_morte)
-	#remover_granadas_filhas_do_controller()
+	SoundController.play_button(som_morte)
+	GameManager.addPoints(pontos)
+	remover_granadas_filhas_do_controller()
 
 func remover_granadas_filhas_do_controller():
 	for granada in Array_granadas_jogadas:
@@ -198,6 +196,7 @@ func grenade_hit():
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
+	GameManager.addPoints(pontos)
 	remover_granadas_filhas_do_controller()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
@@ -208,7 +207,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func timer_olhar_para_jogador_end():
 	if not camperando:
 		olhando_para_jogador = false
-
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	can_shoot = true

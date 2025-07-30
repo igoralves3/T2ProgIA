@@ -14,6 +14,7 @@ var alterou_a_velocidade: bool = false
 var lifes := 5
 var offset_da_bala
 @onready var timer_speed = $timer_reset_speed
+var pontos = 200
 
 func _ready() -> void:
 	if not other_player:
@@ -70,6 +71,7 @@ func fire_bullet():
 	get_parent().add_child(bullet_instance)
 
 func bullet_hit():
+	GameManager.addPoints(pontos)
 	lifes-=1
 	if lifes <= 0:
 		set_collision_layer_value(3, false)

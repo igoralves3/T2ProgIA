@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var pontos: int = 9000
+@onready var pontos: int = 2000
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var area_colisao_morte: Area2D = $Area2DColisaoMorte
 @onready var colisao_chao: CollisionShape2D = $ColisaoChao
@@ -46,6 +46,7 @@ func dead_queue():
 	var pontuacao = pontuacao_subindo.instantiate()
 	pontuacao.position = position
 	pontuacao.dono = "General"
+	GameManager.addPoints(pontos)
 	get_parent().add_child(pontuacao)
 	set_physics_process(false)
 	set_collision_layer_value(3, false)

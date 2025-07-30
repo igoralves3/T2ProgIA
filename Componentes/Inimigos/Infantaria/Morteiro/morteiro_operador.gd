@@ -111,14 +111,16 @@ func bullet_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
-	dead_enemy.emit(self, pontos)	
+	GameManager.addPoints(pontos)
+	dead_enemy.emit(self, pontos)
 	queue_free()
 
 func grenade_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
-	dead_enemy.emit(self, pontos)	
+	dead_enemy.emit(self, pontos)
+	GameManager.addPoints(pontos)
 	get_parent().get_node("Morteiro").queue_free()
 	queue_free()
 
@@ -136,10 +138,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func timer_olhar_para_jogador_end():
 	if ativo:
 		olhando_para_jogador = false
-		#fugindo = true
-		#queue_free()
-
-
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	ativo = true

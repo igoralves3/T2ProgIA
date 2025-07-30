@@ -8,7 +8,7 @@ class_name Turret
 @onready var _animated_sprite = $AnimatedSprite2D
 
 var lifes = 2
-
+var pontos = 500
 var dir = 1
 var shoot_dir = Vector2.DOWN
 
@@ -78,9 +78,11 @@ func fire_bullet():
 	#print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
 
 func grenade_hit():
+	GameManager.addPoints(pontos)
 	lifes -= 1
 	print('explosao 1')
 	if lifes <= 0:
+		GameManager.addPoints(pontos)
 		set_collision_layer_value(3, false)
 		print('explosao 2')
 		queue_free()

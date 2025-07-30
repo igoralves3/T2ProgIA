@@ -117,6 +117,7 @@ func bullet_hit():
 	_animated_sprite.animation_finished.connect(queue_free)
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
+	GameManager.addPoints(pontos)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
 #	queue_free()
@@ -127,6 +128,7 @@ func grenade_hit():
 	_animated_sprite.animation_finished.connect(queue_free)
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
+	GameManager.addPoints(pontos)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
 
