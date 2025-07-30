@@ -9,7 +9,6 @@ var updates: int = 5
 
 func _ready() -> void:
 	GameManager.score_updated.connect(on_score_update)
-	#GameManager.grenades_updated.connect(update_grenades_label)
 	GameManager.lives_updated.connect(on_lives_update)
 	GameManager.medals_updated.connect(on_medals_update)
 	for child in $%VidasExtrasHBox.get_children():

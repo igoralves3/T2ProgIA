@@ -118,7 +118,7 @@ func bullet_hit():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
-	dead_enemy.emit(self, pontos)	
+	dead_enemy.emit(self, pontos)
 #	queue_free()
 
 func grenade_hit():

@@ -14,6 +14,10 @@ var can_shoot: bool = false
 var pre_colisao: bool = true
 @onready var timer_tiro_animacao = $timer_tiro_animacao
 var offset_missil
+var pontos: int = 400
+@export var som_morte: AudioStream
+signal dead_enemy(myself: CharacterBody2D, points: int)
+var dying: bool = false
 
 func _ready():
 	_animated_sprite.play("caminhando")
@@ -50,7 +54,7 @@ func _physics_process(delta: float) -> void:
 
 func pegar_prox_motion():
 	var proximo_movimento:= Vector2(0,0)
-	if not atirando:
+	if not atirando and not dying:
 		proximo_movimento = Vector2(randf_range(-1,1),randf_range(-0.7,0.3)).normalized()
 	return proximo_movimento
 
@@ -62,7 +66,7 @@ func update_movimento():
 
 func _on_timer_timeout() -> void:
 	if can_shoot:
-		if not atirando:
+		if not atirando and not dying:
 			var randi = randi_range(1,4)
 			if randi < 4:
 				mirar_bazuca()
@@ -85,7 +89,8 @@ func mirar_bazuca():
 	timer_tiro_animacao.start()
 
 func _on_timer_tiro_animacao_timeout() -> void:
-	fire_bazooka()
+	if not dying:
+		fire_bazooka()
 
 func fire_bazooka():
 	var tiro_bazooka_instance = tiro_bazooka.instantiate()
@@ -107,3 +112,23 @@ func post_tiro():
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+
+func bullet_hit():
+	dying = true
+	set_physics_process(false)
+	_animated_sprite.play("death")
+	_animated_sprite.animation_finished.connect(queue_free)
+	set_collision_layer_value(3, false)
+	$Area2DColisaoMorte.set_collision_layer_value(3, false)
+	SoundController.play_button(som_morte)
+	dead_enemy.emit(self, pontos)
+
+func grenade_hit():
+	dying = true
+	set_physics_process(false)
+	_animated_sprite.play("death")
+	_animated_sprite.animation_finished.connect(queue_free)
+	set_collision_layer_value(3, false)
+	$Area2DColisaoMorte.set_collision_layer_value(3, false)
+	SoundController.play_button(som_morte)
+	dead_enemy.emit(self, pontos)

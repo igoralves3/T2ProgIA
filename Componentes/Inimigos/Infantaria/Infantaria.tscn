@@ -29,7 +29,7 @@ FSM = NodePath("FSM")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_04x4o")
 animation = &"death"
-frame = 22
+frame = 21
 frame_progress = 1.0
 
 [node name="ColisaoChao" type="CollisionShape2D" parent="."]

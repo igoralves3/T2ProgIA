@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd3foylwhtmng"]
+[gd_scene load_steps=8 format=3 uid="uid://bd3foylwhtmng"]
 
 [ext_resource type="SpriteFrames" uid="uid://0lj3txiuw4ha" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/operador_bazuca.tres" id="1_i141y"]
 [ext_resource type="Script" uid="uid://olx724iu8sah" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/infantaria_bazooka.gd" id="2_5h48p"]
 [ext_resource type="PackedScene" uid="uid://de5w3ldopj8d7" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/tiro_bazooka/tiro_bazooka.tscn" id="2_nb7ji"]
 [ext_resource type="PackedScene" uid="uid://c8bx61cdspa0u" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/tiro_bazooka/bazuca_vfx.tscn" id="3_elkru"]
+[ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="4_lm07w"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nb7ji"]
-radius = 7.0
-height = 22.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lm07w"]
+size = Vector2(12, 4)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lm07w"]
+radius = 50.0
+height = 200.0
 
 [node name="InfantariaBazooka" type="CharacterBody2D"]
 collision_layer = 4
@@ -15,13 +19,15 @@ collision_mask = 27
 script = ExtResource("2_5h48p")
 tiro_bazooka = ExtResource("2_nb7ji")
 bazooka_vfx = ExtResource("3_elkru")
+som_morte = ExtResource("4_lm07w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_i141y")
 animation = &"atirando_frente"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_nb7ji")
+[node name="ColisaoChao" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 10)
+shape = SubResource("RectangleShape2D_lm07w")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
@@ -32,6 +38,18 @@ autostart = true
 [node name="timer_tiro_animacao" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="Area2DColisaoMorte" type="Area2D" parent="."]
+unique_name_in_owner = true
+light_mask = 4
+visibility_layer = 2
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DColisaoMorte"]
+position = Vector2(7.15256e-06, 7.15256e-06)
+shape = SubResource("CapsuleShape2D_lm07w")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
