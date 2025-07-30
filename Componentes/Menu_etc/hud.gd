@@ -8,6 +8,10 @@ extends CanvasLayer
 var updates: int = 5
 
 func _ready() -> void:
+	GameManager.score_updated.connect(on_score_update)
+	#GameManager.grenades_updated.connect(update_grenades_label)
+	GameManager.lives_updated.connect(on_lives_update)
+	GameManager.medals_updated.connect(on_medals_update)
 	for child in $%VidasExtrasHBox.get_children():
 		child.queue_free()
 	for medalhas in %Medalhas.get_children():
@@ -24,6 +28,17 @@ func start_update():
 func single_update():
 	updates = 1
 	update_geral()
+	
+
+func on_score_update(new_score):
+	update_geral()
+	
+func on_lives_update(new_lives):
+	update_geral()
+
+func on_medals_update(new_medals):
+	update_geral()
+
 
 func update_geral():
 	if label_high_score.text.is_valid_int():

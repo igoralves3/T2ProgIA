@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=24 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
 [ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/Animacoes_Etc/SpriteFramePorta.tres" id="2_r24xy"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://n3wxtopay5nf" path="res://Componentes/Inimigos/Infantaria/Morteiro/agentes_morteiro.tscn" id="17_emitg"]
 [ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="18_1xk7e"]
 [ext_resource type="PackedScene" uid="uid://dx7d6d33wlnsw" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_granadeira.tscn" id="18_lah7y"]
-[ext_resource type="PackedScene" uid="uid://bmdvex1fvmnn5" path="res://Componentes/Inimigos/General/General.tscn" id="18_twte5"]
 [ext_resource type="PackedScene" uid="uid://btm45nn61a8k2" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_E_Prisioneiro.tscn" id="19_su8h8"]
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="20_gxw08"]
 [ext_resource type="PackedScene" uid="uid://imu3blxtr0mq" path="res://Componentes/DoorSpawner/DoorSpawner.tscn" id="21_de5qm"]
@@ -195,7 +194,6 @@ collision_mask = 2
 position = Vector2(113, -1803)
 collision_layer = 0
 collision_mask = 0
-general = ExtResource("18_twte5")
 
 [node name="GrupoInfantariaEscondida" type="Node" parent="."]
 

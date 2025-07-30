@@ -19,7 +19,7 @@ size = Vector2(70, 6.60066)
 radius = 50.0
 height = 200.0
 
-[node name="Infantaria_granadeira" type="CharacterBody2D" node_paths=PackedStringArray("colisao_chao", "area_colisao_morte", "fsm_run") groups=["Inimigos", "InimigosSoGranadeiros"]]
+[node name="Infantaria_granadeira" type="CharacterBody2D" node_paths=PackedStringArray("colisao_chao", "area_colisao_morte", "fsm_run") groups=["Inimigos", "InimigosSoGranadeiros", "ScriptedEnemies"]]
 collision_layer = 4
 collision_mask = 18
 script = ExtResource("1_ho7k7")

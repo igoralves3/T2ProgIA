@@ -8,7 +8,7 @@
 
 [node name="Agentes_morteiro" type="Node2D"]
 
-[node name="Operador_morteiro" parent="." instance=ExtResource("2_cpy00")]
+[node name="Operador_morteiro" parent="." groups=["ScriptedEnemies"] instance=ExtResource("2_cpy00")]
 morteiro_bullet = ExtResource("2_b2yx3")
 
 [node name="Morteiro" type="Area2D" parent="."]

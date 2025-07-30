@@ -33,6 +33,7 @@ var Array_granadas_jogadas: Array
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready():
+	#GameManager.addToSpawnedList.emit(self)
 	_animated_sprite.play('down')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
@@ -175,13 +176,13 @@ func post_grenade():
 
 func bullet_hit():
 	set_physics_process(false)
+	dead_enemy.emit(self, pontos)
 	_animated_sprite.play("death")
 	_animated_sprite.animation_finished.connect(queue_free)
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	SoundController.play_button(som_morte)
-	dead_enemy.emit(self, pontos)
-	remover_granadas_filhas_do_controller()
+	#SoundController.play_button(som_morte)
+	#remover_granadas_filhas_do_controller()
 
 func remover_granadas_filhas_do_controller():
 	for granada in Array_granadas_jogadas:

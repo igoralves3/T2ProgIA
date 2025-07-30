@@ -10,14 +10,14 @@ inimigo_esq = NodePath("InimigoEsq")
 prisioneiro = NodePath("Prisioneiro")
 inimigo_dir = NodePath("InimigoDir")
 
-[node name="InimigoEsq" parent="." instance=ExtResource("2_kypbl")]
+[node name="InimigoEsq" parent="." groups=["ScriptedEnemies"] instance=ExtResource("2_kypbl")]
 position = Vector2(-22, 0)
 
 [node name="Prisioneiro" parent="." instance=ExtResource("3_d4i56")]
 collision_layer = 0
 collision_mask = 0
 
-[node name="InimigoDir" parent="." instance=ExtResource("2_kypbl")]
+[node name="InimigoDir" parent="." groups=["ScriptedEnemies"] instance=ExtResource("2_kypbl")]
 position = Vector2(22, 0)
 
 [connection signal="queueFreeYourself" from="Prisioneiro" to="." method="_on_prisioneiro_queue_free_yourself"]
