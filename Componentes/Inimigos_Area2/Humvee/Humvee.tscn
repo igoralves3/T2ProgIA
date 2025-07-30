@@ -18,7 +18,6 @@ sprite_frames = ExtResource("2_yi5w7")
 animation = &"andando_p_direita"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-visible = false
 scale = Vector2(2.35, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -12,14 +12,8 @@ collision_mask = 2
 script = ExtResource("1_37oh3")
 jeep = ExtResource("2_o10ca")
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -90)
 shape = SubResource("RectangleShape2D_rxbag")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

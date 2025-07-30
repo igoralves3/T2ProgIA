@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 class_name Jeep
 
@@ -14,7 +14,6 @@ var alterou_a_velocidade: bool = false
 var lifes := 5
 var offset_da_bala
 @onready var timer_speed = $timer_reset_speed
-
 
 func _ready() -> void:
 	if not other_player:
@@ -76,6 +75,9 @@ func bullet_hit():
 		set_collision_layer_value(3, false)
 		queue_free()
 
-
 func _on_timer_reset_speed_timeout() -> void:
 	speed = 80
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method('death_normal'):
+		body.death_normal()

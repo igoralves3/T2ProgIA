@@ -2,19 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://cor3ts7v8iro7" path="res://SpriteSheets/motos.png" id="1_golh7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_awaod"]
-atlas = ExtResource("1_golh7")
-region = Rect2(67, 4, 48, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_bssct"]
 atlas = ExtResource("1_golh7")
 region = Rect2(16, 4, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awaod"]
+atlas = ExtResource("1_golh7")
+region = Rect2(67, 4, 48, 24)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_awaod")
+"texture": SubResource("AtlasTexture_bssct")
 }],
 "loop": true,
 "name": &"default",
@@ -22,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bssct")
+"texture": SubResource("AtlasTexture_awaod")
 }],
 "loop": true,
 "name": &"speed_up",

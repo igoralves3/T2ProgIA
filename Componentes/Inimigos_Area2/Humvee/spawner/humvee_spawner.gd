@@ -1,7 +1,6 @@
 extends Area2D
 
 @export var humvee : PackedScene
-@export var _timer: Timer
 var canSpawn = false
 
 func _ready():

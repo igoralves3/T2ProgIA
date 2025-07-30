@@ -4,18 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://co6icc8rb7ob1" path="res://Componentes/Inimigos_Area2/Moto_Terra/Moto_Terra.tscn" id="2_f0pmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go0ro"]
+size = Vector2(600, 20)
 
-[node name="MotoTerraSpawner" type="Area2D" node_paths=PackedStringArray("_timer")]
+[node name="MotoTerraSpawner" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_34jyr")
 moto_terra = ExtResource("2_f0pmi")
-_timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_go0ro")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
