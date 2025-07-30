@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://maippa5e1bi2"]
+
+[ext_resource type="Texture2D" uid="uid://cb3rnk4ejhw3e" path="res://SpriteSheets/projeteis.png" id="1_pnfp1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n27e0"]
+atlas = ExtResource("1_pnfp1")
+region = Rect2(131, 143, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5m4n"]
+atlas = ExtResource("1_pnfp1")
+region = Rect2(93, 143, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn817"]
+atlas = ExtResource("1_pnfp1")
+region = Rect2(112, 143, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n27e0")
+}],
+"loop": false,
+"name": &"atirando_direita",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5m4n")
+}],
+"loop": false,
+"name": &"atirando_esquerda",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn817")
+}],
+"loop": false,
+"name": &"atirando_frente",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5m4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn817")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n27e0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]

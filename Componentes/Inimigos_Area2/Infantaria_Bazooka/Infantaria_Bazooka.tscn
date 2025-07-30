@@ -1,24 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd3foylwhtmng"]
+[gd_scene load_steps=6 format=3 uid="uid://bd3foylwhtmng"]
 
-[ext_resource type="SpriteFrames" uid="uid://0lj3txiuw4ha" path="res://Componentes/Inimigos/Infantaria_Bazuca/operador_bazuca.tres" id="1_i141y"]
+[ext_resource type="SpriteFrames" uid="uid://0lj3txiuw4ha" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/operador_bazuca.tres" id="1_i141y"]
 [ext_resource type="Script" uid="uid://olx724iu8sah" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/infantaria_bazooka.gd" id="2_5h48p"]
 [ext_resource type="PackedScene" uid="uid://de5w3ldopj8d7" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/tiro_bazooka/tiro_bazooka.tscn" id="2_nb7ji"]
+[ext_resource type="PackedScene" uid="uid://c8bx61cdspa0u" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/tiro_bazooka/bazuca_vfx.tscn" id="3_elkru"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5h48p"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nb7ji"]
+radius = 7.0
+height = 22.0
 
 [node name="InfantariaBazooka" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 27
 script = ExtResource("2_5h48p")
 tiro_bazooka = ExtResource("2_nb7ji")
+bazooka_vfx = ExtResource("3_elkru")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_i141y")
+animation = &"atirando_frente"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_5h48p")
+shape = SubResource("CapsuleShape2D_nb7ji")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="timer_tiro_animacao" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer_tiro_animacao" to="." method="_on_timer_tiro_animacao_timeout"]

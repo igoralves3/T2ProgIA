@@ -38,35 +38,44 @@ region = Rect2(257, 358, 16, 26)
 [resource]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_kid1p")
 }, {
-"duration": 1.0,
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_3rth1")
+}, {
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_3rth1")
 }],
-"loop": true,
+"loop": false,
 "name": &"atirando_direita",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_kid1p")
 }, {
-"duration": 1.0,
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_tqk8d")
+}, {
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_tqk8d")
 }],
-"loop": true,
+"loop": false,
 "name": &"atirando_esquerda",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_kid1p")
 }, {
-"duration": 1.0,
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_x6xc1")
+}, {
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_x6xc1")
 }],
-"loop": true,
+"loop": false,
 "name": &"atirando_frente",
 "speed": 5.0
 }, {

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cr8vmfa6vf60a"]
 
 [ext_resource type="Script" uid="uid://bqw6m3hsyk3gh" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_escondida.gd" id="1_0cblk"]
-[ext_resource type="SpriteFrames" uid="uid://cgvc7ee6wkr2b" path="res://Componentes/Inimigos/infantaria_submersa.tres" id="2_iq0hh"]
-[ext_resource type="SpriteFrames" uid="uid://of373fynckmq" path="res://Componentes/Inimigos/infantaria_buraco_pitfall.tres" id="3_kd5se"]
+[ext_resource type="SpriteFrames" uid="uid://cgvc7ee6wkr2b" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_submersa.tres" id="2_iq0hh"]
+[ext_resource type="SpriteFrames" uid="uid://of373fynckmq" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_buraco_pitfall.tres" id="3_kd5se"]
 [ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="4_6e61c"]
 [ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="5_t0jgl"]
 

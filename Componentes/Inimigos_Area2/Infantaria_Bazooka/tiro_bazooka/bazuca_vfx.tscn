@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8bx61cdspa0u"]
+
+[ext_resource type="SpriteFrames" uid="uid://maippa5e1bi2" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/tiro_bazooka/bazuca_vfx.tres" id="1_ck8u0"]
+[ext_resource type="Script" uid="uid://cbfuoixsuma7y" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/tiro_bazooka/bazuca_vfx.gd" id="2_ck8u0"]
+
+[node name="BulletVFX" type="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0.905882)
+z_index = 2
+sprite_frames = ExtResource("1_ck8u0")
+animation = &"atirando_direita"
+script = ExtResource("2_ck8u0")

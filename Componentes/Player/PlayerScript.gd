@@ -198,10 +198,8 @@ func shoot_bullet():
 		get_parent().add_child(vfx_instance)
 	bullet_instance.motion = dir
 	get_parent().add_child(bullet_instance)
-	#bullets.append(bullet_instance)
 	quantidade_de_bullets_voando += 1
 	bullet_instance.die.connect(remove_bullet)
-	#get_tree().get_nodes_in_group("Balas").size
 	if quantidade_de_bullets_voando > 4: #unico lugar que reconhece essa desgraça como > 4
 		cooldown_da_arma = true
 		var timer1 = get_tree().create_timer(cooldown_arma)
