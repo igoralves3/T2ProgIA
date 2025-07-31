@@ -4,7 +4,7 @@ extends Node2D
 @export var granadeiro: PackedScene
 @export var limite_de_inimigos: int = 4
 @export var podeSpawnar: bool = true
-@export var area: Node
+var area: Node
 
 var ListaInimigos: Array
 var HUD
@@ -47,12 +47,12 @@ func _on_mob_timer_timeout():
 			ListaInimigos.append(mob)
 
 			# Spawn the mob by adding it to the Main scene.
-			area.add_child(mob)
+			owner.add_child(mob)
 		
 			var collision = mob.move_and_collide(Vector2.ZERO)
 			if collision:
 				print('mob on collision')
-				area.remove_child(mob)
+				owner.remove_child(mob)
 
 func _on_mob_dead_enemy(enemy, pontos):
 	# Handle the enemy death here (e.g., remove from list, spawn more, etc.)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://cvrb40c0ajbx"]
+[gd_scene load_steps=8 format=4 uid="uid://cvrb40c0ajbx"]
 
 [ext_resource type="Script" uid="uid://dpjsr6v7xo34l" path="res://Cenas/area_2.gd" id="1_mdgul"]
 [ext_resource type="TileSet" uid="uid://c4llvpweoft2a" path="res://SpriteSheets/Area2/Area2_Tileset.tres" id="1_r1qpv"]
 [ext_resource type="PackedScene" uid="uid://ctqf7dpoxu84c" path="res://Componentes/AreaHazardDestructable/colisao_agua.tscn" id="3_vd7x2"]
 [ext_resource type="PackedScene" uid="uid://bek8hshqdrwnf" path="res://Componentes/AreaHazardDestructable/colisao_pitfall.tscn" id="4_kb30a"]
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="5_33he6"]
+[ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="6_mdgul"]
 [ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="7_jewhi"]
 
 [node name="Area2" type="Node2D"]
@@ -123,7 +124,7 @@ scale = Vector2(0.6, 0.6)
 [node name="GrupoCheckpoints" type="Node" parent="."]
 
 [node name="Checkpoint" parent="GrupoCheckpoints" instance=ExtResource("7_jewhi")]
-position = Vector2(9, -1039)
+position = Vector2(0, -914)
 
 [node name="MainPlayerChar" parent="." instance=ExtResource("5_33he6")]
 unique_name_in_owner = true
@@ -135,5 +136,7 @@ position = Vector2(112, 128)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(114, 129)
+
+[node name="MobSpawner" parent="." instance=ExtResource("6_mdgul")]
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]

@@ -162,8 +162,7 @@ scale = Vector2(1.6, 0.3)
 
 [node name="EnemyController" parent="." instance=ExtResource("10_6vjpy")]
 
-[node name="MobSpawner" parent="." node_paths=PackedStringArray("area") instance=ExtResource("11_lyvvr")]
-area = NodePath("..")
+[node name="MobSpawner" parent="." instance=ExtResource("11_lyvvr")]
 
 [node name="MotoSpawn" parent="." instance=ExtResource("14_f5gam")]
 position = Vector2(209, -841)
