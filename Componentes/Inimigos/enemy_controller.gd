@@ -11,6 +11,7 @@ var granadas_voando: int = 0
 var granadeiros_em_cooldown: Array
 var cooldown_granadas: bool = false
 var tempo_cooldown: float = 0.1
+var qual_area:= ""
 
 func _ready() -> void:
 	timer_de_tiro = Timer.new()
@@ -28,6 +29,8 @@ func _ready() -> void:
 	timer_update_granadeiros.timeout.connect(timer_update_granadeiros_end)
 	add_child(timer_update_granadeiros)
 	timer_update_granadeiros.start()
+	#if qual_area == "Area_2":
+		
 	
 
 

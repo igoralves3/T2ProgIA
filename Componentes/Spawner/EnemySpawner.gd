@@ -2,10 +2,11 @@ extends Node2D
 
 @export var infantaria: PackedScene
 @export var granadeiro: PackedScene
+@export var bazuca: PackedScene
 @export var limite_de_inimigos: int = 4
 @export var podeSpawnar: bool = true
 var area: Node
-
+var qual_area:= ""
 var ListaInimigos: Array
 var HUD
 var player
@@ -59,6 +60,10 @@ func _on_mob_dead_enemy(enemy, pontos):
 	if enemy in ListaInimigos:
 #		GameManager.addPoints(pontos)
 		ListaInimigos.erase(enemy)
+	for inimigo in ListaInimigos:
+		if inimigo == null:
+			ListaInimigos.erase(inimigo)
+			inimigo.free()
 #		if HUD != null:
 #			HUD.single_update()
 #		else:
@@ -67,6 +72,9 @@ func _on_mob_dead_enemy(enemy, pontos):
 	# Optionally, queue_free the enemy if not already done
 	# enemy.queue_free()
 
+func connect_dead_enemy(enemy):
+	enemy.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
+	ListaInimigos.append(enemy)
 
 func _on_trigger_area_entered(area: Area2D) -> void:
 	podeSpawnar = false

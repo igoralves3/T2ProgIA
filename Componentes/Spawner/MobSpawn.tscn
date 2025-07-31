@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwayse1d5026n"]
+[gd_scene load_steps=6 format=3 uid="uid://bwayse1d5026n"]
 
 [ext_resource type="Script" uid="uid://2n776hh5ug8s" path="res://Componentes/Spawner/EnemySpawner.gd" id="1_nrmvy"]
 [ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="2_tmbfk"]
 [ext_resource type="PackedScene" uid="uid://dx7d6d33wlnsw" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_granadeira.tscn" id="3_q1lb3"]
+[ext_resource type="PackedScene" uid="uid://bd3foylwhtmng" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/Infantaria_Bazooka.tscn" id="4_q1lb3"]
 
 [sub_resource type="Curve2D" id="Curve2D_c1tod"]
 _data = {
@@ -10,10 +11,11 @@ _data = {
 }
 point_count = 4
 
-[node name="Node" type="Node2D"]
+[node name="MobSpawner" type="Node2D" groups=["Enemy_spawner"]]
 script = ExtResource("1_nrmvy")
 infantaria = ExtResource("2_tmbfk")
 granadeiro = ExtResource("3_q1lb3")
+bazuca = ExtResource("4_q1lb3")
 
 [node name="MobTimer" type="Timer" parent="."]
 autostart = true

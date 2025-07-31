@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu6nrclg3jdbv"]
+
+[ext_resource type="Script" uid="uid://vryfticwy7lb" path="res://Componentes/Inimigos/Caminhao/caminhao_inimigos.gd" id="1_ssnw8"]
+[ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="2_5rtgf"]
+[ext_resource type="SpriteFrames" uid="uid://bcc3pnsdwstrp" path="res://Componentes/Inimigos_Area2/truck_animatedsprites.tres" id="2_ssnw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyxj"]
+
+[node name="Caminhao_inimigos" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ssnw8")
+infantaria = ExtResource("2_5rtgf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_ssnw8")
+animation = &"virado_esquerda"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.92, 1)
+shape = SubResource("RectangleShape2D_tbyxj")
+
+[node name="timer_takeoff_spawnando" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="timer_takeoff_spawnando" to="." method="_on_timer_takeoff_spawnando_timeout"]

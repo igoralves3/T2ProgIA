@@ -16,6 +16,7 @@ var tempo_fora_tela: float = 2
 @export var area_colisao_morte: Area2D
 @export var FSM: Node
 var wander
+var dying: bool = false
 
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
@@ -23,7 +24,6 @@ func _ready():
 	wander = FSM.get_node("Wander")
 	_animated_sprite.play('down')
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	timer_olhar_para_jogador = Timer.new()
 	timer_olhar_para_jogador.wait_time = randf_range(1,2)
@@ -112,14 +112,17 @@ func _on_timer_timeout() -> void:
 	fire_bullet()
 
 func bullet_hit():
-	set_physics_process(false)
-	_animated_sprite.play("death")
-	_animated_sprite.animation_finished.connect(queue_free)
-	set_collision_layer_value(3, false)
-	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	GameManager.addPoints(pontos)
-	SoundController.play_button(som_morte)
-	dead_enemy.emit(self, pontos)
+	if not dying:
+		dying = true
+		set_collision_layer_value(3, false)
+		$Area2DColisaoMorte.set_collision_layer_value(3, false)
+		set_physics_process(false)
+		_animated_sprite.play("death")
+		_animated_sprite.animation_finished.connect(queue_free)
+		GameManager.addPoints(pontos)
+		print (self, " inimigo")
+		SoundController.play_button(som_morte)
+		dead_enemy.emit(self, pontos)
 #	queue_free()
 
 func grenade_hit():

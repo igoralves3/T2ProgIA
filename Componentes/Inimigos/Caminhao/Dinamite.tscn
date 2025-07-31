@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5sh0uc2cj5gh"]
+
+[ext_resource type="Script" uid="uid://dcye3p7dtpr25" path="res://Componentes/Inimigos/Caminhao/dinamite.gd" id="1_4tudy"]
+[ext_resource type="SpriteFrames" uid="uid://cclam66ndmuvy" path="res://Componentes/Inimigos/Caminhao/dinamite.tres" id="2_4tudy"]
+[ext_resource type="PackedScene" uid="uid://dj3v4y7fqqc74" path="res://Componentes/Explosao_Granada/ExplosaoGranada.tscn" id="2_8sg7h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8sg7h"]
+
+[node name="Dinamite" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_4tudy")
+explosao = ExtResource("2_8sg7h")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+sprite_frames = ExtResource("2_4tudy")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8sg7h")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

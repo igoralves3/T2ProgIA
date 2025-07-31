@@ -10,6 +10,7 @@ script = ExtResource("1_ibqoi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_v4npk")
+frame_progress = 0.555269
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

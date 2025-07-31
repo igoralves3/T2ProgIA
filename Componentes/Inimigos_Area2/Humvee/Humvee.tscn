@@ -15,7 +15,7 @@ bullet_inimigo = ExtResource("2_o2cxe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_yi5w7")
-animation = &"andando_p_direita"
+animation = &"andando_vazio_cima"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(2.35, 1)

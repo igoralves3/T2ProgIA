@@ -1,20 +1,32 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dunxktyirethy"]
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://dunxktyirethy"]
 
 [ext_resource type="Texture2D" uid="uid://cor3ts7v8iro7" path="res://SpriteSheets/motos.png" id="1_golh7"]
+[ext_resource type="Texture2D" uid="uid://bc8vjmupupxxg" path="res://SpriteSheets/veiculos.png" id="2_r63ki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bssct"]
 atlas = ExtResource("1_golh7")
 region = Rect2(16, 4, 48, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wck0"]
+atlas = ExtResource("2_r63ki")
+region = Rect2(358, 57, 48, 22)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_awaod"]
 atlas = ExtResource("1_golh7")
 region = Rect2(67, 4, 48, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_26ppc"]
+atlas = ExtResource("2_r63ki")
+region = Rect2(409, 57, 48, 22)
+
 [resource]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_bssct")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_2wck0")
 }],
 "loop": true,
 "name": &"default",
@@ -23,6 +35,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_awaod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26ppc")
 }],
 "loop": true,
 "name": &"speed_up",

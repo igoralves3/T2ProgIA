@@ -18,7 +18,7 @@ func _ready() -> void:
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
-	if global_position.x > get_viewport().size.x / 2:
+	if global_position.x > get_viewport_rect().size.x / 2:
 		_animated_sprite.flip_h = true
 		dir = -1
 		weapon_position.position.x = -weapon_position.position.x

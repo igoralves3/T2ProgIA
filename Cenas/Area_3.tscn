@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://066kk6lq3ist"]
+[gd_scene load_steps=21 format=4 uid="uid://066kk6lq3ist"]
 
 [ext_resource type="Script" uid="uid://bqgs6qnqhyujr" path="res://Cenas/area_3.gd" id="1_b6t7n"]
 [ext_resource type="Texture2D" uid="uid://cu2jljc1vecv2" path="res://SpriteSheets/area3_fundo.png" id="3_kv7jj"]
@@ -11,8 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://bek8hshqdrwnf" path="res://Componentes/AreaHazardDestructable/colisao_pitfall.tscn" id="14_kv7jj"]
 [ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="15_8o4gy"]
 [ext_resource type="PackedScene" uid="uid://imu3blxtr0mq" path="res://Componentes/DoorSpawner/DoorSpawner.tscn" id="16_0wxkn"]
+[ext_resource type="PackedScene" uid="uid://cfloxpubtlrsx" path="res://Componentes/Inimigos_Area2/Moto_Terra/spawner/moto_terra_spawner.tscn" id="17_s78pd"]
+[ext_resource type="PackedScene" uid="uid://due6ib0036l6r" path="res://Componentes/Inimigos_Area2/Humvee/spawner/Humvee_spawner.tscn" id="18_b6t7n"]
 [ext_resource type="PackedScene" uid="uid://bqqxo1s2dkdpx" path="res://Componentes/item_granada_extra/item_granada_extra.tscn" id="18_cd0vo"]
+[ext_resource type="PackedScene" uid="uid://bebfvoh4tjfa3" path="res://Componentes/Inimigos/Caminhao/caminhao_dinamite.tscn" id="19_b6t7n"]
 [ext_resource type="PackedScene" uid="uid://n3wxtopay5nf" path="res://Componentes/Inimigos/Infantaria/Morteiro/agentes_morteiro.tscn" id="19_lji2o"]
+[ext_resource type="PackedScene" uid="uid://cu6nrclg3jdbv" path="res://Componentes/Inimigos/Caminhao/Caminhao_inimigos.tscn" id="20_j4cn6"]
 [ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="20_m5r2a"]
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="22_s5h8a"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="23_ecu1h"]
@@ -51,13 +55,11 @@ texture = ExtResource("3_kv7jj")
 [node name="MainPlayerChar" parent="." instance=ExtResource("9_7flg8")]
 unique_name_in_owner = true
 position = Vector2(102, 202)
+god_mode = true
 
 [node name="EnemyController" parent="." instance=ExtResource("12_agy7h")]
 
 [node name="MobSpawner" parent="." instance=ExtResource("13_t4381")]
-
-[node name="MotoSpawn" parent="." instance=ExtResource("14_7n4ro")]
-position = Vector2(209, -841)
 
 [node name="GrupoCheckpoints" type="Node" parent="."]
 
@@ -141,11 +143,49 @@ scale = Vector2(1, 0.15)
 position = Vector2(51, -542)
 scale = Vector2(0.7, 0.18)
 
-[node name="Agentes_morteiro" parent="." instance=ExtResource("19_lji2o")]
+[node name="InimigosScriptados" type="Node" parent="."]
+
+[node name="Agentes_morteiro" parent="InimigosScriptados" instance=ExtResource("19_lji2o")]
 position = Vector2(25, -1719)
 
-[node name="Agentes_morteiro2" parent="." instance=ExtResource("19_lji2o")]
+[node name="Agentes_morteiro2" parent="InimigosScriptados" instance=ExtResource("19_lji2o")]
 position = Vector2(202, -1719)
+
+[node name="MotoTerraSpawner" parent="InimigosScriptados" instance=ExtResource("17_s78pd")]
+position = Vector2(-32, -1035)
+
+[node name="MotoTerraSpawner2" parent="InimigosScriptados" instance=ExtResource("17_s78pd")]
+position = Vector2(-32, -1168)
+
+[node name="MotoTerraSpawner3" parent="InimigosScriptados" instance=ExtResource("17_s78pd")]
+position = Vector2(-32, -1231)
+
+[node name="MotoTerraSpawner4" parent="InimigosScriptados" instance=ExtResource("17_s78pd")]
+position = Vector2(245, -1354)
+
+[node name="HumveeSpawner" parent="InimigosScriptados" instance=ExtResource("18_b6t7n")]
+position = Vector2(-38, -1137)
+
+[node name="HumveeSpawner2" parent="InimigosScriptados" instance=ExtResource("18_b6t7n")]
+position = Vector2(243, -1292)
+
+[node name="HumveeSpawner3" parent="InimigosScriptados" instance=ExtResource("18_b6t7n")]
+position = Vector2(248, -1421)
+
+[node name="HumveeSpawner4" parent="InimigosScriptados" instance=ExtResource("18_b6t7n")]
+position = Vector2(251, -1493)
+
+[node name="MotoSpawn" parent="InimigosScriptados" instance=ExtResource("14_7n4ro")]
+position = Vector2(209, -841)
+
+[node name="Truck" parent="." instance=ExtResource("19_b6t7n")]
+position = Vector2(112, -1189)
+
+[node name="Caminhao_inimigos" parent="." instance=ExtResource("20_j4cn6")]
+position = Vector2(221, -1001)
+
+[node name="Caminhao_inimigos2" parent="." instance=ExtResource("20_j4cn6")]
+position = Vector2(223, -1106)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
 [connection signal="stoppedSpawning" from="DoorSpawner" to="." method="_on_door_spawner_stopped_spawning"]

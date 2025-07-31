@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://ciweup6h5l42k"]
+[gd_resource type="SpriteFrames" load_steps=23 format=3 uid="uid://ciweup6h5l42k"]
 
 [ext_resource type="Texture2D" uid="uid://bc8vjmupupxxg" path="res://SpriteSheets/veiculos.png" id="1_ell6q"]
 
@@ -6,9 +6,17 @@
 atlas = ExtResource("1_ell6q")
 region = Rect2(275, 11, 48, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yjr4"]
+atlas = ExtResource("1_ell6q")
+region = Rect2(275, 13, 48, 30)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rle3y"]
 atlas = ExtResource("1_ell6q")
 region = Rect2(224, 11, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq045"]
+atlas = ExtResource("1_ell6q")
+region = Rect2(224, 13, 48, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdylp"]
 atlas = ExtResource("1_ell6q")
@@ -81,16 +89,22 @@ region = Rect2(189, 11, 32, 32)
 [resource]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_tuivn")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_4yjr4")
 }],
 "loop": true,
 "name": &"andando_p_direita",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_rle3y")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_pq045")
 }],
 "loop": true,
 "name": &"andando_p_esquerda",

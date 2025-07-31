@@ -82,19 +82,22 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_bieu5")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_dcanh")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_f61op")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_qbnhj")
+}, {
+"duration": 0.01,
+"texture": SubResource("AtlasTexture_bieu5")
 }],
-"loop": true,
+"loop": false,
 "name": &"jogando_granada",
 "speed": 5.0
 }, {
@@ -110,7 +113,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sou4l")
 }],
-"loop": true,
+"loop": false,
 "name": &"virado_esquerda",
 "speed": 5.0
 }]

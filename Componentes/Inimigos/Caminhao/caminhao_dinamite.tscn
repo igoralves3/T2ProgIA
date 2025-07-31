@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bebfvoh4tjfa3"]
+
+[ext_resource type="Script" uid="uid://docgf24t5ohbl" path="res://Componentes/Inimigos/Caminhao/caminhao_dinamite.gd" id="1_1vlme"]
+[ext_resource type="SpriteFrames" uid="uid://bcc3pnsdwstrp" path="res://Componentes/Inimigos_Area2/truck_animatedsprites.tres" id="2_1vlme"]
+[ext_resource type="PackedScene" uid="uid://b5sh0uc2cj5gh" path="res://Componentes/Inimigos/Caminhao/Dinamite.tscn" id="2_lmmht"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ragcb"]
+
+[node name="Truck" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_1vlme")
+dinamite_packedscene = ExtResource("2_lmmht")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_1vlme")
+animation = &"jogando_granada"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ragcb")
+
+[node name="timer_dinamite" type="Timer" parent="."]
+
+[node name="timer_reset_speed" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="timer_dinamite" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer_reset_speed" to="." method="_on_timer_reset_speed_timeout"]
