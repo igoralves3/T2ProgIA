@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=4 uid="uid://cvrb40c0ajbx"]
+[gd_scene load_steps=12 format=4 uid="uid://cvrb40c0ajbx"]
 
 [ext_resource type="Script" uid="uid://dpjsr6v7xo34l" path="res://Cenas/area_2.gd" id="1_mdgul"]
 [ext_resource type="TileSet" uid="uid://c4llvpweoft2a" path="res://SpriteSheets/Area2/Area2_Tileset.tres" id="1_r1qpv"]
 [ext_resource type="PackedScene" uid="uid://ctqf7dpoxu84c" path="res://Componentes/AreaHazardDestructable/colisao_agua.tscn" id="3_vd7x2"]
 [ext_resource type="PackedScene" uid="uid://bek8hshqdrwnf" path="res://Componentes/AreaHazardDestructable/colisao_pitfall.tscn" id="4_kb30a"]
+[ext_resource type="PackedScene" uid="uid://cok23fi8vgvcq" path="res://Componentes/Inimigos_Area2/Turret/Turret.tscn" id="5_3yohm"]
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="5_33he6"]
+[ext_resource type="PackedScene" uid="uid://bd3foylwhtmng" path="res://Componentes/Inimigos_Area2/Infantaria_Bazooka/Infantaria_Bazooka.tscn" id="6_et6sx"]
 [ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="6_mdgul"]
 [ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="7_jewhi"]
+[ext_resource type="PackedScene" uid="uid://bqxgebxbd4alj" path="res://Componentes/Inimigos_Area2/Jeep/spawner/jeep_spawner.tscn" id="8_jewhi"]
+[ext_resource type="PackedScene" uid="uid://cfloxpubtlrsx" path="res://Componentes/Inimigos_Area2/Moto_Terra/spawner/moto_terra_spawner.tscn" id="9_k7x33"]
 
 [node name="Area2" type="Node2D"]
 script = ExtResource("1_mdgul")
@@ -121,6 +125,15 @@ scale = Vector2(0.6, 0.6)
 position = Vector2(156, -1153)
 scale = Vector2(0.6, 0.6)
 
+[node name="Turret" parent="GrupoDeathTraps" instance=ExtResource("5_3yohm")]
+position = Vector2(21, -1235)
+
+[node name="InfantariaBazooka" parent="GrupoDeathTraps" instance=ExtResource("6_et6sx")]
+position = Vector2(10, -954)
+
+[node name="InfantariaBazooka2" parent="GrupoDeathTraps" instance=ExtResource("6_et6sx")]
+position = Vector2(213, -1074)
+
 [node name="GrupoCheckpoints" type="Node" parent="."]
 
 [node name="Checkpoint" parent="GrupoCheckpoints" instance=ExtResource("7_jewhi")]
@@ -138,5 +151,14 @@ position = Vector2(112, 128)
 position = Vector2(114, 129)
 
 [node name="MobSpawner" parent="." instance=ExtResource("6_mdgul")]
+
+[node name="JeepSpawner" parent="." instance=ExtResource("8_jewhi")]
+position = Vector2(113, 90)
+
+[node name="MotoTerraSpawner" parent="." instance=ExtResource("9_k7x33")]
+position = Vector2(-1, 52)
+
+[node name="Turret" parent="." instance=ExtResource("5_3yohm")]
+position = Vector2(21, -1492)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
