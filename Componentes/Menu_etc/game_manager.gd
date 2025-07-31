@@ -30,7 +30,7 @@ func reduceLifes():
 		print("game over")
 		currentScene = ""
 		newGame()
-		#get_tree().root.get_node("Game").change_scene("res://Componentes/Menu_etc/main_menu.tscn")
+		get_tree().root.get_node("Game").change_scene("res://Componentes/Menu_etc/main_menu.tscn")
 	else:
 		lifes-=1
 		lives_updated.emit(lifes)

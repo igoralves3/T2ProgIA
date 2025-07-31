@@ -40,7 +40,7 @@ func _ready() -> void:
 	dir = Vector2(0,-1) # comeca olhando pra cima
 	grenadeAmmo = GameManager.granadas
 	get_HUD()
-	HUD.single_update()
+	#HUD.single_update()
 
 func _process(delta):
 	centro_tela = tamanho_tela/2

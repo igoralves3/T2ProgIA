@@ -310,6 +310,9 @@ collision_mask = 2
 
 [node name="HUD" parent="." instance=ExtResource("21_gdtqj")]
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(103, 201)
+
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
 [connection signal="stoppedSpawning" from="DoorSpawner" to="." method="_on_door_spawner_stopped_spawning"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="." method="_on_trigger_mobs_portao_area_entered"]

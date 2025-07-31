@@ -2,28 +2,46 @@ extends Node2D
 
 @onready var camera = %Camera2D
 @onready var player = %MainPlayerChar
+@onready var spawnInicial = $Marker2D
 var posicao_player: Vector2
 var posicao_camera: Vector2
 var camera_distancia_y_minima = 170
 var camera_altura_maxima_y = -1791.5
-
+@export var musica_inicial: AudioStream
+@export var musica_intermission: AudioStream
+@export var musica_retry: AudioStream
+@export var musica_fortress: AudioStream
 var currentCheckpoint: Vector2
-#@onready var startPoint: Vector2 = Vector2(74,100)
+
+var finalStage = false
+var finalMobsCount: int
 
 func _ready() -> void:
-	GameManager.setStartPoint(player.global_position)
+#	scriptedEnemies = get_tree().get_nodes_in_group("ScriptedEnemies")z
+#	for enemy in scriptedEnemies:
+#		enemy.connect("dead_enemy", Callable(self, "on_dead_enemy"))
+	GameManager.setStartPoint(spawnInicial.global_position)
 	GameManager.currentScene = "res://Cenas/area2/Area_2.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
+	#if not GameManager.retry:
+		#SoundController.play_bgm(musica_inicial)
+	#if GameManager.retry:
+		#SoundController.play_bgm(musica_retry)
 
 func _process(delta: float) -> void:
-#	print (camera.offset.y, "offset")
-#	print (camera.position.y, "position")
+	finalMobsCount = get_tree().get_nodes_in_group("FinalMobs").size()
 	if player.position.y - camera.offset.y < camera_distancia_y_minima and camera.offset.y >= camera_altura_maxima_y:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
-	#player camera.offset 
+	
+	if finalStage and finalMobsCount == 0:
+		next_level()
 
 func next_level():
+	print("Voce venceu!")
+	finalStage = false
 	GameManager.addMedals()
+
 
 func _on_main_player_char_dead_player():
 	GameManager.reduceLifes()
+	get_tree().reload_current_scene()

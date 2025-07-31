@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var camera = %Camera2D
 @onready var player = %MainPlayerChar
+@onready var spawnIncial = $Marker2D
 var posicao_player: Vector2
 var posicao_camera: Vector2
 var camera_distancia_y_minima = 170
@@ -21,7 +22,7 @@ func _ready() -> void:
 #	scriptedEnemies = get_tree().get_nodes_in_group("ScriptedEnemies")
 #	for enemy in scriptedEnemies:
 #		enemy.connect("dead_enemy", Callable(self, "on_dead_enemy"))
-	GameManager.setStartPoint(player.global_position)
+	GameManager.setStartPoint(spawnIncial.global_position)
 	GameManager.currentScene = "res://Cenas/Area_1.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
 	if not GameManager.retry:
@@ -41,6 +42,9 @@ func next_level():
 	print("Voce venceu!")
 	finalStage = false
 	GameManager.addMedals()
+	GameManager.hasCheckpoint = false
+	get_tree().root.get_node("Game").change_scene("res://Cenas/area2/Area_2.tscn")
+	
 
 func _on_main_player_char_dead_player():
 	GameManager.reduceLifes()
