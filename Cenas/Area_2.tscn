@@ -38,8 +38,7 @@ position = Vector2(110, 194)
 
 [node name="EnemyController" parent="." instance=ExtResource("4_tudxv")]
 
-[node name="MobSpawner" parent="." node_paths=PackedStringArray("area") instance=ExtResource("5_lmwas")]
-area = NodePath("..")
+[node name="MobSpawner" parent="." instance=ExtResource("5_lmwas")]
 
 [node name="Enemy_Spawner" parent="." instance=ExtResource("7_ir1mf")]
 visible = false

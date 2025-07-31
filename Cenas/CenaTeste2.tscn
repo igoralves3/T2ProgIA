@@ -32,9 +32,8 @@ god_mode = true
 position = Vector2(0, 133.5)
 shape = SubResource("RectangleShape2D_8itat")
 
-[node name="Node" parent="." node_paths=PackedStringArray("area") instance=ExtResource("4_8itat")]
+[node name="Node" parent="." instance=ExtResource("4_8itat")]
 podeSpawnar = false
-area = NodePath(".")
 
 [node name="InfantariaBazooka" parent="." instance=ExtResource("5_ugj8a")]
 position = Vector2(165, 73)

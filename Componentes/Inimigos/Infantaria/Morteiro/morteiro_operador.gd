@@ -26,7 +26,6 @@ var recharge_frames = 0
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready():
-	print('morteiro pronto')
 	_animated_sprite.play('atirando')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
