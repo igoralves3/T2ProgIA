@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bysbvev0pgw6k"]
+[gd_scene load_steps=3 format=3 uid="uid://bysbvev0pgw6k"]
 
 [ext_resource type="Script" uid="uid://dbrhqs0ftajgi" path="res://Componentes/Portao/portao.gd" id="1_5kiq2"]
 [ext_resource type="SpriteFrames" uid="uid://qvll1gm0k0aw" path="res://SpriteSheets/Animacoes_Etc/SpriteFramePorta.tres" id="1_86uyu"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbp4i"]
 
 [node name="Portao" type="Node2D"]
 script = ExtResource("1_5kiq2")
@@ -11,9 +9,6 @@ script = ExtResource("1_5kiq2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_86uyu")
 animation = &"open"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hbp4i")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 

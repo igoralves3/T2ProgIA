@@ -12,16 +12,10 @@ var camera_altura_maxima_y = -1791.5
 @export var musica_retry: AudioStream
 @export var musica_fortress: AudioStream
 var currentCheckpoint: Vector2
-#@onready var startPoint: Vector2 = Vector2(74,100)
-
 var finalStage = false
 var finalMobsCount: int
-#var scriptedEnemies: Array
 
 func _ready() -> void:
-#	scriptedEnemies = get_tree().get_nodes_in_group("ScriptedEnemies")
-#	for enemy in scriptedEnemies:
-#		enemy.connect("dead_enemy", Callable(self, "on_dead_enemy"))
 	GameManager.setStartPoint(spawnIncial.global_position)
 	GameManager.currentScene = "res://Cenas/Area_1.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
@@ -43,8 +37,8 @@ func next_level():
 	finalStage = false
 	GameManager.addMedals()
 	GameManager.hasCheckpoint = false
-	get_tree().root.get_node("Game").change_scene("res://Cenas/area2/Area_2.tscn")
-	
+	#get_tree().root.get_node("Game").change_scene("res://Cenas/area2/Area_2.tscn")
+	get_tree().root.get_node("Game").change_scene("res://Cenas/Intermissions/intermission_1.tscn")
 
 func _on_main_player_char_dead_player():
 	GameManager.reduceLifes()

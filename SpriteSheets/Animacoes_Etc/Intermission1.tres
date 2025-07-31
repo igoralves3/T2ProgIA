@@ -104,7 +104,7 @@ animations = [{
 "duration": 1.5,
 "texture": SubResource("AtlasTexture_dscim")
 }],
-"loop": true,
+"loop": false,
 "name": &"animacao",
 "speed": 5.0
 }, {

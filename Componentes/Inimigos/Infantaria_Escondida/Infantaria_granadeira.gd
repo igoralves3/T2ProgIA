@@ -58,7 +58,8 @@ func _ready():
 	timer_jogar_granada.wait_time = 1.5
 	timer_jogar_granada.timeout.connect(timer_fire_grenade)
 	add_child(timer_jogar_granada)
-	if other_player.global_position.y < global_position.y:# GameManager.retry == true:
+	var spawn_player_location = GameManager.getSpawnPostion()
+	if spawn_player_location.y < global_position.y:
 		queue_free()
 	timer_jogar_granada.start()
 
