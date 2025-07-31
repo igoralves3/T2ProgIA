@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpqkrkth6wair"]
+[gd_scene load_steps=11 format=3 uid="uid://dpqkrkth6wair"]
 
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="1_ifr7e"]
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_ihgcw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="8_bj1m0"]
 [ext_resource type="PackedScene" uid="uid://cu6nrclg3jdbv" path="res://Componentes/Inimigos/Caminhao/Caminhao_inimigos.tscn" id="8_vqnim"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="9_pg4bh"]
+[ext_resource type="PackedScene" uid="uid://b6qbyicgmg8j8" path="res://Componentes/Inimigos_Area2/Bunker/Spawner_Bunker.tscn" id="9_vqnim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8itat"]
 size = Vector2(20, 287)
@@ -51,3 +52,6 @@ position = Vector2(224, 133)
 
 [node name="Caminhao_inimigos2" parent="." instance=ExtResource("8_vqnim")]
 position = Vector2(220, 80)
+
+[node name="SpawnerBunker" parent="." instance=ExtResource("9_vqnim")]
+position = Vector2(52, 140)

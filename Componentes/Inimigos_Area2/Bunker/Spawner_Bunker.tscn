@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6qbyicgmg8j8"]
+
+[ext_resource type="Script" uid="uid://do8fetc6x4e3v" path="res://Componentes/Inimigos_Area2/Bunker/spawner_bunker.gd" id="1_tpb0d"]
+[ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="2_57v7g"]
+
+[node name="SpawnerBunker" type="Node2D"]
+script = ExtResource("1_tpb0d")
+infantaria = ExtResource("2_57v7g")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
