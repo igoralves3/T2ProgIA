@@ -1,8 +1,8 @@
 extends Node2D
 
 
-@onready var player_label = $PlayerLabel
-@onready var ready_label = $ReadyLabel
+@onready var player_label = $HUD/PlayerLabel
+@onready var ready_label = $HUD/ReadyLabel
 @onready var timer = $Timer
 
 var show_player_label = true

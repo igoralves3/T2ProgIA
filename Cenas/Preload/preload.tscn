@@ -8,9 +8,19 @@
 [node name="Preload" type="Node2D"]
 script = ExtResource("1_yqm0q")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(0, -1792)
+transform = Transform2D(1, 0, 0, 1, 0, -1792)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_ab5xp")
+
 [node name="HUD" parent="." instance=ExtResource("1_m2pe5")]
 
-[node name="PlayerLabel" type="Label" parent="."]
+[node name="PlayerLabel" type="Label" parent="HUD"]
+top_level = true
 offset_left = 55.0
 offset_top = 89.0
 offset_right = 158.0
@@ -18,7 +28,8 @@ offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("2_yqm0q")
 text = "PLAYER 1"
 
-[node name="ReadyLabel" type="Label" parent="."]
+[node name="ReadyLabel" type="Label" parent="HUD"]
+top_level = true
 offset_left = 54.0
 offset_top = 122.0
 offset_right = 157.0
@@ -28,14 +39,5 @@ text = "READY"
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(0, -1792)
-transform = Transform2D(1, 0, 0, 1, 0, -1792)
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_ab5xp")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
