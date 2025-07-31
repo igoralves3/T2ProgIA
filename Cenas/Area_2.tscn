@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://djeqqclckn4vk"]
+[gd_scene load_steps=19 format=4 uid="uid://djeqqclckn4vk"]
 
 [ext_resource type="TileSet" uid="uid://c4llvpweoft2a" path="res://SpriteSheets/Area2/Area2_Tileset.tres" id="1_r1qpv"]
 [ext_resource type="Script" uid="uid://dpjsr6v7xo34l" path="res://Cenas/area_2.gd" id="1_tydfa"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="12_q3e8m"]
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="13_1dncf"]
 [ext_resource type="PackedScene" uid="uid://cr8vmfa6vf60a" path="res://Componentes/Inimigos/Infantaria_Escondida/infantaria_escondida.tscn" id="14_tudxv"]
+[ext_resource type="PackedScene" uid="uid://bqxgebxbd4alj" path="res://Componentes/Inimigos_Area2/Jeep/spawner/jeep_spawner.tscn" id="16_wkod3"]
+[ext_resource type="PackedScene" uid="uid://cfloxpubtlrsx" path="res://Componentes/Inimigos_Area2/Moto_Terra/spawner/moto_terra_spawner.tscn" id="17_3xyyb"]
+[ext_resource type="PackedScene" uid="uid://cok23fi8vgvcq" path="res://Componentes/Inimigos_Area2/Turret/Turret.tscn" id="18_dmwlo"]
 
 [node name="Area2" type="Node2D"]
 script = ExtResource("1_tydfa")
@@ -203,6 +206,18 @@ submersa = false
 [node name="Infantaria_Escondida4" parent="infantaria_escondida_mapa" instance=ExtResource("14_tudxv")]
 position = Vector2(114, -602)
 submersa = false
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(114, 129)
+
+[node name="JeepSpawner" parent="." instance=ExtResource("16_wkod3")]
+position = Vector2(113, 90)
+
+[node name="MotoTerraSpawner" parent="." instance=ExtResource("17_3xyyb")]
+position = Vector2(-1, 52)
+
+[node name="Turret" parent="." instance=ExtResource("18_dmwlo")]
+position = Vector2(21, -1492)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="MobSpawner" method="_on_trigger_area_entered"]

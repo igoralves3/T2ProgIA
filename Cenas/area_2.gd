@@ -21,7 +21,7 @@ func _ready() -> void:
 #	for enemy in scriptedEnemies:
 #		enemy.connect("dead_enemy", Callable(self, "on_dead_enemy"))
 	GameManager.setStartPoint(spawnInicial.global_position)
-	GameManager.currentScene = "res://Cenas/area2/Area_2.tscn"
+	GameManager.currentScene = "res://Cenas/Area_2.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
 	#if not GameManager.retry:
 		#SoundController.play_bgm(musica_inicial)

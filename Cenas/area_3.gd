@@ -39,7 +39,7 @@ func next_level():
 	finalStage = false
 	GameManager.addMedals()
 	GameManager.hasCheckpoint = false
-	#get_tree().root.get_node("Game").change_scene("res://Cenas/area2/Area_2.tscn")
+	#get_tree().root.get_node("Game").change_scene("res://Cenas/Area_2.tscn")
 	get_tree().root.get_node("Game").change_scene("res://Cenas/Intermissions/intermission_1.tscn")
 
 func _on_main_player_char_dead_player():

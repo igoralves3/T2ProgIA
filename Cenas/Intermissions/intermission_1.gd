@@ -31,4 +31,4 @@ func _on_timer_avancar_cena_timeout() -> void: ##avanca a cena aqui
 	pass # Replace with function body.
 
 func next_level():
-	get_tree().root.get_node("Game").change_scene("res://Cenas/area2/Area_2.tscn")
+	get_tree().root.get_node("Game").change_scene("res://Cenas/Area_2.tscn")
