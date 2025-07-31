@@ -6,6 +6,7 @@ var tava_camperando: bool = false
 var recem_spawned: bool = true #recem spawned pelo enemy spawner
 
 func _ready():
+	self
 	pass
 
 func enter() -> void: #chamar primeiro movimento se camperando  ou nao
@@ -16,10 +17,6 @@ func enter() -> void: #chamar primeiro movimento se camperando  ou nao
 
 func exit() -> void:
 	pass
-
-func physics_update(delta: float) -> void:
-	pass
-
 
 func pegar_prox_motion():
 	var proximo_movimento

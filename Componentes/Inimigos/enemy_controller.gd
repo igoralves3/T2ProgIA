@@ -29,7 +29,8 @@ func _ready() -> void:
 	timer_update_granadeiros.timeout.connect(timer_update_granadeiros_end)
 	add_child(timer_update_granadeiros)
 	timer_update_granadeiros.start()
-	#if qual_area == "Area_2":
+	if not GameManager.currentScene == "res://Cenas/Area_1.tscn":
+		tempo_entre_tiros = 0.5
 		
 	
 

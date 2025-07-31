@@ -111,6 +111,7 @@ func post_tiro():
 	velocity = old_velocity
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	dead_enemy.emit(self, 0)
 	queue_free()
 
 func bullet_hit():

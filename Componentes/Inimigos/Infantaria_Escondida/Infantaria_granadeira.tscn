@@ -77,5 +77,8 @@ collision_mask = 2
 position = Vector2(7.15256e-06, 7.15256e-06)
 shape = SubResource("CapsuleShape2D_04x4o")
 
+[node name="Timer_pos_spawn" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

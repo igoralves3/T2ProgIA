@@ -15,6 +15,7 @@ var timer_takeoff_waittime: float = 0.5
 var enemy_spawner
 
 func _ready():
+	set_physics_process(false)
 	if not enemy_spawner:
 		enemy_spawner = get_tree().get_first_node_in_group("Enemy_spawner")
 	speed = slow_speed
@@ -58,3 +59,8 @@ func spawn_infantaria():
 	enemy_spawner.connect_dead_enemy(infantaria_instancia)
 	infantaria_instancia.position = position + offset_spawn
 	get_parent().add_child(infantaria_instancia)
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	set_physics_process(true)
+	$timer_takeoff_spawnando.start()

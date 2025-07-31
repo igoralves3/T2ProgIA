@@ -12,10 +12,9 @@ func enter() -> void:
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	character.velocity = Vector2(0,0)
 	if not character.camperando:
-		await get_tree().process_frame
+		get_tree().process_frame
 		transitioned.emit(self,"Run")
 	distancia_pra_fugir = randf_range(0, 90)
-
 
 func exit() -> void:
 	if get_parent().get_node("Run").tava_camperando == true:

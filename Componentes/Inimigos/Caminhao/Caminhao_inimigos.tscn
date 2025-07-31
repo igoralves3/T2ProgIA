@@ -23,8 +23,8 @@ scale = Vector2(1.92, 1)
 shape = SubResource("RectangleShape2D_tbyxj")
 
 [node name="timer_takeoff_spawnando" type="Timer" parent="."]
-autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="timer_takeoff_spawnando" to="." method="_on_timer_takeoff_spawnando_timeout"]
