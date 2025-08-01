@@ -9,7 +9,6 @@ func _ready():
 		change_scene("res://Componentes/Menu_etc/main_menu.tscn")
 
 func change_scene(scene_path):
-	print("mudando para ", scene_path)
 	# Se já houver uma cena, remova-a
 	if current_scene != null:
 		current_scene.queue_free()
