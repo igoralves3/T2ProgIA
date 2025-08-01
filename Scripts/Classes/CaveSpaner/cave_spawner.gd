@@ -1,12 +1,12 @@
 extends Node
 
-@export var enemyCount = 20
+@export var enemyCount = 15
 @export var general: PackedScene
 @export var infantaria: PackedScene
 var listaDeMarkers: Array
 var canSpawn:= false
 var spawn_timer: Timer
-var spawn_delay := 0.5 # You may want to adjust this value or export it
+var spawn_delay := 1 # You may want to adjust this value or export it
 
 func _ready():
 	listaDeMarkers = get_tree().get_nodes_in_group("SpawnMarkers")
