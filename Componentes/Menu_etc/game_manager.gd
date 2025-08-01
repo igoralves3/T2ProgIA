@@ -18,7 +18,7 @@ signal medals_updated(new_medal_count)
 
 func newGame():
 	score = 0
-	lifes = 2
+	lifes = 3
 	medals = 0
 	hasCheckpoint = false
 	retry = false

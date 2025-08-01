@@ -17,6 +17,8 @@ var next_scene
 var show_player_label = true
 
 func _ready():
+	if GameManager.lifes == 0:
+		get_tree().root.get_node("Game").change_scene("res://Componentes/Menu_etc/main_menu.tscn")
 	if GameManager.retry:
 		SoundController.play_bgm(musica_retry, "musica_retry")
 	if not GameManager.retry:
@@ -32,7 +34,8 @@ func _ready():
 		texture.texture = textura_area2
 	if next_scene == "res://Cenas/Area_3.tscn":
 		texture.texture = textura_area3
-	
+
+
 func _physics_process(delta: float) -> void:
 	if show_player_label:
 		player_label.visible = true
