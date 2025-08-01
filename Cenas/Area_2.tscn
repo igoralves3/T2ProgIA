@@ -314,9 +314,6 @@ submersa = false
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(112, 170)
 
-[node name="JeepSpawner" parent="." instance=ExtResource("16_wkod3")]
-position = Vector2(113, 90)
-
 [node name="MotoTerraSpawner" parent="." instance=ExtResource("17_3xyyb")]
 position = Vector2(-1, 52)
 
@@ -329,6 +326,8 @@ script = ExtResource("24_g02sq")
 
 [node name="HQTrigger" parent="." instance=ExtResource("13_1dncf")]
 position = Vector2(0, -864)
+
+[node name="JeepSpawner" parent="." instance=ExtResource("16_wkod3")]
 
 [connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="Trigger" to="CaveSpawner" method="_on_trigger_body_entered"]

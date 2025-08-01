@@ -1,19 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqxgebxbd4alj"]
+[gd_scene load_steps=5 format=3 uid="uid://bqxgebxbd4alj"]
 
 [ext_resource type="Script" uid="uid://ihalgasp2yf3" path="res://Componentes/Inimigos_Area2/Jeep/spawner/jeep_spawner.gd" id="1_37oh3"]
 [ext_resource type="PackedScene" uid="uid://c5qr642bsk56r" path="res://Componentes/Inimigos_Area2/Jeep/Jeep.tscn" id="2_o10ca"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxbag"]
-size = Vector2(300, 20)
+[sub_resource type="Curve2D" id="Curve2D_o10ca"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 16, 256, 0, 0, 0, 0, 208, 256)
+}
+point_count = 2
 
-[node name="JeepSpawner" type="Area2D"]
-collision_layer = 0
-collision_mask = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxbag"]
+size = Vector2(300, 15)
+
+[node name="JeepSpawner" type="Node2D"]
 script = ExtResource("1_37oh3")
 jeep = ExtResource("2_o10ca")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -90)
+[node name="JeepPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_o10ca")
+
+[node name="JeepSpawnLocation" type="PathFollow2D" parent="JeepPath"]
+position = Vector2(16, 256)
+
+[node name="SpawnTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnTrigger"]
+position = Vector2(119, 128)
 shape = SubResource("RectangleShape2D_rxbag")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="SpawnTrigger" to="." method="_on_spawn_trigger_body_entered"]

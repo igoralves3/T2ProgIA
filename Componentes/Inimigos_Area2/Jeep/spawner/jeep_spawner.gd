@@ -1,7 +1,10 @@
-extends Area2D
+extends Node2D
 
 @export var jeep : PackedScene
 var other_player: CharacterBody2D
+
+func _ready():
+	other_player = %MainPlayerChar
 
 func _on_area_entered(area: Area2D) -> void:
 	if not other_player:
@@ -12,4 +15,14 @@ func _on_area_entered(area: Area2D) -> void:
 	var jeep_instance = jeep.instantiate()
 	jeep_instance.global_position = Vector2(other_player.global_position.x + offset_spawn, global_position.y)
 	get_parent().add_child(jeep_instance)
+	queue_free()
+
+func _on_spawn_trigger_body_entered(body: Node2D) -> void:
+	print("la vem carro")
+	var mob = jeep.instantiate()
+	var mob_spawn_location = $JeepPath/JeepSpawnLocation
+	mob_spawn_location.progress_ratio = randf()
+	# Set the mob's position to the random location using global coordinates.
+	mob.global_position = mob_spawn_location.global_position
+	get_parent().add_child(mob)
 	queue_free()
