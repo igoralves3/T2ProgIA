@@ -89,3 +89,7 @@ func trocar_para_granadeiro():
 
 func trocar_para_bazuca():
 	inimigo_atual = "bazuca"
+
+func _on_trigger_body_entered(body):
+	if body == %MainPlayerChar:
+		podeSpawnar = false
