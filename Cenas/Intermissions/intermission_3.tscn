@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwmuc4wfjbmdq"]
+
+[ext_resource type="Script" uid="uid://cnm7xnnng7ikq" path="res://Cenas/Intermissions/intermission_3.gd" id="1_mkbf1"]
+[ext_resource type="AudioStream" uid="uid://bvmsrvacylfmn" path="res://Audio/SFX/NES - Commando - Sound Effects/keys.wav" id="2_cgkip"]
+[ext_resource type="Texture2D" uid="uid://cihyld6i2rjna" path="res://icon.svg" id="3_g3eym"]
+[ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="4_37nb3"]
+[ext_resource type="SpriteFrames" uid="uid://bb40owrcmx2d5" path="res://SpriteSheets/Animacoes_Etc/Intermission3.tres" id="5_fxocn"]
+[ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="6_lgakf"]
+
+[node name="Intermission1" type="Node2D" node_paths=PackedStringArray("timer_label", "label", "animacao", "timer_avancar_cena")]
+script = ExtResource("1_mkbf1")
+timer_label = NodePath("Control/Label/Timer")
+label = NodePath("Control/Label")
+som_texto = ExtResource("2_cgkip")
+animacao = NodePath("AnimatedSprite2D")
+timer_avancar_cena = NodePath("Timer_Avancar_Cena")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -34.0
+offset_top = -44.0
+offset_right = 244.0
+offset_bottom = 283.0
+texture = ExtResource("3_g3eym")
+
+[node name="Label" type="Label" parent="Control"]
+modulate = Color(0.81, 0.81, 0.81, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 69.0
+offset_right = 208.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("4_37nb3")
+theme_override_font_sizes/font_size = 10
+text = "BROKE THE 2ND AREA
+NOW RUSH TO THE 3RD AREA"
+
+[node name="Timer" type="Timer" parent="Control/Label"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(112, 160)
+sprite_frames = ExtResource("5_fxocn")
+frame_progress = 0.682331
+
+[node name="HUD" parent="." instance=ExtResource("6_lgakf")]
+
+[node name="Timer_Avancar_Cena" type="Timer" parent="."]
+
+[connection signal="timeout" from="Control/Label/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer_Avancar_Cena" to="." method="_on_timer_avancar_cena_timeout"]

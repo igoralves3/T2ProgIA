@@ -54,13 +54,10 @@ func _on_mob_timer_timeout():
 			owner.add_child(mob)
 			var collision = mob.move_and_collide(Vector2.ZERO)
 			if collision:
-				print('mob on collision')
 				owner.remove_child(mob)
 				_on_mob_timer_timeout()
 
 func _on_mob_dead_enemy(enemy, pontos):
-	print(ListaInimigos)
-	#var inimigos_no_tree = get_tree().get_nodes_in_group("Inimigos")
 	if enemy in ListaInimigos:
 #		GameManager.addPoints(pontos)
 		ListaInimigos.erase(enemy)
@@ -70,12 +67,16 @@ func _on_mob_dead_enemy(enemy, pontos):
 		elif not is_instance_valid(inimigo):
 			ListaInimigos.erase(inimigo)
 		elif (player.global_position - inimigo.global_position).length() > 350:
-			print((player.global_position - inimigo.global_position).length(), " length")
 			inimigo.queue_free()
 			ListaInimigos.erase(enemy)
 		elif not inimigo.is_inside_tree():
 			ListaInimigos.erase(inimigo)
 			inimigo.queue_free()
+	if array_spawners != null:
+		if array_spawners.size() > 0:
+			for spawner in array_spawners:
+				if (player.global_position - spawner.global_position).length() > 450:
+					array_spawners.erase(spawner)
 
 func connect_dead_enemy(enemy):
 	enemy.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
@@ -145,6 +146,7 @@ func _on_fortress_timer_timeout() -> void:
 			mob = infantaria.instantiate()
 			mob = mexer_no_mob_baixo(mob)
 			mob.global_position = spawner_localizacao.global_position + Vector2(randf_range(-10,10),-120)
+			print (mob.global_position)
 			mob.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
 			ListaInimigos.append(mob)
 			owner.add_child(mob)
@@ -157,6 +159,7 @@ func _on_fortress_timer_timeout() -> void:
 		get_parent().next_level()
 
 func mexer_no_mob_baixo(mob):
+	print ("final mob spawn")
 	mob.FSM.initial_state = mob.FSM.get_node("Straight")
 	mob.FSM.current_state = mob.FSM.get_node("Straight")
 	mob.FSM.current_state.move_direction = randf_range(-0.3,0.3)

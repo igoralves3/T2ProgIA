@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bb40owrcmx2d5"]
+
+[ext_resource type="Texture2D" uid="uid://btnl0tkgspg6h" path="res://SpriteSheets/Super_Joe.png" id="1_en1ge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vljd"]
+atlas = ExtResource("1_en1ge")
+region = Rect2(0, 375, 32, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j7qt"]
+atlas = ExtResource("1_en1ge")
+region = Rect2(33, 375, 32, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw0by"]
+atlas = ExtResource("1_en1ge")
+region = Rect2(66, 375, 32, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_600v3"]
+atlas = ExtResource("1_en1ge")
+region = Rect2(99, 375, 32, 52)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_6vljd")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_1j7qt")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_tw0by")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_600v3")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_1j7qt")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_6vljd")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_1j7qt")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_tw0by")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_600v3")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_1j7qt")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_600v3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

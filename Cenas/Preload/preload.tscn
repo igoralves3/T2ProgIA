@@ -19,6 +19,7 @@ musica_retry = ExtResource("4_igat4")
 musica_fortress = ExtResource("5_m4xin")
 textura_area2 = ExtResource("2_qxhej")
 textura_area3 = ExtResource("3_n7jo2")
+textura_area1 = ExtResource("2_ab5xp")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

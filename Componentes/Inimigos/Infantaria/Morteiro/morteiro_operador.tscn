@@ -18,7 +18,7 @@ size = Vector2(150, 200)
 
 [node name="Operador_morteiro" type="CharacterBody2D" groups=["Inimigos", "Morteiros"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_nwg8a")
 bullet_inimigo = ExtResource("2_kwc7r")
 som_morte = ExtResource("8_uw1d2")

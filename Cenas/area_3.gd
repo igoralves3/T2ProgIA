@@ -29,16 +29,15 @@ func _process(delta: float) -> void:
 	if player.position.y - camera.offset.y < camera_distancia_y_minima and camera.offset.y >= camera_altura_maxima_y:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
 	
-	if finalStage and finalMobsCount == 0:
-		next_level()
 
 func next_level():
+	SoundController.play_bgm(musica_intermission, "musica_intermission")
 	print("Voce venceu!")
 	finalStage = false
 	GameManager.addMedals()
 	GameManager.hasCheckpoint = false
 	#get_tree().root.get_node("Game").change_scene("res://Cenas/Area_2.tscn")
-	get_tree().root.get_node("Game").change_scene("res://Cenas/Intermissions/intermission_1.tscn")
+	get_tree().root.get_node("Game").change_scene("res://Cenas/Intermissions/intermission_3.tscn")
 
 func _on_main_player_char_dead_player():
 	GameManager.reduceLifes()

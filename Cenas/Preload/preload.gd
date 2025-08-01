@@ -10,6 +10,7 @@ extends Node2D
 @onready var texture = $Control/CanvasLayer/TextureRect
 @export var textura_area2: Texture
 @export var textura_area3: Texture
+@export var textura_area1: Texture
 
 var piscadas_restantes = 10
 var next_scene
@@ -25,6 +26,8 @@ func _ready():
 	print (position1)
 	texture.global_position.y = texture.global_position.y - position1.y +170
 	show_player_label=true
+	if next_scene == "res://Cenas/Area_1.tscn":
+		texture.texture = textura_area1
 	if next_scene == "res://Cenas/Area_2.tscn":
 		texture.texture = textura_area2
 	if next_scene == "res://Cenas/Area_3.tscn":
