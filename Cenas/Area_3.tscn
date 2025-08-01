@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://066kk6lq3ist"]
+[gd_scene load_steps=26 format=4 uid="uid://066kk6lq3ist"]
 
 [ext_resource type="Script" uid="uid://bqgs6qnqhyujr" path="res://Cenas/area_3.gd" id="1_b6t7n"]
 [ext_resource type="AudioStream" uid="uid://cqfvspup4073g" path="res://Audio/BGM/NES/02 Start Demo ~ BGM 1_end.wav" id="2_ykegt"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bysbvev0pgw6k" path="res://Componentes/Portao/Portao.tscn" id="20_m5r2a"]
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="22_s5h8a"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="23_ecu1h"]
+[ext_resource type="PackedScene" uid="uid://biamgxw6qihfu" path="res://Componentes/Inimigos_Area2/Toca/Spawner_Toca.tscn" id="25_52orf"]
 
 [node name="Area3" type="Node2D"]
 script = ExtResource("1_b6t7n")
@@ -194,6 +195,41 @@ position = Vector2(221, -1001)
 
 [node name="Caminhao_inimigos2" parent="." instance=ExtResource("20_j4cn6")]
 position = Vector2(223, -1106)
+
+[node name="Grupo_tocas" type="Node" parent="."]
+
+[node name="SpawnerToca" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
+position = Vector2(150, 107)
+move_direction = 1.0
+
+[node name="SpawnerToca2" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
+position = Vector2(21, 44)
+move_direction = 1.0
+
+[node name="SpawnerToca3" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
+position = Vector2(172, -85)
+
+[node name="SpawnerToca4" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
+position = Vector2(45, -86)
+
+[node name="SpawnerToca5" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
+position = Vector2(85, -213)
+move_direction = 1.0
+
+[node name="SpawnerToca6" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
+position = Vector2(22, -341)
+move_direction = 1.0
+
+[node name="SpawnerToca7" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
+position = Vector2(108, -406)
+
+[node name="SpawnerToca8" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
+position = Vector2(150, -534)
+move_direction = 1.0
+
+[node name="SpawnerToca9" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
+position = Vector2(86, -597)
+move_direction = 1.0
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
 [connection signal="stoppedSpawning" from="DoorSpawner" to="." method="_on_door_spawner_stopped_spawning"]

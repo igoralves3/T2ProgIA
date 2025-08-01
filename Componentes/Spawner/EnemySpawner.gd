@@ -44,6 +44,8 @@ func _on_mob_timer_timeout():
 				mob.global_position = mob_spawn_location.global_position
 			if usando_outro_spawner:
 				get_random_spawn()
+				if spawner_localizacao is Toca and inimigo_atual == "infantaria":
+					mob = mexer_no_mob(mob)
 				mob.global_position = spawner_localizacao.global_position
 			mob.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
 			ListaInimigos.append(mob)
@@ -103,3 +105,11 @@ func get_random_spawn():
 		spawner_localizacao = mob_spawn_location
 	else:
 		spawner_localizacao = array_spawners.pick_random()
+
+func mexer_no_mob(mob):
+	mob.FSM.initial_state = mob.FSM.get_node("Straight")
+	mob.FSM.current_state = mob.FSM.get_node("Straight")
+	mob.FSM.current_state.move_direction = spawner_localizacao.move_direction
+	mob.FSM.current_state.enter()
+	print (mob.FSM.current_state, " state ", mob.FSM.current_state.move_direction, " current direction" )
+	return mob

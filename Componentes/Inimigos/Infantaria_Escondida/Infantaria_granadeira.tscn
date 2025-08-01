@@ -44,6 +44,7 @@ scale = Vector2(0.2, -0.606)
 shape = SubResource("RectangleShape2D_vi6ic")
 
 [node name="LabelState" type="Label" parent="."]
+visible = false
 offset_left = -21.0
 offset_top = -26.0
 offset_right = 23.0

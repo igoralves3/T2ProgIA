@@ -73,6 +73,7 @@ func fire_bullet():
 	get_parent().add_child(bullet_instance)
 
 func bullet_hit():
+	print("bullet hit jeep")
 	GameManager.addPoints(pontos)
 	lifes-=1
 	if lifes <= 0:
@@ -80,7 +81,7 @@ func bullet_hit():
 		queue_free()
 
 func _on_timer_reset_speed_timeout() -> void:
-	speed = 80
+	speed = 120
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method('death_normal'):

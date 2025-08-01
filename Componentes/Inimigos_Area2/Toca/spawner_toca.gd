@@ -1,31 +1,25 @@
 extends Node2D
+class_name Toca
 
 @export var infantaria: PackedScene
 @export var other_player: PackedScene
 var can_spawn = false
+var enemy_spawner
+@export var move_direction: float = -1
 
+func _ready() -> void:
+	await get_tree().get_frame()
+	enemy_spawner = get_tree().get_first_node_in_group("Enemy_spawner")
+#	enemy_spawner.array_spawners.append(self)
+#	enemy_spawner.usando_outro_spawner = true
 
-func _on_timer_timeout() -> void:
-	if can_spawn:
-		print('spawned')
-		var instance = infantaria.instantiate()
-	
-		instance.position = position
-		
-		instance.FSM.initial_state = instance.FSM.get_node("Straight")
-		instance.FSM.current_state = instance.FSM.get_node("Straight")
-		if global_position.x > get_viewport_rect().size.x / 2:
-			instance.FSM.current_state.move_direction = Vector2.LEFT
-		else:
-			instance.FSM.current_state.move_direction = Vector2.RIGHT
-		instance.FSM.current_state.enter()
-		
-		get_parent().add_child(instance)
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	can_spawn=true
+	enemy_spawner.array_spawners.append(self)
+	enemy_spawner.usando_outro_spawner = true
+
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	can_spawn = false
+	enemy_spawner.array_spawners.append(self)
