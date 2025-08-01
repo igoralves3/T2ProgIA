@@ -53,4 +53,4 @@ visible = false
 position = Vector2(103, 201)
 
 [node name="Turret" parent="." instance=ExtResource("11_ixgqo")]
-position = Vector2(63, 102)
+position = Vector2(82, 131)
