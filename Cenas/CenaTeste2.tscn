@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpqkrkth6wair"]
+[gd_scene load_steps=12 format=3 uid="uid://dpqkrkth6wair"]
 
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="1_ifr7e"]
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_ihgcw"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="4_8itat"]
 [ext_resource type="AudioStream" uid="uid://dbf8wyaao7qlk" path="res://Audio/BGM/NES/04 Restart ~ BGM 1_end.wav" id="4_kc2fh"]
 [ext_resource type="AudioStream" uid="uid://ceoxva8fjco0y" path="res://Audio/BGM/NES/05 Fortress.wav" id="5_r3fut"]
-[ext_resource type="PackedScene" uid="uid://dx7d6d33wlnsw" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_granadeira.tscn" id="7_ihgcw"]
 [ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="8_bj1m0"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="9_pg4bh"]
 
@@ -51,123 +50,3 @@ visible = false
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(103, 201)
-
-[node name="Infantaria_granadeira" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(55, -13)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira2" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(91, -35)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira3" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(128, -38)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira4" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(176, -35)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira5" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(49, -60)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira6" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(85, -82)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira7" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(122, -85)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira8" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(170, -82)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira9" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(52, -107)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira10" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(88, -129)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira11" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(125, -132)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira12" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(173, -129)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira13" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(65, -147)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira14" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(101, -169)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira15" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(138, -172)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira16" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(186, -169)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira17" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(59, -194)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira18" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(95, -216)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira19" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(132, -219)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira20" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(180, -216)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira21" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(62, -241)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira22" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(98, -263)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira23" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(135, -266)
-camperando = true
-ta_no_turret = true
-
-[node name="Infantaria_granadeira24" parent="." instance=ExtResource("7_ihgcw")]
-position = Vector2(183, -263)
-camperando = true
-ta_no_turret = true

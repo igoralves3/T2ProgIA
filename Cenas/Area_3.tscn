@@ -1,8 +1,12 @@
-[gd_scene load_steps=21 format=4 uid="uid://066kk6lq3ist"]
+[gd_scene load_steps=25 format=4 uid="uid://066kk6lq3ist"]
 
 [ext_resource type="Script" uid="uid://bqgs6qnqhyujr" path="res://Cenas/area_3.gd" id="1_b6t7n"]
+[ext_resource type="AudioStream" uid="uid://cqfvspup4073g" path="res://Audio/BGM/NES/02 Start Demo ~ BGM 1_end.wav" id="2_ykegt"]
+[ext_resource type="AudioStream" uid="uid://dcukornkrw1yy" path="res://Audio/BGM/NES/06 Stage Clear Demo.wav" id="3_52orf"]
 [ext_resource type="Texture2D" uid="uid://cu2jljc1vecv2" path="res://SpriteSheets/area3_fundo.png" id="3_kv7jj"]
 [ext_resource type="TileSet" uid="uid://pfi0ssupkysi" path="res://SpriteSheets/Area3_Tileset.tres" id="3_lulm0"]
+[ext_resource type="AudioStream" uid="uid://dbf8wyaao7qlk" path="res://Audio/BGM/NES/04 Restart ~ BGM 1_end.wav" id="4_lyt11"]
+[ext_resource type="AudioStream" uid="uid://ceoxva8fjco0y" path="res://Audio/BGM/NES/05 Fortress.wav" id="5_hpoqo"]
 [ext_resource type="TileSet" uid="uid://wof1f0qku4s1" path="res://SpriteSheets/Area1_TileSet2.tres" id="6_3fpsp"]
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="9_7flg8"]
 [ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="12_agy7h"]
@@ -23,6 +27,10 @@
 
 [node name="Area3" type="Node2D"]
 script = ExtResource("1_b6t7n")
+musica_inicial = ExtResource("2_ykegt")
+musica_intermission = ExtResource("3_52orf")
+musica_retry = ExtResource("4_lyt11")
+musica_fortress = ExtResource("5_hpoqo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true

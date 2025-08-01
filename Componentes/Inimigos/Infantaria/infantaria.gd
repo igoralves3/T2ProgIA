@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		if collision and collision.get_collider().is_in_group("GrupoPlayer"):
 			var superJoe = collision.get_collider()
 			if superJoe.has_method("death_normal"):
-				superJoe.set_collision_layer_value(2, false)
+#				superJoe.set_collision_layer_value(2, false)
 				superJoe.death_normal()
 		else:
 			var atual_FSM = FSM.get_node(str(FSM.current_state))

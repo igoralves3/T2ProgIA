@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var timer_label: Timer
-@export var texto:= "BROKE THE 1ST AREA
-NOW RUSH TO THE 2ND AREA"
+@export var texto:= "BROKE THE 2ND AREA
+NOW RUSH TO THE 3RD AREA"
 @export var label: Label
 var qtd_de_letras: int = 0
 @export var tempo_timer: float = 0.06
@@ -13,7 +13,7 @@ var qtd_de_letras: int = 0
 
 
 func _ready() -> void:
-	animacao.play()
+	animacao.play("animacao")
 #	animacao.animation_finished.connect(next_level)
 	label.text = ""
 	timer_label.wait_time = tempo_timer

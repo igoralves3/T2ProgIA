@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 				var superJoe = collision.get_collider()
 			
 				if superJoe.has_method("death_normal"):
-					superJoe.set_collision_layer_value(2, false)
+#					superJoe.set_collision_layer_value(2, false)
 					superJoe.death_normal()
 
 func look_at_player() -> Vector2:

@@ -26,15 +26,18 @@ func _process(delta: float) -> void:
 	if player.position.y - camera.offset.y < camera_distancia_y_minima and camera.offset.y >= camera_altura_maxima_y:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
 	
+	print (finalMobsCount)
+	print (finalStage)
 	if finalStage and finalMobsCount == 0:
 		next_level()
 
 func next_level():
+	SoundController.play_bgm(musica_intermission, "musica_intermission")
 	print("Voce venceu!")
 	finalStage = false
 	GameManager.addMedals()
 	GameManager.hasCheckpoint = false
-	get_tree().root.get_node("Game").change_scene("res://Cenas/Area_3.tscn")
+	get_tree().root.get_node("Game").change_scene("res://Cenas/Intermissions/intermission_2.tscn")
 
 
 func _on_main_player_char_dead_player():
@@ -51,6 +54,8 @@ func _on_trigger_body_entered(body):
 		add_child(timer)
 		timer.start()
 		timer.timeout.connect(_on_final_stage_timer_timeout)
+		$Trigger.queue_free()
+		SoundController.play_bgm(musica_fortress, "musica_fortress")
 
 func _on_final_stage_timer_timeout():
-	finalStage = false
+	finalStage = true

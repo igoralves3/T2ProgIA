@@ -1,14 +1,18 @@
-[gd_scene load_steps=24 format=4 uid="uid://djeqqclckn4vk"]
+[gd_scene load_steps=28 format=4 uid="uid://djeqqclckn4vk"]
 
 [ext_resource type="TileSet" uid="uid://c4llvpweoft2a" path="res://SpriteSheets/Area2/Area2_Tileset.tres" id="1_r1qpv"]
 [ext_resource type="Script" uid="uid://dpjsr6v7xo34l" path="res://Cenas/area_2.gd" id="1_tydfa"]
 [ext_resource type="Script" uid="uid://bpxfin7e26cxw" path="res://Scripts/Classes/CaveSpaner/cave_spawner.gd" id="2_3xyyb"]
+[ext_resource type="AudioStream" uid="uid://cqfvspup4073g" path="res://Audio/BGM/NES/02 Start Demo ~ BGM 1_end.wav" id="2_qh2i0"]
 [ext_resource type="PackedScene" uid="uid://bmdvex1fvmnn5" path="res://Componentes/Inimigos/General/General.tscn" id="3_q3e8m"]
 [ext_resource type="PackedScene" uid="uid://ctqf7dpoxu84c" path="res://Componentes/AreaHazardDestructable/colisao_agua.tscn" id="3_vd7x2"]
+[ext_resource type="AudioStream" uid="uid://dcukornkrw1yy" path="res://Audio/BGM/NES/06 Stage Clear Demo.wav" id="3_vo0m5"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="4_1d85u"]
 [ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="4_1dncf"]
 [ext_resource type="PackedScene" uid="uid://bek8hshqdrwnf" path="res://Componentes/AreaHazardDestructable/colisao_pitfall.tscn" id="4_kb30a"]
+[ext_resource type="AudioStream" uid="uid://dbf8wyaao7qlk" path="res://Audio/BGM/NES/04 Restart ~ BGM 1_end.wav" id="4_nyldk"]
 [ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="4_tudxv"]
+[ext_resource type="AudioStream" uid="uid://ceoxva8fjco0y" path="res://Audio/BGM/NES/05 Fortress.wav" id="5_5qy02"]
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="5_33he6"]
 [ext_resource type="PackedScene" uid="uid://bwayse1d5026n" path="res://Componentes/Spawner/MobSpawn.tscn" id="5_lmwas"]
 [ext_resource type="TileSet" uid="uid://wof1f0qku4s1" path="res://SpriteSheets/Area1_TileSet2.tres" id="6_o4y78"]
@@ -26,9 +30,15 @@
 
 [node name="Area2" type="Node2D"]
 script = ExtResource("1_tydfa")
+musica_inicial = ExtResource("2_qh2i0")
+musica_intermission = ExtResource("3_vo0m5")
+musica_retry = ExtResource("4_nyldk")
+musica_fortress = ExtResource("5_5qy02")
 
 [node name="Trigger" parent="." instance=ExtResource("13_1dncf")]
 position = Vector2(0, -1563)
+collision_layer = 0
+collision_mask = 2
 
 [node name="CaveSpawner" type="Node" parent="."]
 script = ExtResource("2_3xyyb")
