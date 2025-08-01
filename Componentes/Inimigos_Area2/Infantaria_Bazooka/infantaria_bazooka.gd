@@ -108,7 +108,10 @@ func post_tiro():
 	_animated_sprite.play("caminhando")
 	atirando = false
 	can_shoot = true
-	velocity = old_velocity
+	if old_velocity != null:
+		velocity = old_velocity
+	else:
+		velocity = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized() * SPEED
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	dead_enemy.emit(self, 0)

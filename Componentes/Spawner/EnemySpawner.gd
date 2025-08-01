@@ -11,6 +11,10 @@ var ListaInimigos: Array
 var HUD
 var player
 var inimigo_atual:= ""
+var max_bazucas: int = 4
+var usando_outro_spawner: bool = false
+var spawner_localizacao
+var array_spawners: Array
 
 func _ready() -> void:
 	inimigo_atual = "infantaria"
@@ -30,27 +34,25 @@ func _on_mob_timer_timeout():
 			if inimigo_atual == "granadeiro":
 				mob = granadeiro.instantiate()
 			if inimigo_atual == "bazuca":
+				max_bazucas = max_bazucas - 1
 				mob = bazuca.instantiate()
-			# Choose a random location on Path2D.
-			var mob_spawn_location = $MobPath/MobSpawnLocation
-			mob_spawn_location.progress_ratio = randf()
-			# Set the mob's position to the random location using global coordinates.
-			mob.global_position = mob_spawn_location.global_position
-			#var overlaps_areas = mob.area_colisao_morte.get_overlapping_areas()
-			#if overlaps_areas.size() > 0:
-			#	return
-			#var overlaps_collision = mob.area_colisao_morte.get_overlapping_bodies()
-			#if overlaps_collision.size() > 0:
-				#return
-			# Connect dead_enemy signal
+				if max_bazucas <= 0:
+					inimigo_atual = "infantaria"
+			if not usando_outro_spawner:
+				var mob_spawn_location = $MobPath/MobSpawnLocation
+				mob_spawn_location.progress_ratio = randf()
+				mob.global_position = mob_spawn_location.global_position
+			if usando_outro_spawner:
+				get_random_spawn()
+				mob.global_position = spawner_localizacao.global_position
 			mob.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
 			ListaInimigos.append(mob)
-			# Spawn the mob by adding it to the Main scene.
 			owner.add_child(mob)
 			var collision = mob.move_and_collide(Vector2.ZERO)
 			if collision:
 				print('mob on collision')
 				owner.remove_child(mob)
+				_on_mob_timer_timeout()
 
 func _on_mob_dead_enemy(enemy, pontos):
 	if enemy in ListaInimigos:
@@ -59,14 +61,6 @@ func _on_mob_dead_enemy(enemy, pontos):
 	for inimigo in ListaInimigos:
 		if inimigo == null:
 			ListaInimigos.erase(inimigo)
-#			inimigo.free()
-#		if HUD != null:
-#			HUD.single_update()
-#		else:
-#			get_HUD()
-#			HUD.single_update()
-	# Optionally, queue_free the enemy if not already done
-	# enemy.queue_free()
 
 func connect_dead_enemy(enemy):
 	enemy.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
@@ -93,3 +87,19 @@ func trocar_para_bazuca():
 func _on_trigger_body_entered(body):
 	if body == %MainPlayerChar:
 		podeSpawnar = false
+
+func get_random_spawn():
+	if array_spawners == null:
+		usando_outro_spawner = false
+		return
+	elif array_spawners.size() == 0:
+		usando_outro_spawner = false
+		return
+	var quantidade_de_spawners = 1 + array_spawners.size()
+	print (quantidade_de_spawners)
+	if randi_range(1,quantidade_de_spawners) == 1:
+		var mob_spawn_location = $MobPath/MobSpawnLocation
+		mob_spawn_location.progress_ratio = randf()
+		spawner_localizacao = mob_spawn_location
+	else:
+		spawner_localizacao = array_spawners.pick_random()
