@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cj8edhspj8mp3"]
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://cj8edhspj8mp3"]
 
 [ext_resource type="Texture2D" uid="uid://djwgy7v8ojnrs" path="res://SpriteSheets/MissilVFX.png" id="1_rk2kj"]
+[ext_resource type="Texture2D" uid="uid://cb3rnk4ejhw3e" path="res://SpriteSheets/projeteis.png" id="2_b7u6i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt2vm"]
 atlas = ExtResource("1_rk2kj")
@@ -29,6 +30,10 @@ region = Rect2(0, 0, 18, 18)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ml330"]
 atlas = ExtResource("1_rk2kj")
 region = Rect2(57, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bteog"]
+atlas = ExtResource("2_b7u6i")
+region = Rect2(123, 30, 16, 16)
 
 [resource]
 animations = [{
@@ -101,6 +106,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_054xv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bteog")
 }],
 "loop": true,
 "name": &"default",
@@ -112,5 +120,13 @@ animations = [{
 }],
 "loop": true,
 "name": &"reto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bteog")
+}],
+"loop": true,
+"name": &"turret",
 "speed": 5.0
 }]

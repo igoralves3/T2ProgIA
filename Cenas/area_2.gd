@@ -25,9 +25,6 @@ func _process(delta: float) -> void:
 	finalMobsCount = get_tree().get_nodes_in_group("finalStageEnemies").size()
 	if player.position.y - camera.offset.y < camera_distancia_y_minima and camera.offset.y >= camera_altura_maxima_y:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
-	
-	print (finalMobsCount)
-	print (finalStage)
 	if finalStage and finalMobsCount == 0:
 		next_level()
 

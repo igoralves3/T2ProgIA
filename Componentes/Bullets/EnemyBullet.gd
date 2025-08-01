@@ -55,7 +55,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	
-	if area is Humvee or area is Turret:
+	if area is Humvee:# or area is Turret:
 		return
 	
 	#print ("enemybullet entered AREA2D")

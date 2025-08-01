@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpqkrkth6wair"]
+[gd_scene load_steps=13 format=3 uid="uid://dpqkrkth6wair"]
 
 [ext_resource type="PackedScene" uid="uid://b7ye3664gw7kb" path="res://Componentes/Player/Player.tscn" id="1_ifr7e"]
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_ihgcw"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://ceoxva8fjco0y" path="res://Audio/BGM/NES/05 Fortress.wav" id="5_r3fut"]
 [ext_resource type="PackedScene" uid="uid://dydggnkiawk1j" path="res://Componentes/Checkpoint/Checkpoint.tscn" id="8_bj1m0"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="9_pg4bh"]
+[ext_resource type="PackedScene" uid="uid://cok23fi8vgvcq" path="res://Componentes/Inimigos_Area2/Turret/Turret.tscn" id="11_ixgqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8itat"]
 size = Vector2(20, 287)
@@ -50,3 +51,6 @@ visible = false
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(103, 201)
+
+[node name="Turret" parent="." instance=ExtResource("11_ixgqo")]
+position = Vector2(63, 102)
