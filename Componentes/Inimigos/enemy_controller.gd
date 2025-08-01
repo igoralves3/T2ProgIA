@@ -53,7 +53,8 @@ func meter_granada():
 			GranadeirosAtivos.append(inimigo)
 	if GranadeirosAtivos.size()>0:
 		var inimigo = GranadeirosAtivos.pick_random()
-		inimigo.fire_grenade()
+		if is_instance_valid(inimigo):
+			inimigo.fire_grenade()
 
 func timer_de_tiro_end():
 	meter_bala()
@@ -73,5 +74,9 @@ func update_granadas(valor): #funcao exclusiva para infantaria granadeira
 func timer_update_granadeiros_end():
 	if granadas_voando < 4:
 		for inimigo in granadeiros_em_cooldown:
-			inimigo.pode_atirar_granada = true
+			if is_instance_valid(inimigo):
+				inimigo.pode_atirar_granada = true
+			else:
+				# Opcional, mas boa prática: remove o inimigo morto da lista
+				granadeiros_em_cooldown.erase(inimigo)
 		granadeiros_em_cooldown.clear()
