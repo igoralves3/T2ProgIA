@@ -33,9 +33,9 @@ func _on_timer_timeout() -> void:
 	die.emit()
 	is_moving = false
 	animation.play("bullet")
-	await get_tree().create_timer(tempo_animacao).timeout
+	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)
 #	await get_tree().process_frame
-	queue_free()
+
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -50,8 +50,8 @@ func _on_body_entered(body: Node2D) -> void:
 	animation.play("bullet")
 	if body.has_method("bullet_hit"):
 		body.bullet_hit()
-	await get_tree().create_timer(tempo_animacao).timeout
-	queue_free()
+	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)
+
 
 func _on_area_entered(area: Area2D) -> void:
 	set_collision_mask_value(3, false) #tirar colisao inimigo
@@ -64,5 +64,4 @@ func _on_area_entered(area: Area2D) -> void:
 	#	SFXEnemyDeath.play()
 	#	print ("death normal area2d")
 		area.get_parent().bullet_hit()
-	await get_tree().create_timer(tempo_animacao).timeout
-	queue_free()
+	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)

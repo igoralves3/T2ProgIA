@@ -5,6 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://ciweup6h5l42k" path="res://Componentes/Inimigos_Area2/Humvee/humvee_spriteframes.tres" id="3_2kn6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ragcb"]
+size = Vector2(28, 27)
 
 [node name="Jeep" type="Area2D"]
 collision_layer = 4
@@ -19,6 +20,7 @@ animation = &"atirando_baixo"
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ragcb")
 
 [node name="timer_bullet" type="Timer" parent="."]

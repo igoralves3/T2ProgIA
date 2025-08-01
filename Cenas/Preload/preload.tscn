@@ -1,43 +1,57 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5uwbws6ymbmy"]
+[gd_scene load_steps=7 format=3 uid="uid://b5uwbws6ymbmy"]
 
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="1_m2pe5"]
 [ext_resource type="Script" uid="uid://bsxmcurigyegm" path="res://Cenas/Preload/preload.gd" id="1_yqm0q"]
+[ext_resource type="Texture2D" uid="uid://b4p4p0cutjua8" path="res://SpriteSheets/area1_fake.png" id="2_ab5xp"]
+[ext_resource type="Texture2D" uid="uid://dokbovyi01j21" path="res://SpriteSheets/area2_fake.png" id="2_qxhej"]
 [ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="2_yqm0q"]
-[ext_resource type="Texture2D" uid="uid://f7ucl7ufn7rt" path="res://SpriteSheets/Area1Fundo.png" id="4_ab5xp"]
+[ext_resource type="Texture2D" uid="uid://diaj3i070clr3" path="res://SpriteSheets/area3_fake.png" id="3_n7jo2"]
 
 [node name="Preload" type="Node2D"]
 script = ExtResource("1_yqm0q")
+textura_area2 = ExtResource("2_qxhej")
+textura_area3 = ExtResource("3_n7jo2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(0, -1792)
-transform = Transform2D(1, 0, 0, 1, 0, -1792)
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("4_ab5xp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="TextureRect" type="TextureRect" parent="Control/CanvasLayer"]
+offset_top = -1792.0
+offset_right = 224.0
+offset_bottom = 256.0
+texture = ExtResource("2_ab5xp")
 
 [node name="HUD" parent="." instance=ExtResource("1_m2pe5")]
 
 [node name="PlayerLabel" type="Label" parent="HUD"]
+modulate = Color(0.78, 0.78, 0.78, 1)
 top_level = true
-offset_left = 55.0
-offset_top = 89.0
-offset_right = 158.0
-offset_bottom = 112.0
+offset_top = 107.0
+offset_right = 224.0
+offset_bottom = 117.0
 theme_override_fonts/font = ExtResource("2_yqm0q")
+theme_override_font_sizes/font_size = 10
 text = "PLAYER 1"
+horizontal_alignment = 1
 
 [node name="ReadyLabel" type="Label" parent="HUD"]
+modulate = Color(0.78, 0.78, 0.78, 1)
 top_level = true
-offset_left = 54.0
 offset_top = 122.0
-offset_right = 157.0
-offset_bottom = 145.0
+offset_right = 224.0
+offset_bottom = 132.0
 theme_override_fonts/font = ExtResource("2_yqm0q")
+theme_override_font_sizes/font_size = 10
 text = "READY"
+horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

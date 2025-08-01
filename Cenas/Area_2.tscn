@@ -283,7 +283,7 @@ position = Vector2(106, -602)
 submersa = false
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(114, 129)
+position = Vector2(112, 170)
 
 [node name="JeepSpawner" parent="." instance=ExtResource("16_wkod3")]
 position = Vector2(113, 90)

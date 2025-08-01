@@ -85,7 +85,7 @@ func physics_update(delta: float) -> void:
 		else:
 			character.velocity = Vector2(0,0)
 			tentativas_temp = next_move_tentativas_sem_sair_da_tela
-			await randomize_next_move()
+			randomize_next_move()
 	infantaria_node.motion_direction = movendo_para.normalized()
 #	if other_player:
 		#print (other_player.global_position)

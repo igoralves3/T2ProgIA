@@ -18,7 +18,7 @@ signal medals_updated(new_medal_count)
 
 func newGame():
 	score = 0
-	lifes = 2
+	lifes = 299
 	medals = 0
 	hasCheckpoint = false
 	retry = false
@@ -62,11 +62,3 @@ func getSpawnPostion():
 		return checkPoint
 	else: 
 		return startPoint
-
-#func _on_addToSpawnedList(_enemy):
-#	spawnedList.append(_enemy)
-#	print("inimigos ", spawnedList)
-#	_enemy.connect("dead_enemy", Callable(self, "_on_enemy_death"))
-#
-#func _on_enemy_death(_enemy, points):
-#	addPoints(points)

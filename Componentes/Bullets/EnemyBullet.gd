@@ -37,8 +37,8 @@ func _on_timer_timeout() -> void:
 	animation.play("bullet")
 	#await get_tree().create_timer(tempo_animacao).timeout
 #	await get_tree().process_frame
-	await animation.animation_finished
-	queue_free()
+	animation.animation_finished.connect(queue_free)
+	
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -50,8 +50,7 @@ func _on_body_entered(body: Node2D) -> void:
 #	print (body, "player bullet hit")
 	if body.has_method("death_normal"):
 		body.death_normal()
-	await get_tree().create_timer(tempo_animacao).timeout
-	queue_free()
+	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)
 	
 
 func _on_area_entered(area: Area2D) -> void:
@@ -67,5 +66,5 @@ func _on_area_entered(area: Area2D) -> void:
 	#print (area, "player bullet hit")
 	if area.get_parent().has_method("death_normal"):
 		area.get_parent().death_normal()
-	await get_tree().create_timer(tempo_animacao).timeout
+	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)
 	queue_free()

@@ -6,7 +6,7 @@ class_name Jeep
 @onready var timer_bullet = $Timer
 @onready var weapon_position = $WeaponPosition
 var can_shoot: bool = false
-var speed := 80
+var speed := 100
 var dir := -1
 var alterou_a_velocidade: bool = false
 @export var other_player: CharacterBody2D
@@ -15,6 +15,7 @@ var lifes := 5
 var offset_da_bala
 @onready var timer_speed = $timer_reset_speed
 var pontos = 200
+
 
 func _ready() -> void:
 	if not other_player:
@@ -30,6 +31,7 @@ func _physics_process(delta: float) -> void:
 		if distancia_y > 120 and not alterou_a_velocidade:
 			speed = 40
 			timer_speed.start()
+			alterou_a_velocidade = true
 
 func update_animation(distancia_normalized):
 	if distancia_normalized.x > -0.15 and distancia_normalized.x < 0.15:

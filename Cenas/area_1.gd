@@ -42,7 +42,8 @@ func next_level():
 
 func _on_main_player_char_dead_player():
 	GameManager.reduceLifes()
-	get_tree().reload_current_scene()
+	get_tree().root.get_node("Game").change_scene("res://Cenas/Preload/preload.tscn")
+#	get_tree().reload_current_scene()
 
 func _on_trigger_mobs_portao_area_entered(area):
 	$Trigger_Mobs_Portao.queue_free()
