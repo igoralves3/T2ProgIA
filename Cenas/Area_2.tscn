@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://djeqqclckn4vk"]
+[gd_scene load_steps=29 format=4 uid="uid://djeqqclckn4vk"]
 
 [ext_resource type="TileSet" uid="uid://c4llvpweoft2a" path="res://SpriteSheets/Area2/Area2_Tileset.tres" id="1_r1qpv"]
 [ext_resource type="Script" uid="uid://dpjsr6v7xo34l" path="res://Cenas/area_2.gd" id="1_tydfa"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bqxgebxbd4alj" path="res://Componentes/Inimigos_Area2/Jeep/spawner/jeep_spawner.tscn" id="16_wkod3"]
 [ext_resource type="PackedScene" uid="uid://cfloxpubtlrsx" path="res://Componentes/Inimigos_Area2/Moto_Terra/spawner/moto_terra_spawner.tscn" id="17_3xyyb"]
 [ext_resource type="PackedScene" uid="uid://cok23fi8vgvcq" path="res://Componentes/Inimigos_Area2/Turret/Turret.tscn" id="18_dmwlo"]
+[ext_resource type="Script" uid="uid://cf4qg7hqbchqi" path="res://Scripts/Classes/HQSpawner/hq_spawner.gd" id="24_g02sq"]
 
 [node name="Area2" type="Node2D"]
 script = ExtResource("1_tydfa")
@@ -322,7 +323,16 @@ position = Vector2(-1, 52)
 [node name="Turret" parent="." instance=ExtResource("18_dmwlo")]
 position = Vector2(21, -1492)
 
+[node name="HQSpawner" type="Marker2D" parent="."]
+position = Vector2(53, -975)
+script = ExtResource("24_g02sq")
+
+[node name="HQTrigger" parent="." instance=ExtResource("13_1dncf")]
+position = Vector2(0, -864)
+
 [connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="Trigger" to="CaveSpawner" method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="Trigger" to="MobSpawner" method="_on_trigger_body_entered"]
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
+[connection signal="area_entered" from="GrupoCheckpoints/Checkpoint3" to="HQSpawner" method="_on_checkpoint_3_area_entered"]
+[connection signal="body_entered" from="HQTrigger" to="HQSpawner" method="_on_hq_trigger_body_entered"]
