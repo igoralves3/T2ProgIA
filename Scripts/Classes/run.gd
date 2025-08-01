@@ -6,7 +6,6 @@ var tava_camperando: bool = false
 var recem_spawned: bool = true #recem spawned pelo enemy spawner
 
 func _ready():
-	self
 	pass
 
 func enter() -> void: #chamar primeiro movimento se camperando  ou nao

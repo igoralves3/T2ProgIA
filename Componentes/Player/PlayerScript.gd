@@ -236,7 +236,7 @@ func spawn_grenade_part2():
 func death_water(posicao_colisor):
 	if not god_mode:
 		if not is_reloading_scene:
-			SoundController.play_bgm(SFXPlayerDeath)
+			SoundController.play_bgm(SFXPlayerDeath, "SFXPlayerDeath")
 			disable_collisions()
 			can_move = false
 			can_shoot = false
@@ -253,7 +253,7 @@ func death_water(posicao_colisor):
 func death_pitfall(posicao_colisor):
 	if not god_mode:
 		if not is_reloading_scene:
-			SoundController.play_bgm(SFXPlayerDeath)
+			SoundController.play_bgm(SFXPlayerDeath, "SFXPlayerDeath")
 			disable_collisions()
 			can_move = false
 			can_shoot = false
@@ -271,7 +271,7 @@ func death_normal():
 #	print ("death normals playerscript")
 	if not god_mode:
 		if not is_reloading_scene:
-			SoundController.play_bgm(SFXPlayerDeath)
+			SoundController.play_bgm(SFXPlayerDeath, "SFXPlayerDeath")
 			disable_collisions()
 			can_move = false
 			can_shoot = false

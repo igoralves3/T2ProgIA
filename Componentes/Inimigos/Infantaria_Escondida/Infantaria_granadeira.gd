@@ -29,11 +29,11 @@ var Array_granadas_jogadas: Array
 @export var Sprite_frames_camperando = SpriteFrames
 @export var Sprite_frames_turret = SpriteFrames
 @export var ta_no_turret: bool = false
+var dying: bool = false
 
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready():
-	#GameManager.addToSpawnedList.emit(self)
 	_animated_sprite.play('down')
 	if not other_player:
 		var currentScene = get_tree().get_current_scene().get_name()
@@ -173,15 +173,17 @@ func post_grenade():
 		update_animation(last_input_direction)
 
 func bullet_hit():
-	set_physics_process(false)
-	dead_enemy.emit(self, pontos)
-	_animated_sprite.play("death")
-	_animated_sprite.animation_finished.connect(queue_free)
-	set_collision_layer_value(3, false)
-	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	SoundController.play_button(som_morte)
-	GameManager.addPoints(pontos)
-	remover_granadas_filhas_do_controller()
+	if not dying:
+		timer_death()
+		dying = true
+		_animated_sprite.play("death")
+		_animated_sprite.animation_finished.connect(queue_free)
+		set_physics_process(false)
+		dead_enemy.emit(self, pontos)
+		$Area2DColisaoMorte.set_collision_layer_value(3, false)
+		SoundController.play_button(som_morte)
+		GameManager.addPoints(pontos)
+		remover_granadas_filhas_do_controller()
 
 func remover_granadas_filhas_do_controller():
 	for granada in Array_granadas_jogadas:
@@ -190,15 +192,17 @@ func remover_granadas_filhas_do_controller():
 				granada.remover_granada_controller()
 
 func grenade_hit():
-	set_physics_process(false)
-	_animated_sprite.play("death")
-	_animated_sprite.animation_finished.connect(queue_free)
-	set_collision_layer_value(3, false)
-	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	SoundController.play_button(som_morte)
-	dead_enemy.emit(self, pontos)
-	GameManager.addPoints(pontos)
-	remover_granadas_filhas_do_controller()
+	if not dying:
+		timer_death()
+		dying = true
+		_animated_sprite.play("death")
+		_animated_sprite.animation_finished.connect(queue_free)
+		set_physics_process(false)
+		$Area2DColisaoMorte.set_collision_layer_value(3, false)
+		SoundController.play_button(som_morte)
+		dead_enemy.emit(self, pontos)
+		GameManager.addPoints(pontos)
+		remover_granadas_filhas_do_controller()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	dead_enemy.emit(self, 0)
@@ -231,3 +235,10 @@ func saiu_da_moita():
 
 func ativar_colisao_chao():
 	set_collision_mask_value(1, true)
+
+func timer_death():
+	var timer = Timer.new()
+	timer.wait_time = 0.4
+	timer.timeout.connect(queue_free)
+	add_child(timer)
+	timer.start()

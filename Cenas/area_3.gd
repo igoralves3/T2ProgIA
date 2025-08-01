@@ -21,10 +21,6 @@ func _ready() -> void:
 	GameManager.setStartPoint(spawnIncial.global_position)
 	GameManager.currentScene = "res://Cenas/Area_1.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
-	if not GameManager.retry:
-		SoundController.play_bgm(musica_inicial)
-	if GameManager.retry:
-		SoundController.play_bgm(musica_retry)
 
 func _process(delta: float) -> void:
 	finalMobsCount = get_tree().get_nodes_in_group("FinalMobs").size()
@@ -48,6 +44,7 @@ func _on_main_player_char_dead_player():
 	#get_tree().reload_current_scene()
 
 func _on_trigger_mobs_portao_area_entered(area):
+	SoundController.play_bgm(musica_fortress, "musica_fortress")
 	$Trigger_Mobs_Portao.queue_free()
 
 func _on_door_spawner_stopped_spawning():
@@ -58,6 +55,7 @@ func _on_door_spawner_stopped_spawning():
 	add_child(timer)
 	timer.start()
 	timer.timeout.connect(_on_final_stage_timer_timeout)
+	SoundController.play_bgm(musica_intermission, "musica_intermission")
 
 #func on_dead_enemy(_enemy, pontos):
 #	GameManager.addPoints(pontos)

@@ -75,7 +75,9 @@ func _on_easy_button_pressed() -> void:
 
 func _on_impossivel_button_pressed() -> void:
 	GameManager.newGame()
-	get_tree().root.get_node("Game").change_scene("res://Cenas/Area_1.tscn")
+	GameManager.currentScene = "res://Cenas/Area_1.tscn"
+	get_tree().root.get_node("Game").change_scene("res://Cenas/Preload/preload.tscn")
+	#get_tree().root.get_node("Game").change_scene("res://Cenas/Area_1.tscn")
 
 func unhide_main_menu():
 	%UIContainer.show()
@@ -94,4 +96,4 @@ func _on_master_sound_slider_drag_ended(value_changed: bool) -> void:
 
 
 func _on_bgm_slider_drag_ended(value_changed: bool) -> void:
-	SoundController.play_bgm(Somvfx)
+	SoundController.play_bgm(Somvfx, "Somvfx")

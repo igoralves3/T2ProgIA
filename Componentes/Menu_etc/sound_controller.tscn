@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvbmbxjd1mr4k"]
+[gd_scene load_steps=3 format=3 uid="uid://bvbmbxjd1mr4k"]
 
 [ext_resource type="Script" uid="uid://diy51kpnsubgs" path="res://Componentes/Menu_etc/sound_controller.gd" id="1_wqk41"]
+[ext_resource type="AudioStream" uid="uid://b6ltmlma654vf" path="res://Audio/BGM/NES/BGM1 Loop.wav" id="2_gs01v"]
 
 [node name="SoundController" type="Node"]
 script = ExtResource("1_wqk41")
+loopMusica = ExtResource("2_gs01v")
 
 [node name="AudioBGM" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 bus = &"BGM"
 
 [node name="GroupSFX" type="Node" parent="."]
@@ -69,3 +72,5 @@ bus = &"SFX19"
 
 [node name="AudioSFX20" type="AudioStreamPlayer" parent="GroupSFX"]
 bus = &"SFX20"
+
+[connection signal="finished" from="AudioBGM" to="." method="_on_audio_bgm_finished"]

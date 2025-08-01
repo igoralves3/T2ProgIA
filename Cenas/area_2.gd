@@ -17,16 +17,9 @@ var finalStage = false
 var finalMobsCount: int
 
 func _ready() -> void:
-#	scriptedEnemies = get_tree().get_nodes_in_group("ScriptedEnemies")z
-#	for enemy in scriptedEnemies:
-#		enemy.connect("dead_enemy", Callable(self, "on_dead_enemy"))
 	GameManager.setStartPoint(spawnInicial.global_position)
 	GameManager.currentScene = "res://Cenas/Area_2.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
-	#if not GameManager.retry:
-		#SoundController.play_bgm(musica_inicial)
-	#if GameManager.retry:
-		#SoundController.play_bgm(musica_retry)
 
 func _process(delta: float) -> void:
 	finalMobsCount = get_tree().get_nodes_in_group("finalStageEnemies").size()

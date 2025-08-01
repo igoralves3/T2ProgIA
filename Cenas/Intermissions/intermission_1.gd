@@ -14,12 +14,13 @@ var qtd_de_letras: int = 0
 
 func _ready() -> void:
 	animacao.play()
-	animacao.animation_finished.connect(next_level)
+#	animacao.animation_finished.connect(next_level)
 	label.text = ""
 	timer_label.wait_time = tempo_timer
 	timer_label.one_shot = false
 	timer_label.start()
 	GameManager.retry = false
+	get_tree().create_timer(10).timeout.connect(next_level)
 
 func _on_timer_timeout() -> void:
 	if qtd_de_letras < texto.length():
@@ -31,4 +32,6 @@ func _on_timer_avancar_cena_timeout() -> void: ##avanca a cena aqui
 	pass # Replace with function body.
 
 func next_level():
-	get_tree().root.get_node("Game").change_scene("res://Cenas/Area_2.tscn")
+	GameManager.currentScene = "res://Cenas/Area_2.tscn"
+	get_tree().root.get_node("Game").change_scene("res://Cenas/Preload/preload.tscn")
+#	get_tree().root.get_node("Game").change_scene("res://Cenas/Area_2.tscn")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6ltmlma654vf"
+path="res://.godot/imported/BGM1 Loop.wav-19a4fc5861fe071b671f723bb71b7ef7.sample"
+
+[deps]
+
+source_file="res://Audio/BGM/NES/BGM1 Loop.wav"
+dest_files=["res://.godot/imported/BGM1 Loop.wav-19a4fc5861fe071b671f723bb71b7ef7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

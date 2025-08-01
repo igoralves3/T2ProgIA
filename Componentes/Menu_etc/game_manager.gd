@@ -1,7 +1,7 @@
 extends Node
 
 var checkPoint: Vector2
-var startPoint: Vector2
+var startPoint:= Vector2(112,170)
 var hasCheckpoint: bool
 var score: int = 0
 var extra_life_score: int = 10000

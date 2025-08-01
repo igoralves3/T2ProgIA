@@ -1,6 +1,9 @@
 extends Node2D
 
-
+@export var musica_inicial: AudioStream
+@export var musica_intermission: AudioStream
+@export var musica_retry: AudioStream
+@export var musica_fortress: AudioStream
 @onready var player_label = $HUD/PlayerLabel
 @onready var ready_label = $HUD/ReadyLabel
 @onready var timer = $Timer
@@ -13,6 +16,10 @@ var next_scene
 var show_player_label = true
 
 func _ready():
+	if GameManager.retry:
+		SoundController.play_bgm(musica_retry, "musica_retry")
+	if not GameManager.retry:
+		SoundController.play_bgm(musica_inicial, "musica_inicial")
 	next_scene = GameManager.currentScene
 	var position1 = GameManager.getSpawnPostion()
 	print (position1)
