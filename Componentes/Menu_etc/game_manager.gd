@@ -28,7 +28,7 @@ func newGame():
 func reduceLifes():
 	if lifes == 0:
 		print("game over")
-		currentScene = ""
+		currentScene = "res://Componentes/Menu_etc/main_menu.tscn"
 		newGame()
 		get_tree().root.get_node("Game").change_scene("res://Componentes/Menu_etc/main_menu.tscn")
 	else:
