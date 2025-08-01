@@ -16,7 +16,7 @@ size = Vector2(70, 6.60066)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v3ji"]
 size = Vector2(150, 200)
 
-[node name="Operador_morteiro" type="CharacterBody2D" groups=["Inimigos"]]
+[node name="Operador_morteiro" type="CharacterBody2D" groups=["Inimigos", "Morteiros"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_nwg8a")

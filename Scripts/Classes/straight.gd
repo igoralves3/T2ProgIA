@@ -6,12 +6,11 @@ class_name Straight
 var move_direction: float = -1
 var timer_para_mudar_de_estado: Timer
 var pode_mudar_de_estado: bool = false
-var wander_time:float
+var wander_time:float = 0.5
 #signal transitioned
 
 func _ready() -> void:
 	print('straight')
-	wander_time=.5
 	timer_para_mudar_de_estado = Timer.new()
 	timer_para_mudar_de_estado.wait_time = 1
 	timer_para_mudar_de_estado.one_shot = false

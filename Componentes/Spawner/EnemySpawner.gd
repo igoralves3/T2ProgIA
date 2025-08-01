@@ -15,6 +15,8 @@ var max_bazucas: int = 4
 var usando_outro_spawner: bool = false
 var spawner_localizacao
 var array_spawners: Array
+var Inimigos_fortress: int = 15
+var spawned_general: bool = false
 
 func _ready() -> void:
 	inimigo_atual = "infantaria"
@@ -57,12 +59,23 @@ func _on_mob_timer_timeout():
 				_on_mob_timer_timeout()
 
 func _on_mob_dead_enemy(enemy, pontos):
+	print(ListaInimigos)
+	#var inimigos_no_tree = get_tree().get_nodes_in_group("Inimigos")
 	if enemy in ListaInimigos:
 #		GameManager.addPoints(pontos)
 		ListaInimigos.erase(enemy)
 	for inimigo in ListaInimigos:
 		if inimigo == null:
 			ListaInimigos.erase(inimigo)
+		elif not is_instance_valid(inimigo):
+			ListaInimigos.erase(inimigo)
+		elif (player.global_position - inimigo.global_position).length() > 350:
+			print((player.global_position - inimigo.global_position).length(), " length")
+			inimigo.queue_free()
+			ListaInimigos.erase(enemy)
+		elif not inimigo.is_inside_tree():
+			ListaInimigos.erase(inimigo)
+			inimigo.queue_free()
 
 func connect_dead_enemy(enemy):
 	enemy.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
@@ -112,4 +125,42 @@ func mexer_no_mob(mob):
 	mob.FSM.current_state.move_direction = spawner_localizacao.move_direction
 	mob.FSM.current_state.enter()
 	print (mob.FSM.current_state, " state ", mob.FSM.current_state.move_direction, " current direction" )
+	return mob
+
+func start_fortress():
+	$MobTimer.stop()
+	$Fortress_timer.start()
+	inimigo_atual = "infantaria"
+	limite_de_inimigos = 8
+	var lista_morteiros = get_tree().get_nodes_in_group("Morteiros")
+	for morteiro in lista_morteiros:
+		ListaInimigos.append(morteiro)
+
+func _on_fortress_timer_timeout() -> void:
+	spawner_localizacao = array_spawners.pick_random()
+	if ListaInimigos.size() < limite_de_inimigos:
+		if Inimigos_fortress > 0:
+			Inimigos_fortress = Inimigos_fortress - 1
+			var mob
+			mob = infantaria.instantiate()
+			mob = mexer_no_mob_baixo(mob)
+			mob.global_position = spawner_localizacao.global_position + Vector2(randf_range(-10,10),-120)
+			mob.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
+			ListaInimigos.append(mob)
+			owner.add_child(mob)
+			var collision = mob.move_and_collide(Vector2.ZERO)
+			if collision:
+				Inimigos_fortress = Inimigos_fortress + 1
+				owner.remove_child(mob)
+				_on_mob_timer_timeout()
+	if ListaInimigos.size() == 0 and Inimigos_fortress == 0:
+		get_parent().next_level()
+
+func mexer_no_mob_baixo(mob):
+	mob.FSM.initial_state = mob.FSM.get_node("Straight")
+	mob.FSM.current_state = mob.FSM.get_node("Straight")
+	mob.FSM.current_state.move_direction = randf_range(-0.3,0.3)
+	mob.FSM.current_state.move_speed = 100
+	mob.FSM.current_state.wander_time = randf_range(2,3)
+	mob.FSM.current_state.enter()
 	return mob

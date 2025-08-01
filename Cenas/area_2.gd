@@ -36,12 +36,10 @@ func next_level():
 	GameManager.hasCheckpoint = false
 	get_tree().root.get_node("Game").change_scene("res://Cenas/Intermissions/intermission_2.tscn")
 
-
 func _on_main_player_char_dead_player():
 	GameManager.reduceLifes()
 	get_tree().root.get_node("Game").change_scene("res://Cenas/Preload/preload.tscn")
 	#get_tree().reload_current_scene()
-
 
 func _on_trigger_body_entered(body):
 	if body == %MainPlayerChar:

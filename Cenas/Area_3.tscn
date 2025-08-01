@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://066kk6lq3ist"]
+[gd_scene load_steps=27 format=4 uid="uid://066kk6lq3ist"]
 
 [ext_resource type="Script" uid="uid://bqgs6qnqhyujr" path="res://Cenas/area_3.gd" id="1_b6t7n"]
 [ext_resource type="AudioStream" uid="uid://cqfvspup4073g" path="res://Audio/BGM/NES/02 Start Demo ~ BGM 1_end.wav" id="2_ykegt"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="22_s5h8a"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="23_ecu1h"]
 [ext_resource type="PackedScene" uid="uid://biamgxw6qihfu" path="res://Componentes/Inimigos_Area2/Toca/Spawner_Toca.tscn" id="25_52orf"]
+[ext_resource type="PackedScene" uid="uid://cg070bqy7rfj" path="res://Componentes/Spawner/hq_spawner.tscn" id="26_lyt11"]
 
 [node name="Area3" type="Node2D"]
 script = ExtResource("1_b6t7n")
@@ -117,14 +118,14 @@ grenadeBonus = 5
 position = Vector2(112, -1762)
 
 [node name="Trigger_Mobs_Portao" parent="." instance=ExtResource("22_s5h8a")]
-position = Vector2(0, -1600)
+position = Vector2(0, -1590)
 collision_layer = 0
 collision_mask = 2
 
 [node name="HUD" parent="." instance=ExtResource("23_ecu1h")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(112, 170)
+position = Vector2(112, -1500)
 
 [node name="DeathTraps" type="Node" parent="."]
 
@@ -230,6 +231,9 @@ move_direction = 1.0
 [node name="SpawnerToca9" parent="Grupo_tocas" instance=ExtResource("25_52orf")]
 position = Vector2(86, -597)
 move_direction = 1.0
+
+[node name="HQSpawner" parent="." instance=ExtResource("26_lyt11")]
+position = Vector2(112, -1700)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
 [connection signal="stoppedSpawning" from="DoorSpawner" to="." method="_on_door_spawner_stopped_spawning"]

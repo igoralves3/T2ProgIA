@@ -18,7 +18,7 @@ granadeiro = ExtResource("3_q1lb3")
 bazuca = ExtResource("4_q1lb3")
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.7
 autostart = true
 
 [node name="MobPath" type="Path2D" parent="."]
@@ -29,4 +29,8 @@ curve = SubResource("Curve2D_c1tod")
 position = Vector2(1, 128)
 rotation = -1.5708
 
+[node name="Fortress_timer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="Fortress_timer" to="." method="_on_fortress_timer_timeout"]

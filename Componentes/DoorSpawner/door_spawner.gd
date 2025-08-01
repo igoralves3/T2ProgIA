@@ -21,8 +21,8 @@ func _ready():
 
 func spawn_enemies():
 	enemies_to_spawn = enemyCount
-	if enemies_to_spawn > 0:
-		spawn_timer.start()
+#	if enemies_to_spawn > 0:
+#		spawn_timer.start()
 
 func _on_spawn_timer_timeout():
 	if enemies_to_spawn <= 0:

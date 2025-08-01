@@ -39,6 +39,7 @@ FinalMobs=""
 EnemyController=""
 InimigosSoGranadeiros=""
 ScriptedEnemies="All enemies that are not spawned automatically"
+Morteiros=""
 
 [input]
 
