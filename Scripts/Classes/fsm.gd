@@ -3,7 +3,7 @@ extends Node
 @export var initial_state: State
 
 var states: Dictionary = {}
-var current_state
+@export var current_state: State
 var label_state: Label
 
 func _ready():

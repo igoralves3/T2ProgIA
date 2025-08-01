@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7jtwgsgdbpl2"]
+[gd_scene load_steps=12 format=3 uid="uid://c7jtwgsgdbpl2"]
 
 [ext_resource type="Script" uid="uid://725tjqccjsfs" path="res://Componentes/Inimigos/Infantaria/infantaria.gd" id="1_pf2kk"]
 [ext_resource type="PackedScene" uid="uid://dhjm8msao1hfe" path="res://Componentes/Bullets/EnemyBullet.tscn" id="2_clfx3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bwlb3cbdttuh2" path="res://Scripts/Classes/seek.gd" id="5_dqxkc"]
 [ext_resource type="Script" uid="uid://dbmg342k1f422" path="res://Scripts/Classes/hover.gd" id="5_vi6ic"]
 [ext_resource type="AudioStream" uid="uid://ce5jm4cji0b6a" path="res://Audio/SFX/NES - Commando - Sound Effects/Enemy_Death.wav" id="8_04x4o"]
+[ext_resource type="Script" uid="uid://bm1tgnmocveh3" path="res://Scripts/Classes/straight.gd" id="9_hs46w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6ic"]
 size = Vector2(70, 6.60066)
@@ -48,9 +49,10 @@ horizontal_alignment = 1
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state", "current_state")]
 script = ExtResource("3_8nlaf")
 initial_state = NodePath("Hover")
+current_state = NodePath("Hover")
 
 [node name="Seek" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("5_dqxkc")
@@ -62,6 +64,10 @@ character = NodePath("../..")
 
 [node name="Wander" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("5_clfx3")
+character = NodePath("../..")
+
+[node name="Straight" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+script = ExtResource("9_hs46w")
 character = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="."]

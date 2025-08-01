@@ -21,4 +21,7 @@ func _on_timer_timeout() -> void:
 		var instance = infantaria.instantiate()
 	
 		instance.position = position
+		
+		
+		
 		get_parent().add_child(instance)
