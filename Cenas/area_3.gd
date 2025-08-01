@@ -20,7 +20,7 @@ var enemy_spawner
 
 func _ready() -> void:
 	GameManager.setStartPoint(spawnIncial.global_position)
-	GameManager.currentScene = "res://Cenas/Area_1.tscn"
+	GameManager.currentScene = "res://Cenas/Area_3.tscn"
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
 	enemy_spawner = get_tree().get_first_node_in_group("Enemy_spawner")
 

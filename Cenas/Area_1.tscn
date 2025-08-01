@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bqawtwe2n84sn"]
+[gd_scene load_steps=26 format=4 uid="uid://bqawtwe2n84sn"]
 
 [ext_resource type="Script" uid="uid://c5od221njf3im" path="res://Cenas/area_1.gd" id="1_t3o0g"]
 [ext_resource type="AudioStream" uid="uid://cngnxk5h4cy0n" path="res://Audio/BGM/NES/02 Start Demo ~ BGM 1.wav" id="2_twte5"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="20_gxw08"]
 [ext_resource type="PackedScene" uid="uid://imu3blxtr0mq" path="res://Componentes/DoorSpawner/DoorSpawner.tscn" id="21_de5qm"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="21_gdtqj"]
+[ext_resource type="PackedScene" uid="uid://cg070bqy7rfj" path="res://Componentes/Spawner/hq_spawner.tscn" id="24_8k6ck"]
 [ext_resource type="PackedScene" uid="uid://b7gvfacur3e6q" path="res://Componentes/Triggers/troca_infantaria.tscn" id="24_twte5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_twte5"]
@@ -316,7 +317,7 @@ position = Vector2(112, -1762)
 position = Vector2(142, -532)
 
 [node name="Trigger_Mobs_Portao" parent="." instance=ExtResource("20_gxw08")]
-position = Vector2(0, -1600)
+position = Vector2(0, -1590)
 collision_layer = 0
 collision_mask = 2
 
@@ -328,6 +329,9 @@ position = Vector2(112, 170)
 [node name="Troca_infantaria" parent="." instance=ExtResource("24_twte5")]
 position = Vector2(103, -862)
 inimigo = "Granadeiro"
+
+[node name="HQSpawner" parent="." instance=ExtResource("24_8k6ck")]
+position = Vector2(112, -1700)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
 [connection signal="stoppedSpawning" from="DoorSpawner" to="." method="_on_door_spawner_stopped_spawning"]

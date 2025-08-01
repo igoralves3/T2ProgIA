@@ -36,8 +36,13 @@ musica_intermission = ExtResource("3_vo0m5")
 musica_retry = ExtResource("4_nyldk")
 musica_fortress = ExtResource("5_5qy02")
 
+[node name="Trigger_Mobs_Portao" parent="." instance=ExtResource("13_1dncf")]
+position = Vector2(0, -3180)
+collision_layer = 0
+collision_mask = 2
+
 [node name="Trigger" parent="." instance=ExtResource("13_1dncf")]
-position = Vector2(0, -1563)
+position = Vector2(0, -1590)
 collision_layer = 0
 collision_mask = 2
 
@@ -336,6 +341,7 @@ position = Vector2(242, -69)
 [node name="MotoTerraSpawner2" parent="." instance=ExtResource("17_3xyyb")]
 position = Vector2(246, -102)
 
+[connection signal="area_entered" from="Trigger_Mobs_Portao" to="." method="_on_trigger_mobs_portao_area_entered"]
 [connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="Trigger" to="CaveSpawner" method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="Trigger" to="MobSpawner" method="_on_trigger_body_entered"]
