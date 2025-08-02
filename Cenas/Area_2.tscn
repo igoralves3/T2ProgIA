@@ -37,11 +37,6 @@ musica_intermission = ExtResource("3_vo0m5")
 musica_retry = ExtResource("4_nyldk")
 musica_fortress = ExtResource("5_5qy02")
 
-[node name="Trigger_Mobs_Portao" parent="." instance=ExtResource("13_1dncf")]
-position = Vector2(0, -3180)
-collision_layer = 0
-collision_mask = 2
-
 [node name="Trigger" parent="." instance=ExtResource("13_1dncf")]
 position = Vector2(0, -1590)
 collision_layer = 0

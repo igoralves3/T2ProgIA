@@ -102,6 +102,7 @@ func trocar_para_bazuca():
 
 func _on_trigger_body_entered(body):
 	if body == %MainPlayerChar:
+		#start_fortress()
 		podeSpawnar = false
 
 func get_random_spawn():
@@ -129,6 +130,7 @@ func mexer_no_mob(mob):
 	return mob
 
 func start_fortress():
+	print ("start fortress")
 	$MobTimer.stop()
 	$Fortress_timer.start()
 	inimigo_atual = "infantaria"

@@ -6,10 +6,23 @@ extends Node
 var listaDeMarkers: Array
 var canSpawn:= false
 var spawn_timer: Timer
-var spawn_delay := 1 # You may want to adjust this value or export it
+var spawn_delay := 0.5 # You may want to adjust this value or export it
+var array_inimigos: Array
+var can_end: bool = false
 
 func _ready():
 	listaDeMarkers = get_tree().get_nodes_in_group("SpawnMarkers")
+	
+
+func can_end_end():
+	can_end = true
+
+func _process(delta: float) -> void:
+	for inimigo in array_inimigos:
+		if inimigo == null or not is_instance_valid(inimigo):
+			array_inimigos.erase(inimigo)
+	if array_inimigos.size() == 0 and can_end:
+		get_parent().next_level()
 
 func pickRandomMarker() -> Node:
 	if listaDeMarkers.size() == 0:
@@ -43,6 +56,7 @@ func _spawn_single_enemy(type: String):
 	enemy.add_to_group("finalStageEnemies")
 	enemy.global_position = marker.global_position
 	get_tree().current_scene.add_child(enemy)
+	array_inimigos.append(enemy)
 
 func _on_spawn_timer_timeout():
 	if enemyCount <= 0:
@@ -60,6 +74,8 @@ func _on_spawn_timer_timeout():
 		spawn_timer.stop()
 
 func _on_trigger_body_entered(body):
+	get_tree().create_timer(5).timeout.connect(can_end_end)
+	$"../Trigger".queue_free()
 	if not(body == %MainPlayerChar):
 		return
 	spawn_timer = Timer.new()
