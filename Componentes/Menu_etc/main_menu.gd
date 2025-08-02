@@ -10,8 +10,8 @@ var volumeSFX: float
 @export var Somvfx: AudioStream
 #@onready var MasterContr = SoundController
 
-#func _ready() -> void:
-	
+func _ready() -> void:
+	SoundController.play_bgm(Somvfx, "Somvfx")
 
 func _on_master_sound_slider_value_changed(value: float) -> void:
 	var vol = value / 100
