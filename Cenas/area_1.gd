@@ -22,7 +22,7 @@ func _ready() -> void:
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
 	enemy_spawner = get_tree().get_first_node_in_group("Enemy_spawner")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	finalMobsCount = get_tree().get_nodes_in_group("FinalMobs").size()
 	if player.position.y - camera.offset.y < camera_distancia_y_minima and camera.offset.y >= camera_altura_maxima_y:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
@@ -41,13 +41,12 @@ func _on_main_player_char_dead_player():
 	get_tree().root.get_node("Game").change_scene("res://Cenas/Preload/preload.tscn")
 #	get_tree().reload_current_scene()
 
-func _on_trigger_mobs_portao_area_entered(area):
+func _on_trigger_mobs_portao_area_entered(_area):
 	SoundController.play_bgm(musica_fortress, "musica_fortress")
 	$Trigger_Mobs_Portao.queue_free()
 	enemy_spawner.start_fortress()
 
 #func _on_door_spawner_stopped_spawning():
-#	print("final stage")
 #	var timer = Timer.new()
 #	timer.one_shot = true
 #	timer.wait_time = 3

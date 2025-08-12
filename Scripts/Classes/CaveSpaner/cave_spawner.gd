@@ -31,12 +31,12 @@ func pickRandomMarker() -> Node:
 	return listaDeMarkers[random_index]
 
 func spawn_enemies():
-	print_stack()
+#	print_stack()
 	if enemyCount <= 0:
 		spawn_timer.stop()
-		print_debug("No enemies to spawn.")
+#		print_debug("No enemies to spawn.")
 		return
-	print_debug("Spawning enemies, count: ", enemyCount)
+#	print_debug("Spawning enemies, count: ", enemyCount)
 
 func _spawn_single_enemy(type: String):
 

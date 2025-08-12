@@ -57,7 +57,7 @@ func _on_mob_timer_timeout():
 				owner.remove_child(mob)
 				_on_mob_timer_timeout()
 
-func _on_mob_dead_enemy(enemy, pontos):
+func _on_mob_dead_enemy(enemy, _pontos):
 	if enemy in ListaInimigos:
 #		GameManager.addPoints(pontos)
 		ListaInimigos.erase(enemy)
@@ -82,9 +82,8 @@ func connect_dead_enemy(enemy):
 	enemy.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
 	ListaInimigos.append(enemy)
 
-func _on_trigger_area_entered(area: Area2D) -> void:
+func _on_trigger_area_entered(_area: Area2D) -> void:
 	podeSpawnar = false
-#	print("pode spawnar?", podeSpawnar)
 
 func get_HUD():
 	var HUD1 = get_tree().get_nodes_in_group("HUD")
@@ -113,7 +112,6 @@ func get_random_spawn():
 		usando_outro_spawner = false
 		return
 	var quantidade_de_spawners = 1 + array_spawners.size()
-	print (quantidade_de_spawners)
 	if randi_range(1,quantidade_de_spawners) == 1:
 		var mob_spawn_location = $MobPath/MobSpawnLocation
 		mob_spawn_location.progress_ratio = randf()
@@ -126,7 +124,7 @@ func mexer_no_mob(mob):
 	mob.FSM.current_state = mob.FSM.get_node("Straight")
 	mob.FSM.current_state.move_direction = spawner_localizacao.move_direction
 	mob.FSM.current_state.enter()
-	print (mob.FSM.current_state, " state ", mob.FSM.current_state.move_direction, " current direction" )
+#	print (mob.FSM.current_state, " state ", mob.FSM.current_state.move_direction, " current direction" )
 	return mob
 
 func start_fortress():
@@ -148,7 +146,7 @@ func _on_fortress_timer_timeout() -> void:
 			mob = infantaria.instantiate()
 			mob = mexer_no_mob_baixo(mob)
 			mob.global_position = spawner_localizacao.global_position + Vector2(randf_range(-10,10),-120)
-			print (mob.global_position)
+#			print (mob.global_position)
 			mob.connect("dead_enemy", Callable(self, "_on_mob_dead_enemy"))
 			ListaInimigos.append(mob)
 			owner.add_child(mob)
@@ -161,7 +159,7 @@ func _on_fortress_timer_timeout() -> void:
 		get_parent().next_level()
 
 func mexer_no_mob_baixo(mob):
-	print ("final mob spawn")
+#	print ("final mob spawn")
 	mob.FSM.initial_state = mob.FSM.get_node("Straight")
 	mob.FSM.current_state = mob.FSM.get_node("Straight")
 	mob.FSM.current_state.move_direction = randf_range(-0.3,0.3)
@@ -169,3 +167,8 @@ func mexer_no_mob_baixo(mob):
 	mob.FSM.current_state.wander_time = randf_range(2,3)
 	mob.FSM.current_state.enter()
 	return mob
+
+
+func _on_trigger_limitador_enemy_spawn_body_entered(_body: Player) -> void: #Trigger da Area_1, limita inimigos + spawna granadeiros
+	limite_de_inimigos = 2
+	inimigo_atual = "granadeiro"

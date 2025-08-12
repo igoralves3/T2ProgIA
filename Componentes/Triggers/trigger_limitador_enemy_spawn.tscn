@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dehistxucnky6"]
+
+[ext_resource type="Script" uid="uid://cfm4p00aywwfv" path="res://Componentes/Triggers/trigger_limitador_enemy_spawn.gd" id="1_fsqvq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k6ck"]
+size = Vector2(240, 16)
+
+[node name="TriggerLimitadorEnemySpawn" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_fsqvq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(110, -2)
+shape = SubResource("RectangleShape2D_8k6ck")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

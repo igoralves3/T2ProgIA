@@ -1,9 +1,9 @@
 extends Node2D
 class_name Toca
 
-@export var infantaria: PackedScene
-@export var other_player: PackedScene
-var can_spawn = false
+#@export var infantaria: PackedScene
+#@export var other_player: PackedScene
+#var can_spawn = false
 var enemy_spawner
 @export var move_direction: float = -1
 
@@ -22,4 +22,4 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	enemy_spawner.array_spawners.append(self)
+	enemy_spawner.array_spawners.erase(self)

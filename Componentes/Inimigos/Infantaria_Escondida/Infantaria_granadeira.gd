@@ -34,9 +34,8 @@ var dying: bool = false
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready():
-	_animated_sprite.play('down')
+	_animated_sprite.play("baixo")
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	enemy_controller = get_tree().get_first_node_in_group("EnemyController")
 	if camperando:
@@ -97,7 +96,6 @@ func _physics_process(delta: float) -> void:
 
 func look_at_player() -> Vector2:
 	if other_player:
-		var player_position = other_player.global_position
 		var direction = other_player.global_position - global_position
 		return direction
 	return Vector2.DOWN
@@ -186,10 +184,10 @@ func bullet_hit():
 		remover_granadas_filhas_do_controller()
 
 func remover_granadas_filhas_do_controller():
-	for granada in Array_granadas_jogadas:
-		if granada != null:
-			if granada.has_method("remover_granada_controller"):
-				granada.remover_granada_controller()
+	for granada_instanced in Array_granadas_jogadas:
+		if granada_instanced != null:
+			if granada_instanced.has_method("remover_granada_controller"):
+				granada_instanced.remover_granada_controller()
 
 func grenade_hit():
 	if not dying:

@@ -9,7 +9,7 @@ extends CharacterBody2D
 signal queueFreeYourself
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if preso:
 		_animated_sprite.play("preso")
 	else:

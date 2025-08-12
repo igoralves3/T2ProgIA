@@ -25,7 +25,7 @@ func _ready():
 		SoundController.play_bgm(musica_inicial, "musica_inicial")
 	next_scene = GameManager.currentScene
 	var position1 = GameManager.getSpawnPostion()
-	print (position1)
+	print (position1, " preload position1")
 	texture.global_position.y = texture.global_position.y - position1.y +170
 	show_player_label=true
 	if next_scene == "res://Cenas/Area_1.tscn":
@@ -36,7 +36,7 @@ func _ready():
 		texture.texture = textura_area3
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if show_player_label:
 		player_label.visible = true
 	else:

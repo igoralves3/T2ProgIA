@@ -5,7 +5,7 @@ var mainmenu
 func _ready() -> void:
 	Anim.play("CreditsRoll")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Anim.is_playing():
 		queue_free()
 		unhide_ui()

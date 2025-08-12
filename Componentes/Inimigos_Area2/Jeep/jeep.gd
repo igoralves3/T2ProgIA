@@ -73,7 +73,6 @@ func fire_bullet():
 	get_parent().add_child(bullet_instance)
 
 func bullet_hit():
-	print("bullet hit jeep")
 	GameManager.addPoints(pontos)
 	lifes-=1
 	if lifes <= 0:

@@ -34,7 +34,6 @@ func enter() -> void:
 	timer_para_mudar_de_estado.start(wait_time_mudar_de_estado)
 	tentantivas_de_cruzar_o_player = randi_range(1,2)
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	infantaria_node = get_parent().get_parent()
 	randomize_next_move()
@@ -44,7 +43,7 @@ func exit() -> void:
 	
 	pass
 	
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	if !other_player:
 		return
 	else:
@@ -58,7 +57,7 @@ func update(delta: float) -> void:
 				else:
 					transitioned.emit(self,"Hover")
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	var movendo_para: Vector2
 	var distancia_restante
 	if character:

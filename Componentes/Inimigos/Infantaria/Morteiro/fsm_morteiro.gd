@@ -29,7 +29,6 @@ func enter() -> void:
 	morteiro_area2d = morteiro_anim.get_parent()
 
 func get_other_player():
-	var currentScene = get_tree().get_current_scene().get_name()
 	other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 
 func exit() -> void:
@@ -37,10 +36,10 @@ func exit() -> void:
 	pode_atirar_granada = false
 	pass
 	
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	pass
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if other_player:
 		if infantaria_self.global_position.y >= other_player.global_position.y - distancia_player_e_fugir:
 			transitioned.emit(self,"Flee")
@@ -48,7 +47,6 @@ func physics_update(delta: float) -> void:
 func fire_grenade():
 	atirar_morteiro()
 func atirar_morteiro():
-#	print ("atirar morteiro")
 	if not other_player:
 		get_other_player()
 	var distancia =  other_player.global_position - infantaria_self.global_position

@@ -28,7 +28,7 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	var vol = value / 100
 	SoundController.set_sfx_volume(vol)
 	volumeSFX = vol
-func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
+func _on_sfx_slider_drag_ended(_value_changed: bool) -> void:
 	SoundController.play_button(Somvfx)
 
 func _on_exit_button_pressed() -> void:
@@ -91,9 +91,9 @@ func _on__players_pressed():
 	#MasterContr.play_button("res://UI/components/Sounds/Laugh_spooky_4.ogg")
 
 
-func _on_master_sound_slider_drag_ended(value_changed: bool) -> void:
+func _on_master_sound_slider_drag_ended(_value_changed: bool) -> void:
 	SoundController.play_button(Somvfx)
 
 
-func _on_bgm_slider_drag_ended(value_changed: bool) -> void:
+func _on_bgm_slider_drag_ended(_value_changed: bool) -> void:
 	SoundController.play_bgm(Somvfx, "Somvfx")

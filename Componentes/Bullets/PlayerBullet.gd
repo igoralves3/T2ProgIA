@@ -15,35 +15,26 @@ func _ready():
 	%Timer.start()
 	animation.frame = 0
 	animation.stop()
-#	print('bullet')
 
 func _physics_process(delta: float) -> void:
 	if is_moving:
 		position += motion * SPEED * delta
-	
-	
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	die.emit()
-	
 	queue_free()
-
 
 func _on_timer_timeout() -> void:
 	die.emit()
 	is_moving = false
 	animation.play("bullet")
 	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)
-#	await get_tree().process_frame
-
-
 
 func _on_body_entered(body: Node2D) -> void:
 	set_collision_mask_value(3, false) #tirar colisao inimigo
 	die.emit()
 	is_moving = false
 	animation.play("bullet")
-#	print (body, "player bullet hit")
 	set_collision_mask_value(3, false) #tirar colisao inimigo
 	die.emit()
 	is_moving = false
@@ -52,16 +43,11 @@ func _on_body_entered(body: Node2D) -> void:
 		body.bullet_hit()
 	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)
 
-
 func _on_area_entered(area: Area2D) -> void:
 	set_collision_mask_value(3, false) #tirar colisao inimigo
 	die.emit()
 	is_moving = false
 	animation.play("bullet")
-	#print (area, "player bullet hit")
 	if area.get_parent().has_method("bullet_hit"):
-		
-	#	SFXEnemyDeath.play()
-	#	print ("death normal area2d")
 		area.get_parent().bullet_hit()
 	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)

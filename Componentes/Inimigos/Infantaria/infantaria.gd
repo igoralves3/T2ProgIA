@@ -32,9 +32,6 @@ func _ready():
 	add_child(timer_olhar_para_jogador)
 
 func _physics_process(delta: float) -> void:
-#	if wander != null:
-#		if wander.timer_para_mudar_de_estado != null:
-#			print(wander.timer_para_mudar_de_estado.time_left, "timeleft")
 	move_and_slide()
 	if olhando_para_jogador:
 		update_animation(look_at_player())
@@ -42,7 +39,6 @@ func _physics_process(delta: float) -> void:
 		update_animation(motion_direction)
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
-		# get_collider() nos dá o nó com que colidimos.
 		if collision and collision.get_collider().is_in_group("GrupoPlayer"):
 			var superJoe = collision.get_collider()
 			if superJoe.has_method("death_normal"):
@@ -63,19 +59,13 @@ func _physics_process(delta: float) -> void:
 				dead_enemy.emit(self, 0)
 				queue_free()
 
-
-
 func look_at_player() -> Vector2:
 	if other_player:
-		var player_position = other_player.global_position
 		var direction = other_player.global_position - global_position
 		return direction
 	return Vector2.DOWN
 
-
-
 func update_animation(input_direction: Vector2):
-	
 	if input_direction.x > 0 and (input_direction.y > -10 and input_direction.y < 10):
 		_animated_sprite.play("right")		
 	elif input_direction.x < 0 and (input_direction.y > -10 and input_direction.y < 10):
@@ -94,19 +84,15 @@ func update_animation(input_direction: Vector2):
 		_animated_sprite.play("top_right")
 	else:
 		_animated_sprite.stop()
-	#	_animated_sprite.frame = 0 #o jogo não usa a princípio
-
 
 func fire_bullet():
 	olhando_para_jogador = true
 	timer_olhar_para_jogador.start()
 	if other_player:
 		var bullet_instance = bullet_inimigo.instantiate()
-		#bullet_instance.global_transform = global_transform
 		bullet_instance.position = position
-		bullet_instance.motion = (other_player.global_position - global_position).normalized()#(ray_cast.target_position).normalized()
+		bullet_instance.motion = (other_player.global_position - global_position).normalized()
 		get_parent().add_child(bullet_instance)
-		#print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
 
 func _on_timer_timeout() -> void:
 	fire_bullet()
@@ -120,10 +106,8 @@ func bullet_hit():
 		_animated_sprite.play("death")
 		_animated_sprite.animation_finished.connect(queue_free)
 		GameManager.addPoints(pontos)
-		print (self, " inimigo")
 		SoundController.play_button(som_morte)
 		dead_enemy.emit(self, pontos)
-#	queue_free()
 
 func grenade_hit():
 	set_physics_process(false)

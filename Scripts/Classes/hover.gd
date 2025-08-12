@@ -35,7 +35,6 @@ func _ready() -> void:
 	add_child(timer_next_move)
 	timer_next_move.start()
 
-
 func enter() -> void:
 	tempo_next_move = randf_range(1,1.5)
 	timer_next_move.wait_time = tempo_next_move
@@ -44,7 +43,6 @@ func enter() -> void:
 	timer_next_move.start(tempo_next_move)
 	timer_entre_estados.start(tempo_timer_entre_estados)
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_nodes_in_group("GrupoPlayer")[0]
 		randomize_next_move()
 		timer_next_move.start()
@@ -54,7 +52,7 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	var distancia_restante
 	if !other_player:
 		return
@@ -71,30 +69,20 @@ func update(delta: float) -> void:
 				if distancia_restante < 40:
 					transitioned.emit(self,"Seek")
 
-
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	var movendo_para: Vector2
-	#print (_random_inside_unit_circle())
 	var distancia_restante
 	if character: # adicionar chance de seek se muito perto do player + wander se muito longe
 		distancia_restante = character.global_position.distance_to(destination)
 		if distancia_restante > 3:
 			movendo_para = character.global_position.direction_to(destination)
 			character.velocity = movendo_para * move_speed #move_normalized * move_speed 
-			#print (destination, "phys destination")
 		else:
 			character.velocity = Vector2(0,0)
 			tentativas_temp = next_move_tentativas_sem_sair_da_tela
 			randomize_next_move()
 	infantaria_node.motion_direction = movendo_para.normalized()
-#	if other_player:
-		#print (other_player.global_position)
-#		randomize_next_move()
-	#if other_player:
-	#	var direction = other_player.global_position - character.global_position
-		#if direction.length() > 150:
-		#	transitioned.emit(self,"Wander")
-		
+
 func _random_inside_unit_circle() -> Vector2:
 	var theta : float = randf() * 2 * PI
 	return Vector2(cos(theta), sin(theta)) * sqrt(randf())
@@ -110,11 +98,8 @@ func randomize_next_move():
 			destination = caminho_ao_player + Vector2(circulo.x * tamanho_do_circulo * 1.3, circulo.y * tamanho_do_circulo - offset_y_para_circulo)
 			move_normalized = destination.normalized()
 		elif verificar_se_next_move_sai_da_tela(destino):
-#			print("primeiro if destino", destino)
-#			print (other_player.posicao_camera)
 			tentativas_temp = tentativas_temp - 1
 			randomize_next_move()
-
 
 func verificar_se_next_move_sai_da_tela(destino):
 	var sai_da_tela = false
@@ -127,7 +112,6 @@ func verificar_se_next_move_sai_da_tela(destino):
 
 func timer_entre_estados_end():
 	pode_mudar_de_estado = true
-	#print ("TIMER")
 
 func timer_next_move_end():
 	tentativas_temp = next_move_tentativas_sem_sair_da_tela

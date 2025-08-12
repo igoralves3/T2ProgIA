@@ -52,10 +52,8 @@ func dead_queue():
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
-
 	queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	dead_enemy.emit(self, 0)
-	print("fora")
 	queue_free()

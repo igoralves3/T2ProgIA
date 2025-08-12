@@ -12,7 +12,7 @@ var currentScene = ""
 var retry = false #morreu e tá dando retry
 
 signal score_updated(new_score)
-signal grenades_updated(new_grenade_count)
+#signal grenades_updated(new_grenade_count)
 signal lives_updated(new_life_count)
 signal medals_updated(new_medal_count)
 
@@ -51,7 +51,6 @@ func addPoints(points: int):
 		lifes+=1
 		lives_updated.emit(lifes)
 		extra_life_score = extra_life_score + 10000
-	print("score: ", score)
 
 func addMedals():
 	medals += 1

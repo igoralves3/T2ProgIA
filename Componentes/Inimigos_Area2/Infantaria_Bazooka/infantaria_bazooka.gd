@@ -22,7 +22,6 @@ var dying: bool = false
 func _ready():
 	_animated_sprite.play("caminhando")
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	if global_position.x > get_viewport_rect().size.x / 2:
 		direcao = -1
@@ -67,8 +66,8 @@ func update_movimento():
 func _on_timer_timeout() -> void:
 	if can_shoot:
 		if not atirando and not dying:
-			var randi = randi_range(1,4)
-			if randi < 4:
+			var randint = randi_range(1,4)
+			if randint < 4:
 				mirar_bazuca()
 				atirando=true
 				can_shoot = false

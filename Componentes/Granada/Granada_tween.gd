@@ -50,8 +50,6 @@ func remover_granada_controller():
 func maisumagranada():
 	ponto_partida = posicao_inicial
 	ponto_chegada = alvo
-	var distancia = (ponto_partida - alvo).length()
-	var distancia_meio_normalize = distancia/150
 	var tween = create_tween()
 	tween.parallel().tween_method(update_posicao, 0.0, 1.0, duracao_trajeto)
 

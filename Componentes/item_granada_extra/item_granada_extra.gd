@@ -3,11 +3,9 @@ extends Area2D
 class_name GranadaExtra
 
 @export var grenadeBonus = 1
-
 @export var grenade1_spr : Texture
 @export var grenade3_spr : Texture
 @export var grenade5_spr : Texture
-
 @onready var sprite = $Sprite2D
 
 func _ready() -> void:
@@ -23,12 +21,8 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-#		print('coletou granada')
 		body.grenadeAmmo =body.grenadeAmmo + grenadeBonus
 		GameManager.granadas = GameManager.granadas + grenadeBonus
-#		print('granadas: '+str(body.grenadeAmmo))
 		var HUD = get_tree().get_nodes_in_group("HUD")[0]
 		HUD.single_update()
 		queue_free()
-#	else:
-#		print('nao coletou')

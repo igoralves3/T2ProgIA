@@ -40,9 +40,8 @@ func _ready() -> void:
 	dir = Vector2(0,-1) # comeca olhando pra cima
 	grenadeAmmo = GameManager.granadas
 	get_HUD()
-	#HUD.single_update()
 
-func _process(delta):
+func _process(_delta):
 	centro_tela = tamanho_tela/2
 	if camera != null:
 		posicao_camera = camera.offset
@@ -50,19 +49,16 @@ func _process(delta):
 		var max_x = posicao_camera.x + tamanho_tela.x -11
 		var min_y = posicao_camera.y - 500
 		var max_y = posicao_camera.y + tamanho_tela.y - 18
-		
 		position.x = clamp(position.x, min_x, max_x)
 		position.y = clamp(position.y, min_y, max_y)
 
-	#print (self.motion)
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	get_8_way_input()
 	move_and_slide()
 	if velocity != Vector2.ZERO:
 		dir = velocity.normalized()
-	bullets = bullets.filter(func(bullet):
-		return is_instance_valid(bullet) and bullet.get_parent() != null)
+	bullets = bullets.filter(func(bullet_instance):
+		return is_instance_valid(bullet_instance) and bullet_instance.get_parent() != null)
 	if cooldown_da_arma:
 		can_shoot = false
 
@@ -73,16 +69,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"): #atira se não tiver 5 ou mais balas voando
 		is_shooting = true
 		burst_bullet()
-	
 	if event.is_action_released("Shoot"):
 		is_shooting = false
-	
 	if event.is_action_pressed("Grenade"):
 		spawn_grenade()
 
 func update_animation(input_direction: Vector2) -> void:
-	
-	
 	if input_direction.x > 0 and input_direction.y == 0:
 		_animated_sprite.play("run_right")
 		last_input_direction = "run_right"
@@ -113,7 +105,6 @@ func update_animation(input_direction: Vector2) -> void:
 		timer1.timeout.connect(stop_animated_sprite)
 	else:
 		_animated_sprite.stop()
-	#	_animated_sprite.frame = 0 #o jogo não usa a princípio
 
 func stop_animated_sprite():
 	if not dying:
@@ -126,13 +117,8 @@ func get_8_way_input() -> void:
 		update_animation(input_direction)	
 		velocity = input_direction * SPEED
 
-
 func burst_bullet():
 	var quantidade_de_tiros = 1
-#	if quantidade_de_bullets_voando <= 3:
-#		quantidade_de_tiros = 2
-#	if quantidade_de_bullets_voando > 3:
-#		quantidade_de_tiros = 6 - quantidade_de_bullets_voando
 	if can_shoot:
 		if can_throw_grenade == false:
 			_animated_sprite.play(last_input_direction)
@@ -152,7 +138,6 @@ func burst_bullet():
 				timer2.timeout.connect(enable_bullet_shooting)
 
 func shoot_bullet():
-#	print('dir: '+str(dir))
 	var direcao_anim
 	SoundController.play_button(SFXShootBullet)
 	var bullet_instance = bullet.instantiate()
@@ -211,7 +196,6 @@ func remove_bullet():
 func spawn_grenade():
 	if can_throw_grenade and grenadeAmmo > 0:
 		if Input.is_action_pressed("Grenade"):
-#			print('dir: '+str(dir))
 			can_throw_grenade = false
 			grenadeAmmo-=1
 			GameManager.granadas = grenadeAmmo
@@ -248,7 +232,6 @@ func death_water(posicao_colisor):
 			tween.tween_property(self, "position", nova_posicao, 0.1)
 			_animated_sprite.play("death_water")
 			_animated_sprite.animation_finished.connect(emit_death)
-#	emit_death()
 
 func death_pitfall(posicao_colisor):
 	if not god_mode:
@@ -265,10 +248,8 @@ func death_pitfall(posicao_colisor):
 			tween.tween_property(self, "position", nova_posicao, 0.1)
 			_animated_sprite.play("death_pitfall")
 			_animated_sprite.animation_finished.connect(emit_death)
-#	emit_death()
 
 func death_normal():
-#	print ("death normals playerscript")
 	if not god_mode:
 		if not is_reloading_scene:
 			SoundController.play_bgm(SFXPlayerDeath, "SFXPlayerDeath")
@@ -278,7 +259,6 @@ func death_normal():
 			velocity = Vector2(0,0)
 			_animated_sprite.play("death_normal")
 			_animated_sprite.animation_finished.connect(emit_death)
-#	emit_death()
 
 func disable_collisions():
 	dying = true

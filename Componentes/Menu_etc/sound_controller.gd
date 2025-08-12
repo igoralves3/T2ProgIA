@@ -38,7 +38,5 @@ func set_sfx_volume(vol):
 		AudioServer.set_bus_volume_linear(index,vol)
 
 func _on_audio_bgm_finished() -> void:
-	print(musica_atual)
 	if musica_atual == "musica_inicial" or musica_atual == "musica_retry" or musica_atual == "loop":
-		print ("playyy")
 		play_bgm(loopMusica, "loop")

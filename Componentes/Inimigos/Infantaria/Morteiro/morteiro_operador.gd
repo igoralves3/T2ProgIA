@@ -1,26 +1,22 @@
 extends CharacterBody2D
 
 @export var type: String
-@onready var pontos: int = 400
+@export var som_morte = AudioStream
 @export var other_player: CharacterBody2D
 @export var bullet_inimigo: PackedScene
+@export var camperando: bool = true
+@export var morteiro_bullet: PackedScene
+@export var morteiro : Area2D
+@onready var pontos: int = 400
+@onready var _animated_sprite = $AnimatedSprite2D
 var can_shoot: bool = false
 var timer_olhar_para_jogador: Timer
 var olhando_para_jogador: bool = false
-@export var som_morte = AudioStream
 var motion_direction:= Vector2(1,0)
-@onready var _animated_sprite = $AnimatedSprite2D
 var tempo_fora_tela: float = 2
-@export var camperando: bool = true
-
 var ativo = false
 var fugindo = false
-
-@export var morteiro_bullet: PackedScene
-@export var morteiro : Area2D
-
 var pode_atirar_morteiro = false
-
 var recharge_frames = 0
 
 signal dead_enemy(myself: CharacterBody2D, points: int)
@@ -28,12 +24,10 @@ signal dead_enemy(myself: CharacterBody2D, points: int)
 func _ready():
 	_animated_sprite.play('atirando')
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 		
 	if not morteiro:
-		var currentScene = get_tree().get_current_scene().get_name()
-		morteiro = get_parent().get_parent().get_node('Morteiro')#get_node('/root/'+currentScene+'/Agentes_morteiro/Morteiro')
+		morteiro = get_parent().get_node('Morteiro')
 		
 	timer_olhar_para_jogador = Timer.new()
 	timer_olhar_para_jogador.wait_time = randf_range(1,2)
@@ -41,8 +35,7 @@ func _ready():
 	timer_olhar_para_jogador.timeout.connect(timer_olhar_para_jogador_end)
 	add_child(timer_olhar_para_jogador)
 
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if ativo:
 		move_and_slide()
 		if olhando_para_jogador:
@@ -52,7 +45,6 @@ func _physics_process(delta: float) -> void:
 				update_animation(motion_direction)
 		for i in range(get_slide_collision_count()):
 			var collision = get_slide_collision(i)
-			# get_collider() nos dá o nó com que colidimos.
 			if collision and collision.get_collider().is_in_group("GrupoPlayer"):
 			
 				var superJoe = collision.get_collider()
@@ -63,7 +55,6 @@ func _physics_process(delta: float) -> void:
 
 func look_at_player() -> Vector2:
 	if other_player:
-		var player_position = other_player.global_position
 		var direction = other_player.global_position - global_position
 		return direction
 	return Vector2.DOWN
@@ -87,8 +78,6 @@ func update_animation(input_direction: Vector2):
 		_animated_sprite.play("top_right")
 	else:
 		_animated_sprite.stop()
-	#	_animated_sprite.frame = 0 #o jogo não usa a princípio
-
 
 func fire_bullet():
 	if can_shoot:
@@ -96,17 +85,14 @@ func fire_bullet():
 		timer_olhar_para_jogador.start()
 		if other_player:
 			var bullet_instance = bullet_inimigo.instantiate()
-			#bullet_instance.global_transform = global_transform
 			bullet_instance.position = position
-			bullet_instance.motion = (other_player.global_position - global_position).normalized()#(ray_cast.target_position).normalized()
+			bullet_instance.motion = (other_player.global_position - global_position).normalized()
 			get_parent().add_child(bullet_instance)
-			#print(str(bullet_instance.position) + " " + str(position), "fire bullet infantaria")
 
 func _on_timer_timeout() -> void:
 	fire_bullet()
 
 func bullet_hit():
-	print('morteiro morto')
 	set_collision_layer_value(3, false)
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)

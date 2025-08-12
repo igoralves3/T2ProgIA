@@ -16,54 +16,36 @@ func _ready():
 	%TimerEnemy.start()
 	animation.frame = 0
 	animation.stop()
-	#print('enemy bullet')
 
 func _physics_process(delta: float) -> void:
 	if is_moving:
 		position += motion * SPEED * delta
-	
-	
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	
-	#print('bala inimiga saiu')
 	queue_free()
-
 
 func _on_timer_timeout() -> void:
 	set_collision_mask_value(2, false)
-	#print('bala inimiga acabou')
 	is_moving = false
 	animation.play("bullet")
-	#await get_tree().create_timer(tempo_animacao).timeout
-#	await get_tree().process_frame
 	animation.animation_finished.connect(queue_free)
-	
-
 
 func _on_body_entered(body: Node2D) -> void:
-#	print ("enemybullet entered")
 	set_collision_mask_value(2, false) #tirar colisao inimigo
 	die.emit()
 	is_moving = false
 	animation.play("bullet")
-#	print (body, "player bullet hit")
 	if body.has_method("death_normal"):
 		body.death_normal()
 	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)
-	
 
 func _on_area_entered(area: Area2D) -> void:
-	
 	if area is Humvee:# or area is Turret:
 		return
-	
-	#print ("enemybullet entered AREA2D")
 	set_collision_mask_value(2, false) #tirar colisao inimigo
 	die.emit()
 	is_moving = false
 	animation.play("bullet")
-	#print (area, "player bullet hit")
 	if area.get_parent().has_method("death_normal"):
 		area.get_parent().death_normal()
 	get_tree().create_timer(tempo_animacao).timeout.connect(queue_free)

@@ -20,8 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://dx7d6d33wlnsw" path="res://Componentes/Inimigos/Infantaria_Escondida/Infantaria_granadeira.tscn" id="18_lah7y"]
 [ext_resource type="PackedScene" uid="uid://btm45nn61a8k2" path="res://Componentes/Inimigos/Inimigos_Carregando_Prisioneiro/Inimigos_E_Prisioneiro.tscn" id="19_su8h8"]
 [ext_resource type="PackedScene" uid="uid://cf12y07bm78m5" path="res://Componentes/Triggers/Trigger.tscn" id="20_gxw08"]
-[ext_resource type="PackedScene" uid="uid://imu3blxtr0mq" path="res://Componentes/DoorSpawner/DoorSpawner.tscn" id="21_de5qm"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="21_gdtqj"]
+[ext_resource type="PackedScene" uid="uid://dehistxucnky6" path="res://Componentes/Triggers/trigger_limitador_enemy_spawn.tscn" id="24_7onqb"]
 [ext_resource type="PackedScene" uid="uid://cg070bqy7rfj" path="res://Componentes/Spawner/hq_spawner.tscn" id="24_8k6ck"]
 [ext_resource type="PackedScene" uid="uid://b7gvfacur3e6q" path="res://Componentes/Triggers/troca_infantaria.tscn" id="24_twte5"]
 
@@ -202,11 +202,6 @@ position = Vector2(0, -1450)
 collision_layer = 0
 collision_mask = 2
 
-[node name="DoorSpawner" parent="." instance=ExtResource("21_de5qm")]
-position = Vector2(113, -1803)
-collision_layer = 0
-collision_mask = 0
-
 [node name="GrupoInfantariaEscondida" type="Node" parent="."]
 
 [node name="Infantaria_granadeira7" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
@@ -253,7 +248,6 @@ ta_no_turret = true
 
 [node name="Infantaria_granadeira12" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
 position = Vector2(146, -1348)
-camperando = true
 ta_no_turret = true
 
 [node name="Infantaria_granadeira13" parent="GrupoInfantariaEscondida" instance=ExtResource("18_lah7y")]
@@ -329,12 +323,14 @@ position = Vector2(112, 170)
 position = Vector2(103, -862)
 inimigo = "Granadeiro"
 
+[node name="TriggerLimitadorEnemySpawn" parent="." instance=ExtResource("24_7onqb")]
+position = Vector2(1, -1445)
+
 [node name="HQSpawner" parent="." instance=ExtResource("24_8k6ck")]
 position = Vector2(112, -1700)
 
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]
-[connection signal="stoppedSpawning" from="DoorSpawner" to="." method="_on_door_spawner_stopped_spawning"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="." method="_on_trigger_mobs_portao_area_entered"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="MobSpawner" method="_on_trigger_area_entered"]
-[connection signal="area_entered" from="Trigger_Mobs_Portao" to="DoorSpawner" method="_on_trigger_mobs_portao_area_entered"]
 [connection signal="area_entered" from="Trigger_Mobs_Portao" to="Portao2" method="_on_trigger_mobs_portao_area_entered"]
+[connection signal="body_entered" from="TriggerLimitadorEnemySpawn" to="MobSpawner" method="_on_trigger_limitador_enemy_spawn_body_entered"]

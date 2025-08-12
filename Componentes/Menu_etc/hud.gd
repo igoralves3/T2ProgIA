@@ -29,13 +29,13 @@ func single_update():
 	update_geral()
 	
 
-func on_score_update(new_score):
+func on_score_update(_new_score):
 	update_geral()
 	
-func on_lives_update(new_lives):
+func on_lives_update(_new_lives):
 	update_geral()
 
-func on_medals_update(new_medals):
+func on_medals_update(_new_medals):
 	update_geral()
 
 

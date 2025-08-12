@@ -14,7 +14,6 @@ var move = false
 
 func _ready():
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	var spawn_player_location = GameManager.getSpawnPostion()
 	if spawn_player_location.y < global_position.y:

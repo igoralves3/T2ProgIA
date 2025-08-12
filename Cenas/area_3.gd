@@ -51,7 +51,6 @@ func _on_trigger_mobs_portao_area_entered(area):
 
 
 #func _on_door_spawner_stopped_spawning():
-#	print("final stage")
 #	var timer = Timer.new()
 #	timer.one_shot = true
 #	timer.wait_time = 3

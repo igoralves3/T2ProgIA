@@ -18,7 +18,6 @@ func _on_area_entered(area: Area2D) -> void:
 	queue_free()
 
 func _on_spawn_trigger_body_entered(body: Node2D) -> void:
-	print("la vem carro")
 	var mob = jeep.instantiate()
 	var mob_spawn_location = $JeepPath/JeepSpawnLocation
 	mob_spawn_location.progress_ratio = randf()

@@ -11,13 +11,11 @@ var dir := 1
 
 func _ready() -> void:
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	if global_position.x > get_viewport_rect().size.x / 2:
 		dir = -1
 		_animated_sprite.play("andando_p_esquerda")
 	else:
-		print("direita")
 		dir = 1
 		_animated_sprite.play("andando_p_direita")
 
