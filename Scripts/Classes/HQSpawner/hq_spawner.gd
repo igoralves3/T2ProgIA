@@ -2,6 +2,7 @@ extends Marker2D
 
 var enemy_spawner
 
+
 func _ready() -> void:
 	await get_tree().get_frame()
 	enemy_spawner = get_tree().get_first_node_in_group("Enemy_spawner")

@@ -15,12 +15,11 @@ var active: bool = false
 var offset_da_bala
 @export var som_morte: AudioStream
 var pontos: int = 200
-
+var bool_uma_vez: bool = false
 signal dead_enemy(myself: CharacterBody2D, points: int)
 
 func _ready() -> void:
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	if not submersa:
 		_animated_sprite.sprite_frames = infantaria_pitfall
@@ -40,18 +39,19 @@ func _ready() -> void:
 
 func look_at_player() -> Vector2:
 	if other_player:
-		var player_position = other_player.global_position
 		var direction = other_player.global_position - global_position
 		return direction
 	return Vector2.DOWN
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not escondendo:
 		update_animation(look_at_player().normalized())
 	if other_player.global_position.y < global_position.y:
 		escondendo = true
 		_animated_sprite.play("escondendo")
-		_animated_sprite.animation_finished.connect(queue_free)
+		if not bool_uma_vez:
+			_animated_sprite.animation_finished.connect(queue_free)
+			bool_uma_vez = true
 
 func update_animation(distancia_normalized):
 	if distancia_normalized.x > -0.2 and distancia_normalized.x < 0.2:

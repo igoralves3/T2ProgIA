@@ -15,6 +15,7 @@ var currentCheckpoint: Vector2
 var finalStage = false
 var finalMobsCount: int
 var enemy_spawner
+var qual_stage = "Area_2"
 
 func _ready() -> void:
 	GameManager.setStartPoint(spawnInicial.global_position)
@@ -22,7 +23,7 @@ func _ready() -> void:
 	%MainPlayerChar.global_position = GameManager.getSpawnPostion()
 	enemy_spawner = get_tree().get_first_node_in_group("Enemy_spawner")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	finalMobsCount = get_tree().get_nodes_in_group("finalStageEnemies").size()
 	if player.position.y - camera.offset.y < camera_distancia_y_minima and camera.offset.y >= camera_altura_maxima_y:
 		camera.offset.y = player.position.y -camera_distancia_y_minima
@@ -40,11 +41,7 @@ func _on_main_player_char_dead_player():
 	GameManager.reduceLifes()
 	get_tree().root.get_node("Game").change_scene("res://Cenas/Preload/preload.tscn")
 	#get_tree().reload_current_scene()
-#
-func _on_trigger_mobs_portao_area_entered(area: Area2D) -> void:
-	SoundController.play_bgm(musica_fortress, "musica_fortress")
-	$Trigger_Mobs_Portao.queue_free()
-	enemy_spawner.start_fortress()
+
 #func _on_trigger_body_entered(body):
 #	if body == %MainPlayerChar:
 #		var timer = Timer.new()
@@ -58,3 +55,10 @@ func _on_trigger_mobs_portao_area_entered(area: Area2D) -> void:
 
 func _on_final_stage_timer_timeout():
 	finalStage = true
+
+
+func _on_trigger_body_entered(_body: Node2D) -> void:
+	SoundController.play_bgm(musica_fortress, "musica_fortress")
+	$Trigger_Mobs_Portao.queue_free()
+	enemy_spawner.usando_outro_spawner = true
+	enemy_spawner.start_fortress()

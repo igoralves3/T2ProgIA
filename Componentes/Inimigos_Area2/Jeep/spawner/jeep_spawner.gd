@@ -6,7 +6,7 @@ var other_player: CharacterBody2D
 func _ready():
 	other_player = %MainPlayerChar
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	if not other_player:
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	var offset_spawn = -70
@@ -17,7 +17,7 @@ func _on_area_entered(area: Area2D) -> void:
 	get_parent().add_child(jeep_instance)
 	queue_free()
 
-func _on_spawn_trigger_body_entered(body: Node2D) -> void:
+func _on_spawn_trigger_body_entered(_body: Node2D) -> void:
 	var mob = jeep.instantiate()
 	var mob_spawn_location = $JeepPath/JeepSpawnLocation
 	mob_spawn_location.progress_ratio = randf()

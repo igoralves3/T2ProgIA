@@ -18,6 +18,7 @@ var pontos: int = 400
 @export var som_morte: AudioStream
 signal dead_enemy(myself: CharacterBody2D, points: int)
 var dying: bool = false
+@onready var timer_sumir = $Timer_sumir_offscreen
 
 func _ready():
 	_animated_sprite.play("caminhando")
@@ -117,15 +118,16 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 func bullet_hit():
-	dying = true
-	set_physics_process(false)
-	_animated_sprite.play("death")
-	_animated_sprite.animation_finished.connect(queue_free)
-	set_collision_layer_value(3, false)
-	GameManager.addPoints(pontos)
-	$Area2DColisaoMorte.set_collision_layer_value(3, false)
-	SoundController.play_button(som_morte)
-	dead_enemy.emit(self, pontos)
+	if not dying:
+		dying = true
+		set_physics_process(false)
+		_animated_sprite.play("death")
+		_animated_sprite.animation_finished.connect(queue_free)
+		set_collision_layer_value(3, false)
+		GameManager.addPoints(pontos)
+		$Area2DColisaoMorte.set_collision_layer_value(3, false)
+		SoundController.play_button(som_morte)
+		dead_enemy.emit(self, pontos)
 
 func grenade_hit():
 	dying = true
@@ -137,3 +139,12 @@ func grenade_hit():
 	$Area2DColisaoMorte.set_collision_layer_value(3, false)
 	SoundController.play_button(som_morte)
 	dead_enemy.emit(self, pontos)
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	timer_sumir.stop()
+
+
+func _on_timer_sumir_offscreen_timeout() -> void:
+	dead_enemy.emit(self, 0)
+	queue_free()

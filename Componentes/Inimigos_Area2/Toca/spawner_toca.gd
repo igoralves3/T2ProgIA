@@ -6,6 +6,7 @@ class_name Toca
 #var can_spawn = false
 var enemy_spawner
 @export var move_direction: float = -1
+@export var fortress: bool = false
 
 func _ready() -> void:
 	await get_tree().get_frame()
@@ -17,7 +18,8 @@ func _ready() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	enemy_spawner.array_spawners.append(self)
-	enemy_spawner.usando_outro_spawner = true
+	if not fortress:
+		enemy_spawner.usando_outro_spawner = true
 
 
 

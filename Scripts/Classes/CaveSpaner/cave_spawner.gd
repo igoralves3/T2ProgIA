@@ -3,6 +3,7 @@ extends Node
 @export var enemyCount = 15
 @export var general: PackedScene
 @export var infantaria: PackedScene
+
 var listaDeMarkers: Array
 var canSpawn:= false
 var spawn_timer: Timer
@@ -17,7 +18,7 @@ func _ready():
 func can_end_end():
 	can_end = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for inimigo in array_inimigos:
 		if inimigo == null or not is_instance_valid(inimigo):
 			array_inimigos.erase(inimigo)
@@ -73,15 +74,16 @@ func _on_spawn_timer_timeout():
 	if enemyCount <= 0:
 		spawn_timer.stop()
 
-func _on_trigger_body_entered(body):
-	get_tree().create_timer(5).timeout.connect(can_end_end)
-	$"../Trigger".queue_free()
-	if not(body == %MainPlayerChar):
-		return
-	spawn_timer = Timer.new()
-	spawn_timer.wait_time = spawn_delay
-	spawn_timer.one_shot = false # We want it to keep ticking until we stop it
-	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	add_child(spawn_timer)
-	spawn_timer.start()
-	spawn_enemies()
+func _on_trigger_body_entered(_body):
+	pass
+#	get_tree().create_timer(5).timeout.connect(can_end_end)
+#	$"../Trigger".queue_free()
+#	if not(body == %MainPlayerChar):
+#		return
+#	spawn_timer = Timer.new()
+#	spawn_timer.wait_time = spawn_delay
+#	spawn_timer.one_shot = false # We want it to keep ticking until we stop it
+#	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+#	add_child(spawn_timer)
+#	spawn_timer.start()
+#	spawn_enemies()

@@ -15,8 +15,7 @@ var currentCheckpoint: Vector2
 var finalStage = false
 var finalMobsCount: int
 var enemy_spawner
-
-# area 3 spawna nas casinhas assim que o player nasce e o max é 5 inimigos
+var qual_stage = "Area_3"
 
 func _ready() -> void:
 	GameManager.setStartPoint(spawnIncial.global_position)

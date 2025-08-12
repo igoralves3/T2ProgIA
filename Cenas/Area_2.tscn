@@ -1,14 +1,11 @@
-[gd_scene load_steps=30 format=4 uid="uid://djeqqclckn4vk"]
+[gd_scene load_steps=27 format=4 uid="uid://djeqqclckn4vk"]
 
 [ext_resource type="TileSet" uid="uid://c4llvpweoft2a" path="res://SpriteSheets/Area2/Area2_Tileset.tres" id="1_r1qpv"]
 [ext_resource type="Script" uid="uid://dpjsr6v7xo34l" path="res://Cenas/area_2.gd" id="1_tydfa"]
-[ext_resource type="Script" uid="uid://bpxfin7e26cxw" path="res://Scripts/Classes/CaveSpaner/cave_spawner.gd" id="2_3xyyb"]
 [ext_resource type="AudioStream" uid="uid://cqfvspup4073g" path="res://Audio/BGM/NES/02 Start Demo ~ BGM 1_end.wav" id="2_qh2i0"]
-[ext_resource type="PackedScene" uid="uid://bmdvex1fvmnn5" path="res://Componentes/Inimigos/General/General.tscn" id="3_q3e8m"]
 [ext_resource type="PackedScene" uid="uid://ctqf7dpoxu84c" path="res://Componentes/AreaHazardDestructable/colisao_agua.tscn" id="3_vd7x2"]
 [ext_resource type="AudioStream" uid="uid://dcukornkrw1yy" path="res://Audio/BGM/NES/06 Stage Clear Demo.wav" id="3_vo0m5"]
 [ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="4_1d85u"]
-[ext_resource type="PackedScene" uid="uid://c7jtwgsgdbpl2" path="res://Componentes/Inimigos/Infantaria/Infantaria.tscn" id="4_1dncf"]
 [ext_resource type="PackedScene" uid="uid://bek8hshqdrwnf" path="res://Componentes/AreaHazardDestructable/colisao_pitfall.tscn" id="4_kb30a"]
 [ext_resource type="AudioStream" uid="uid://dbf8wyaao7qlk" path="res://Audio/BGM/NES/04 Restart ~ BGM 1_end.wav" id="4_nyldk"]
 [ext_resource type="PackedScene" uid="uid://iel7jsyjwxdj" path="res://Componentes/Inimigos/enemy_controller.tscn" id="4_tudxv"]
@@ -25,9 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://bqxgebxbd4alj" path="res://Componentes/Inimigos_Area2/Jeep/spawner/jeep_spawner.tscn" id="16_wkod3"]
 [ext_resource type="PackedScene" uid="uid://cfloxpubtlrsx" path="res://Componentes/Inimigos_Area2/Moto_Terra/spawner/moto_terra_spawner.tscn" id="17_3xyyb"]
 [ext_resource type="PackedScene" uid="uid://cok23fi8vgvcq" path="res://Componentes/Inimigos_Area2/Turret/Turret.tscn" id="18_dmwlo"]
-[ext_resource type="PackedScene" uid="uid://cg070bqy7rfj" path="res://Componentes/Spawner/hq_spawner.tscn" id="25_b25kb"]
 [ext_resource type="PackedScene" uid="uid://b7gvfacur3e6q" path="res://Componentes/Triggers/troca_infantaria.tscn" id="27_qh2i0"]
 [ext_resource type="PackedScene" uid="uid://due6ib0036l6r" path="res://Componentes/Inimigos_Area2/Humvee/spawner/Humvee_spawner.tscn" id="28_vo0m5"]
+[ext_resource type="PackedScene" uid="uid://biamgxw6qihfu" path="res://Componentes/Inimigos_Area2/Toca/Spawner_Toca.tscn" id="29_5qy02"]
 [ext_resource type="PackedScene" uid="uid://d0d724dgyu3xp" path="res://Componentes/Spawner/MotoSpawn.tscn" id="29_nyldk"]
 
 [node name="Area2" type="Node2D"]
@@ -37,30 +34,10 @@ musica_intermission = ExtResource("3_vo0m5")
 musica_retry = ExtResource("4_nyldk")
 musica_fortress = ExtResource("5_5qy02")
 
-[node name="Trigger" parent="." instance=ExtResource("13_1dncf")]
+[node name="Trigger_Mobs_Portao" parent="." instance=ExtResource("13_1dncf")]
 position = Vector2(0, -1590)
 collision_layer = 0
 collision_mask = 2
-
-[node name="CaveSpawner" type="Node" parent="."]
-script = ExtResource("2_3xyyb")
-general = ExtResource("3_q3e8m")
-infantaria = ExtResource("4_1dncf")
-
-[node name="Marker2D" type="Marker2D" parent="CaveSpawner" groups=["SpawnMarkers"]]
-position = Vector2(34.54, -1639)
-
-[node name="Marker2D2" type="Marker2D" parent="CaveSpawner" groups=["SpawnMarkers"]]
-position = Vector2(37.06, -1703.33)
-
-[node name="Marker2D3" type="Marker2D" parent="CaveSpawner" groups=["SpawnMarkers"]]
-position = Vector2(187.265, -1702.79)
-
-[node name="Marker2D4" type="Marker2D" parent="CaveSpawner" groups=["SpawnMarkers"]]
-position = Vector2(187.025, -1636.75)
-
-[node name="Marker2D5" type="Marker2D" parent="CaveSpawner" groups=["SpawnMarkers"]]
-position = Vector2(187.825, -1574.25)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 modulate = Color(0.98, 0.8526, 0.8526, 1)
@@ -71,6 +48,7 @@ tile_set = ExtResource("6_o4y78")
 z_index = -1
 tile_map_data = PackedByteArray("AAAAAL//AAAJAAAAAAAAAMD/AAAJAAEAAAAAAMH/AAAJAAIAAAAAAML/AAAJAAMAAAAAAMP/AAAJAAQAAAABAL//AAAKAAAAAAABAMD/AAAKAAEAAAABAMH/AAAKAAIAAAABAML/AAAKAAMAAAABAMP/AAAKAAQAAAACAMD/AAALAAEAAAACAMH/AAALAAIAAAACAML/AAALAAMAAAACAMP/AAALAAQAAAADAMD/AAAMAAEAAAADAMH/AAAMAAIAAAADAML/AAAMAAMAAAADAMP/AAAMAAQAAAAAAKH/AAAAAA4AAAAAAKL/AAAAAA8AAAAAAKP/AAAAABAAAAABAKH/AAABAA4AAAABAKL/AAABAA8AAAABAKP/AAABABAAAAACAKH/AAACAA4AAAACAKL/AAACAA8AAAACAKP/AAACABAAAAAAALL/AAAAAA8AAAAAALP/AAAAABAAAAABALH/AAABAA4AAAABALL/AAABAA8AAAABALP/AAABABAAAAACALL/AAACAA8AAAACALP/AAACABAAAAAMAKn/AAABAA4AABANAKr/AAAAAA8AABAMAKr/AAABAA8AABALAKr/AAACAA8AABANAKv/AAAAABAAABAMAKv/AAABABAAABALAKv/AAACABAAABAAAJP/AAAAAAMAAAAAAJT/AAAAAAQAAAAAAJX/AAAAAAUAAAAAAJb/AAAAAAYAAAAAAJf/AAAAAAcAAAAAAJj/AAAAAAgAAAAAAJn/AAAAAAkAAAAAAJr/AAAAAAoAAAAAAJv/AAAAAAsAAAAAAJz/AAAAAAwAAAAAAJ3/AAAAAA0AAAABAJP/AAABAAMAAAABAJT/AAABAAQAAAABAJX/AAABAAUAAAABAJb/AAABAAYAAAABAJf/AAABAAcAAAABAJj/AAABAAgAAAABAJn/AAABAAkAAAABAJr/AAABAAoAAAABAJv/AAABAAsAAAABAJz/AAABAAwAAAABAJ3/AAABAA0AAAACAJP/AAACAAMAAAACAJT/AAACAAQAAAACAJX/AAACAAUAAAACAJb/AAACAAYAAAACAJf/AAACAAcAAAACAJj/AAACAAgAAAACAJn/AAACAAkAAAACAJr/AAACAAoAAAACAJv/AAACAAsAAAACAJz/AAACAAwAAAACAJ3/AAACAA0AAAALAJP/AAAGAAAAAAALAJT/AAAGAAEAAAALAJX/AAAGAAIAAAALAJb/AAAGAAMAAAALAJf/AAAGAAQAAAALAJj/AAAGAAUAAAALAJn/AAAGAAYAAAALAJr/AAAGAAcAAAALAJv/AAAGAAgAAAALAJz/AAAGAAkAAAALAJ3/AAAGAAoAAAALAJ7/AAAGAAsAAAALAJ//AAAGAAwAAAALAKD/AAAGAA0AAAALAKH/AAAGAA4AAAAMAJP/AAAHAAAAAAAMAJT/AAAHAAEAAAAMAJX/AAAHAAIAAAAMAJb/AAAHAAMAAAAMAJf/AAAHAAQAAAAMAJj/AAAHAAUAAAAMAJn/AAAHAAYAAAAMAJr/AAAHAAcAAAAMAJv/AAAHAAgAAAAMAJz/AAAHAAkAAAAMAJ3/AAAHAAoAAAAMAJ7/AAAHAAsAAAAMAJ//AAAHAAwAAAAMAKD/AAAHAA0AAAAMAKH/AAAHAA4AAAANAJP/AAAIAAAAAAANAJT/AAAIAAEAAAANAJX/AAAIAAIAAAANAJb/AAAIAAMAAAANAJf/AAAIAAQAAAANAJj/AAAIAAUAAAANAJn/AAAIAAYAAAANAJr/AAAIAAcAAAANAJv/AAAIAAgAAAANAJz/AAAIAAkAAAANAJ3/AAAIAAoAAAANAJ7/AAAIAAsAAAANAJ//AAAIAAwAAAANAKD/AAAIAA0AAAANAKH/AAAIAA4AAAABAKT/AAAEAAMAAAAAAJD/AAAAAAAAAAAAAJH/AAAAAAEAAAAAAJL/AAAAAAIAAAABAJD/AAABAAAAAAABAJH/AAABAAEAAAABAJL/AAABAAIAAAACAJD/AAACAAAAAAACAJH/AAACAAEAAAACAJL/AAACAAIAAAADAJD/AAADAAAAAAADAJH/AAADAAEAAAADAJL/AAADAAIAAAAEAJD/AAAEAAAAAAAEAJH/AAAEAAEAAAAEAJL/AAAEAAIAAAAFAJD/AAAFAAAAAAAFAJH/AAAFAAEAAAAFAJL/AAAFAAIAAAANAJD/AAAAAAAAABAMAJD/AAABAAAAABALAJD/AAACAAAAABAKAJD/AAADAAAAABAJAJD/AAAEAAAAABAIAJD/AAAFAAAAABANAJH/AAAAAAEAABAMAJH/AAABAAEAABALAJH/AAACAAEAABAKAJH/AAADAAEAABAJAJH/AAAEAAEAABAIAJH/AAAFAAEAABANAJL/AAAAAAIAABAMAJL/AAABAAIAABALAJL/AAACAAIAABAKAJL/AAADAAIAABAJAJL/AAAEAAIAABAIAJL/AAAFAAIAABAGAJD/AAADAAMAAAAGAJH/AAADAAQAAAAGAJL/AAADAAUAAAAHAJD/AAAEAAMAAAAHAJH/AAAEAAQAAAAHAJL/AAAEAAUAAAAAAMv/AAAAABkAAAAAAMz/AAAAABoAAAAAAM3/AAAAABsAAAAAAM7/AAAAABwAAAAAAM//AAAAAB0AAAABAMv/AAABABkAAAABAMz/AAABABoAAAABAM3/AAABABsAAAABAM7/AAABABwAAAABAM//AAABAB0AAAACAMv/AAACABkAAAACAMz/AAACABoAAAACAM3/AAACABsAAAACAM7/AAACABwAAAACAM//AAACAB0AAAADAMv/AAADABkAAAADAMz/AAADABoAAAADAM3/AAADABsAAAADAM7/AAADABwAAAADAM//AAADAB0AAAAEAMv/AAAEABkAAAAEAMz/AAAEABoAAAAEAM3/AAAEABsAAAAEAM7/AAAEABwAAAAEAM//AAAEAB0AAAAFAMv/AAAFABkAAAAFAMz/AAAFABoAAAAFAM3/AAAFABsAAAAFAM7/AAAFABwAAAAFAM//AAAFAB0AAAAIAMv/AAAIABkAAAAIAMz/AAAIABoAAAAIAM3/AAAIABsAAAAIAM7/AAAIABwAAAAIAM//AAAIAB0AAAAJAMv/AAAJABkAAAAJAMz/AAAJABoAAAAJAM3/AAAJABsAAAAJAM7/AAAJABwAAAAJAM//AAAJAB0AAAAKAMv/AAAKABkAAAAKAMz/AAAKABoAAAAKAM3/AAAKABsAAAAKAM7/AAAKABwAAAAKAM//AAAKAB0AAAALAMv/AAALABkAAAALAMz/AAALABoAAAALAM3/AAALABsAAAALAM7/AAALABwAAAALAM//AAALAB0AAAAMAMv/AAAMABkAAAAMAMz/AAAMABoAAAAMAM3/AAAMABsAAAAMAM7/AAAMABwAAAAMAM//AAAMAB0AAAANAMv/AAANABkAAAANAMz/AAANABoAAAANAM3/AAANABsAAAANAM7/AAANABwAAAANAM//AAANAB0AAAAAANb/AAAAAB8AAAAAAN3/AAAAAB8AAAAAAOr/AAANACEAABAAAPH/AAAAAB8AAAABANb/AAABAB8AAAABAN3/AAABAB8AAAABAOr/AAAMACEAABABAPH/AAABAB8AAAACANb/AAACAB8AAAACAN3/AAACAB8AAAACAOr/AAALACEAABACAPH/AAACAB8AAAADANb/AAADAB8AAAADAN3/AAADAB8AAAADAOb/AAAFAB8AAAADAOr/AAAKACEAABADAPH/AAADAB8AAAAEANb/AAAEAB8AAAAEANr/AAAFAB8AAAAEAN3/AAAEAB8AAAAEAOb/AAAGAB8AAAAEAOr/AAAJACEAABAEAPH/AAAEAB8AAAAFANr/AAAGAB8AAAAFAN3/AAADAAQAAAAFAOb/AAAHAB8AAAAFAOr/AAAIACEAABAGANr/AAAHAB8AAAAGAN3/AAAEAAQAAAAGAOb/AAAJAB8AAAAHANr/AAAIAB8AAAAHAOb/AAALAB8AAAAHAO7/AAAFAB8AAAAIANr/AAAJAB8AAAAIAOL/AAAIACEAAAAIAOb/AAAMAB8AAAAIAOn/AAAIACEAAAAIAO7/AAAGAB8AAAAJANr/AAAKAB8AAAAJAOL/AAAJACEAAAAJAOb/AAANAB8AAAAJAOn/AAAJACEAAAAJAO7/AAAHAB8AAAAKANr/AAALAB8AAAAKAOL/AAAKACEAAAAKAOn/AAAKACEAAAAKAO7/AAAIAB8AAAALANr/AAAMAB8AAAALAOL/AAALACEAAAALAOn/AAALACEAAAALAO7/AAAJAB8AAAAMANr/AAANAB8AAAAMAOL/AAAMACEAAAAMAOn/AAAMACEAAAAMAO7/AAAMAB8AAAANAOL/AAANACEAAAANAOn/AAANACEAAAANAO7/AAANAB8AAAAAALT/AAAAABEAAAAAALX/AAAAABIAAAAAALb/AAAAABMAAAAAALf/AAAAABQAAAAAALj/AAAAABUAAAAAALn/AAAAABYAAAAAALr/AAAAABcAAAABALT/AAABABEAAAABALX/AAABABIAAAABALb/AAABABMAAAABALf/AAABABQAAAABALj/AAABABUAAAABALn/AAABABYAAAABALr/AAABABcAAAACALT/AAACABEAAAACALX/AAACABIAAAACALb/AAACABMAAAACALf/AAACABQAAAACALj/AAACABUAAAACALn/AAACABYAAAACALr/AAACABcAAAAJALX/AAAJABIAAAAJALb/AAAJABMAAAAJALf/AAAJABQAAAAJALj/AAAJABUAAAAJALn/AAAJABYAAAAJALr/AAAJABcAAAAKALT/AAAKABEAAAAKALX/AAAKABIAAAAKALb/AAAKABMAAAAKALf/AAAKABQAAAAKALj/AAAKABUAAAAKALn/AAAKABYAAAAKALr/AAAKABcAAAALALT/AAALABEAAAALALX/AAALABIAAAALALb/AAALABMAAAALALf/AAALABQAAAALALj/AAALABUAAAALALn/AAALABYAAAALALr/AAALABcAAAAMALT/AAAMABEAAAAMALX/AAAMABIAAAAMALb/AAAMABMAAAAMALf/AAAMABQAAAAMALj/AAAMABUAAAAMALn/AAAMABYAAAAMALr/AAAMABcAAAANALT/AAANABEAAAANALX/AAANABIAAAANALb/AAANABMAAAANALf/AAANABQAAAANALj/AAANABUAAAANALn/AAANABYAAAANALr/AAANABcAAAA=")
 tile_set = ExtResource("1_r1qpv")
+collision_visibility_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
@@ -313,9 +291,6 @@ position = Vector2(-1, 52)
 [node name="Turret" parent="." instance=ExtResource("18_dmwlo")]
 position = Vector2(21, -1492)
 
-[node name="HQSpawner" parent="." instance=ExtResource("25_b25kb")]
-position = Vector2(53, -975)
-
 [node name="JeepSpawner" parent="." instance=ExtResource("16_wkod3")]
 
 [node name="Turret2" parent="." instance=ExtResource("18_dmwlo")]
@@ -340,7 +315,32 @@ position = Vector2(246, -102)
 [node name="MotoSpawn" parent="." instance=ExtResource("29_nyldk")]
 position = Vector2(204, -830)
 
-[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="Trigger" to="CaveSpawner" method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="Trigger" to="MobSpawner" method="_on_trigger_body_entered"]
+[node name="SpawnerToca" parent="." instance=ExtResource("29_5qy02")]
+position = Vector2(39, -989)
+move_direction = 1.0
+
+[node name="SpawnerToca2" parent="." instance=ExtResource("29_5qy02")]
+position = Vector2(11, -1713)
+move_direction = 1.0
+fortress = true
+
+[node name="SpawnerToca3" parent="." instance=ExtResource("29_5qy02")]
+position = Vector2(11, -1650)
+move_direction = 1.0
+fortress = true
+
+[node name="SpawnerToca4" parent="." instance=ExtResource("29_5qy02")]
+position = Vector2(213, -1650)
+fortress = true
+
+[node name="SpawnerToca5" parent="." instance=ExtResource("29_5qy02")]
+position = Vector2(213, -1713)
+fortress = true
+
+[node name="SpawnerToca6" parent="." instance=ExtResource("29_5qy02")]
+position = Vector2(210, -1585)
+fortress = true
+
+[connection signal="body_entered" from="Trigger_Mobs_Portao" to="." method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="Trigger_Mobs_Portao" to="MobSpawner" method="_on_trigger_body_entered"]
 [connection signal="dead_player" from="MainPlayerChar" to="." method="_on_main_player_char_dead_player"]

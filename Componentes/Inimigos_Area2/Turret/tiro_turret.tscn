@@ -6,7 +6,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6wbq"]
 
-[node name="TiroBazooka" type="Area2D"]
+[node name="TiroTurret" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_x8s5n")

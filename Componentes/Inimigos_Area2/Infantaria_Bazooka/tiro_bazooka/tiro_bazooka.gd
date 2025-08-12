@@ -36,4 +36,5 @@ func _on_timer_queue_free_timeout() -> void:
 func gera_explosao():
 	var explosao_instance = explosao.instantiate()
 	explosao_instance.position = position
-	get_parent().add_child(explosao_instance)
+	get_parent().call_deferred("add_child", explosao_instance)
+#	add_child(explosao_instance)

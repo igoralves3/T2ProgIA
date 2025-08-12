@@ -6,7 +6,7 @@ var canSpawn = false
 func _ready():
 	pass
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if canSpawn:
 		var humvee_instance = humvee.instantiate()
 		humvee_instance.position = position
@@ -16,5 +16,5 @@ func _physics_process(delta: float) -> void:
 		#area.add_child(moto)
 
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	canSpawn = true

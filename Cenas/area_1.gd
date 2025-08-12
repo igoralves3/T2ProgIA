@@ -15,6 +15,7 @@ var currentCheckpoint: Vector2
 var finalStage = false
 var finalMobsCount: int
 var enemy_spawner
+var qual_stage = "Area_1"
 
 func _ready() -> void:
 	GameManager.setStartPoint(spawnIncial.global_position)

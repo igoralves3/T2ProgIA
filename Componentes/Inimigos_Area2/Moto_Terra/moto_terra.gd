@@ -8,7 +8,6 @@ var dir := 1
 
 func _ready():
 	if not other_player:
-		var currentScene = get_tree().get_current_scene().get_name()
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	if global_position.x > get_viewport_rect().size.x / 2:
 		_animated_sprite.flip_h = true
