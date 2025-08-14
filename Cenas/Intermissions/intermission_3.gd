@@ -9,7 +9,7 @@ var qtd_de_letras: int = 0
 @export var som_texto = AudioStream
 @export var animacao: AnimatedSprite2D
 @export var timer_avancar_cena: Timer
-@export var tempo_avancar_cena: float = 7.0
+@export var tempo_avancar_cena: float = 5.0
 
 
 func _ready() -> void:

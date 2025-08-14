@@ -5,5 +5,6 @@ extends Area2D
 func _on_area_entered(_area: Area2D) -> void:
 	var moto = moto_terra.instantiate()
 	moto.global_position = global_position
-	get_parent().add_child(moto)
+	get_parent().call_deferred("add_child",moto)
+#	get_parent().add_child(moto)
 	queue_free()

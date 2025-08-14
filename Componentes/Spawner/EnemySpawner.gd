@@ -18,6 +18,7 @@ var spawner_localizacao
 var array_spawners: Array
 var Inimigos_fortress: int = 15
 var spawned_general: bool = false
+var avisou_ending: bool = false
 
 func _ready() -> void:
 	inimigo_atual = "infantaria"
@@ -30,6 +31,7 @@ func _on_mob_timer_timeout():
 	if podeSpawnar:
 		self.global_position.y = player.global_position.y - 256
 		if ListaInimigos.size() < limite_de_inimigos:
+			get_random_spawn()
 			var mob
 			if inimigo_atual == "infantaria":
 				mob = infantaria.instantiate()
@@ -176,7 +178,9 @@ func area_2_fortress():
 				owner.remove_child(mob)
 				_on_mob_timer_timeout()
 	if ListaInimigos.size() == 0 and Inimigos_fortress == 0:
-		get_parent().next_level()
+		if not avisou_ending:
+			avisou_ending = true
+			get_parent().next_level()
 
 func area_1_e_3_fortress():
 	spawner_localizacao = array_spawners.pick_random()
@@ -201,7 +205,9 @@ func area_1_e_3_fortress():
 				owner.remove_child(mob)
 				_on_mob_timer_timeout()
 	if ListaInimigos.size() == 0 and Inimigos_fortress == 0:
-		get_parent().next_level()
+		if not avisou_ending:
+			avisou_ending = true
+			get_parent().next_level()
 
 func mexer_no_mob_baixo(mob):
 #	print ("final mob spawn")

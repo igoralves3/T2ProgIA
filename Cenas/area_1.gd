@@ -31,10 +31,12 @@ func _process(_delta: float) -> void:
 func next_level():
 	SoundController.play_bgm(musica_intermission, "musica_intermission")
 	print("Voce venceu!")
+	player.ending_level = true
+
+func next_level2():
 	finalStage = false
 	GameManager.addMedals()
 	GameManager.hasCheckpoint = false
-	#get_tree().root.get_node("Game").change_scene("res://Cenas/Area_2.tscn")
 	get_tree().root.get_node("Game").change_scene("res://Cenas/Intermissions/intermission_1.tscn")
 
 func _on_main_player_char_dead_player():

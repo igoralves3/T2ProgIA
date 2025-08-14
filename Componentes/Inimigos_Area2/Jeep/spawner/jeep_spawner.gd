@@ -23,5 +23,6 @@ func _on_spawn_trigger_body_entered(_body: Node2D) -> void:
 	mob_spawn_location.progress_ratio = randf()
 	# Set the mob's position to the random location using global coordinates.
 	mob.global_position = mob_spawn_location.global_position
-	get_parent().add_child(mob)
+	get_parent().call_deferred("add_child",mob)
+#	get_parent().add_child(mob)
 	queue_free()

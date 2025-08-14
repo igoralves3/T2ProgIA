@@ -31,6 +31,7 @@ var last_input_direction = "run_up"
 var dying = false
 var cooldown_da_arma: bool = false
 var HUD
+var ending_level: bool = false
 signal dead_player
 
 func _ready() -> void:
@@ -53,6 +54,9 @@ func _process(_delta):
 		position.y = clamp(position.y, min_y, max_y)
 
 func _physics_process(_delta: float) -> void:
+	if ending_level:
+		end_level(_delta)
+		return
 	get_8_way_input()
 	move_and_slide()
 	if velocity != Vector2.ZERO:
@@ -89,7 +93,7 @@ func update_animation(input_direction: Vector2) -> void:
 		last_input_direction = "run_up"
 	elif input_direction.x > 0 and input_direction.y > 0:
 		_animated_sprite.play("run_bottom_right")
-		last_input_direction = "run_button_right"
+		last_input_direction = "run_bottom_right"
 	elif input_direction.x < 0 and input_direction.y < 0:
 		_animated_sprite.play("run_top_left")
 		last_input_direction = "run_top_left"
@@ -291,3 +295,17 @@ func get_HUD():
 	var HUD1 = get_tree().get_nodes_in_group("HUD")
 	if not HUD1.is_empty():
 		HUD = HUD1[0]
+
+func end_level(delta):
+	can_shoot = false
+	if global_position.x < 110:
+		global_position = global_position + Vector2.RIGHT * SPEED * delta
+		update_animation(Vector2.RIGHT)
+	elif global_position.x > 114:
+		global_position = global_position + Vector2.LEFT * SPEED * delta
+		update_animation(Vector2.LEFT)
+	elif global_position.y > -1792:
+		global_position = global_position + Vector2.UP * SPEED * delta
+		update_animation(Vector2.UP)
+	else:
+		get_parent().next_level2()

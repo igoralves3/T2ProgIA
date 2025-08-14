@@ -3,7 +3,7 @@ extends Area2D
 class_name Jeep
 
 @onready var _animated_sprite = $AnimatedSprite2D
-@onready var timer_bullet = $Timer
+@onready var timer_bullet = $timer_bullet
 @onready var weapon_position = $WeaponPosition
 var can_shoot: bool = false
 var speed := 100

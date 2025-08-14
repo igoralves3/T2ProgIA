@@ -32,6 +32,9 @@ func _process(_delta: float) -> void:
 func next_level():
 	SoundController.play_bgm(musica_intermission, "musica_intermission")
 	print("Voce venceu!")
+	player.ending_level = true
+
+func next_level2():
 	finalStage = false
 	GameManager.addMedals()
 	GameManager.hasCheckpoint = false

@@ -79,6 +79,6 @@ func _spawn_single_enemy(type: String):
 	get_parent().add_child(new_mob)
 
 
-func _on_trigger_mobs_portao_area_entered(area):
+func _on_trigger_mobs_portao_area_entered(_area):
 	spawn_enemies()
 	emit_signal("stoppedSpawning")

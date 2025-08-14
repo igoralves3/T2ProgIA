@@ -16,6 +16,8 @@ func _ready() -> void:
 	if not other_player:
 		other_player = get_tree().get_first_node_in_group("GrupoPlayer")
 	_animated_sprite.animation_finished.connect(fire_dinamite)
+	if other_player.global_position.y < global_position.y:
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 	position.y += speed * delta * -1

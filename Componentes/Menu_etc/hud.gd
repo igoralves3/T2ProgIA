@@ -45,10 +45,10 @@ func update_geral():
 			label_high_score.text = str(GameManager.score)
 	label_score_normal.text = str(GameManager.score)
 	label_granadas.text = str(GameManager.granadas)
-	if $%VidasExtrasHBox.get_child_count() < GameManager.lifes:
+	if $%VidasExtrasHBox.get_child_count() < GameManager.lifes and $%VidasExtrasHBox.get_child_count() < 5:
 		var nova_vida = vida_extra.duplicate()
 		$%VidasExtrasHBox.add_child(nova_vida)
-	if $%VidasExtrasHBox.get_child_count() > GameManager.lifes :
+	if $%VidasExtrasHBox.get_child_count() > GameManager.lifes and $%VidasExtrasHBox.get_child_count() >= 5 :
 		$%VidasExtrasHBox.get_children().front().queue_free()
 	if $%Medalhas.get_child_count() < GameManager.medals:
 		var nova_medalha = medalha1.duplicate()
