@@ -27,10 +27,18 @@ signal lives_updated(new_life_count)
 signal medals_updated(new_medal_count)
 
 func _ready() -> void:
+	SaveManager.load_game()
 	load_highscores()
 	arrumar_highscores()
 	highscore = highscores[0].highscore
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func check_for_new_high_score():
+	if score > highscore:
+		print("Novo recorde! Score: ", score)
+		highscore = score
+		SaveManager.high_score = highscore
+		SaveManager.save_game() # Salva o novo recorde no arquivo!
 
 func newGame():
 	score = 0
@@ -66,6 +74,7 @@ func setStartPoint(newStartPoint: Vector2):
 func addPoints(points: int):
 	score += points
 	score_updated.emit(score)
+	check_for_new_high_score()
 	if score >= extra_life_score:
 		lives+=1
 		if extra_lives:
