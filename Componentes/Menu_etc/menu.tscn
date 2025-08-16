@@ -271,6 +271,7 @@ vertical_alignment = 1
 
 [node name="rank_etc1" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 115.0
 offset_right = 50.0
 offset_bottom = 125.0
@@ -282,6 +283,7 @@ vertical_alignment = 1
 
 [node name="rank_etc2" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 130.0
 offset_right = 50.0
 offset_bottom = 140.0
@@ -293,6 +295,7 @@ vertical_alignment = 1
 
 [node name="rank_etc3" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 145.0
 offset_right = 50.0
 offset_bottom = 155.0
@@ -304,6 +307,7 @@ vertical_alignment = 1
 
 [node name="rank_etc4" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 160.0
 offset_right = 50.0
 offset_bottom = 170.0
@@ -315,6 +319,7 @@ vertical_alignment = 1
 
 [node name="rank_etc5" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 175.0
 offset_right = 50.0
 offset_bottom = 185.0
@@ -326,6 +331,7 @@ vertical_alignment = 1
 
 [node name="rank_etc6" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 190.0
 offset_right = 50.0
 offset_bottom = 200.0
@@ -337,6 +343,7 @@ vertical_alignment = 1
 
 [node name="rank_etc7" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 205.0
 offset_right = 50.0
 offset_bottom = 215.0
@@ -348,6 +355,7 @@ vertical_alignment = 1
 
 [node name="Ranked1" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 115.0
 offset_right = 200.0
 offset_bottom = 125.0
@@ -359,6 +367,7 @@ vertical_alignment = 1
 
 [node name="Ranked2" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 130.0
 offset_right = 200.0
 offset_bottom = 140.0
@@ -370,6 +379,7 @@ vertical_alignment = 1
 
 [node name="Ranked3" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 145.0
 offset_right = 200.0
 offset_bottom = 155.0
@@ -381,6 +391,7 @@ vertical_alignment = 1
 
 [node name="Ranked4" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 160.0
 offset_right = 200.0
 offset_bottom = 170.0
@@ -392,6 +403,7 @@ vertical_alignment = 1
 
 [node name="Ranked5" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 175.0
 offset_right = 200.0
 offset_bottom = 185.0
@@ -403,6 +415,7 @@ vertical_alignment = 1
 
 [node name="Ranked6" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 190.0
 offset_right = 200.0
 offset_bottom = 200.0
@@ -414,6 +427,7 @@ vertical_alignment = 1
 
 [node name="Ranked7" type="Label" parent="Control_Third_Area"]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
 offset_top = 205.0
 offset_right = 200.0
 offset_bottom = 215.0
