@@ -11,7 +11,7 @@ var dir := -1
 var alterou_a_velocidade: bool = false
 @export var other_player: CharacterBody2D
 @export var bullet_inimigo: PackedScene
-var lifes := 5
+var lives := 5
 var offset_da_bala
 @onready var timer_speed = $timer_reset_speed
 var pontos = 200
@@ -74,8 +74,8 @@ func fire_bullet():
 
 func bullet_hit():
 	GameManager.addPoints(pontos)
-	lifes-=1
-	if lifes <= 0:
+	lives-=1
+	if lives <= 0:
 		set_collision_layer_value(3, false)
 		queue_free()
 

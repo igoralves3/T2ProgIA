@@ -1,0 +1,523 @@
+[gd_scene load_steps=7 format=3 uid="uid://cva8rbsikdssw"]
+
+[ext_resource type="Script" uid="uid://34fm23icd7bc" path="res://Componentes/Menu_etc/adicionar_highscore.gd" id="1_24i0h"]
+[ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="1_kbude"]
+[ext_resource type="Texture2D" uid="uid://b4p4p0cutjua8" path="res://SpriteSheets/area1_fake.png" id="2_c451j"]
+[ext_resource type="Texture2D" uid="uid://dokbovyi01j21" path="res://SpriteSheets/area2_fake.png" id="2_rcf3k"]
+[ext_resource type="PackedScene" uid="uid://fy47plw4s21o" path="res://Componentes/Menu_etc/hud.tscn" id="3_e1o52"]
+[ext_resource type="Texture2D" uid="uid://diaj3i070clr3" path="res://SpriteSheets/area3_fake.png" id="4_sxmes"]
+
+[node name="Adicionar_highscore" type="Control" node_paths=PackedStringArray("label_nick", "hud", "RanksGroup")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_24i0h")
+label_nick = NodePath("Nick")
+hud = NodePath("HUD")
+RanksGroup = [NodePath("Highscores_Control/Ranked1"), NodePath("Highscores_Control/Ranked2"), NodePath("Highscores_Control/Ranked3"), NodePath("Highscores_Control/Ranked4"), NodePath("Highscores_Control/Ranked5"), NodePath("Highscores_Control/Ranked6"), NodePath("Highscores_Control/Ranked7")]
+textura_area1 = ExtResource("2_c451j")
+textura_area2 = ExtResource("2_rcf3k")
+textura_area3 = ExtResource("4_sxmes")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -18.0
+offset_right = 80.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 10
+
+[node name="A" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "A"
+flat = true
+
+[node name="B" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "B"
+flat = true
+
+[node name="C" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "C"
+flat = true
+
+[node name="D" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "D"
+flat = true
+
+[node name="E" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "E"
+flat = true
+
+[node name="F" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "F"
+flat = true
+
+[node name="G" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "G"
+flat = true
+
+[node name="H" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "H"
+flat = true
+
+[node name="I" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "I"
+flat = true
+
+[node name="J" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "J"
+flat = true
+
+[node name="K" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "K"
+flat = true
+
+[node name="L" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "L"
+flat = true
+
+[node name="M" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "M"
+flat = true
+
+[node name="N" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "N"
+flat = true
+
+[node name="O" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "O"
+flat = true
+
+[node name="P" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "P"
+flat = true
+
+[node name="Q" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "Q"
+flat = true
+
+[node name="R" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "R"
+flat = true
+
+[node name="S" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "S"
+flat = true
+
+[node name="T" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "T"
+flat = true
+
+[node name="U" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "U"
+flat = true
+
+[node name="V" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "V"
+flat = true
+
+[node name="W" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "W"
+flat = true
+
+[node name="X" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "X"
+flat = true
+
+[node name="Y" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "Y"
+flat = true
+
+[node name="Z" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "Z"
+flat = true
+
+[node name="Ponto" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "."
+flat = true
+
+[node name="Espaco" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = " "
+flat = true
+
+[node name="Igual" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "="
+flat = true
+
+[node name="End" type="Button" parent="GridContainer"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "-"
+flat = true
+
+[node name="Nick" type="Label" parent="."]
+modulate = Color(0.172611, 0.510162, 0.755675, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -47.0
+offset_right = 44.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "..........-"
+
+[node name="HUD" parent="." instance=ExtResource("3_e1o52")]
+
+[node name="Highscores_Control" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ranked1" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 115.0
+offset_right = 200.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "50000 VULGUS...."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked2" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 130.0
+offset_right = 200.0
+offset_bottom = 140.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "30000 SON.SON..."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked3" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 145.0
+offset_right = 200.0
+offset_bottom = 155.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "20000 HIGEMARU.."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked4" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 160.0
+offset_right = 200.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "19420 CAPCOM...."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked5" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 175.0
+offset_right = 200.0
+offset_bottom = 185.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "12000 EXED.EXES."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked6" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 190.0
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "10000 COMMANDO.."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked7" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 205.0
+offset_right = 200.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "8000 .........."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc1" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 115.0
+offset_right = 50.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "1ST"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc2" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 130.0
+offset_right = 50.0
+offset_bottom = 140.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "2ND"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc3" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 145.0
+offset_right = 50.0
+offset_bottom = 155.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "3RD"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc4" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 160.0
+offset_right = 50.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "4TH"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc5" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 175.0
+offset_right = 50.0
+offset_bottom = 185.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "5TH"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc6" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 190.0
+offset_right = 50.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "6TH"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc7" type="Label" parent="Highscores_Control"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 0
+offset_top = 205.0
+offset_right = 50.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("1_kbude")
+theme_override_font_sizes/font_size = 10
+text = "7TH"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="timer_next_scene" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_top = -1792.0
+offset_right = 224.0
+offset_bottom = 256.0
+texture = ExtResource("2_c451j")
+
+[connection signal="pressed" from="GridContainer/A" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="GridContainer/B" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="GridContainer/C" to="." method="_on_c_pressed"]
+[connection signal="pressed" from="GridContainer/D" to="." method="_on_d_pressed"]
+[connection signal="pressed" from="GridContainer/E" to="." method="_on_e_pressed"]
+[connection signal="pressed" from="GridContainer/F" to="." method="_on_f_pressed"]
+[connection signal="pressed" from="GridContainer/G" to="." method="_on_g_pressed"]
+[connection signal="pressed" from="GridContainer/H" to="." method="_on_h_pressed"]
+[connection signal="pressed" from="GridContainer/I" to="." method="_on_i_pressed"]
+[connection signal="pressed" from="GridContainer/J" to="." method="_on_j_pressed"]
+[connection signal="pressed" from="GridContainer/K" to="." method="_on_k_pressed"]
+[connection signal="pressed" from="GridContainer/L" to="." method="_on_l_pressed"]
+[connection signal="pressed" from="GridContainer/M" to="." method="_on_m_pressed"]
+[connection signal="pressed" from="GridContainer/N" to="." method="_on_n_pressed"]
+[connection signal="pressed" from="GridContainer/O" to="." method="_on_o_pressed"]
+[connection signal="pressed" from="GridContainer/P" to="." method="_on_p_pressed"]
+[connection signal="pressed" from="GridContainer/Q" to="." method="_on_q_pressed"]
+[connection signal="pressed" from="GridContainer/R" to="." method="_on_r_pressed"]
+[connection signal="pressed" from="GridContainer/S" to="." method="_on_s_pressed"]
+[connection signal="pressed" from="GridContainer/T" to="." method="_on_t_pressed"]
+[connection signal="pressed" from="GridContainer/U" to="." method="_on_u_pressed"]
+[connection signal="pressed" from="GridContainer/V" to="." method="_on_v_pressed"]
+[connection signal="pressed" from="GridContainer/W" to="." method="_on_w_pressed"]
+[connection signal="pressed" from="GridContainer/X" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="GridContainer/Y" to="." method="_on_y_pressed"]
+[connection signal="pressed" from="GridContainer/Z" to="." method="_on_z_pressed"]
+[connection signal="pressed" from="GridContainer/Ponto" to="." method="_on_ponto_pressed"]
+[connection signal="pressed" from="GridContainer/Espaco" to="." method="_on_espaco_pressed"]
+[connection signal="pressed" from="GridContainer/Igual" to="." method="_on_igual_pressed"]
+[connection signal="pressed" from="GridContainer/End" to="." method="_on_end_pressed"]

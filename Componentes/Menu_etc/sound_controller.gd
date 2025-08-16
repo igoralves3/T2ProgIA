@@ -11,6 +11,7 @@ var SFXBusDic = ["SFX1","SFX2","SFX3","SFX4","SFX5","SFX6","SFX7","SFX8", "SFX9"
 var musica_atual: String = ""
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	AudioSFXArray = get_node("GroupSFX").get_children()
 
 func play_button(Audio) -> void:

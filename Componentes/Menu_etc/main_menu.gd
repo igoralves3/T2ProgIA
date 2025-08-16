@@ -12,6 +12,7 @@ var volumeSFX: float
 
 func _ready() -> void:
 	SoundController.play_bgm(Somvfx, "Somvfx")
+	$UIContainer/ButtonsContainer/Control/BoxContainer/GameStartButton.grab_focus()
 
 func _on_master_sound_slider_value_changed(value: float) -> void:
 	var vol = value / 100

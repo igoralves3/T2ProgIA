@@ -1,0 +1,455 @@
+[gd_scene load_steps=8 format=3 uid="uid://cg82iby0vcdg4"]
+
+[ext_resource type="Script" uid="uid://prhb34gbv3df" path="res://Componentes/Menu_etc/menu.gd" id="1_g51hi"]
+[ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="2_akue7"]
+[ext_resource type="SpriteFrames" uid="uid://cqmfjswyo7gfj" path="res://Componentes/Player/player_sprite_frames.tres" id="3_6dk0e"]
+[ext_resource type="Texture2D" uid="uid://lx3xfl8f3kn3" path="res://SpriteSheets/MenuCommando.png" id="3_xcjlv"]
+[ext_resource type="Texture2D" uid="uid://dhfnkh4o7yrcj" path="res://SpriteSheets/Menu1.png" id="4_fhy1i"]
+[ext_resource type="Texture2D" uid="uid://dm2hiaffa1phs" path="res://SpriteSheets/Menu2.png" id="6_fhy1i"]
+[ext_resource type="Texture2D" uid="uid://2m1vba2gdw2t" path="res://SpriteSheets/Menu3.png" id="7_wj0un"]
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("label_coin", "control_first_area", "control_second_area", "control_third_area", "RanksGroup", "superjoesprite", "label_highestscore_top")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g51hi")
+label_coin = NodePath("Control_First_Area/Insert_Coin")
+control_first_area = NodePath("Control_First_Area")
+control_second_area = NodePath("Control_Second_Area")
+control_third_area = NodePath("Control_Third_Area")
+timer_coin_time = 0.3
+RanksGroup = [NodePath("Control_Third_Area/Ranked1"), NodePath("Control_Third_Area/Ranked2"), NodePath("Control_Third_Area/Ranked3"), NodePath("Control_Third_Area/Ranked4"), NodePath("Control_Third_Area/Ranked5"), NodePath("Control_Third_Area/Ranked6"), NodePath("Control_Third_Area/Ranked7")]
+superjoesprite = NodePath("Control_First_Area/HBoxContainer/AnimatedSprite2D")
+label_highestscore_top = NodePath("HighScoreVBox2/HBoxContainer2/LabelPontuacaoTOP")
+
+[node name="HighScoreVBox2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_right = 36.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HighScoreVBox2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HighScoreVBox2/HBoxContainer"]
+modulate = Color(0.726223, 3.41728e-06, 5.77569e-07, 1)
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "TOP SCORE"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HighScoreVBox2"]
+layout_mode = 2
+
+[node name="LabelPontuacaoTOP" type="Label" parent="HighScoreVBox2/HBoxContainer2"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "50000"
+horizontal_alignment = 1
+
+[node name="ScoreVBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 18.0
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScoreVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScoreVBox/HBoxContainer"]
+modulate = Color(0.726223, 3.41728e-06, 5.77569e-07, 1)
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "1UP"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScoreVBox"]
+layout_mode = 2
+
+[node name="LabelPontuacao" type="Label" parent="ScoreVBox/HBoxContainer2"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="Control_First_Area" type="Control" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control_First_Area"]
+z_index = -1
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 256.0
+texture = ExtResource("4_fhy1i")
+
+[node name="Insert_Coin" type="Label" parent="Control_First_Area"]
+modulate = Color(0.741176, 0.682353, 0, 1)
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 0
+offset_top = 153.0
+offset_right = 224.0
+offset_bottom = 163.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "INSERT COIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="1st_bonus" type="Label" parent="Control_First_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 0
+offset_top = 171.0
+offset_right = 224.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "1ST BONUS 10000 PTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="50000" type="Label" parent="Control_First_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 0
+offset_top = 190.0
+offset_right = 224.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "AND EVERY 10000 PTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control_First_Area"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -39.0
+offset_right = 39.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control_First_Area/HBoxContainer"]
+position = Vector2(-19, 17)
+sprite_frames = ExtResource("3_6dk0e")
+animation = &"run_down"
+frame_progress = 0.91048
+
+[node name="Player" type="Label" parent="Control_First_Area/HBoxContainer"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "PLAYER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control_Second_Area" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="COMMANDO_Texture" type="TextureRect" parent="Control_Second_Area"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 46.0
+offset_right = 98.0
+offset_bottom = 86.0
+grow_horizontal = 2
+texture = ExtResource("3_xcjlv")
+
+[node name="TextureRect3" type="TextureRect" parent="Control_Second_Area"]
+z_index = -1
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 256.0
+texture = ExtResource("6_fhy1i")
+
+[node name="1st_bonus2" type="Label" parent="Control_Second_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 0
+offset_top = 160.0
+offset_right = 224.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "PUSH START BUTTON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="50001" type="Label" parent="Control_Second_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 0
+offset_top = 179.0
+offset_right = 224.0
+offset_bottom = 189.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "ONE PLAYER ONLY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control_Third_Area" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="COMMANDO_Texture" type="TextureRect" parent="Control_Third_Area"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 46.0
+offset_right = 98.0
+offset_bottom = 86.0
+grow_horizontal = 2
+texture = ExtResource("3_xcjlv")
+
+[node name="TextureRect3" type="TextureRect" parent="Control_Third_Area"]
+z_index = -1
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 256.0
+texture = ExtResource("7_wj0un")
+
+[node name="rank" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.92883, 0.795497, 0.0931464, 1)
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 0
+offset_top = 94.0
+offset_right = 224.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "RANKING BEST 7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="rank_etc1" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 115.0
+offset_right = 50.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "1ST"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc2" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 130.0
+offset_right = 50.0
+offset_bottom = 140.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "2ND"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc3" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 145.0
+offset_right = 50.0
+offset_bottom = 155.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "3RD"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc4" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 160.0
+offset_right = 50.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "4TH"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc5" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 175.0
+offset_right = 50.0
+offset_bottom = 185.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "5TH"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc6" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 190.0
+offset_right = 50.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "6TH"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="rank_etc7" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 205.0
+offset_right = 50.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "7TH"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked1" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 115.0
+offset_right = 200.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "50000 VULGUS...."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked2" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 130.0
+offset_right = 200.0
+offset_bottom = 140.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "30000 SON.SON..."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked3" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 145.0
+offset_right = 200.0
+offset_bottom = 155.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "20000 HIGEMARU.."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked4" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 160.0
+offset_right = 200.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "19420 CAPCOM...."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked5" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 175.0
+offset_right = 200.0
+offset_bottom = 185.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "12000 EXED.EXES."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked6" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 190.0
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "10000 COMMANDO.."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ranked7" type="Label" parent="Control_Third_Area"]
+modulate = Color(0.800491, 0.800491, 0.800491, 1)
+offset_top = 205.0
+offset_right = 200.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 10
+text = "8000 .........."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="CheckButton" type="CheckButton" parent="Node"]
+modulate = Color(2.45467e-06, 0.655144, 0.326363, 1)
+z_index = 10
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -105.0
+offset_top = 33.0
+offset_right = 71.0
+offset_bottom = 61.0
+grow_horizontal = 0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("2_akue7")
+theme_override_font_sizes/font_size = 20
+text = "3X LIVES"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Node/CheckButton" to="." method="_on_check_button_toggled"]

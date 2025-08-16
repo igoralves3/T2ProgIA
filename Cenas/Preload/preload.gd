@@ -17,15 +17,16 @@ var next_scene
 var show_player_label = true
 
 func _ready():
-	if GameManager.lifes == 0:
-		get_tree().root.get_node("Game").change_scene("res://Componentes/Menu_etc/main_menu.tscn")
+	if GameManager.lives == 0: #a principio nao eh chamado
+		SoundController.AudioBGM.stop()
+#		get_tree().root.get_node("Game").change_scene("res://Componentes/Menu_etc/main_menu.tscn")
+		return
 	if GameManager.retry:
 		SoundController.play_bgm(musica_retry, "musica_retry")
 	if not GameManager.retry:
 		SoundController.play_bgm(musica_inicial, "musica_inicial")
 	next_scene = GameManager.currentScene
 	var position1 = GameManager.getSpawnPostion()
-	print (position1, " preload position1")
 	texture.global_position.y = texture.global_position.y - position1.y +170
 	show_player_label=true
 	if next_scene == "res://Cenas/Area_1.tscn":

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://6awtj6fxpxmw"]
+[gd_scene load_steps=3 format=3 uid="uid://6awtj6fxpxmw"]
 
 [ext_resource type="Script" uid="uid://b6ipc8fldfccc" path="res://Cenas/game.gd" id="1_7t40e"]
+[ext_resource type="AudioStream" uid="uid://cwswwme5y4q48" path="res://Audio/BGM/NES/09 Game Over.wav" id="2_d5ttk"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_7t40e")
+gameOver_audio = ExtResource("2_d5ttk")

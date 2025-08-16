@@ -179,8 +179,11 @@ func bullet_hit():
 		set_physics_process(false)
 		dead_enemy.emit(self, pontos)
 		$Area2DColisaoMorte.set_collision_layer_value(3, false)
+		self.set_collision_layer_value(3,false)
 		SoundController.play_button(som_morte)
 		GameManager.addPoints(pontos)
+		timer_jogar_granada.stop()
+		timer_olhar_para_jogador.stop()
 		remover_granadas_filhas_do_controller()
 
 func remover_granadas_filhas_do_controller():
@@ -197,9 +200,12 @@ func grenade_hit():
 		_animated_sprite.animation_finished.connect(queue_free)
 		set_physics_process(false)
 		$Area2DColisaoMorte.set_collision_layer_value(3, false)
+		self.set_collision_layer_value(3,false)
 		SoundController.play_button(som_morte)
 		dead_enemy.emit(self, pontos)
 		GameManager.addPoints(pontos)
+		timer_jogar_granada.stop()
+		timer_olhar_para_jogador.stop()
 		remover_granadas_filhas_do_controller()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

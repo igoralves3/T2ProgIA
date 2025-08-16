@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8gylthnf6cdd"]
+
+[ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="1_qj885"]
+
+[node name="Game_over_labels" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -20.0
+offset_right = 32.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+modulate = Color(0.762404, 0.762404, 0.762404, 1)
+z_index = 5
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qj885")
+theme_override_font_sizes/font_size = 10
+text = "PLAYER 1"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+modulate = Color(0.762404, 0.762404, 0.762404, 1)
+z_index = 5
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qj885")
+theme_override_font_sizes/font_size = 10
+text = "GAME OVER"

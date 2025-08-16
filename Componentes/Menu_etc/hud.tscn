@@ -6,13 +6,15 @@
 [ext_resource type="SpriteFrames" uid="uid://wulfb2ltjxyb" path="res://SpriteSheets/Animacoes_Etc/HUD.tres" id="2_c6eb1"]
 [ext_resource type="Texture2D" uid="uid://cb8kerv7hjxgh" path="res://SpriteSheets/medalha1.png" id="4_kd5dh"]
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("vida_extra", "medalha1", "label_granadas", "label_score_normal", "label_high_score") groups=["HUD"]]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("vida_extra", "medalha1", "label_granadas", "label_score_normal", "label_high_score", "vidas_box", "granadas_box") groups=["HUD"]]
 script = ExtResource("1_r7yd2")
 vida_extra = NodePath("Control/ContainerDeReferencias/VidaExtra")
 medalha1 = NodePath("Control/ContainerDeReferencias/Medalha1")
 label_granadas = NodePath("Control/GranadasHBox/LabelGranadas")
 label_score_normal = NodePath("Control/ScoreVBox/HBoxContainer2/LabelPontuacao")
 label_high_score = NodePath("Control/HighScoreVBox2/HBoxContainer2/LabelPontuacaoTOP")
+vidas_box = NodePath("Control/VidasExtrasHBox")
+granadas_box = NodePath("Control/GranadasHBox")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -23,7 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VidasExtrasHBox" type="HBoxContainer" parent="Control"]
-unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -72,12 +73,14 @@ animation = &"granada"
 offset = Vector2(-9, 0)
 
 [node name="Label" type="Label" parent="Control/GranadasHBox"]
+modulate = Color(0.813258, 0.813258, 0.813258, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")
 theme_override_font_sizes/font_size = 11
 text = "="
 
 [node name="LabelGranadas" type="Label" parent="Control/GranadasHBox"]
+modulate = Color(0.813258, 0.813258, 0.813258, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")
 theme_override_font_sizes/font_size = 11
@@ -124,6 +127,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="LabelPontuacao" type="Label" parent="Control/ScoreVBox/HBoxContainer2"]
+modulate = Color(0.813258, 0.813258, 0.813258, 1)
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")
@@ -158,6 +162,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="LabelPontuacaoTOP" type="Label" parent="Control/HighScoreVBox2/HBoxContainer2"]
+modulate = Color(0.813258, 0.813258, 0.813258, 1)
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n8lu3")

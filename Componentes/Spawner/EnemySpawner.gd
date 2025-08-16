@@ -58,7 +58,6 @@ func _on_mob_timer_timeout():
 			owner.add_child(mob)
 			var collision = mob.move_and_collide(Vector2.ZERO)
 			if collision:
-				print ("colisao spawn")
 				if inimigo_atual == "bazuca":
 					max_bazucas = max_bazucas + 1
 				owner.remove_child(mob)

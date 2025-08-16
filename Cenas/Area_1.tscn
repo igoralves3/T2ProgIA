@@ -29,6 +29,7 @@
 size = Vector2(73, 44)
 
 [node name="Area1" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_t3o0g")
 musica_inicial = ExtResource("2_twte5")
 musica_intermission = ExtResource("3_8k6ck")
@@ -80,85 +81,84 @@ position = Vector2(112, 170)
 [node name="TodasArvores" type="Node" parent="."]
 
 [node name="Arvore" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(161, 231)
+position = Vector2(160, 224)
 isLeft = false
 
 [node name="Arvore2" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(209, 147)
+position = Vector2(208, 144)
 isLeft = false
 startFrame = 1
 
 [node name="Arvore3" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(144, 211)
-startFrame = 1
+position = Vector2(144, 208)
 
 [node name="Arvore4" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(126, 229)
+position = Vector2(128, 224)
 startFrame = 1
 
 [node name="Arvore5" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(78, 21)
+position = Vector2(80, 16)
 startFrame = 1
 
 [node name="Arvore6" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(153, -25)
+position = Vector2(160, -32)
+isLeft = false
 
 [node name="Arvore7" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(80, -108)
+position = Vector2(80, -112)
 startFrame = 1
 
 [node name="Arvore8" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(135, -26)
-isLeft = false
+position = Vector2(128, -32)
 startFrame = 2
 
 [node name="Arvore9" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(150, -40)
-isLeft = false
+position = Vector2(144, -48)
 startFrame = 2
 
 [node name="Arvore10" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(0, -223)
+position = Vector2(0, -224)
 startFrame = 1
 
 [node name="Arvore11" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(33, -223)
+position = Vector2(32, -224)
 isLeft = false
 startFrame = 1
 
 [node name="Arvore13" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(136, -622)
+position = Vector2(144, -624)
+isLeft = false
 startFrame = 1
 
 [node name="Arvore14" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(15, -621)
+position = Vector2(16, -624)
 
 [node name="Arvore15" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(87, -686)
-isLeft = false
+position = Vector2(80, -688)
 startFrame = 2
 
 [node name="Arvore12" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(15, -239)
+position = Vector2(16, -240)
 
 [node name="Arvore16" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(136, -238)
+position = Vector2(144, -240)
+isLeft = false
 startFrame = 2
 
 [node name="Arvore17" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(87, -301)
-isLeft = false
+position = Vector2(80, -304)
 
 [node name="Arvore19" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(207, -429)
+position = Vector2(208, -432)
 startFrame = 2
 
 [node name="Arvore18" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(143, -367)
+position = Vector2(144, -368)
 startFrame = 1
 
 [node name="Arvore20" parent="TodasArvores" instance=ExtResource("6_t3o0g")]
-position = Vector2(15, 145)
+position = Vector2(16, 144)
+startFrame = 1
 
 [node name="ColisaoAgua" parent="." instance=ExtResource("7_a6koi")]
 position = Vector2(17, -158)

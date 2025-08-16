@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://cg070bqy7rfj" path="res://Componentes/Spawner/hq_spawner.tscn" id="26_lyt11"]
 
 [node name="Area3" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_b6t7n")
 musica_inicial = ExtResource("2_ykegt")
 musica_intermission = ExtResource("3_52orf")

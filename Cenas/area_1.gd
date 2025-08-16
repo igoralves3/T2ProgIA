@@ -40,8 +40,11 @@ func next_level2():
 	get_tree().root.get_node("Game").change_scene("res://Cenas/Intermissions/intermission_1.tscn")
 
 func _on_main_player_char_dead_player():
-	GameManager.reduceLifes()
-	get_tree().root.get_node("Game").change_scene("res://Cenas/Preload/preload.tscn")
+	GameManager.reducelives()
+	if GameManager.lives > 0:
+		get_tree().root.get_node("Game").change_scene("res://Cenas/Preload/preload.tscn")
+	else:
+		get_tree().root.get_node("Game").game_over()
 #	get_tree().reload_current_scene()
 
 func _on_trigger_mobs_portao_area_entered(_area):
