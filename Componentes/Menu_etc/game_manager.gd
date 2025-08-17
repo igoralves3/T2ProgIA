@@ -27,18 +27,18 @@ signal lives_updated(new_life_count)
 signal medals_updated(new_medal_count)
 
 func _ready() -> void:
-	SaveManager.load_game()
+#	SaveManager.load_game() #save joao
 	load_highscores()
 	arrumar_highscores()
 	highscore = highscores[0].highscore
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-func check_for_new_high_score():
-	if score > highscore:
-		print("Novo recorde! Score: ", score)
-		highscore = score
-		SaveManager.high_score = highscore
-		SaveManager.save_game() # Salva o novo recorde no arquivo!
+#func check_for_new_high_score():
+#	if score > highscore:
+#		print("Novo recorde! Score: ", score)
+#		highscore = score
+#		SaveManager.high_score = highscore
+#		SaveManager.save_game() # Salva o novo recorde no arquivo!
 
 func newGame():
 	score = 0
@@ -74,7 +74,7 @@ func setStartPoint(newStartPoint: Vector2):
 func addPoints(points: int):
 	score += points
 	score_updated.emit(score)
-	check_for_new_high_score()
+#	check_for_new_high_score()
 	if score >= extra_life_score:
 		lives+=1
 		if extra_lives:
@@ -96,15 +96,16 @@ func arrumar_highscores():
 	highscores.sort_custom(func(a, b): return a.highscore > b.highscore)
 
 func save_highscores():
-#	var arquivo = FileAccess.open("user://highscores.sav", FileAccess.WRITE)
-	var arquivo = FileAccess.open("./highscores.sav", FileAccess.WRITE)
+	var arquivo = FileAccess.open("user://highscores.sav", FileAccess.WRITE)
+#	var arquivo = FileAccess.open("./highscores.sav", FileAccess.WRITE)
 	arquivo.store_var(highscores)
 
 func load_highscores():
-#	if FileAccess.file_exists("user://highscores.sav"):
-#		var arquivo = FileAccess.open("user://highscores.sav", FileAccess.READ)
-	if FileAccess.file_exists("./highscores.sav"):
-		var arquivo = FileAccess.open("./highscores.sav", FileAccess.READ)
+	pass
+	if FileAccess.file_exists("user://highscores.sav"):
+		var arquivo = FileAccess.open("user://highscores.sav", FileAccess.READ)
+#	if FileAccess.file_exists("./highscores.sav"):
+#		var arquivo = FileAccess.open("./highscores.sav", FileAccess.READ)
 		highscores = arquivo.get_var()
 
 func adicionar_novo_highscore(nome, h_score):

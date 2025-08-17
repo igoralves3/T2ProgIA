@@ -17,10 +17,10 @@ func _ready() -> void:
 		child.queue_free()
 	for medalhas in %Medalhas.get_children():
 		medalhas.queue_free()
-	
 	start_update()
 	var timer1 = get_tree().create_timer(0.1)
 	timer1.timeout.connect(start_update)
+	label_high_score.text = str(GameManager.highscores[0].highscore)
 
 func start_update():
 	updates = 5
