@@ -71,7 +71,7 @@ func _input(event: InputEvent) -> void:
 			if !is_pressed:
 				is_pressed = true
 				emit_signal("analogic_just_pressed")
-				print("analogic just pressed")
+				
 				touch.texture_normal = stick_pressed
 				
 				if zero_at_touch:

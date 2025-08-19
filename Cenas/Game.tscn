@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://6awtj6fxpxmw"]
+[gd_scene load_steps=11 format=3 uid="uid://6awtj6fxpxmw"]
 
 [ext_resource type="Script" uid="uid://b6ipc8fldfccc" path="res://Cenas/game.gd" id="1_7t40e"]
 [ext_resource type="AudioStream" uid="uid://cwswwme5y4q48" path="res://Audio/BGM/NES/09 Game Over.wav" id="2_d5ttk"]
 [ext_resource type="Script" uid="uid://dsbom4qjmsdkx" path="res://addons/virtual_joystick/scripts/virtual_joystick.gd" id="3_0bvrx"]
 [ext_resource type="Texture2D" uid="uid://b43x5d10e5s44" path="res://addons/virtual_joystick/sprites/stick.png" id="3_tt2hc"]
+[ext_resource type="Script" uid="uid://dvf2rcxmugpi0" path="res://Scripts/Android/sub_viewport_container.gd" id="3_uspeq"]
 [ext_resource type="Texture2D" uid="uid://bc6paavcnnwf6" path="res://addons/virtual_joystick/sprites/stick_pressed.png" id="4_tt2hc"]
 [ext_resource type="BitMap" uid="uid://dkap3nily6ll2" path="res://SpriteSheets/click_mask.png" id="6_cvv8b"]
 [ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="7_8i4ha"]
+[ext_resource type="Script" uid="uid://l5hoixdqawq5" path="res://Scripts/Android/touch_button.gd" id="7_cht1d"]
 [ext_resource type="Texture2D" uid="uid://nthbrk6sisl0" path="res://SpriteSheets/TransparentButton.png" id="8_2uwyn"]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("subviewport")]
@@ -22,9 +24,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer" node_paths=PackedStringArray("sub_viewport")]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("3_uspeq")
+sub_viewport = NodePath("SubViewport")
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer"]
 handle_input_locally = false
@@ -39,7 +43,7 @@ size_flags_vertical = 3
 [node name="CanvasLayer" type="CanvasLayer" parent="VBoxContainer/HBoxContainer"]
 
 [node name="VirtualJoystick" type="Node2D" parent="VBoxContainer/HBoxContainer/CanvasLayer"]
-position = Vector2(51, 321)
+position = Vector2(51, 336)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_0bvrx")
 stick_pressed = ExtResource("4_tt2hc")
@@ -48,13 +52,14 @@ metadata/_custom_type_script = "uid://dsbom4qjmsdkx"
 [node name="FireButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/CanvasLayer"]
 modulate = Color(1, 0.46, 0.46, 1)
 offset_left = 113.0
-offset_top = 329.0
+offset_top = 348.0
 offset_right = 177.0
-offset_bottom = 393.0
+offset_bottom = 412.0
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("3_tt2hc")
 texture_pressed = ExtResource("4_tt2hc")
 texture_click_mask = ExtResource("6_cvv8b")
+script = ExtResource("7_cht1d")
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CanvasLayer/FireButton"]
 z_index = 6
@@ -80,13 +85,14 @@ vertical_alignment = 1
 [node name="GrenadeButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/CanvasLayer"]
 modulate = Color(1, 0.82, 0.55, 1)
 offset_left = 167.0
-offset_top = 289.0
+offset_top = 308.0
 offset_right = 231.0
-offset_bottom = 353.0
+offset_bottom = 372.0
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("3_tt2hc")
 texture_pressed = ExtResource("4_tt2hc")
 texture_click_mask = ExtResource("6_cvv8b")
+script = ExtResource("7_cht1d")
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CanvasLayer/GrenadeButton"]
 z_index = 6
@@ -118,6 +124,7 @@ offset_bottom = 430.0
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("8_2uwyn")
 texture_click_mask = ExtResource("6_cvv8b")
+script = ExtResource("7_cht1d")
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CanvasLayer/GodModeButton"]
 visible = false

@@ -74,9 +74,6 @@ func _on_grenade_button_pressed() -> void:
 		jogador =  get_tree().get_first_node_in_group("GrupoPlayer")
 	else:
 		jogador.spawn_grenade()
-	print ("grenade")
-
-
 
 func _on_god_mode_button_pressed() -> void:
 	if jogador == null:

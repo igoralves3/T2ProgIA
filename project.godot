@@ -28,7 +28,6 @@ window/size/viewport_width=224
 window/size/viewport_height=398
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/stretch/scale_mode="integer"
 window/handheld/orientation=1
 
 [editor_plugins]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cg82iby0vcdg4"]
+[gd_scene load_steps=10 format=3 uid="uid://cg82iby0vcdg4"]
 
 [ext_resource type="Script" uid="uid://prhb34gbv3df" path="res://Componentes/Menu_etc/menu.gd" id="1_g51hi"]
 [ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="2_akue7"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dhfnkh4o7yrcj" path="res://SpriteSheets/Menu1.png" id="4_fhy1i"]
 [ext_resource type="Texture2D" uid="uid://dm2hiaffa1phs" path="res://SpriteSheets/Menu2.png" id="6_fhy1i"]
 [ext_resource type="Texture2D" uid="uid://2m1vba2gdw2t" path="res://SpriteSheets/Menu3.png" id="7_wj0un"]
+[ext_resource type="Script" uid="uid://bhlwoulqqptno" path="res://Scripts/Android/touch_button_b.gd" id="8_6cmq8"]
+[ext_resource type="Script" uid="uid://2vp4bophmtjr" path="res://Scripts/Android/touch_checkbutton.gd" id="9_jhwqr"]
 
 [node name="Menu" type="Control" node_paths=PackedStringArray("label_coin", "control_first_area", "control_second_area", "control_third_area", "RanksGroup", "superjoesprite", "label_highestscore_top")]
 layout_mode = 3
@@ -446,6 +448,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
+script = ExtResource("8_6cmq8")
 
 [node name="Node" type="Node" parent="."]
 
@@ -464,6 +467,7 @@ scale = Vector2(0.6, 0.6)
 theme_override_fonts/font = ExtResource("2_akue7")
 theme_override_font_sizes/font_size = 20
 text = "3X LIVES"
+script = ExtResource("9_jhwqr")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_button_pressed"]
 [connection signal="toggled" from="Node/CheckButton" to="." method="_on_check_button_toggled"]
