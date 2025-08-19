@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://dkap3nily6ll2"
+path="res://.godot/imported/click_mask.png-c8728887268f8a158ee73218484bc7bc.res"
+
+[deps]
+
+source_file="res://SpriteSheets/click_mask.png"
+dest_files=["res://.godot/imported/click_mask.png-c8728887268f8a158ee73218484bc7bc.res"]
+
+[params]
+
+create_from=1
+threshold=0.5

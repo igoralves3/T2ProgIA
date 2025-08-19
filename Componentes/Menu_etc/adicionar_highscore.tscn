@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_24i0h")
 label_nick = NodePath("Nick")
 hud = NodePath("HUD")
@@ -23,6 +24,7 @@ textura_area2 = ExtResource("2_rcf3k")
 textura_area3 = ExtResource("4_sxmes")
 
 [node name="GridContainer" type="GridContainer" parent="."]
+z_index = 8
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,9 +32,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -80.0
-offset_top = -18.0
+offset_top = -27.0
 offset_right = 80.0
-offset_bottom = 18.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 0
@@ -41,7 +43,9 @@ columns = 10
 
 [node name="A" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
 text = "A"
@@ -49,6 +53,7 @@ flat = true
 
 [node name="B" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -57,6 +62,7 @@ flat = true
 
 [node name="C" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -65,6 +71,7 @@ flat = true
 
 [node name="D" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -73,6 +80,7 @@ flat = true
 
 [node name="E" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -81,6 +89,7 @@ flat = true
 
 [node name="F" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -89,6 +98,7 @@ flat = true
 
 [node name="G" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -97,6 +107,7 @@ flat = true
 
 [node name="H" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -105,6 +116,7 @@ flat = true
 
 [node name="I" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -113,6 +125,7 @@ flat = true
 
 [node name="J" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -121,6 +134,7 @@ flat = true
 
 [node name="K" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -129,6 +143,7 @@ flat = true
 
 [node name="L" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -137,6 +152,7 @@ flat = true
 
 [node name="M" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -145,6 +161,7 @@ flat = true
 
 [node name="N" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -153,6 +170,7 @@ flat = true
 
 [node name="O" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -161,6 +179,7 @@ flat = true
 
 [node name="P" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -169,6 +188,7 @@ flat = true
 
 [node name="Q" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -177,6 +197,7 @@ flat = true
 
 [node name="R" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -185,6 +206,7 @@ flat = true
 
 [node name="S" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -193,6 +215,7 @@ flat = true
 
 [node name="T" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -201,6 +224,7 @@ flat = true
 
 [node name="U" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -209,6 +233,7 @@ flat = true
 
 [node name="V" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -217,6 +242,7 @@ flat = true
 
 [node name="W" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -225,6 +251,7 @@ flat = true
 
 [node name="X" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -233,6 +260,7 @@ flat = true
 
 [node name="Y" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -241,6 +269,7 @@ flat = true
 
 [node name="Z" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -249,6 +278,7 @@ flat = true
 
 [node name="Ponto" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -257,6 +287,7 @@ flat = true
 
 [node name="Espaco" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -265,6 +296,7 @@ flat = true
 
 [node name="Igual" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -273,6 +305,7 @@ flat = true
 
 [node name="End" type="Button" parent="GridContainer"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
+z_index = 11
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kbude")
 theme_override_font_sizes/font_size = 10
@@ -489,6 +522,7 @@ layout_mode = 0
 offset_top = -1792.0
 offset_right = 224.0
 offset_bottom = 256.0
+mouse_filter = 2
 texture = ExtResource("2_c451j")
 
 [connection signal="pressed" from="GridContainer/A" to="." method="_on_a_pressed"]

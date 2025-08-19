@@ -1,8 +1,148 @@
-[gd_scene load_steps=3 format=3 uid="uid://6awtj6fxpxmw"]
+[gd_scene load_steps=9 format=3 uid="uid://6awtj6fxpxmw"]
 
 [ext_resource type="Script" uid="uid://b6ipc8fldfccc" path="res://Cenas/game.gd" id="1_7t40e"]
 [ext_resource type="AudioStream" uid="uid://cwswwme5y4q48" path="res://Audio/BGM/NES/09 Game Over.wav" id="2_d5ttk"]
+[ext_resource type="Script" uid="uid://dsbom4qjmsdkx" path="res://addons/virtual_joystick/scripts/virtual_joystick.gd" id="3_0bvrx"]
+[ext_resource type="Texture2D" uid="uid://b43x5d10e5s44" path="res://addons/virtual_joystick/sprites/stick.png" id="3_tt2hc"]
+[ext_resource type="Texture2D" uid="uid://bc6paavcnnwf6" path="res://addons/virtual_joystick/sprites/stick_pressed.png" id="4_tt2hc"]
+[ext_resource type="BitMap" uid="uid://dkap3nily6ll2" path="res://SpriteSheets/click_mask.png" id="6_cvv8b"]
+[ext_resource type="FontFile" uid="uid://ccsmg6cvju8n6" path="res://SpriteSheets/Fonte1.png" id="7_8i4ha"]
+[ext_resource type="Texture2D" uid="uid://nthbrk6sisl0" path="res://SpriteSheets/TransparentButton.png" id="8_2uwyn"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" node_paths=PackedStringArray("subviewport")]
 script = ExtResource("1_7t40e")
 gameOver_audio = ExtResource("2_d5ttk")
+subviewport = NodePath("VBoxContainer/SubViewportContainer/SubViewport")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(224, 256)
+render_target_update_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(6.98, 66.575)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="VBoxContainer/HBoxContainer"]
+
+[node name="VirtualJoystick" type="Node2D" parent="VBoxContainer/HBoxContainer/CanvasLayer"]
+position = Vector2(51, 321)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_0bvrx")
+stick_pressed = ExtResource("4_tt2hc")
+metadata/_custom_type_script = "uid://dsbom4qjmsdkx"
+
+[node name="FireButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/CanvasLayer"]
+modulate = Color(1, 0.46, 0.46, 1)
+offset_left = 113.0
+offset_top = 329.0
+offset_right = 177.0
+offset_bottom = 393.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("3_tt2hc")
+texture_pressed = ExtResource("4_tt2hc")
+texture_click_mask = ExtResource("6_cvv8b")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CanvasLayer/FireButton"]
+z_index = 6
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.308995, 0.774481, 1, 1)
+theme_override_fonts/font = ExtResource("7_8i4ha")
+theme_override_font_sizes/font_size = 10
+text = "SHOOT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GrenadeButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/CanvasLayer"]
+modulate = Color(1, 0.82, 0.55, 1)
+offset_left = 167.0
+offset_top = 289.0
+offset_right = 231.0
+offset_bottom = 353.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("3_tt2hc")
+texture_pressed = ExtResource("4_tt2hc")
+texture_click_mask = ExtResource("6_cvv8b")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CanvasLayer/GrenadeButton"]
+z_index = 6
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.308995, 0.774481, 1, 1)
+theme_override_fonts/font = ExtResource("7_8i4ha")
+theme_override_font_sizes/font_size = 10
+text = "GRENADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GodModeButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/CanvasLayer"]
+modulate = Color(1, 0.82, 0.55, 1)
+offset_left = 190.0
+offset_top = 366.0
+offset_right = 254.0
+offset_bottom = 430.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("8_2uwyn")
+texture_click_mask = ExtResource("6_cvv8b")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CanvasLayer/GodModeButton"]
+visible = false
+z_index = 6
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.308995, 0.774481, 1, 1)
+theme_override_fonts/font = ExtResource("7_8i4ha")
+theme_override_font_sizes/font_size = 10
+text = "GRENADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="analogic_change" from="VBoxContainer/HBoxContainer/CanvasLayer/VirtualJoystick" to="." method="_on_virtual_joystick_analogic_change"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CanvasLayer/FireButton" to="." method="_on_fire_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CanvasLayer/GrenadeButton" to="." method="_on_grenade_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CanvasLayer/GodModeButton" to="." method="_on_god_mode_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/CanvasLayer/GodModeButton" to="." method="_on_god_mode_button_toggled"]

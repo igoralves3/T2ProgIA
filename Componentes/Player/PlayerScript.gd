@@ -57,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 	if ending_level:
 		end_level(_delta)
 		return
-	get_8_way_input()
+#	get_8_way_input()
 	move_and_slide()
 	if velocity != Vector2.ZERO:
 		dir = velocity.normalized()
@@ -115,11 +115,18 @@ func stop_animated_sprite():
 		if can_throw_grenade == false:
 			_animated_sprite.stop()
 
-func get_8_way_input() -> void:
+func get_8_way_input() -> void: #provavelmente vai fora
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
 	if can_move:
 		update_animation(input_direction)	
 		velocity = input_direction * SPEED
+
+func get_virtual_controller_input(Vector) -> void:
+	var input_direction = Vector
+	if can_move:
+		update_animation(input_direction)	
+		velocity = input_direction * SPEED
+
 
 func burst_bullet():
 	var quantidade_de_tiros = 1
@@ -199,18 +206,17 @@ func remove_bullet():
 
 func spawn_grenade():
 	if can_throw_grenade and grenadeAmmo > 0:
-		if Input.is_action_pressed("Grenade"):
-			can_throw_grenade = false
-			grenadeAmmo-=1
-			GameManager.granadas = grenadeAmmo
-			_animated_sprite.play("throw_grenade")
-			var timer1 = get_tree().create_timer(0.14) #parece ser o tempo original do jogo
-			timer1.timeout.connect(spawn_grenade_part2)
-			if HUD != null:
-				HUD.single_update()
-			else:
-				get_HUD()
-				HUD.single_update()
+		can_throw_grenade = false
+		grenadeAmmo-=1
+		GameManager.granadas = grenadeAmmo
+		_animated_sprite.play("throw_grenade")
+		var timer1 = get_tree().create_timer(0.14) #parece ser o tempo original do jogo
+		timer1.timeout.connect(spawn_grenade_part2)
+		if HUD != null:
+			HUD.single_update()
+		else:
+			get_HUD()
+			HUD.single_update()
 
 func spawn_grenade_part2():
 	var grenade_instance = grenade.instantiate()

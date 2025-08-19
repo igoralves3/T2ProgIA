@@ -42,7 +42,7 @@ func _ready() -> void:
 
 func newGame():
 	score = 0
-	lives = 3
+	lives = 1
 	if extra_lives:
 		lives = 9
 	medals = 0

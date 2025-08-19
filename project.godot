@@ -25,9 +25,15 @@ SaveManager="*res://Scripts/Classes/Save Manager/SaveManager.gd"
 [display]
 
 window/size/viewport_width=224
-window/size/viewport_height=256
-window/stretch/mode="viewport"
+window/size/viewport_height=398
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/virtual_joystick/plugin.cfg")
 
 [global_group]
 
@@ -143,6 +149,11 @@ Start={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
+
 [layer_names]
 
 2d_physics/layer_1="World"
@@ -154,4 +165,5 @@ Start={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 2d/snap/snap_2d_transforms_to_pixel=true

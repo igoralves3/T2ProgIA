@@ -12,7 +12,7 @@ var nickname: String
 @export var textura_area3: Texture
 
 func _ready() -> void:
-	$GridContainer/A.grab_focus()
+#	$GridContainer/A.grab_focus()
 	hud.vidas_box.visible = false
 	hud.granadas_box.visible = false
 	timer_end.timeout.connect(finalizar_pt2)

@@ -3,6 +3,8 @@ extends Node
 var current_scene = null
 var timer_game_over
 @export var gameOver_audio: AudioStream
+@export var subviewport: SubViewport
+var jogador: Player
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -23,7 +25,10 @@ func change_scene(scene_path):
 		current_scene.queue_free()
 	var scene = load(scene_path)
 	current_scene = scene.instantiate()
-	add_child(current_scene)
+#	add_child(current_scene)
+	subviewport.add_child(current_scene)
+	
+	jogador = get_tree().get_first_node_in_group("GrupoPlayer")
 
 func add_scene(scene_path):
 	var scene = load(scene_path)
@@ -51,3 +56,31 @@ func highscore_scene():
 	if next_scene == "res://Cenas/Area_3.tscn":
 		current_scene.texture.texture = current_scene.textura_area3
 	
+
+func _on_virtual_joystick_analogic_change(move: Vector2) -> void:
+	if jogador == null:
+		jogador =  get_tree().get_first_node_in_group("GrupoPlayer")
+	else:
+		jogador.get_virtual_controller_input(move)
+
+func _on_fire_button_pressed() -> void:
+	if jogador == null:
+		jogador =  get_tree().get_first_node_in_group("GrupoPlayer")
+	else:
+		jogador.burst_bullet()
+
+func _on_grenade_button_pressed() -> void:
+	if jogador == null:
+		jogador =  get_tree().get_first_node_in_group("GrupoPlayer")
+	else:
+		jogador.spawn_grenade()
+	print ("grenade")
+
+
+
+func _on_god_mode_button_pressed() -> void:
+	if jogador == null:
+		jogador =  get_tree().get_first_node_in_group("GrupoPlayer")
+	else:
+		jogador.god_mode = !jogador.god_mode
+	print ("godmode")
